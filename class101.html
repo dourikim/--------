@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>프랑스어 바이블 문법책 재해석 인강 | 김두우리</title>
+  <meta name="description" content="프랑스어를 외우지 않고, 프랑스어로 사고하게 되는 3개월. 40챕터 + 보너스 3챕터 인강."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+
+    /* ══ 공통 레이아웃 ══════════════════════ */
+    .ci-section {
+      padding: var(--sp-32) var(--sp-24);
+      border-bottom: 1px solid var(--border);
+    }
+    .ci-section:last-child { border-bottom: none; }
+
+    .ci-heading {
+      font-family: var(--font-heading);
+      font-size: clamp(1.45rem, 4.5vw, 1.9rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.3;
+      color: var(--dark);
+      margin-bottom: var(--sp-24);
+    }
+    .ci-heading span { color: var(--brick); }
+
+    .ci-subhead {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: var(--sp-8);
+    }
+    .ci-body {
+      font-size: 0.87rem;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+    .ci-body + .ci-body { margin-top: var(--sp-8); }
+
+    /* ══ 히어로 ═════════════════════════════ */
+    .ci-hero {
+      background: var(--dark);
+      padding: var(--sp-64) var(--sp-24) var(--sp-32);
+      text-align: center;
+    }
+    .ci-hero-badge {
+      display: inline-block;
+      background: var(--brick);
+      color: var(--white);
+      font-size: 0.72rem; font-weight: 700;
+      padding: 4px 14px; border-radius: 999px;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--sp-16);
+    }
+    .ci-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 5.5vw, 2.3rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.03em;
+      color: var(--white);
+      margin-bottom: var(--sp-16);
+    }
+    .ci-hero-title em { color: #f4a47a; font-style: normal; }
+    .ci-hero-sub {
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.85;
+      margin-bottom: var(--sp-24);
+    }
+    .ci-hero-tags {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      justify-content: center;
+    }
+    .ci-hero-tag {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.75rem; font-weight: 500;
+      padding: 5px 14px; border-radius: 999px;
+    }
+    .ci-hero-cta {
+      display: inline-block;
+      margin-top: var(--sp-24);
+      background: var(--brick);
+      color: var(--white);
+      font-size: 0.88rem; font-weight: 700;
+      padding: 13px 28px; border-radius: var(--radius);
+      transition: background 0.2s;
+    }
+    .ci-hero-cta:hover { background: var(--brick-h); }
+
+    /* ══ 강사 소개 ══════════════════════════ */
+    .country-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: var(--sp-8);
+      margin-top: var(--sp-16);
+    }
+    .country-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--sp-16) var(--sp-8);
+      text-align: center;
+    }
+    .country-flag { font-size: 1.5rem; margin-bottom: var(--sp-4); display: block; }
+    .country-name { font-size: 0.78rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .country-desc { font-size: 0.72rem; color: var(--muted); line-height: 1.55; }
+
+    /* ══ 인용·callout ════════════════════════ */
+    .ci-quote {
+      border-left: 3px solid var(--brick);
+      background: #fff9f8;
+      padding: var(--sp-16);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 0.87rem; color: var(--dark); line-height: 1.85;
+      margin: var(--sp-16) 0;
+    }
+    .ci-callout {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--sp-16);
+      font-size: 0.87rem; color: var(--dark); line-height: 1.8;
+    }
+
+    /* ══ 챕터 통계 카드 ══════════════════════ */
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-8);
+      margin-bottom: var(--sp-24);
+    }
+    .stat-card {
+      border-radius: var(--radius);
+      padding: var(--sp-24) var(--sp-16);
+      text-align: center;
+    }
+    .stat-card.s-brick { background: var(--brick); color: var(--white); }
+    .stat-card.s-dark  { background: var(--muted); color: var(--white); }
+    .stat-num {
+      font-family: var(--font-heading);
+      font-size: 2.6rem; font-weight: 700; line-height: 1;
+    }
+    .stat-label { font-size: 0.8rem; font-weight: 700; margin-top: var(--sp-4); opacity: 0.9; }
+    .stat-sub   { font-size: 0.7rem; opacity: 0.65; margin-top: 2px; }
+
+    /* ══ 수강권 비교표 ══════════════════════ */
+    .pkg-compare-wrap { overflow-x: auto; }
+    .pkg-compare-table {
+      width: 100%; border-collapse: collapse;
+      min-width: 280px;
+    }
+    .pkg-compare-table th, .pkg-compare-table td {
+      padding: 13px 10px;
+      border: 1px solid var(--border);
+      font-size: 0.82rem;
+      vertical-align: middle;
+      line-height: 1.6;
+    }
+    /* 왼쪽 라벨 열 */
+    .col-label {
+      font-family: var(--font-heading);
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--dark);
+      background: var(--surface);
+      width: 28%; text-align: left;
+    }
+    /* 두 상품 열 */
+    .col-a, .col-b {
+      text-align: center;
+      width: 36%;
+      color: var(--dark);
+    }
+    /* 헤더 행 */
+    .head-empty { background: var(--surface); border: none; }
+    .head-a {
+      background: var(--brick);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 0.95rem; font-weight: 700;
+      padding: 16px 10px !important;
+      border-radius: var(--radius) 0 0 0;
+      border: none !important;
+    }
+    .head-b {
+      background: var(--brick);
+      color: var(--white);
+      font-family: var(--font-heading);
+      font-size: 0.95rem; font-weight: 700;
+      padding: 16px 10px !important;
+      border-radius: 0 var(--radius) 0 0;
+      border: none !important;
+    }
+    /* 혜택 강조 행 */
+    .row-highlight td {
+      background: #fff9f8;
+    }
+    .row-highlight .col-label {
+      border-left: 2.5px solid var(--brick) !important;
+      border-top: 2.5px solid var(--brick) !important;
+      border-bottom: 2.5px solid var(--brick) !important;
+    }
+    .row-highlight .col-a {
+      border-top: 2.5px solid var(--brick) !important;
+      border-bottom: 2.5px solid var(--brick) !important;
+      font-weight: 700; color: var(--dark);
+    }
+    .row-highlight .col-b {
+      border-top: 2.5px solid var(--brick) !important;
+      border-bottom: 2.5px solid var(--brick) !important;
+      border-right: 2.5px solid var(--brick) !important;
+      font-weight: 700; color: var(--dark);
+    }
+    .pkg-check { color: #2b9c4e; font-size: 1rem; }
+    .pkg-muted { color: var(--muted); font-size: 0.77rem; display: block; margin-top: 2px; }
+    .pkg-note  { font-size: 0.75rem; color: var(--muted); margin-top: var(--sp-8); text-align: center; }
+
+    /* ══ 커리큘럼 타임라인 ══════════════════ */
+    .curri-list { display: flex; flex-direction: column; gap: var(--sp-24); }
+
+    .curri-week { }
+    .curri-week-head {
+      display: flex; align-items: center; gap: var(--sp-8);
+      margin-bottom: var(--sp-8);
+    }
+    .curri-week-badge {
+      flex-shrink: 0;
+      background: var(--brick);
+      color: var(--white);
+      font-size: 0.7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 999px;
+    }
+    .curri-week-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem; font-weight: 700;
+      color: var(--dark);
+    }
+
+    .curri-chapters { display: flex; flex-direction: column; gap: 5px; padding-left: 2px; }
+    .curri-ch {
+      display: flex; gap: 8px; align-items: flex-start;
+      font-size: 0.8rem; color: var(--dark); line-height: 1.55;
+    }
+    .curri-ch-num {
+      flex-shrink: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.68rem; font-weight: 700; color: var(--muted);
+      min-width: 26px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      margin-top: 1px;
+    }
+    .curri-ch-body { flex: 1; }
+    .curri-ch-main { color: var(--dark); }
+    .curri-ch-idea { color: var(--muted); font-size: 0.74rem; }
+
+    .curri-bonus-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--brick);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: var(--sp-16);
+      margin-top: var(--sp-8);
+    }
+    .curri-bonus-title {
+      font-family: var(--font-heading);
+      font-size: 0.88rem; font-weight: 700;
+      color: var(--brick); margin-bottom: 6px;
+    }
+    .curri-bonus-item { font-size: 0.8rem; color: var(--muted); line-height: 1.75; }
+
+    /* ══ 기억해주세요 ════════════════════════ */
+    .remember-list { display: flex; flex-direction: column; gap: 10px; margin-top: var(--sp-8); }
+    .remember-item {
+      display: flex; align-items: flex-start; gap: 8px;
+      font-size: 0.85rem; color: var(--dark); line-height: 1.75;
+    }
+    .remember-check { color: var(--brick); flex-shrink: 0; font-weight: 700; }
+
+    /* ══ CTA ════════════════════════════════ */
+    .ci-cta-box {
+      background: var(--brick);
+      border-radius: var(--radius);
+      padding: var(--sp-32) var(--sp-24);
+      text-align: center;
+    }
+    .ci-cta-label { font-size: 0.75rem; color: rgba(255,255,255,0.75); margin-bottom: 6px; }
+    .ci-cta-title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--white); margin-bottom: var(--sp-16);
+      line-height: 1.35;
+    }
+    .ci-cta-desc { font-size: 0.82rem; color: rgba(255,255,255,0.8); margin-bottom: var(--sp-16); }
+    .ci-cta-btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--brick);
+      font-size: 0.9rem; font-weight: 700;
+      padding: 14px 28px; border-radius: var(--radius);
+      transition: background 0.2s, opacity 0.2s;
+    }
+    .ci-cta-btn:hover { opacity: 0.85; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu" id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <!-- ① 히어로 ──────────────────────────────── -->
+  <div class="ci-hero">
+    <span class="ci-hero-badge">CLASS101 인강</span>
+    <h1 class="ci-hero-title">
+      프랑스어의 바이블<br>
+      문법책 <em>재해석하기</em>
+    </h1>
+    <p class="ci-hero-sub">
+      프랑스어를 외우지 않고,<br>
+      프랑스어로 <strong style="color:rgba(255,255,255,0.9);">사고하게 되는</strong> 3개월.
+    </p>
+    <div class="ci-hero-tags">
+      <span class="ci-hero-tag">40챕터 + 보너스 3챕터</span>
+      <span class="ci-hero-tag">8주 여정</span>
+      <span class="ci-hero-tag">입문 ~ DALF C1</span>
+      <span class="ci-hero-tag">강의자료 PDF 300p+</span>
+    </div>
+    <a href="https://class101.net/ko/products/68bd844b4eced9473dee4f63"
+       target="_blank" rel="noopener" class="ci-hero-cta">
+      클래스101 수강 신청 →
+    </a>
+  </div>
+
+  <!-- ② 강사 소개 ──────────────────────────── -->
+  <div class="ci-section">
+    <p class="ci-subhead">🙋🏻‍♀️ 안녕하세요, 김두우리입니다</p>
+    <p class="ci-body">
+      '4개국어 능력자가 가르쳐주는 불어'의 김두우리입니다. 😊<br>
+      프랑스 🇫🇷, 브라질 🇧🇷, 한국 🇰🇷에서 약 20년 동안 다양한 언어 환경을 경험해왔습니다.
+    </p>
+    <div class="country-grid">
+      <div class="country-card">
+        <span class="country-flag">🇫🇷</span>
+        <p class="country-name">프랑스</p>
+        <p class="country-desc">전 세계 학습자를 관찰한 <strong>현장 감각</strong></p>
+      </div>
+      <div class="country-card">
+        <span class="country-flag">🇧🇷</span>
+        <p class="country-name">브라질</p>
+        <p class="country-desc">라틴계 사고구조까지 포착한 <strong>비교 데이터</strong></p>
+      </div>
+      <div class="country-card">
+        <span class="country-flag">🇰🇷</span>
+        <p class="country-name">한국</p>
+        <p class="country-desc">직역 회로를 <strong>해체한 경험</strong></p>
+      </div>
+    </div>
+
+    <div class="ci-quote" style="margin-top:var(--sp-16);">
+      그 과정에서 하나 확실히 느낀 게 있습니다.<br>
+      👉 언어는 "단어"가 아니라 <strong>사고방식</strong>이라는 것.<br><br>
+      저는 인문학이나 언어학을 전공한 사람이 아닙니다.<br>
+      그래서 오히려 더 집요하게, "<strong>어떻게 하면 실제로 말하게 되는지</strong>"를 연구해왔습니다.
+    </div>
+
+    <p class="ci-body">
+      지난 15년 동안 학습자 한 명 한 명에 맞춘 튜터링과 코칭을 진행해왔습니다.<br>
+      유난히 한국 학습자들의 고충이 크다는 것을 느꼈습니다 — 개인의 문제가 아니라 <strong>접근 방식</strong>의 차이입니다.
+    </p>
+  </div>
+
+  <!-- ③ 왜 문법으로 푸는가 ──────────────────── -->
+  <div class="ci-section">
+    <h2 class="ci-heading">🤔 왜 <span>'문법'</span>으로 푸는가</h2>
+
+    <div class="ci-callout">
+      <p>📖 조금 의외일 수도 있지만, 저는 그 수단으로 <strong>'문법'</strong>을 사용합니다.</p>
+      <p style="margin-top:8px;">다만 우리가 알던 방식이 아니라<br>
+      👉 <strong>"이 문법을 왜 이렇게 쓰는지"</strong><br>
+      👉 <strong>"프랑스인은 왜 이렇게 사고하는지"</strong><br>
+      를 연결해서 접근합니다.</p>
+    </div>
+
+    <div class="ci-callout" style="margin-top:8px; border-left: 3px solid var(--brick);">
+      🎯 3개월 동안 프랑스어를 "외우는 것"이 아니라<br>
+      👉 <strong>프랑스어로 생각하게 되는 순간</strong>을 직접 경험해 보시길 바랍니다. 😊
+    </div>
+  </div>
+
+  <!-- ④ 수강권 비교 ────────────────────────── -->
+  <div class="ci-section">
+    <h2 class="ci-heading">학습 스타일에 맞는 <span>수강권</span></h2>
+
+    <div class="pkg-compare-wrap">
+      <table class="pkg-compare-table">
+        <thead>
+          <tr>
+            <th class="head-empty"></th>
+            <th class="head-a">5개월 수강</th>
+            <th class="head-b">평생 소장</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="col-label">40 챕터</td>
+            <td class="col-a">5개월 무제한 시청</td>
+            <td class="col-b">평생 무제한 시청</td>
+          </tr>
+          <tr>
+            <td class="col-label">강의 자료 PDF</td>
+            <td class="col-a"><span class="pkg-check">✅</span> 제공</td>
+            <td class="col-b"><span class="pkg-check">✅</span> 제공</td>
+          </tr>
+          <tr class="row-highlight">
+            <td class="col-label">혜택</td>
+            <td class="col-a">
+              오픈카톡방<br><strong>질의응답 무제한</strong>
+            </td>
+            <td class="col-b">
+              1:1 레슨 5회 제공<br>
+              <strong>(60분, 35만원 상당)</strong>
+            </td>
+          </tr>
+          <tr>
+            <td class="col-label">이런 분께 권장</td>
+            <td class="col-a">
+              이머시브로 집중 학습<br>
+              <span class="pkg-muted">마감형 / 몰입형</span>
+            </td>
+            <td class="col-b">
+              내 페이스로 길게<br>
+              <span class="pkg-muted">자기주도형 / 완벽주의형</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="pkg-note">* 구매 시 메일로 300p+ 인강 수업 자료 PDF가 전달됩니다.</p>
+  </div>
+
+  <!-- ⑤ 커리큘럼 ────────────────────────────── -->
+  <div class="ci-section">
+    <h2 class="ci-heading">🎯 40챕터 <span>3개월 여정</span></h2>
+
+    <div class="stat-row">
+      <div class="stat-card s-brick">
+        <p class="stat-num">40</p>
+        <p class="stat-label">핵심 챕터</p>
+        <p class="stat-sub">+ 보너스 3챕터</p>
+      </div>
+      <div class="stat-card s-dark">
+        <p class="stat-num">8주</p>
+        <p class="stat-label">총 여정</p>
+        <p class="stat-sub">어학원 3개월 분량 압축</p>
+      </div>
+    </div>
+
+    <p class="ci-body" style="margin-bottom:var(--sp-24);">
+      각 챕터마다 핵심 아이디어, 마무리 아이디어, 그리고 직접 해보는 미션까지 구성되어 있습니다.
+    </p>
+
+    <div class="curri-list">
+
+      <!-- 주 1 -->
+      <div class="curri-week">
+        <div class="curri-week-head">
+          <span class="curri-week-badge">주 1</span>
+          <span class="curri-week-title">프랑스어 기초 동사와 문장 구조</span>
+        </div>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">1</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">être 동사 — 프랑스어의 매력 파헤치기</span>
+              <span class="curri-ch-idea"> | 주어와 발음의 특징 알기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">2</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">être의 절친 avoir — 프랑스어 구조 감 잡기</span>
+              <span class="curri-ch-idea"> | 한국어 해석에서 벗어나는 연습</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">3</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">비인칭 주어의 매력 파헤치기</span>
+              <span class="curri-ch-idea"> | il y a, C'est, Nous sommes + 날짜</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">4</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">형용사의 세계 — 성별·단수·복수 따라 춤추는 변화</span>
+              <span class="curri-ch-idea"> | 패턴 시리즈로 형용사 변화 흐름 이해</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">5</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">프랑스어 숫자 70, 80, 90 🤯 — 수학 문제일까, 언어일까?</span>
+              <span class="curri-ch-idea"> | 숫자 요령 + 시간 표현</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 주 2 -->
+      <div class="curri-week">
+        <div class="curri-week-head">
+          <span class="curri-week-badge">주 2</span>
+          <span class="curri-week-title">표현 확장 — 부정·의문·소유·가족</span>
+        </div>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">6</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">부정문과 의문문 — 프랑스식 대답의 사고방식</span>
+              <span class="curri-ch-idea"> | 문어체 vs 회화체, est-ce que의 의도</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">7</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">명사·관사 + 국가 — 프랑스의 성별 논쟁</span>
+              <span class="curri-ch-idea"> | 영어·한국어와의 관사 개념 비교</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">8</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">소유 대명사 — 소유한 사람보다 물건이 더 중요하다고?</span>
+              <span class="curri-ch-idea"> | 이론 숙지 후 실제 활용·응용</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">9</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">가족 명칭 + C'est / Il est — 며느리가 '이쁜 딸'?</span>
+              <span class="curri-ch-idea"> | 프랑스의 연애·가족 관계 엿보기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">10</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">형용사 2 + 과거분사 — 나만 알았으면 하는 숨은 비밀</span>
+              <span class="curri-ch-idea"> | 위치에 따라 달라지는 형용사 의미</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 주 3 -->
+      <div class="curri-week">
+        <div class="curri-week-head">
+          <span class="curri-week-badge">주 3</span>
+          <span class="curri-week-title">동사 변화 마스터 — ER·IR·OIR·RE</span>
+        </div>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">11</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">지시사 — 쟤 좀 봐봐, 쟤 누구?</span>
+              <span class="curri-ch-idea"> | 지시 대명사·형용사로 디테일 설명하기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">12</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">부정관사·숫자·그룹 명사 — 벤 다이어그램으로 정리!!</span>
+              <span class="curri-ch-idea"> | An과 Année의 차이 이해</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">13</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">ER 동사 — "지루한 암기"라는 선입견 부수기 👊</span>
+              <span class="curri-ch-idea"> | 규칙 패턴으로 단어장 확장</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">14</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">aller + 장소·시간 (계절, 월, 시대)</span>
+              <span class="curri-ch-idea"> | 축약 관사·국가·교통·날짜로 문장 풍부하게</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">15</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">부사 — 잘 따라오고 있는지 중간 점검 📔</span>
+              <span class="curri-ch-idea"> | Bon/bien의 2차적 의미, ne...pas 변형</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">16</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">강세 인칭 대명사 — 은어를 가르치는 선생님 😭</span>
+              <span class="curri-ch-idea"> | FLE 전용 → 원어민 미디어로 전환</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">17</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">IR·OIR·RE 동사 — 프랑스어로 언어학자 되기 🤓</span>
+              <span class="curri-ch-idea"> | 어간·어미·접두사로 응용력 키우기</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 주 4 -->
+      <div class="curri-week">
+        <div class="curri-week-head">
+          <span class="curri-week-badge">주 4</span>
+          <span class="curri-week-title">조건법·비교급·복합과거 — 표현의 깊이</span>
+        </div>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">18</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">조건법 (pouvoir·vouloir·devoir) — 프랑스식 예의 🕹</span>
+              <span class="curri-ch-idea"> | 상대를 배려하는 '거리' 만들기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">19</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">비교급·최상급 — 침묵할 것인가, 발음할 것인가?</span>
+              <span class="curri-ch-idea"> | 기준에 따라 바뀌는 구조적 논리</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">20</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">제롱디프 + "Venir de", "être en train de" — 멀티태스킹의 기술 ✌️</span>
+              <span class="curri-ch-idea"> | 격식체·문어체의 동시성 표현</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">21</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">prendre·mettre + 직접 목적 대명사 — '조립 가능한 시간' 🔩</span>
+              <span class="curri-ch-idea"> | 관용구 설계도 이해하기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">22</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">관사 총정리 + 대명사 EN — 이젠 남에게 설명할 수 있습니다! 😎</span>
+              <span class="curri-ch-idea"> | 모든 article contracté 복습</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">23</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">전치사 (de·à) + 구동사 + 대명사 Y — 역으로 배우는 구동사</span>
+              <span class="curri-ch-idea"> | 동사의 에너지가 흐르는 방향 이해</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">24</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">복합 과거 + 수동태 — être·avoir 업그레이드 🧗</span>
+              <span class="curri-ch-idea"> | 나의 데이터 시트: 현재까지의 경험</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">25</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">명령법 + 공간 표현 — 마침표 없어도 명령어 😌</span>
+              <span class="curri-ch-idea"> | 다양한 문체로 명령 표현</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 주 5 -->
+      <div class="curri-week">
+        <div class="curri-week-head">
+          <span class="curri-week-badge">주 5</span>
+          <span class="curri-week-title">대명사 완전 정복 — 재귀·관계·간접</span>
+        </div>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">26</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">재귀 동사 + 근접 미래 — 주어가 돌아옵니다 🎠</span>
+              <span class="curri-ch-idea"> | 라틴어 특유의 재귀 동사 파헤치기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">27</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">간접 목적 대명사 — 문법이 옵션이 아니라 필수가 되는 순간</span>
+              <span class="curri-ch-idea"> | COD·COI·강세 대명사 전체 복습</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">28</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">관계 대명사 — 한국인이 쓰는 수많은 문장이 프랑스어로 🪄</span>
+              <span class="curri-ch-idea"> | 한·불 사고방식 구조 비교</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">29</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">왕래 동사 — 유럽인이 손을 자주 쓰는 이유 🫵</span>
+              <span class="curri-ch-idea"> | 행동의 방향, 상황별 어휘 늘리기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">30</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">의문문 2 — 어린 왕자의 질문을 프랑스어로 🧣</span>
+              <span class="curri-ch-idea"> | 화자의 태도를 담은 질문 구조</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">31</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">간접 화법 + 논리 접속 — "말이 쏙쏙 귀에 들어와요" 🧠</span>
+              <span class="curri-ch-idea"> | 끊어진 문장을 논리적으로 연결</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 주 6 -->
+      <div class="curri-week">
+        <div class="curri-week-head">
+          <span class="curri-week-badge">주 6</span>
+          <span class="curri-week-title">복합 과거 심화 + 미래 · 반과거</span>
+        </div>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">32</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">복합 과거 심화 — 세 번의 유닛으로 공부한 이유 🤠</span>
+              <span class="curri-ch-idea"> | 라틴어 기반 학습자도 어려워하는 복합 과거 완성</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">33</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">미래 + 조건법 2 + 가정법 — 자음 하나로 싸움이 나지 않으려면 🤯</span>
+              <span class="curri-ch-idea"> | 시제는 시점뿐 아니라 태도·톤을 결정</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">34</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">시간과 공간 — 삶의 발자취를 말하다: Le Parcours</span>
+              <span class="curri-ch-idea"> | 연속성을 표현하는 시간 표현</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">35</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">반과거 (vs 복합과거) — 두 과거의 콜라보 🍿</span>
+              <span class="curri-ch-idea"> | 정제된 글에 생동감 불어넣기</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 주 7 -->
+      <div class="curri-week">
+        <div class="curri-week-head">
+          <span class="curri-week-badge">주 7</span>
+          <span class="curri-week-title">고급 문법 — 접속법 · 대과거 · 조건법과거</span>
+        </div>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">36</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">접속법 1 — 프랑스어 문법의 위상을 높여주는 것 😯</span>
+              <span class="curri-ch-idea"> | 직설법과의 차이 + 김두우리 공부 노하우 1/3</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">37</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">대과거 + 전미래 — 프랑스어 시제는 이제 내 손 안에 🪬</span>
+              <span class="curri-ch-idea"> | 기준점을 옮겨서 이해하기 + 노하우 2/3</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">38</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">조건법 과거 + 가정법 — 고소 당하지 않으려면 👨‍⚖️</span>
+              <span class="curri-ch-idea"> | 태도를 기준으로 올바른 시제 선택</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">39</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">과거 간접 화법 — "쟤가 니 험담 하던데?" 다 전달할 수 있습니다 😏</span>
+              <span class="curri-ch-idea"> | 산수처럼 한 칸씩 후퇴 + 노하우 3/3</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">40</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">접속법 2 (심화) — 프랑스적 사고방식: 의견의 밀당 💬</span>
+              <span class="curri-ch-idea"> | C1이 필요한 표현, ChatGPT로 DALF 준비</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 보너스 -->
+      <div class="curri-bonus-box">
+        <p class="curri-bonus-title">🎁 보너스 챕터 (3개)</p>
+        <p class="curri-bonus-item">
+          <strong>Bonus 1</strong> — 모든 대명사 복습<br>
+          <strong>Bonus 2</strong> — 모든 시제 복습 · 활용 연습<br>
+          <strong>Bonus 3</strong> — 구어체 레지스터에 익숙해지기 (영상 3개 스크립트 PDF 제공)
+        </p>
+      </div>
+
+    </div><!-- /curri-list -->
+  </div>
+
+  <!-- ⑥ 기억해 주세요 ────────────────────────── -->
+  <div class="ci-section">
+    <h2 class="ci-heading">📌 기억해 <span>주세요</span></h2>
+    <div class="remember-list">
+      <div class="remember-item">
+        <span class="remember-check">✔</span>
+        <span>
+          <a href="https://class101.net/ko/products/68bd844b4eced9473dee4f63" target="_blank" rel="noopener" style="color:var(--brick); font-weight:700;">클래스101 인강 페이지</a>에서 FAQ를 확인해 주세요.
+        </span>
+      </div>
+      <div class="remember-item">
+        <span class="remember-check">✔</span>
+        <span>구매 시 메일로 <strong>300페이지가 넘는 인강 수업 자료 PDF</strong>를 전달드립니다.</span>
+      </div>
+      <div class="remember-item">
+        <span class="remember-check">✔</span>
+        <span>인강과 관련된 질문·상담은 <strong>카카오톡 채널</strong>로 문의 가능합니다.</span>
+      </div>
+    </div>
+
+    <div class="ci-callout" style="margin-top:var(--sp-16); border-left:3px solid var(--brick);">
+      <strong>이미 어느 정도 배우셨나요?</strong><br>
+      특정 시제·문법만 집중적으로 파고 싶은 분, 실전 연습이 필요하신 분을 위해<br>
+      <strong>챕터별 1:1 특강도 운영합니다.</strong>
+      (<a href="https://forms.gle/aYEkZKGKCRCFoZAg8" target="_blank" rel="noopener" style="color:var(--brick); font-weight:700;">문의하기</a>)
+    </div>
+  </div>
+
+  <!-- ⑦ CTA ──────────────────────────────────── -->
+  <div class="ci-section">
+    <div class="ci-cta-box">
+      <p class="ci-cta-label">👩🏻‍💻 CLASS101</p>
+      <p class="ci-cta-title">
+        외우지 않고,<br>프랑스어로 사고하게 됩니다
+      </p>
+      <p class="ci-cta-desc">40챕터 + 보너스 3챕터 · 8주 완성</p>
+      <a href="https://class101.net/ko/products/68bd844b4eced9473dee4f63"
+         target="_blank" rel="noopener" class="ci-cta-btn">
+        클래스101에서 수강 신청 →
+      </a>
+    </div>
+  </div>
+
+</div><!-- /content-wrap -->
+<footer class="site-footer" id="site-footer"></footer>
+</div>
+
+<div class="kakao-float" id="kakao-float"></div>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>initComponents();</script>
+</body>
+</html>

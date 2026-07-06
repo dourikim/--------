@@ -1,0 +1,19 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Git Push to GitHub",
+      "type": "shell",
+      "command": "Remove-Item -Recurse -Force .git -ErrorAction SilentlyContinue; git init; git config user.name 'Douri Kim'; git config user.email 'douri.kim@gmail.com'; git add -A; git commit -m 'Initial commit: French tutor website'; git branch -M main; git remote add origin https://github.com/dourikim/--------.git; git push -u origin main",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "new",
+        "focus": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}

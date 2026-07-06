@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>디자인 가이드 | 김두우리</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── 가이드 전용 ── */
+    body { background: var(--surface); }
+    .dg-wrap { max-width: 680px; margin: 0 auto; padding: 48px 24px 80px; }
+
+    /* 섹션 */
+    .dg-section { margin-bottom: 56px; }
+    .dg-section-title {
+      font-family: var(--font-heading);
+      font-size: 1.4rem; font-weight: 700;
+      letter-spacing: -0.03em; color: var(--dark);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--dark);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .dg-section-title .dg-num {
+      font-family: var(--font-heading);
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--brick);
+      background: rgba(194,74,53,0.1);
+      padding: 3px 8px; border-radius: 4px;
+    }
+    .dg-sub { font-size: 0.75rem; color: var(--muted); margin-bottom: 12px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+    .dg-label { font-size: 0.78rem; color: var(--muted); margin-top: 6px; }
+    .dg-code {
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem; color: var(--brick);
+      background: rgba(194,74,53,0.07);
+      padding: 1px 5px; border-radius: 3px;
+    }
+    .dg-note {
+      font-size: 0.8rem; color: var(--muted);
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--brick);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 10px 14px;
+      margin-top: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── 색상 팔레트 ── */
+    .dg-palette { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    @media (min-width: 600px) { .dg-palette { grid-template-columns: repeat(3, 1fr); } }
+    .dg-swatch-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .dg-swatch { height: 72px; }
+    .dg-swatch-info { padding: 10px 12px; }
+    .dg-swatch-name { font-size: 0.8rem; font-weight: 700; color: var(--dark); }
+    .dg-swatch-hex  { font-family: 'Courier New', monospace; font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+    .dg-swatch-var  { font-family: 'Courier New', monospace; font-size: 0.68rem; color: var(--brick); margin-top: 1px; }
+    .dg-swatch-role { font-size: 0.68rem; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+
+    /* 60-30-10 */
+    .dg-ratio { display: flex; height: 56px; border-radius: var(--radius); overflow: hidden; margin-bottom: 8px; }
+    .dg-ratio-a { background: var(--dark); flex: 6; display: flex; align-items: center; justify-content: center; }
+    .dg-ratio-b { background: var(--surface); flex: 3; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: center; }
+    .dg-ratio-c { background: var(--brick); flex: 1; display: flex; align-items: center; justify-content: center; }
+    .dg-ratio span { font-size: 0.7rem; font-weight: 700; }
+    .dg-ratio-a span { color: rgba(255,255,255,0.7); }
+    .dg-ratio-b span { color: var(--muted); }
+    .dg-ratio-c span { color: rgba(255,255,255,0.85); }
+
+    /* ── 타이포그래피 ── */
+    .dg-type-row {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 8px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .dg-type-meta { min-width: 160px; flex-shrink: 0; }
+    .dg-type-meta-name { font-size: 0.78rem; font-weight: 700; color: var(--dark); }
+    .dg-type-meta-detail { font-size: 0.7rem; color: var(--muted); margin-top: 3px; line-height: 1.6; }
+    .dg-type-sample { flex: 1; min-width: 0; }
+
+    .t-hero    { font-family: var(--font-heading); font-size: clamp(1.8rem,5.5vw,2.4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.2; color: var(--dark); }
+    .t-h1      { font-family: var(--font-heading); font-size: clamp(1.5rem,4.5vw,2rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.25; color: var(--dark); }
+    .t-h2      { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; color: var(--dark); }
+    .t-h3      { font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700; letter-spacing: -0.01em; color: var(--dark); }
+    .t-body    { font-family: var(--font-body); font-size: 0.95rem; line-height: 1.75; color: var(--dark); }
+    .t-body-sm { font-family: var(--font-body); font-size: 0.85rem; line-height: 1.8; color: var(--muted); }
+    .t-caption { font-family: var(--font-body); font-size: 0.75rem; color: var(--muted); letter-spacing: 0.02em; }
+    .t-label   { font-family: var(--font-body); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--brick); }
+
+    /* ── 스페이싱 ── */
+    .dg-spacing-grid { display: flex; flex-direction: column; gap: 6px; }
+    .dg-sp-row { display: flex; align-items: center; gap: 12px; }
+    .dg-sp-bar-wrap { flex: 1; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; height: 24px; display: flex; align-items: center; padding: 0 6px; }
+    .dg-sp-bar { background: var(--brick); height: 10px; border-radius: 2px; opacity: 0.7; }
+    .dg-sp-var { font-family: 'Courier New', monospace; font-size: 0.72rem; color: var(--brick); min-width: 80px; }
+    .dg-sp-px  { font-size: 0.72rem; color: var(--muted); min-width: 36px; text-align: right; }
+    .dg-sp-use { font-size: 0.7rem; color: var(--muted); min-width: 160px; }
+
+    /* ── 컴포넌트 예시 ── */
+    .dg-comp-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; align-items: center; }
+    .dg-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+    .dg-btn-ex { display: inline-flex; align-items: center; gap: 6px; padding: 10px 18px; border-radius: var(--radius); font-size: 0.85rem; font-weight: 700; font-family: var(--font-body); border: none; cursor: default; }
+    .dg-btn-primary { background: var(--brick); color: var(--white); }
+    .dg-btn-dark    { background: var(--dark); color: var(--white); }
+    .dg-btn-outline { background: transparent; color: var(--dark); border: 2px solid var(--border); }
+
+    .dg-badge { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; font-family: var(--font-body); }
+    .dg-badge-brick { background: rgba(194,74,53,0.1); color: var(--brick); }
+    .dg-badge-dark  { background: var(--dark); color: var(--white); }
+    .dg-badge-muted { background: var(--surface); border: 1px solid var(--border); color: var(--muted); }
+
+    .dg-card-ex {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      margin-bottom: 8px;
+    }
+    .dg-card-accent {
+      background: var(--white);
+      border: 2.5px solid var(--brick);
+      border-radius: var(--radius);
+      padding: 16px;
+    }
+
+    /* ── 페이지 타이틀 ── */
+    .dg-page-header {
+      background: var(--dark);
+      padding: 48px 24px 32px;
+      margin-bottom: 0;
+    }
+    .dg-page-header h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.25;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .dg-page-header h1 span { color: #f4a47a; }
+    .dg-page-header p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 400px;
+    }
+    .dg-page-header-meta {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .dg-meta-chip {
+      font-size: 0.72rem; font-weight: 700;
+      color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 4px 12px; border-radius: 999px;
+    }
+    .dg-meta-chip span { color: rgba(255,255,255,0.9); margin-right: 4px; }
+  </style>
+</head>
+<body>
+
+<!-- 페이지 헤더 -->
+<div class="dg-page-header">
+  <div style="max-width:680px; margin:0 auto; padding:0 24px;">
+    <h1>디자인 <span>가이드</span></h1>
+    <p>김두우리 홈페이지의 시각 언어를 정의합니다. 폰트 · 컬러 · 여백 · 컴포넌트.</p>
+    <div class="dg-page-header-meta">
+      <span class="dg-meta-chip"><span>버전</span>1.0</span>
+      <span class="dg-meta-chip"><span>업데이트</span>2026.07</span>
+      <span class="dg-meta-chip"><span>파일</span>style.css</span>
+    </div>
+  </div>
+</div>
+
+<div class="dg-wrap">
+
+  <!-- ══ 1. 색상 ══════════════════════════════════════════════ -->
+  <div class="dg-section">
+    <h2 class="dg-section-title"><span class="dg-num">01</span>색상 팔레트</h2>
+
+    <p class="dg-sub">Core Colors</p>
+    <div class="dg-palette">
+
+      <div class="dg-swatch-card">
+        <div class="dg-swatch" style="background:#2E0E0C;"></div>
+        <div class="dg-swatch-info">
+          <p class="dg-swatch-name">Dark</p>
+          <p class="dg-swatch-hex">#2E0E0C</p>
+          <p class="dg-swatch-var">--dark</p>
+          <p class="dg-swatch-role">기본 텍스트 · 배경 · 버튼</p>
+        </div>
+      </div>
+
+      <div class="dg-swatch-card">
+        <div class="dg-swatch" style="background:#C24A35;"></div>
+        <div class="dg-swatch-info">
+          <p class="dg-swatch-name">Brick Red</p>
+          <p class="dg-swatch-hex">#C24A35</p>
+          <p class="dg-swatch-var">--brick</p>
+          <p class="dg-swatch-role">핵심 강조 · CTA · 링크</p>
+        </div>
+      </div>
+
+      <div class="dg-swatch-card">
+        <div class="dg-swatch" style="background:#A83D2C;"></div>
+        <div class="dg-swatch-info">
+          <p class="dg-swatch-name">Brick Hover</p>
+          <p class="dg-swatch-hex">#A83D2C</p>
+          <p class="dg-swatch-var">--brick-h</p>
+          <p class="dg-swatch-role">버튼 hover 상태</p>
+        </div>
+      </div>
+
+      <div class="dg-swatch-card">
+        <div class="dg-swatch" style="background:#7A5550;"></div>
+        <div class="dg-swatch-info">
+          <p class="dg-swatch-name">Muted</p>
+          <p class="dg-swatch-hex">#7A5550</p>
+          <p class="dg-swatch-var">--muted</p>
+          <p class="dg-swatch-role">보조 텍스트 · 설명문</p>
+        </div>
+      </div>
+
+      <div class="dg-swatch-card">
+        <div class="dg-swatch" style="background:#FAF7F6; border-bottom:1px solid #EDE5E3;"></div>
+        <div class="dg-swatch-info">
+          <p class="dg-swatch-name">Surface</p>
+          <p class="dg-swatch-hex">#FAF7F6</p>
+          <p class="dg-swatch-var">--surface</p>
+          <p class="dg-swatch-role">카드 배경 · 섹션 배경</p>
+        </div>
+      </div>
+
+      <div class="dg-swatch-card">
+        <div class="dg-swatch" style="background:#EDE5E3;"></div>
+        <div class="dg-swatch-info">
+          <p class="dg-swatch-name">Border</p>
+          <p class="dg-swatch-hex">#EDE5E3</p>
+          <p class="dg-swatch-var">--border</p>
+          <p class="dg-swatch-role">구분선 · 카드 테두리</p>
+        </div>
+      </div>
+
+      <div class="dg-swatch-card">
+        <div class="dg-swatch" style="background:#FFFFFF; border-bottom:1px solid #EDE5E3;"></div>
+        <div class="dg-swatch-info">
+          <p class="dg-swatch-name">White</p>
+          <p class="dg-swatch-hex">#FFFFFF</p>
+          <p class="dg-swatch-var">--white</p>
+          <p class="dg-swatch-role">본문 배경 · 카드 배경</p>
+        </div>
+      </div>
+
+      <div class="dg-swatch-card">
+        <div class="dg-swatch" style="background:#fff9f8; border-bottom:1px solid #EDE5E3;"></div>
+        <div class="dg-swatch-info">
+          <p class="dg-swatch-name">Warm Tint</p>
+          <p class="dg-swatch-hex">#fff9f8</p>
+          <p class="dg-swatch-var">(리터럴)</p>
+          <p class="dg-swatch-role">추천 카드 배경 · open FAQ</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="dg-note" style="margin-top:20px;">
+      <strong>60 – 30 – 10 규칙</strong><br>
+      색상 배분 비율을 지킵니다. 너무 많은 강조색은 강조 효과를 잃습니다.
+    </div>
+    <div style="margin-top:12px;">
+      <div class="dg-ratio">
+        <div class="dg-ratio-a"><span>60% — Dark (배경, 텍스트)</span></div>
+        <div class="dg-ratio-b"><span>30% — Surface (공간)</span></div>
+        <div class="dg-ratio-c"><span>10%</span></div>
+      </div>
+      <div style="display:flex; justify-content:flex-end;">
+        <span style="font-size:0.7rem; color:var(--brick); font-weight:700;">← 10% Brick Red (강조)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 2. 타이포그래피 ══════════════════════════════════════ -->
+  <div class="dg-section">
+    <h2 class="dg-section-title"><span class="dg-num">02</span>타이포그래피</h2>
+
+    <p class="dg-sub">Font Family</p>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:28px;">
+      <div class="dg-card-ex">
+        <p class="dg-label" style="margin-bottom:8px;">제목용 — <span class="dg-code">--font-heading</span></p>
+        <p style="font-family:'Gowun Batang',Georgia,serif; font-size:1.4rem; font-weight:700; color:var(--dark); letter-spacing:-0.02em;">고운바탕체</p>
+        <p style="font-family:'Gowun Batang',Georgia,serif; font-size:0.85rem; color:var(--muted); margin-top:4px;">Gowun Batang · 400 / 700</p>
+        <p style="font-size:0.72rem; color:var(--muted); margin-top:6px; line-height:1.5;">헤로 타이틀, 섹션 제목, 패키지 이름, 가격, FAQ 질문, 내비게이션 로고</p>
+      </div>
+      <div class="dg-card-ex">
+        <p class="dg-label" style="margin-bottom:8px;">본문용 — <span class="dg-code">--font-body</span></p>
+        <p style="font-family:'Pretendard',-apple-system,sans-serif; font-size:1.4rem; font-weight:700; color:var(--dark);">프리텐다드</p>
+        <p style="font-family:'Pretendard',-apple-system,sans-serif; font-size:0.85rem; color:var(--muted); margin-top:4px;">Pretendard · 400 / 500 / 700</p>
+        <p style="font-size:0.72rem; color:var(--muted); margin-top:6px; line-height:1.5;">본문, 설명, 버튼, 라벨, 네비게이션 링크, 칩, 태그</p>
+      </div>
+    </div>
+
+    <p class="dg-sub">Type Scale</p>
+
+    <div class="dg-type-row">
+      <div class="dg-type-meta">
+        <p class="dg-type-meta-name">Hero Title</p>
+        <p class="dg-type-meta-detail">고운바탕 · 700<br>clamp(1.8rem, 5.5vw, 2.4rem)<br>letter-spacing: -0.03em<br>line-height: 1.2</p>
+      </div>
+      <div class="dg-type-sample">
+        <p class="t-hero">프랑스어</p>
+      </div>
+    </div>
+
+    <div class="dg-type-row">
+      <div class="dg-type-meta">
+        <p class="dg-type-meta-name">Page Heading (H1)</p>
+        <p class="dg-type-meta-detail">고운바탕 · 700<br>clamp(1.5rem, 4.5vw, 2rem)<br>letter-spacing: -0.03em<br>line-height: 1.25</p>
+      </div>
+      <div class="dg-type-sample">
+        <p class="t-h1">사고방식으로<br>배우는 언어</p>
+      </div>
+    </div>
+
+    <div class="dg-type-row">
+      <div class="dg-type-meta">
+        <p class="dg-type-meta-name">Section Title (H2)</p>
+        <p class="dg-type-meta-detail">고운바탕 · 700<br>1.1rem<br>letter-spacing: -0.02em<br>.block-title 클래스</p>
+      </div>
+      <div class="dg-type-sample">
+        <p class="t-h2">온라인 수업 패키지 안내</p>
+      </div>
+    </div>
+
+    <div class="dg-type-row">
+      <div class="dg-type-meta">
+        <p class="dg-type-meta-name">Card Title (H3)</p>
+        <p class="dg-type-meta-detail">고운바탕 · 700<br>0.95rem<br>letter-spacing: -0.01em<br>FAQ 질문, 카드 제목</p>
+      </div>
+      <div class="dg-type-sample">
+        <p class="t-h3">Q. 수업의 커리큘럼은 어떻게 되나요?</p>
+      </div>
+    </div>
+
+    <div class="dg-type-row">
+      <div class="dg-type-meta">
+        <p class="dg-type-meta-name">Body Text</p>
+        <p class="dg-type-meta-detail">프리텐다드 · 400<br>0.95rem (body: 15px 기준)<br>line-height: 1.75<br>color: --dark</p>
+      </div>
+      <div class="dg-type-sample">
+        <p class="t-body">프랑스어를 외우지 않고, 프랑스어로 사고하게 되는 3개월.</p>
+      </div>
+    </div>
+
+    <div class="dg-type-row">
+      <div class="dg-type-meta">
+        <p class="dg-type-meta-name">Body Small</p>
+        <p class="dg-type-meta-detail">프리텐다드 · 400<br>0.85rem<br>line-height: 1.8<br>color: --muted</p>
+      </div>
+      <div class="dg-type-sample">
+        <p class="t-body-sm">취미로 공부하시는 분, 비즈니스 프랑스어, DELF 시험 준비, 회화 또는 문법 개선 등 — 개인적으로 필요한 목적을 신청 시 선택해주시면 됩니다.</p>
+      </div>
+    </div>
+
+    <div class="dg-type-row">
+      <div class="dg-type-meta">
+        <p class="dg-type-meta-name">Caption / Label</p>
+        <p class="dg-type-meta-detail">프리텐다드 · 400/700<br>0.72–0.78rem<br>color: --muted / --brick</p>
+      </div>
+      <div class="dg-type-sample" style="display:flex; flex-direction:column; gap:6px;">
+        <p class="t-label">2025 · 기업 VIP 행사</p>
+        <p class="t-caption">구매 시 메일로 강의자료 PDF를 전달드립니다.</p>
+      </div>
+    </div>
+
+    <div class="dg-note">
+      <strong>원칙:</strong> 제목 계열(H1~H3, 가격, 로고)은 반드시 고운바탕체. 나머지 UI 요소(버튼, 라벨, 태그, 본문)는 프리텐다드. 두 서체를 섞지 않습니다.
+    </div>
+  </div>
+
+  <!-- ══ 3. 여백 (스페이싱) ══════════════════════════════════ -->
+  <div class="dg-section">
+    <h2 class="dg-section-title"><span class="dg-num">03</span>여백 시스템 (8px 그리드)</h2>
+
+    <p class="dg-sub">Spacing Scale — CSS Variables</p>
+    <div class="dg-spacing-grid">
+
+      <div class="dg-sp-row">
+        <span class="dg-sp-var">--sp-4</span>
+        <div class="dg-sp-bar-wrap"><div class="dg-sp-bar" style="width:4px;"></div></div>
+        <span class="dg-sp-px">4px</span>
+        <span class="dg-sp-use">아이콘-텍스트 간격, 마이크로 간격</span>
+      </div>
+      <div class="dg-sp-row">
+        <span class="dg-sp-var">--sp-8</span>
+        <div class="dg-sp-bar-wrap"><div class="dg-sp-bar" style="width:8px;"></div></div>
+        <span class="dg-sp-px">8px</span>
+        <span class="dg-sp-use">카드 내부 항목 간격, 칩 간격</span>
+      </div>
+      <div class="dg-sp-row">
+        <span class="dg-sp-var">--sp-16</span>
+        <div class="dg-sp-bar-wrap"><div class="dg-sp-bar" style="width:16px;"></div></div>
+        <span class="dg-sp-px">16px</span>
+        <span class="dg-sp-use">카드 패딩, 섹션 내부 여백</span>
+      </div>
+      <div class="dg-sp-row">
+        <span class="dg-sp-var">--sp-24</span>
+        <div class="dg-sp-bar-wrap"><div class="dg-sp-bar" style="width:24px;"></div></div>
+        <span class="dg-sp-px">24px</span>
+        <span class="dg-sp-use">좌우 페이지 패딩 (모바일)</span>
+      </div>
+      <div class="dg-sp-row">
+        <span class="dg-sp-var">--sp-32</span>
+        <div class="dg-sp-bar-wrap"><div class="dg-sp-bar" style="width:32px;"></div></div>
+        <span class="dg-sp-px">32px</span>
+        <span class="dg-sp-use">섹션 패딩 상하, .section-block</span>
+      </div>
+      <div class="dg-sp-row">
+        <span class="dg-sp-var">--sp-64</span>
+        <div class="dg-sp-bar-wrap"><div class="dg-sp-bar" style="width:64px;"></div></div>
+        <span class="dg-sp-px">64px</span>
+        <span class="dg-sp-use">히어로 상단 패딩, 큰 섹션 여백</span>
+      </div>
+      <div class="dg-sp-row">
+        <span class="dg-sp-var">--sp-128</span>
+        <div class="dg-sp-bar-wrap"><div class="dg-sp-bar" style="width:128px;"></div></div>
+        <span class="dg-sp-px">128px</span>
+        <span class="dg-sp-use">페이지 하단 여백, 대형 분리</span>
+      </div>
+
+    </div>
+
+    <div class="dg-note">
+      <strong>8px 배수 규칙:</strong> 모든 여백과 크기 값은 4, 8, 16, 24, 32, 64, 128의 배수를 사용합니다. 이 외의 값(예: 15px, 22px)은 사용하지 않습니다. 단, border-radius(10px), line-height(비율값)는 예외.
+    </div>
+
+    <p class="dg-sub" style="margin-top:24px;">기타 고정값</p>
+    <div class="dg-card-ex">
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px; text-align:center;">
+        <div>
+          <p style="font-family:var(--font-heading); font-size:1.3rem; font-weight:700; color:var(--brick);">10px</p>
+          <p style="font-size:0.7rem; color:var(--muted); margin-top:2px;">--radius<br>카드 모서리</p>
+        </div>
+        <div>
+          <p style="font-family:var(--font-heading); font-size:1.3rem; font-weight:700; color:var(--brick);">60px</p>
+          <p style="font-size:0.7rem; color:var(--muted); margin-top:2px;">--header-h<br>헤더 높이</p>
+        </div>
+        <div>
+          <p style="font-family:var(--font-heading); font-size:1.3rem; font-weight:700; color:var(--brick);">300px</p>
+          <p style="font-size:0.7rem; color:var(--muted); margin-top:2px;">--menu-w<br>사이드메뉴 너비</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ 4. 컴포넌트 ══════════════════════════════════════════ -->
+  <div class="dg-section">
+    <h2 class="dg-section-title"><span class="dg-num">04</span>컴포넌트 레퍼런스</h2>
+
+    <!-- 버튼 -->
+    <p class="dg-sub">Buttons</p>
+    <div class="dg-card-ex" style="margin-bottom:16px;">
+      <div class="dg-comp-row">
+        <button class="dg-btn-ex dg-btn-primary">수강 신청하기</button>
+        <span class="dg-label">.cta-brick — 주요 CTA</span>
+      </div>
+      <div class="dg-comp-row">
+        <button class="dg-btn-ex dg-btn-dark">1:1 상담 신청</button>
+        <span class="dg-label">.cta-dark — 보조 CTA</span>
+      </div>
+      <div class="dg-comp-row">
+        <button class="dg-btn-ex dg-btn-outline">더 알아보기</button>
+        <span class="dg-label">.cta-outline — 텍스트 버튼</span>
+      </div>
+    </div>
+    <div class="dg-note">한 화면에 Primary(Brick) 버튼은 하나만. 두 번째 CTA는 Dark나 Outline.</div>
+
+    <hr class="dg-divider">
+
+    <!-- 배지 / 칩 -->
+    <p class="dg-sub" style="margin-top:16px;">Badges / Chips</p>
+    <div class="dg-card-ex">
+      <div class="dg-comp-row" style="margin-bottom:8px;">
+        <span class="dg-badge dg-badge-brick">추천</span>
+        <span class="dg-label">강조 배지 — brick 계열 10% tint</span>
+      </div>
+      <div class="dg-comp-row" style="margin-bottom:8px;">
+        <span class="dg-badge dg-badge-dark">CLASS101</span>
+        <span class="dg-label">어두운 배지 — dark 배경</span>
+      </div>
+      <div class="dg-comp-row">
+        <span class="dg-badge dg-badge-muted">10회 패키지</span>
+        <span class="dg-badge dg-badge-muted">입문 ~ C1</span>
+        <span class="dg-label">중립 칩 — surface/border</span>
+      </div>
+    </div>
+
+    <hr class="dg-divider">
+
+    <!-- 카드 -->
+    <p class="dg-sub" style="margin-top:16px;">Cards</p>
+    <div class="dg-card-ex" style="margin-bottom:8px;">
+      <p style="font-size:0.72rem; color:var(--muted); margin-bottom:4px;">기본 카드 — border: 1px solid var(--border)</p>
+      <p style="font-family:var(--font-heading); font-size:0.95rem; font-weight:700; color:var(--dark);">스타터 패키지</p>
+      <p style="font-size:0.82rem; color:var(--muted);">10회 선결제 · +1회 보너스</p>
+    </div>
+    <div class="dg-card-accent">
+      <p style="font-size:0.72rem; color:var(--brick); margin-bottom:4px; font-weight:700;">강조 카드 — border: 2.5px solid var(--brick)</p>
+      <p style="font-family:var(--font-heading); font-size:0.95rem; font-weight:700; color:var(--dark);">레귤러 패키지</p>
+      <p style="font-size:0.82rem; color:var(--muted);">20회 선결제 · +3회 보너스</p>
+    </div>
+
+    <hr class="dg-divider">
+
+    <!-- 구분선 / 인용 -->
+    <p class="dg-sub" style="margin-top:16px;">Quote / Callout</p>
+    <div style="border-left:3px solid var(--brick); background:#fff9f8; padding:14px 16px; border-radius:0 var(--radius) var(--radius) 0; margin-bottom:8px;">
+      <p style="font-size:0.87rem; color:var(--dark); line-height:1.8;">프랑스어로 <strong>생각하게 되는 방식</strong> 자체를 만드는 과정입니다.</p>
+    </div>
+    <p class="dg-label">인용 블록 — brick 좌측 선 + warm tint 배경 (#fff9f8)</p>
+
+  </div>
+
+  <!-- ══ 5. 적용 원칙 ══════════════════════════════════════════ -->
+  <div class="dg-section">
+    <h2 class="dg-section-title"><span class="dg-num">05</span>적용 원칙</h2>
+
+    <div style="display:flex; flex-direction:column; gap:8px;">
+
+      <div class="dg-card-ex" style="border-left:3px solid var(--brick); border-radius:0 var(--radius) var(--radius) 0;">
+        <p style="font-family:var(--font-heading); font-size:0.9rem; font-weight:700; color:var(--dark); margin-bottom:4px;">제목 = 고운바탕, 본문 = 프리텐다드</p>
+        <p style="font-size:0.8rem; color:var(--muted); line-height:1.7;">두 서체를 같은 역할에 혼용하지 않습니다. 서체 자체가 위계를 만듭니다.</p>
+      </div>
+
+      <div class="dg-card-ex" style="border-left:3px solid var(--brick); border-radius:0 var(--radius) var(--radius) 0;">
+        <p style="font-family:var(--font-heading); font-size:0.9rem; font-weight:700; color:var(--dark); margin-bottom:4px;">Brick Red는 한 화면에 하나의 핵심 포인트</p>
+        <p style="font-size:0.8rem; color:var(--muted); line-height:1.7;">버튼, 강조 텍스트, 아이콘 등에 동시에 남발하지 않습니다. 많을수록 강조 효과가 희석됩니다.</p>
+      </div>
+
+      <div class="dg-card-ex" style="border-left:3px solid var(--brick); border-radius:0 var(--radius) var(--radius) 0;">
+        <p style="font-family:var(--font-heading); font-size:0.9rem; font-weight:700; color:var(--dark); margin-bottom:4px;">여백은 8px 배수만 사용</p>
+        <p style="font-size:0.8rem; color:var(--muted); line-height:1.7;">새로운 padding/margin을 추가할 때 반드시 CSS 변수(<span style="font-family:monospace; color:var(--brick);">--sp-*</span>)를 사용하거나 8의 배수 값을 씁니다.</p>
+      </div>
+
+      <div class="dg-card-ex" style="border-left:3px solid var(--brick); border-radius:0 var(--radius) var(--radius) 0;">
+        <p style="font-family:var(--font-heading); font-size:0.9rem; font-weight:700; color:var(--dark); margin-bottom:4px;">모바일 우선 (Mobile First)</p>
+        <p style="font-size:0.8rem; color:var(--muted); line-height:1.7;">기본 스타일은 모바일 기준. 데스크톱 레이아웃은 <span style="font-family:monospace; color:var(--brick);">@media (min-width: 769px)</span>에서 추가합니다.</p>
+      </div>
+
+      <div class="dg-card-ex" style="border-left:3px solid var(--brick); border-radius:0 var(--radius) var(--radius) 0;">
+        <p style="font-family:var(--font-heading); font-size:0.9rem; font-weight:700; color:var(--dark); margin-bottom:4px;">색상 변경은 :root 변수만 수정</p>
+        <p style="font-size:0.8rem; color:var(--muted); line-height:1.7;">하드코딩된 hex 값을 직접 쓰지 않습니다. 변경이 필요하면 <span style="font-family:monospace; color:var(--brick);">style.css</span> 상단의 <span style="font-family:monospace; color:var(--brick);">:root</span> 블록에서만 수정합니다.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 푸터 -->
+  <div style="text-align:center; padding-top:16px; border-top:1px solid var(--border);">
+    <p style="font-size:0.75rem; color:var(--muted);">김두우리 홈페이지 디자인 가이드 v1.0 · 변경 시 이 파일도 업데이트해주세요</p>
+  </div>
+
+</div><!-- /dg-wrap -->
+</body>
+</html>

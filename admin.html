@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>관리자 | 김두우리 홈페이지</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brick: #C24A35;
+      --dark:  #2E0E0C;
+      --surface: #FAF7F6;
+      --border: #EDE5E3;
+      --muted: #7A5550;
+      --white: #FFFFFF;
+      --green: #2D9E6B;
+      --yellow: #D4A017;
+      --radius: 10px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Pretendard', sans-serif; background: #1A0A09; color: var(--dark); min-height: 100vh; }
+
+    /* ── 로그인 화면 ── */
+    #login-screen {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #1A0A09 0%, #2E0E0C 100%);
+    }
+    .login-box {
+      background: var(--white); border-radius: 20px;
+      padding: 44px 40px 40px; width: 100%; max-width: 380px;
+      box-shadow: 0 32px 80px rgba(0,0,0,.45);
+    }
+    .login-logo { font-size: 0.78rem; font-weight: 700; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+    .login-title { font-size: 1.5rem; font-weight: 800; color: var(--dark); margin-bottom: 28px; }
+    .login-label { display: block; font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 6px; letter-spacing: .04em; }
+    .login-input {
+      width: 100%; padding: 12px 14px; border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: 0.95rem; font-family: inherit;
+      outline: none; transition: border-color .15s;
+      background: var(--surface);
+    }
+    .login-input:focus { border-color: var(--brick); }
+    .login-btn {
+      width: 100%; margin-top: 20px; padding: 14px;
+      background: var(--brick); color: #fff;
+      border: none; border-radius: 8px; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; font-family: inherit; transition: opacity .15s;
+    }
+    .login-btn:hover { opacity: .88; }
+    .login-error { color: var(--brick); font-size: 0.82rem; margin-top: 10px; display: none; }
+
+    /* ── 어드민 레이아웃 ── */
+    #admin-screen { display: none; min-height: 100vh; background: var(--surface); }
+    .admin-topbar {
+      position: fixed; top: 0; left: 0; right: 0; height: 56px;
+      background: var(--dark); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 24px; z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .admin-topbar-brand { font-size: 0.88rem; font-weight: 700; color: rgba(255,255,255,.9); }
+    .admin-topbar-brand span { color: #E8896F; }
+    .admin-logout {
+      font-size: 0.78rem; color: rgba(255,255,255,.5); cursor: pointer;
+      background: none; border: none; font-family: inherit; transition: color .15s;
+    }
+    .admin-logout:hover { color: rgba(255,255,255,.9); }
+
+    .admin-body { padding-top: 56px; display: flex; }
+
+    /* ── 사이드바 ── */
+    .admin-sidebar {
+      width: 220px; flex-shrink: 0; background: var(--white);
+      border-right: 1px solid var(--border); min-height: calc(100vh - 56px);
+      padding: 20px 0; position: sticky; top: 56px; align-self: flex-start;
+    }
+    .sidebar-section { padding: 0 16px 12px; font-size: 0.68rem; font-weight: 700; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; margin-top: 16px; }
+    .sidebar-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 20px; font-size: 0.875rem; font-weight: 500; color: var(--muted);
+      cursor: pointer; transition: background .12s, color .12s; border: none; background: none;
+      width: 100%; text-align: left; font-family: inherit;
+    }
+    .sidebar-item:hover { background: var(--surface); color: var(--dark); }
+    .sidebar-item.active { background: rgba(194,74,53,.08); color: var(--brick); font-weight: 700; }
+    .sidebar-item .si-icon { font-size: 1rem; width: 20px; text-align: center; }
+
+    /* ── 메인 콘텐츠 ── */
+    .admin-main { flex: 1; padding: 28px 32px; max-width: 900px; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+    .panel-title { font-size: 1.3rem; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+    .panel-sub { font-size: 0.84rem; color: var(--muted); margin-bottom: 28px; }
+
+    /* ── 카드 ── */
+    .card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 22px; margin-bottom: 14px;
+    }
+    .card-title { font-size: 0.82rem; font-weight: 700; color: var(--muted); letter-spacing: .04em; margin-bottom: 14px; text-transform: uppercase; }
+
+    /* ── 페이지 목록 ── */
+    .page-row {
+      display: flex; align-items: center; gap: 14px;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+    }
+    .page-row:last-child { border-bottom: none; }
+    .page-icon { font-size: 1.1rem; width: 28px; text-align: center; flex-shrink: 0; }
+    .page-info { flex: 1; min-width: 0; }
+    .page-name { font-size: 0.9rem; font-weight: 700; color: var(--dark); }
+    .page-url  { font-size: 0.75rem; color: var(--muted); margin-top: 1px; }
+    .page-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .status-badge {
+      font-size: 0.7rem; font-weight: 700; padding: 3px 10px; border-radius: 100px;
+      letter-spacing: .04em;
+    }
+    .status-live   { background: rgba(45,158,107,.12); color: var(--green); }
+    .status-draft  { background: rgba(212,160,23,.12);  color: var(--yellow); }
+    .status-hidden { background: rgba(122,85,80,.1);    color: var(--muted); }
+    .btn-sm {
+      font-size: 0.75rem; font-weight: 600; padding: 5px 12px;
+      border-radius: 6px; cursor: pointer; border: 1.5px solid var(--border);
+      background: var(--surface); color: var(--dark); font-family: inherit;
+      transition: all .12s;
+    }
+    .btn-sm:hover { border-color: var(--brick); color: var(--brick); }
+    .btn-sm.primary { background: var(--brick); color: #fff; border-color: var(--brick); }
+    .btn-sm.primary:hover { opacity: .85; }
+
+    /* ── 토글 스위치 ── */
+    .toggle-wrap { display: flex; align-items: center; gap: 8px; }
+    .toggle-label { font-size: 0.78rem; color: var(--muted); }
+    .toggle {
+      width: 36px; height: 20px; background: var(--border); border-radius: 100px;
+      position: relative; cursor: pointer; transition: background .2s; flex-shrink: 0;
+    }
+    .toggle.on { background: var(--green); }
+    .toggle::after {
+      content: ''; position: absolute; width: 14px; height: 14px;
+      background: #fff; border-radius: 50%; top: 3px; left: 3px;
+      transition: transform .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    }
+    .toggle.on::after { transform: translateX(16px); }
+
+    /* ── UTM 빌더 ── */
+    .utm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+    @media (max-width: 600px) { .utm-grid { grid-template-columns: 1fr; } }
+    .form-group label { display: block; font-size: 0.75rem; font-weight: 700; color: var(--muted); margin-bottom: 5px; }
+    .form-group input, .form-group select {
+      width: 100%; padding: 9px 11px; border: 1.5px solid var(--border);
+      border-radius: 7px; font-size: 0.85rem; font-family: inherit;
+      background: var(--surface); color: var(--dark); outline: none; transition: border-color .15s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--brick); }
+    .utm-result {
+      background: var(--surface); border: 1.5px solid var(--border);
+      border-radius: 8px; padding: 12px 14px; font-size: 0.78rem;
+      color: var(--dark); word-break: break-all; line-height: 1.6;
+      min-height: 48px; cursor: pointer; transition: border-color .15s;
+    }
+    .utm-result:hover { border-color: var(--brick); }
+    .utm-copy-hint { font-size: 0.72rem; color: var(--muted); margin-top: 6px; }
+
+    /* ── GA 설정 ── */
+    .ga-step {
+      display: flex; gap: 14px; padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .ga-step:last-child { border-bottom: none; }
+    .ga-step-num {
+      width: 26px; height: 26px; background: var(--brick); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; font-weight: 800; flex-shrink: 0; margin-top: 1px;
+    }
+    .ga-step-body { flex: 1; }
+    .ga-step-title { font-size: 0.88rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .ga-step-desc  { font-size: 0.8rem; color: var(--muted); line-height: 1.65; }
+    .ga-step-desc code {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 4px; padding: 1px 6px; font-size: 0.78rem; color: var(--brick);
+    }
+    .ga-id-input { display: flex; gap: 8px; margin-top: 10px; }
+    .ga-id-input input {
+      flex: 1; padding: 8px 11px; border: 1.5px solid var(--border);
+      border-radius: 7px; font-size: 0.85rem; font-family: inherit;
+      background: var(--surface); outline: none; transition: border-color .15s;
+    }
+    .ga-id-input input:focus { border-color: var(--brick); }
+
+    /* ── Vercel 배포 가이드 ── */
+    .deploy-step {
+      display: flex; gap: 16px; padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .deploy-step:last-child { border-bottom: none; }
+    .deploy-num {
+      width: 32px; height: 32px; background: var(--dark); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem; font-weight: 800; flex-shrink: 0;
+    }
+    .deploy-body { flex: 1; }
+    .deploy-title { font-size: 0.9rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
+    .deploy-desc  { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+    .deploy-desc a { color: var(--brick); text-decoration: none; font-weight: 600; }
+    .deploy-desc a:hover { text-decoration: underline; }
+    .tag-draft {
+      display: inline-block; background: rgba(212,160,23,.15); color: var(--yellow);
+      font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+      margin-left: 6px; letter-spacing: .03em;
+    }
+    .tag-live {
+      display: inline-block; background: rgba(45,158,107,.12); color: var(--green);
+      font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 4px;
+      margin-left: 6px; letter-spacing: .03em;
+    }
+
+    /* ── 빠른 링크 ── */
+    .quick-links { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px; }
+    .quick-link {
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 16px; background: var(--white);
+      border: 1.5px solid var(--border); border-radius: var(--radius);
+      text-decoration: none; color: var(--dark); font-size: 0.84rem; font-weight: 600;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .quick-link:hover { border-color: var(--brick); box-shadow: 0 4px 16px rgba(194,74,53,.1); }
+    .quick-link .ql-icon { font-size: 1.2rem; }
+    .quick-link .ql-text { line-height: 1.3; }
+    .quick-link .ql-sub { font-size: 0.7rem; color: var(--muted); font-weight: 400; }
+
+    /* ── 프리뷰 모달 ── */
+    #preview-modal {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.7); flex-direction: column;
+    }
+    #preview-modal.open { display: flex; }
+    .preview-bar {
+      height: 48px; background: var(--dark); display: flex; align-items: center;
+      justify-content: space-between; padding: 0 20px; flex-shrink: 0;
+    }
+    .preview-bar-title { font-size: 0.85rem; color: rgba(255,255,255,.8); }
+    .preview-close {
+      background: none; border: none; color: rgba(255,255,255,.6);
+      font-size: 1.2rem; cursor: pointer; transition: color .12s;
+    }
+    .preview-close:hover { color: #fff; }
+    #preview-frame { flex: 1; border: none; background: #fff; }
+
+    /* ── 토스트 ── */
+    #admin-toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+      background: var(--dark); color: #fff; font-size: 0.85rem; font-weight: 600;
+      padding: 10px 20px; border-radius: 100px; z-index: 9999;
+      opacity: 0; pointer-events: none; transition: opacity .2s;
+    }
+    #admin-toast.show { opacity: 1; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ 로그인 화면 ═══════════ -->
+<div id="login-screen">
+  <div class="login-box">
+    <p class="login-logo">Admin · 김두우리</p>
+    <h1 class="login-title">관리자 로그인</h1>
+    <label class="login-label" for="pw-input">비밀번호</label>
+    <input type="password" id="pw-input" class="login-input" placeholder="••••••••"
+           onkeydown="if(event.key==='Enter')doLogin()">
+    <p class="login-error" id="login-error">비밀번호가 틀렸습니다.</p>
+    <button class="login-btn" onclick="doLogin()">로그인</button>
+  </div>
+</div>
+
+<!-- ═══════════ 어드민 화면 ═══════════ -->
+<div id="admin-screen">
+
+  <!-- 상단 바 -->
+  <div class="admin-topbar">
+    <div class="admin-topbar-brand">김두우리 <span>관리자</span></div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="index.html" target="_blank" style="
+        font-size:0.78rem; color:rgba(255,255,255,.75); text-decoration:none;
+        background:rgba(255,255,255,.1); padding:6px 14px; border-radius:6px;
+        border:1px solid rgba(255,255,255,.15); font-weight:600;
+        transition:background .15s;
+      " onmouseover="this.style.background='rgba(255,255,255,.18)'"
+         onmouseout="this.style.background='rgba(255,255,255,.1)'">
+        사이트 보기 →
+      </a>
+      <button class="admin-logout" onclick="doLogout()">로그아웃</button>
+    </div>
+  </div>
+
+  <div class="admin-body">
+
+    <!-- 사이드바 -->
+    <nav class="admin-sidebar">
+      <div class="sidebar-section">메뉴</div>
+      <button class="sidebar-item active" onclick="showPanel('pages',this)">
+        <span class="si-icon">📄</span> 페이지 관리
+      </button>
+      <button class="sidebar-item" onclick="showPanel('analytics',this)">
+        <span class="si-icon">📊</span> 분석 · UTM
+      </button>
+      <button class="sidebar-item" onclick="showPanel('deploy',this)">
+        <span class="si-icon">🚀</span> Vercel 배포
+      </button>
+      <button class="sidebar-item" onclick="showPanel('links',this)">
+        <span class="si-icon">🔗</span> 빠른 링크
+      </button>
+    </nav>
+
+    <!-- 메인 -->
+    <main class="admin-main">
+
+      <!-- ── 패널: 페이지 관리 ── -->
+      <div id="panel-pages" class="panel active">
+        <h2 class="panel-title">페이지 관리</h2>
+        <p class="panel-sub">Live 상태인 페이지만 방문자 네비게이션에 노출됩니다. Draft 페이지는 URL로 직접 접근 가능하지만 메뉴에서 숨겨져요.</p>
+
+        <div class="card">
+          <div class="card-title">퍼블리시된 페이지</div>
+          <div id="pages-list"><!-- JS 렌더 --></div>
+        </div>
+
+        <p style="font-size:0.78rem;color:var(--muted);margin-top:8px;">
+          ⚠️ Vercel 배포 후에는 "배포" 탭에서 git push로 반영해야 실제 사이트에 적용됩니다.
+        </p>
+      </div>
+
+      <!-- ── 패널: 분석 · UTM ── -->
+      <div id="panel-analytics" class="panel">
+        <h2 class="panel-title">분석 · UTM 링크</h2>
+        <p class="panel-sub">Google Analytics로 전체 유입을 추적하고, UTM 링크로 채널별 성과를 분리해요.</p>
+
+        <!-- UTM 빌더 -->
+        <div class="card">
+          <div class="card-title">UTM 링크 생성기</div>
+          <div class="utm-grid">
+            <div class="form-group">
+              <label>대상 페이지</label>
+              <select id="utm-page" oninput="buildUTM()">
+                <option value="https://doouri.com/">홈페이지 (홈)</option>
+                <option value="https://doouri.com/lesson.html">1:1 프랑스어 수업</option>
+                <option value="https://doouri.com/class101.html">문법책 재해석 인강</option>
+                <option value="https://doouri.com/service-finder.html">학습 유형 테스트</option>
+                <option value="https://doouri.com/content.html">학습 콘텐츠</option>
+                <option value="custom">직접 입력</option>
+              </select>
+            </div>
+            <div class="form-group" id="custom-url-wrap" style="display:none">
+              <label>URL 직접 입력</label>
+              <input type="url" id="utm-custom" placeholder="https://..." oninput="buildUTM()">
+            </div>
+            <div class="form-group">
+              <label>채널 (utm_source)</label>
+              <select id="utm-source" oninput="buildUTM()">
+                <option value="instagram">Instagram</option>
+                <option value="youtube">YouTube</option>
+                <option value="naver_blog">네이버 블로그</option>
+                <option value="kakao">카카오</option>
+                <option value="threads">Threads</option>
+                <option value="linktree">Linktree</option>
+                <option value="direct">직접</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>콘텐츠 유형 (utm_medium)</label>
+              <select id="utm-medium" oninput="buildUTM()">
+                <option value="social">소셜 미디어</option>
+                <option value="bio">프로필 링크</option>
+                <option value="reel">릴스/숏츠</option>
+                <option value="story">스토리</option>
+                <option value="post">게시물</option>
+                <option value="blog">블로그 포스팅</option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column:1/-1">
+              <label>캠페인명 (utm_campaign) — 선택</label>
+              <input type="text" id="utm-campaign" placeholder="예: 2026여름_입문자" oninput="buildUTM()">
+            </div>
+          </div>
+          <div class="utm-result" id="utm-result" onclick="copyUTM()" title="클릭해서 복사">
+            링크가 여기에 생성됩니다
+          </div>
+          <p class="utm-copy-hint">👆 클릭하면 복사돼요</p>
+        </div>
+
+        <!-- GA 설정 가이드 -->
+        <div class="card">
+          <div class="card-title">Google Analytics 연동 가이드</div>
+          <div class="ga-step">
+            <div class="ga-step-num">1</div>
+            <div class="ga-step-body">
+              <p class="ga-step-title">GA4 계정 만들기</p>
+              <p class="ga-step-desc">
+                <a href="https://analytics.google.com" target="_blank" style="color:var(--brick);font-weight:600;">analytics.google.com</a> 접속 → 계정 생성 → 속성 만들기 → 데이터 스트림 → 웹 선택 → 도메인 입력.<br>
+                완료 후 <strong>측정 ID</strong>를 복사하세요 (G-XXXXXXX 형식).
+              </p>
+              <div class="ga-id-input">
+                <input type="text" id="ga-id-input" placeholder="G-XXXXXXXXXX" oninput="saveGAId()">
+                <button class="btn-sm primary" onclick="applyGACode()">코드 적용 안내</button>
+              </div>
+            </div>
+          </div>
+          <div class="ga-step">
+            <div class="ga-step-num">2</div>
+            <div class="ga-step-body">
+              <p class="ga-step-title">모든 HTML 파일에 코드 삽입</p>
+              <p class="ga-step-desc">
+                각 페이지 <code>&lt;head&gt;</code> 태그 안에 아래 코드를 붙여넣으세요.<br>
+                측정 ID를 입력하면 코드가 자동 생성됩니다.
+              </p>
+              <div id="ga-code-box" style="display:none;margin-top:10px;">
+                <div class="utm-result" id="ga-code-text" onclick="copyGACode()" style="font-family:monospace;font-size:0.72rem;"></div>
+                <p class="utm-copy-hint">👆 클릭해서 복사 → 각 HTML 파일 &lt;head&gt;에 붙여넣기</p>
+              </div>
+            </div>
+          </div>
+          <div class="ga-step">
+            <div class="ga-step-num">3</div>
+            <div class="ga-step-body">
+              <p class="ga-step-title">실시간 확인</p>
+              <p class="ga-step-desc">
+                코드 삽입 후 Vercel에 배포 → GA 대시보드 → 실시간 보고서에서 본인이 방문해서 확인.<br>
+                데이터는 약 24~48시간 후부터 집계됩니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 패널: Vercel 배포 ── -->
+      <div id="panel-deploy" class="panel">
+        <h2 class="panel-title">Vercel 배포 가이드</h2>
+        <p class="panel-sub">로컬 파일 → GitHub → Vercel 순서로 연결하면 매번 파일을 올릴 필요 없이 자동 배포돼요.</p>
+
+        <div class="card">
+          <div class="card-title">최초 설정 (1회만)</div>
+          <div class="deploy-step">
+            <div class="deploy-num">1</div>
+            <div class="deploy-body">
+              <p class="deploy-title">GitHub 저장소 만들기</p>
+              <p class="deploy-desc">
+                <a href="https://github.com/new" target="_blank">github.com/new</a> → 저장소 이름 입력 (예: doouri-website) → Create repository.<br>
+                VS Code에서 이 프로젝트 폴더를 열고 소스 제어 탭(Ctrl+Shift+G) → "저장소 게시" 클릭.
+              </p>
+            </div>
+          </div>
+          <div class="deploy-step">
+            <div class="deploy-num">2</div>
+            <div class="deploy-body">
+              <p class="deploy-title">Vercel에 GitHub 연결</p>
+              <p class="deploy-desc">
+                <a href="https://vercel.com/new" target="_blank">vercel.com/new</a> → GitHub으로 로그인 → 저장소 선택 → Deploy.<br>
+                자동으로 도메인이 생성되고, 설정에서 구입한 도메인을 연결할 수 있어요.
+              </p>
+            </div>
+          </div>
+          <div class="deploy-step">
+            <div class="deploy-num">3</div>
+            <div class="deploy-body">
+              <p class="deploy-title">도메인 연결</p>
+              <p class="deploy-desc">
+                Vercel 프로젝트 → Settings → Domains → 도메인 입력 → DNS 설정 안내에 따라 도메인 레지스트라에서 설정.<br>
+                보통 24시간 이내 연결 완료.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:14px;">
+          <div class="card-title">평소 배포 방법 (업데이트할 때마다)</div>
+          <div class="deploy-step">
+            <div class="deploy-num">1</div>
+            <div class="deploy-body">
+              <p class="deploy-title">파일 수정 후 저장</p>
+              <p class="deploy-desc">로컬에서 HTML/CSS/JS 파일 수정하고 저장.</p>
+            </div>
+          </div>
+          <div class="deploy-step">
+            <div class="deploy-num">2</div>
+            <div class="deploy-body">
+              <p class="deploy-title">VS Code에서 커밋 & 푸시</p>
+              <p class="deploy-desc">
+                소스 제어 탭(Ctrl+Shift+G) → 변경 파일 확인 → 메시지 입력 (예: "수업 페이지 업데이트") → ✓ 커밋 → 동기화(↑↓).<br>
+                또는 터미널에서: <code>git add . && git commit -m "업데이트" && git push</code>
+              </p>
+            </div>
+          </div>
+          <div class="deploy-step">
+            <div class="deploy-num">3</div>
+            <div class="deploy-body">
+              <p class="deploy-title">Vercel이 자동 배포</p>
+              <p class="deploy-desc">
+                push하면 Vercel이 자동으로 감지해서 약 30초~1분 내 라이브 반영.<br>
+                <a href="https://vercel.com/dashboard" target="_blank">vercel.com/dashboard</a>에서 배포 상태 확인 가능.
+              </p>
+            </div>
+          </div>
+
+          <div class="deploy-step">
+            <div class="deploy-num" style="background:var(--yellow)">★</div>
+            <div class="deploy-body">
+              <p class="deploy-title">Draft 페이지 미리보기 방법</p>
+              <p class="deploy-desc">
+                VS Code에서 새 브랜치 만들기 (<code>git checkout -b draft/인강페이지</code>) → 수정 → push.<br>
+                Vercel이 자동으로 미리보기 URL 생성 (예: <code>draft-인강페이지--doouri.vercel.app</code>).<br>
+                확인 후 main 브랜치에 병합하면 라이브 반영.
+                <span class="tag-draft">브랜치 = Draft</span> <span class="tag-live">main = Live</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 패널: 빠른 링크 ── -->
+      <div id="panel-links" class="panel">
+        <h2 class="panel-title">빠른 링크</h2>
+        <p class="panel-sub">자주 쓰는 외부 도구 모음.</p>
+        <div class="card">
+          <div class="quick-links">
+            <a href="https://vercel.com/dashboard" target="_blank" class="quick-link">
+              <span class="ql-icon">▲</span>
+              <div class="ql-text">Vercel 대시보드<div class="ql-sub">배포 상태 확인</div></div>
+            </a>
+            <a href="https://analytics.google.com" target="_blank" class="quick-link">
+              <span class="ql-icon">📈</span>
+              <div class="ql-text">Google Analytics<div class="ql-sub">유입 분석</div></div>
+            </a>
+            <a href="https://github.com" target="_blank" class="quick-link">
+              <span class="ql-icon">🐙</span>
+              <div class="ql-text">GitHub<div class="ql-sub">소스 저장소</div></div>
+            </a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScUzGDy_m8lEHpTKIbJEwN2l82OEB6JCyVBwXl5xCWEMEulcw/viewform" target="_blank" class="quick-link">
+              <span class="ql-icon">📋</span>
+              <div class="ql-text">수업 문의 폼<div class="ql-sub">Google Forms</div></div>
+            </a>
+            <a href="https://www.instagram.com" target="_blank" class="quick-link">
+              <span class="ql-icon">📸</span>
+              <div class="ql-text">Instagram<div class="ql-sub">@프로필</div></div>
+            </a>
+            <a href="https://open.kakao.com/o/s7eqNH9g" target="_blank" class="quick-link">
+              <span class="ql-icon">💬</span>
+              <div class="ql-text">카카오 오픈채팅<div class="ql-sub">문의 채널</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- 프리뷰 모달 -->
+<div id="preview-modal">
+  <div class="preview-bar">
+    <span class="preview-bar-title" id="preview-title">미리보기</span>
+    <button class="preview-close" onclick="closePreview()">✕</button>
+  </div>
+  <iframe id="preview-frame" src=""></iframe>
+</div>
+
+<!-- 토스트 -->
+<div id="admin-toast"></div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   설정: 비밀번호 (SHA-256 해시로 저장)
+   변경하려면: https://emn178.github.io/online-tools/sha256.html
+   에서 원하는 비밀번호를 SHA-256으로 변환 후 아래 값 교체
+   기본 비밀번호: doouri2026
+═══════════════════════════════════════════════════ */
+const PW_HASH = 'a7f3c9d5e8b2f1a4d6c3e9b7f2a5d8c1e4b6f9a2d5c8e3b7f1a4d6c9e2b5f8a3';
+// 위는 예시 해시입니다. 아래 주석 처리된 실제 비밀번호 해시로 교체하세요.
+// doouri2026 → sha256 해시값으로 교체 필요
+
+/* ══ 페이지 목록 ══ */
+const PAGES = [
+  { id: 'index',          icon: '🏠', name: '홈페이지',               file: 'index.html',          defaultStatus: 'live' },
+  { id: 'lesson',         icon: '🧑🏻‍💻', name: '1:1 프랑스어 수업',      file: 'lesson.html',         defaultStatus: 'live' },
+  { id: 'reviews',        icon: '💬', name: '수업 후기',               file: 'reviews.html',        defaultStatus: 'live' },
+  { id: 'class101',       icon: '📘', name: '문법책 재해석 인강',       file: 'class101.html',       defaultStatus: 'live' },
+  { id: 'content',        icon: '📒', name: '학습 콘텐츠',             file: 'content.html',        defaultStatus: 'live' },
+  { id: 'portfolio',      icon: '📑', name: '통번역 · 로컬화 이력',    file: 'portfolio.html',      defaultStatus: 'live' },
+  { id: 'service-finder', icon: '🎯', name: '학습 유형 테스트',        file: 'service-finder.html', defaultStatus: 'live' },
+];
+
+/* ══ 인증 ══ */
+async function sha256(str) {
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+async function doLogin() {
+  const pw = document.getElementById('pw-input').value;
+  const hash = await sha256(pw);
+
+  // 로컬 환경에서는 비밀번호 'doouri2026'으로 접근 가능
+  // Vercel 배포 후 PW_HASH를 실제 해시로 교체하세요
+  if (pw === 'doouri2026' || hash === PW_HASH) {
+    sessionStorage.setItem('admin-auth', '1');
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('admin-screen').style.display = 'block';
+    renderPages();
+    buildUTM();
+    loadGAId();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+    document.getElementById('pw-input').value = '';
+  }
+}
+
+function doLogout() {
+  sessionStorage.removeItem('admin-auth');
+  document.getElementById('admin-screen').style.display = 'none';
+  document.getElementById('login-screen').style.display = 'flex';
+}
+
+// 세션 유지
+if (sessionStorage.getItem('admin-auth')) {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('admin-screen').style.display = 'block';
+  setTimeout(() => { renderPages(); buildUTM(); loadGAId(); }, 0);
+}
+
+/* ══ 패널 전환 ══ */
+function showPanel(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-item').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+
+/* ══ 페이지 렌더 ══ */
+function getPageStatus(id) {
+  return localStorage.getItem('admin-status-' + id) ||
+    (PAGES.find(p => p.id === id)?.defaultStatus || 'live');
+}
+function setPageStatus(id, status) {
+  localStorage.setItem('admin-status-' + id, status);
+}
+
+function renderPages() {
+  const list = document.getElementById('pages-list');
+  list.innerHTML = PAGES.map(page => {
+    const status = getPageStatus(page.id);
+    const statusLabel = { live: 'Live', draft: 'Draft', hidden: '숨김' }[status];
+    const statusClass = { live: 'status-live', draft: 'status-draft', hidden: 'status-hidden' }[status];
+    return `
+      <div class="page-row" id="row-${page.id}">
+        <div class="page-icon">${page.icon}</div>
+        <div class="page-info">
+          <div class="page-name">${page.name}</div>
+          <div class="page-url">${page.file}</div>
+        </div>
+        <div class="page-actions">
+          <span class="status-badge ${statusClass}" id="badge-${page.id}">${statusLabel}</span>
+          <button class="btn-sm" onclick="toggleStatus('${page.id}')">상태 변경</button>
+          <button class="btn-sm" onclick="openPreview('${page.file}', '${page.name}')">미리보기</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleStatus(id) {
+  const cur = getPageStatus(id);
+  const next = cur === 'live' ? 'draft' : cur === 'draft' ? 'hidden' : 'live';
+  setPageStatus(id, next);
+  renderPages();
+  const labels = { live: 'Live', draft: 'Draft', hidden: '숨김' };
+  showToast(`"${PAGES.find(p=>p.id===id)?.name}" → ${labels[next]}`);
+}
+
+/* ══ 미리보기 ══ */
+function openPreview(file, name) {
+  document.getElementById('preview-title').textContent = name + ' 미리보기';
+  document.getElementById('preview-frame').src = file;
+  document.getElementById('preview-modal').classList.add('open');
+}
+function closePreview() {
+  document.getElementById('preview-modal').classList.remove('open');
+  document.getElementById('preview-frame').src = '';
+}
+
+/* ══ UTM 빌더 ══ */
+function buildUTM() {
+  const pageSelect = document.getElementById('utm-page');
+  const customWrap = document.getElementById('custom-url-wrap');
+  let baseUrl;
+  if (pageSelect.value === 'custom') {
+    customWrap.style.display = '';
+    baseUrl = document.getElementById('utm-custom').value || 'https://doouri.com/';
+  } else {
+    customWrap.style.display = 'none';
+    baseUrl = pageSelect.value;
+  }
+  const source   = document.getElementById('utm-source').value;
+  const medium   = document.getElementById('utm-medium').value;
+  const campaign = document.getElementById('utm-campaign').value;
+
+  const url = new URL(baseUrl);
+  url.searchParams.set('utm_source', source);
+  url.searchParams.set('utm_medium', medium);
+  if (campaign) url.searchParams.set('utm_campaign', campaign);
+
+  document.getElementById('utm-result').textContent = url.toString();
+}
+
+function copyUTM() {
+  const text = document.getElementById('utm-result').textContent;
+  navigator.clipboard.writeText(text).then(() => showToast('링크 복사됨 ✓'));
+}
+
+/* ══ GA 코드 ══ */
+function saveGAId() {
+  const id = document.getElementById('ga-id-input').value.trim();
+  if (id) localStorage.setItem('admin-ga-id', id);
+  applyGACode();
+}
+function loadGAId() {
+  const saved = localStorage.getItem('admin-ga-id');
+  if (saved) {
+    document.getElementById('ga-id-input').value = saved;
+    applyGACode();
+  }
+}
+function applyGACode() {
+  const id = document.getElementById('ga-id-input').value.trim();
+  const box = document.getElementById('ga-code-box');
+  const codeEl = document.getElementById('ga-code-text');
+  if (!id) { box.style.display = 'none'; return; }
+  box.style.display = '';
+  codeEl.textContent =
+    `<!-- Google Analytics -->\n<script async src="https://www.googletagmanager.com/gtag/js?id=${id}"><\/script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n  gtag('config', '${id}');\n<\/script>`;
+}
+function copyGACode() {
+  const text = document.getElementById('ga-code-text').textContent;
+  navigator.clipboard.writeText(text).then(() => showToast('GA 코드 복사됨 ✓'));
+}
+
+/* ══ 토스트 ══ */
+let toastTimer;
+function showToast(msg) {
+  const el = document.getElementById('admin-toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 2200);
+}
+</script>
+</body>
+</html>

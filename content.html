@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>학습 콘텐츠 | 김두우리</title>
+  <meta name="description" content="스레드에서 매일 올라오는 프랑스어 표현 모음. 태그로 원하는 내용만 골라보세요."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* 카드 이모티콘 제거 후 레이아웃 */
+    .content-card { align-items: stretch; }
+    .card-emoji   { display: none; }
+    /* 카드 제목 (강조) */
+    .card-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.5;
+      margin-bottom: 6px;
+      word-break: keep-all;
+    }
+    /* 5줄 본문 미리보기 */
+    .card-preview {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 8px;
+      word-break: keep-all;
+      white-space: pre-line;
+    }
+
+    /* ── 페이지네이션 ───────────────────────────── */
+    .pagination-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      padding: 8px 0 36px;
+      flex-wrap: wrap;
+    }
+    .pg-btn {
+      min-width: 36px;
+      height: 36px;
+      padding: 0 10px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--white);
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .pg-btn:hover:not(:disabled) {
+      border-color: var(--brick);
+      color: var(--brick);
+      background: #FFF4F2;
+    }
+    .pg-btn.pg-active {
+      background: var(--brick);
+      border-color: var(--brick);
+      color: var(--white);
+      font-weight: 700;
+    }
+    .pg-btn:disabled {
+      opacity: 0.35;
+      cursor: default;
+    }
+    .pg-btn.pg-arrow {
+      font-size: 0.78rem;
+      color: var(--dark);
+    }
+    .pg-ellipsis {
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 0 4px;
+      line-height: 36px;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu"  id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <div class="page-hero ph-light">
+    <p class="page-hero-chip">📒 무료 프랑스어 컨텐츠</p>
+    <h1 class="page-hero-title">불어 에센셜<br>매일 하나씩</h1>
+    <p class="page-hero-desc">
+      <a href="https://www.threads.net/@douri.french" target="_blank" rel="noopener"
+         style="color:var(--brick); font-weight:700;">스레드 @douri.french</a>에서 매일 올라오는 프랑스어 표현 모음.<br>
+      태그로 원하는 내용만 골라보세요.
+    </p>
+  </div>
+
+  <!-- 태그 필터 -->
+  <div class="tag-filter-bar" id="tag-filter">
+    <button class="tag-chip active" data-tag="all">전체</button>
+    <button class="tag-chip" data-tag="완전입문자">🌱 완전 입문자</button>
+    <button class="tag-chip" data-tag="초보자">📖 초보자</button>
+    <button class="tag-chip" data-tag="중급자">🔥 중급자</button>
+    <button class="tag-chip" data-tag="프랑스문화">🇫🇷 프랑스 문화</button>
+    <button class="tag-chip" data-tag="프랑스유머">😄 프랑스 유머</button>
+    <button class="tag-chip" data-tag="학습툴">🛠️ 학습 툴/방법</button>
+    <button class="tag-chip" data-tag="발음">🎙️ 불어 발음</button>
+  </div>
+
+  <!-- 카드 목록 (JS로 자동 생성) -->
+  <div class="cards-list" id="cards-list"></div>
+
+  <!-- 페이지네이션 -->
+  <div class="pagination-bar" id="pagination-bar"></div>
+
+  <!-- 총 개수 표시 -->
+  <p id="cards-count" style="text-align:center; padding:4px 0 24px; font-size:0.82rem; color:var(--muted);"></p>
+
+</div>
+<footer class="site-footer" id="site-footer"></footer>
+</div>
+
+<div class="kakao-float" id="kakao-float"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script src="data/content-data.js"></script>
+<script>
+  const PAGE_SIZE = 6;
+  let currentData = [];
+  let currentPage = 1;
+
+  /* ── 카드 한 장 HTML ───────────────────────────── */
+  function cardHTML(item) {
+    const levelTag   = item.tags.find(t => LEVEL_TAGS.includes(t));
+    const levelLabel = levelTag ? TAG_LABELS[levelTag] : '';
+    const topicTag   = item.tags.find(t => !LEVEL_TAGS.includes(t));
+    const topicLabel = topicTag ? TAG_LABELS[topicTag] : '';
+    const dataTags   = item.tags.join(',');
+    return `
+      <a href="${item.href}" target="_blank" rel="noopener"
+         class="content-card" data-tags="${dataTags}">
+        <div class="card-body">
+          <div class="card-chips">
+            ${levelLabel ? `<span class="card-chip chip-level">${levelLabel}</span>` : ''}
+            ${topicLabel ? `<span class="card-chip chip-topic">${topicLabel}</span>`  : ''}
+          </div>
+          <div class="card-title">${item.title}</div>
+          ${item.preview ? `<div class="card-preview">${item.preview}</div>` : ''}
+          <div class="card-source">📲 스레드에서 보기 · ${item.date}</div>
+        </div>
+      </a>`;
+  }
+
+  /* ── 페이지 렌더 ───────────────────────────────── */
+  function renderPage(page) {
+    currentPage = page;
+    const total      = currentData.length;
+    const totalPages = Math.ceil(total / PAGE_SIZE);
+    const start      = (page - 1) * PAGE_SIZE;
+    const slice      = currentData.slice(start, start + PAGE_SIZE);
+
+    document.getElementById('cards-list').innerHTML = slice.map(cardHTML).join('');
+    document.getElementById('cards-count').textContent = `총 ${total}개의 컨텐츠`;
+
+    renderPagination(page, totalPages);
+
+    /* 카드 상단으로 스크롤 */
+    document.getElementById('tag-filter').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ── 페이지네이션 바 ────────────────────────────── */
+  function renderPagination(page, totalPages) {
+    const bar = document.getElementById('pagination-bar');
+    if (totalPages <= 1) { bar.innerHTML = ''; return; }
+
+    const WINDOW = 2;
+    let btns = '';
+
+    btns += `<button class="pg-btn pg-arrow" ${page === 1 ? 'disabled' : ''} onclick="renderPage(1)">First</button>`;
+    btns += `<button class="pg-btn pg-arrow" ${page === 1 ? 'disabled' : ''} onclick="renderPage(${page - 1})">‹</button>`;
+
+    let lastPrinted = 0;
+    for (let i = 1; i <= totalPages; i++) {
+      const inWindow = i >= page - WINDOW && i <= page + WINDOW;
+      const isEdge   = i === 1 || i === totalPages;
+      if (isEdge || inWindow) {
+        if (lastPrinted && i - lastPrinted > 1) {
+          btns += `<span class="pg-ellipsis">…</span>`;
+        }
+        btns += `<button class="pg-btn ${i === page ? 'pg-active' : ''}" onclick="renderPage(${i})">${i}</button>`;
+        lastPrinted = i;
+      }
+    }
+
+    btns += `<button class="pg-btn pg-arrow" ${page === totalPages ? 'disabled' : ''} onclick="renderPage(${page + 1})">›</button>`;
+    btns += `<button class="pg-btn pg-arrow" ${page === totalPages ? 'disabled' : ''} onclick="renderPage(${totalPages})">Last</button>`;
+
+    bar.innerHTML = btns;
+  }
+
+  /* ── 태그 필터 ─────────────────────────────────── */
+  function applyFilter(tag) {
+    currentData = tag === 'all'
+      ? CONTENT_DATA
+      : CONTENT_DATA.filter(item => item.tags.includes(tag));
+    renderPage(1);
+  }
+
+  function initDynamicTagFilter() {
+    const bar = document.getElementById('tag-filter');
+    bar.querySelectorAll('.tag-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        bar.querySelectorAll('.tag-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        applyFilter(chip.dataset.tag);
+      });
+    });
+  }
+
+  /* ── 초기화 ────────────────────────────────────── */
+  initComponents();
+  applyFilter('all');
+  initDynamicTagFilter();
+</script>
+</body>
+</html>

@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>'Do! 우리!' 프랑스어 1:1 수업 | 김두우리</title>
+  <meta name="description" content="15년 경력 FLE 튜터 김두우리의 1:1 맞춤 프랑스어 수업. 체험 수업 60분으로 방향을 잡아보세요."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── 체크리스트 ────────────────────────── */
+    .checklist { display: flex; flex-direction: column; gap: 10px; margin: 4px 0 0; }
+    .checklist-item {
+      display: flex; align-items: flex-start; gap: 12px;
+      padding: 12px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.86rem; color: var(--dark); line-height: 1.6;
+    }
+    .checklist-box {
+      width: 18px; height: 18px; flex-shrink: 0;
+      border: 2px solid var(--border); border-radius: 4px;
+      margin-top: 1px;
+    }
+    .checklist-warn {
+      background: rgba(194,74,53,0.06); border-color: rgba(194,74,53,0.25);
+      padding: 14px 16px; border-radius: var(--radius);
+      font-size: 0.85rem; color: var(--dark); line-height: 1.7;
+      margin-top: 4px;
+    }
+    .checklist-warn strong { color: var(--brick); }
+
+    /* ── 체크리스트 인터랙티브 ─────────────────── */
+    .checklist-item { cursor: pointer; user-select: none; transition: background .15s, border-color .15s; }
+    .checklist-item:hover { border-color: rgba(194,74,53,.4); }
+    .checklist-item.checked { background: rgba(194,74,53,.08); border-color: var(--brick); }
+    .checklist-box { position: relative; flex-shrink: 0; transition: background .15s, border-color .15s; }
+    .checklist-item.checked .checklist-box {
+      background: var(--brick); border-color: var(--brick);
+    }
+    .checklist-item.checked .checklist-box::after {
+      content: '✓'; position: absolute; top: -1px; left: 2px;
+      color: #fff; font-size: 12px; font-weight: 900;
+    }
+
+    /* ── 체크 모달 ─────────────────────────────── */
+    #check-modal-bg {
+      display: none; position: fixed; inset: 0;
+      background: rgba(46,14,12,.55); z-index: 10000;
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    #check-modal-bg.open { display: flex; animation: cmFadeIn .25s ease; }
+    @keyframes cmFadeIn { from { opacity:0 } to { opacity:1 } }
+    #check-modal {
+      background: #fff; border-radius: 18px;
+      max-width: 400px; width: 100%;
+      padding: 28px 24px 24px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(46,14,12,.25);
+      animation: cmSlideUp .3s cubic-bezier(.22,.68,0,1.2);
+    }
+    @keyframes cmSlideUp { from { opacity:0; transform:translateY(24px) scale(.96) } to { opacity:1; transform:translateY(0) scale(1) } }
+    #check-modal-close {
+      position: absolute; top: 14px; right: 14px;
+      width: 28px; height: 28px; border-radius: 50%;
+      border: none; background: var(--surface);
+      cursor: pointer; font-size: 14px; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s;
+    }
+    #check-modal-close:hover { background: var(--border); }
+    .cm-badge {
+      display: inline-block; background: rgba(194,74,53,.1);
+      color: var(--brick); font-size: 0.72rem; font-weight: 800;
+      letter-spacing: .06em; padding: 4px 10px; border-radius: 100px;
+      margin-bottom: 14px;
+    }
+    .cm-title {
+      font-size: 1.1rem; font-weight: 900; color: var(--dark);
+      line-height: 1.45; margin-bottom: 10px;
+    }
+    .cm-body {
+      font-size: 0.85rem; color: var(--muted); line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .cm-body strong { color: var(--dark); }
+    .cm-btns { display: flex; gap: 10px; }
+    .cm-btn-left, .cm-btn-right {
+      flex: 1; padding: 13px 10px; border-radius: 10px;
+      font-size: 0.82rem; font-weight: 700; text-align: center;
+      text-decoration: none; cursor: pointer; border: none;
+      line-height: 1.4; transition: opacity .15s;
+    }
+    .cm-btn-left  { background: var(--brick); color: #fff; }
+    .cm-btn-right { background: var(--surface); color: var(--dark); border: 1.5px solid var(--border); }
+    .cm-btn-left:hover, .cm-btn-right:hover { opacity: .85; }
+    @media (max-width: 480px) {
+      .cm-btns { flex-direction: column; }
+    }
+
+    /* ── 일러스트 이미지 ─────────────────── */
+    .lesson-img {
+      width: 100%; border-radius: var(--radius);
+      margin: 12px 0;
+      display: block;
+    }
+    /* 이미지 로드 실패 시 숨김 처리 */
+    .lesson-img[src="img/lesson_illust1.png"],
+    .lesson-img[src="img/lesson_illust2.png"],
+    .lesson-img[src="img/lesson_package.png"] {
+      min-height: 0;
+    }
+    .lesson-img:not([src]) { display: none; }
+
+    /* ── 첫번째 CTA (설득 전) ─────────────── */
+    .early-cta-block {
+      text-align: center;
+      padding: 20px 16px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+    .early-cta-block .cta-lead {
+      font-size: 0.85rem; color: var(--muted); margin-bottom: 14px; line-height: 1.6;
+    }
+
+    /* ── 이유 카드 ─────────────────────────── */
+    .reason-card {
+      border-left: 3px solid var(--brick);
+      padding: 16px 18px;
+      background: var(--surface);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 14px;
+    }
+    .reason-card h3 { font-size: 0.9rem; font-weight: 800; color: var(--dark); margin-bottom: 6px; }
+    .reason-card p  { font-size: 0.84rem; color: var(--muted); line-height: 1.75; }
+
+    /* ── 여정 타임라인 ──────────────────────── */
+    .journey-list { display: flex; flex-direction: column; gap: 0; }
+    .journey-item {
+      display: flex; gap: 14px;
+      padding-bottom: 18px;
+      position: relative;
+    }
+    .journey-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 17px; top: 32px; bottom: 0;
+      width: 2px;
+      background: var(--border);
+    }
+    .journey-dot {
+      width: 36px; height: 36px; flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--surface); border: 2px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; position: relative; z-index: 1;
+    }
+    .journey-body { flex: 1; padding-top: 5px; }
+    .journey-label { font-size: 0.7rem; font-weight: 700; color: var(--brick); letter-spacing: 0.05em; margin-bottom: 2px; }
+    .journey-text  { font-size: 0.84rem; color: var(--dark); line-height: 1.6; }
+
+    /* ── 수업 단계 ──────────────────────────── */
+    .step-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .step-head {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 18px;
+      background: var(--brick);
+    }
+    .step-num  { font-size: 1.1rem; font-weight: 900; color: rgba(255,255,255,0.65); }
+    .step-name { font-size: 0.9rem; font-weight: 800; color: var(--white); }
+    .step-body { padding: 14px 18px; background: var(--surface); }
+    .step-body p { font-size: 0.84rem; color: var(--dark); line-height: 1.7; }
+
+    /* ── Moi-Toi-Nous 페이즈 ────────────────── */
+    .phase-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .phase-head {
+      padding: 12px 18px;
+      background: var(--brick);
+      display: flex; align-items: baseline; gap: 10px;
+    }
+    .phase-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+    .phase-title { font-size: 1rem; font-weight: 900; color: var(--white); }
+    .phase-sub   { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.8); }
+    .phase-body  { padding: 14px 18px; }
+    .phase-goal  { font-size: 0.78rem; font-weight: 700; color: var(--brick); margin-bottom: 6px; }
+    .phase-list  { padding-left: 1.1em; display: flex; flex-direction: column; gap: 4px; }
+    .phase-list li { font-size: 0.83rem; color: var(--muted); line-height: 1.7; }
+    .phase-change { font-size: 0.82rem; color: var(--dark); font-weight: 600; margin-top: 8px; padding: 8px 12px; background: rgba(194,74,53,0.07); border-radius: 6px; }
+
+    /* ── 후기 카드 ─────────────────────────── */
+    .review-q {
+      border-left: 3px solid var(--brick);
+      padding: 12px 16px;
+      background: var(--surface);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 12px;
+    }
+    .review-q p { font-size: 0.84rem; color: var(--dark); line-height: 1.75; font-style: italic; }
+    .review-q .who { margin-top: 8px; font-size: 0.76rem; color: var(--muted); font-style: normal; font-weight: 600; }
+
+    /* ── 패키지 4개 그리드 ──────────────────── */
+    .pkg-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--sp-8);
+      margin: 0 0 0;
+    }
+    @media (max-width: 640px) { .pkg-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 360px) { .pkg-grid { grid-template-columns: 1fr; } }
+
+    .pkg-card {
+      border: 1.5px solid var(--border);
+      border-radius: 14px;
+      padding: var(--sp-16) var(--sp-16);
+      background: var(--white);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+    .pkg-card.pkg-highlight {
+      border: 2.5px solid var(--brick);
+      background: #fff9f8;
+    }
+
+    /* 배지 */
+    .pkg-badge {
+      display: inline-block;
+      font-size: 0.62rem; font-weight: 700;
+      color: var(--muted); background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 3px 9px; border-radius: 20px;
+      margin-bottom: var(--sp-4);
+      width: fit-content;
+    }
+    .pkg-card.pkg-highlight .pkg-badge {
+      color: var(--white);
+      background: var(--brick);
+      border-color: var(--brick);
+    }
+
+    /* 패키지명 */
+    .pkg-name {
+      font-size: 0.88rem; font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    /* 가격 — Gowun Batang */
+    .pkg-price-main {
+      font-family: var(--font-heading);
+      font-size: 1.75rem; font-weight: 700;
+      color: var(--dark); line-height: 1.1;
+      margin: var(--sp-4) 0 0;
+    }
+
+    /* 세션수 */
+    .pkg-sessions {
+      font-size: 0.73rem; color: var(--muted);
+      margin-bottom: var(--sp-8);
+      padding-bottom: var(--sp-8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* 보너스 / 절약 — 브릭 레드 강조 */
+    .pkg-bonus {
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--brick);
+      margin-bottom: 0;
+    }
+    .pkg-unit {
+      font-size: 0.72rem; color: var(--muted);
+    }
+    .pkg-save {
+      font-size: 0.78rem; font-weight: 700;
+      color: var(--brick);
+    }
+
+    /* 환급 안내 */
+    .pkg-refund {
+      font-size: 0.75rem; color: var(--brick);
+      font-weight: 600; margin-top: var(--sp-4);
+    }
+
+    /* ── FAQ 아코디언 ─────────────────────── */
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      background: transparent;
+    }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-item[open] {
+      background: #fff9f8;
+    }
+    .faq-item summary {
+      list-style: none;
+      padding: 18px 4px;
+      cursor: pointer;
+      font-family: var(--font-heading);
+      font-size: 0.95rem; font-weight: 700; color: var(--dark);
+      background: transparent;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px;
+      transition: color 0.18s;
+    }
+    .faq-item[open] summary { color: var(--brick); }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      font-size: 1.2rem; font-weight: 300; color: var(--brick);
+      flex-shrink: 0; line-height: 1;
+    }
+    .faq-item[open] summary::after { content: '−'; }
+    .faq-answer {
+      padding: 0 4px 18px;
+      font-size: 0.85rem; color: var(--muted); line-height: 1.85;
+    }
+    .faq-answer ul {
+      padding-left: 1.2em;
+      margin-top: 8px;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .faq-answer li { color: var(--muted); }
+    .faq-note {
+      margin-top: 10px;
+      font-size: 0.78rem; color: var(--muted);
+      padding: 8px 12px;
+      background: var(--surface); border-radius: 6px;
+      border-left: 2px solid var(--brick);
+    }
+
+    /* ── 하단 CTA 박스 ─────────────────────── */
+    .cta-box {
+      background: var(--brick); border-radius: var(--radius);
+      padding: 28px 22px; text-align: center;
+    }
+    .cta-box-chip {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.75); text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .cta-box-title {
+      font-size: 1.05rem; font-weight: 900; color: var(--white);
+      margin-bottom: 6px; line-height: 1.4;
+    }
+    .cta-box-desc {
+      font-size: 0.82rem; color: rgba(255,255,255,0.75);
+      margin-bottom: 20px; line-height: 1.7;
+    }
+    .cta-box-flow {
+      font-size: 0.78rem; color: rgba(255,255,255,0.6);
+      margin-top: 14px; line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu" id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <!-- 히어로 -->
+  <div class="page-hero ph-dark">
+    <p class="page-hero-chip">🧑🏻‍💻 1:1 프랑스어 수업</p>
+    <h1 class="page-hero-title">'Do! 우리!'<br>프랑스어 1:1 수업</h1>
+    <p class="page-hero-desc">혹시 지금 프랑스어를 혼자 공부하다가, 멈춰 계시지 않나요?</p>
+  </div>
+  <!-- ⚠️ 이미지: 노션 페이지 일러스트레이션1.png을 img/lesson_illust1.png로 저장하세요 -->
+  <img src="img/lesson_illust1.png" alt="" class="lesson-img" onerror="this.style.display='none'">
+
+  <!-- 정체기 체크리스트 -->
+  <div class="section-block">
+    <h2 class="block-title">지금 정체기인지 셀프 체크해 보세요</h2>
+    <div class="checklist">
+      <div class="checklist-item"><span class="checklist-box"></span>카페에서 주문했는데 원어민 점원이 한 번에 못 알아듣고 다시 묻는다</div>
+      <div class="checklist-item"><span class="checklist-box"></span>새 교재를 또 한 권 샀다. 지난 달에 산 책은 50쪽쯤에서 멈춰 있다</div>
+      <div class="checklist-item"><span class="checklist-box"></span>글을 쓰다가 이 단어가 남성 명사인지 여성 명사인지 헷갈려서 사전을 두 번 본다</div>
+      <div class="checklist-item"><span class="checklist-box"></span>자막을 끄고 영화를 보려 했는데, 두 단어가 들리면 한 단어를 놓친다</div>
+      <div class="checklist-item"><span class="checklist-box"></span>머릿속에 단어는 있는데 입이 안 떨어진다. 한국어로 먼저 만들고 옮기는 사이에 대화는 다음 주제로</div>
+      <div class="checklist-item"><span class="checklist-box"></span>발음이 맞다고 생각하고 말했는데 친구가 못 알아들은 적이 있다</div>
+      <div class="checklist-item"><span class="checklist-box"></span>'이만큼 했는데 왜 늘지 않지?' 지난 3개월은 거의 같은 자리에 있다</div>
+      <div class="checklist-item"><span class="checklist-box"></span>어디서부터 다시 잡아야 할지 모르겠다. 더 좋은 교재가 있으면 풀릴 것 같아 검색을 시작한다</div>
+    </div>
+    <!-- ⚠️ 이미지: 노션 일러스트레이션2.png을 img/lesson_illust2.png로 저장하세요 -->
+    <img src="img/lesson_illust2.png" alt="" class="lesson-img" style="margin-top:10px;" onerror="this.style.display='none'">
+  </div>
+
+  <!-- ── 첫 번째 CTA (설득 전 문의 유도) ──────────────────── -->
+  <div class="section-block early-cta-block">
+    <p class="cta-lead">지금 바로 시작하고 싶다면 — 먼저 시간대를 잡을 수 있어요.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScUzGDy_m8lEHpTKIbJEwN2l82OEB6JCyVBwXl5xCWEMEulcw/viewform"
+       target="_blank" rel="noopener"
+       class="cta-btn cta-brick">📅 두우리 선생님과 시간대 얼른 잡기</a>
+  </div>
+
+  <!-- 왜 두우리 선생님인가 -->
+  <div class="section-block" id="why-doouri">
+    <h2 class="block-title">왜 'Do! 우리!' 김두우리 선생님이어야 할까요?</h2>
+    <p class="block-text" style="margin-bottom:16px;">단순히 프랑스에 오래 살아서가 아닙니다. 여러분과 같은 출발점에서, 다른 길을 통과해 도달했습니다.</p>
+    <div class="reason-card">
+      <h3>같은 길을 먼저 통과한 사람</h3>
+      <p>여러분과 똑같이 한국에서 제2외국어로 시작했어요. 어학원 → 언어 연수 → 과외 → 독학, 네 가지 경로를 모두 통과했기에 학습자가 "왜 이게 안 되는지" 가장 정확하게 짚을 수 있어요. 이론에서 내려보는 시선이 아닌, 같은 길을 먼저 통과한 사람의 시선으로 함께 걷습니다.</p>
+    </div>
+    <div class="reason-card">
+      <h3>네 개의 언어를 쓰는 사람</h3>
+      <p>한국어 직역 회로를 분해해 프랑스식으로 재배선하는 법을 체득했습니다. 서른이 되어 포르투갈어를 새로 배우며, 언어 구조가 다를 때 각자 어떻게 처리하는지 직접 보고 적용했어요. '한국어 화자에게 맞는 분류 방법'과 본인에게 맞는 '학습 방식 진단'을 드립니다.</p>
+    </div>
+    <div class="reason-card">
+      <h3>100명 이상의 누적 데이터를 쌓은 사람</h3>
+      <p>15년 동안 다양한 국적 학생 100명 이상과 튜터링. 평균 1.2년씩, 누적 1,000시간 이상. 한국 학생들이 멈추는 자리가 5가지 모양으로 정리됐습니다. 첫 시간에 본인이 어느 모양인지 함께 찾고, 다음 6주 안에 어디까지 가는지 그림을 그려드립니다.</p>
+    </div>
+  </div>
+
+  <!-- 튜터 여정 -->
+  <div class="section-block">
+    <h2 class="block-title">김두우리 튜터의 여정</h2>
+    <div class="journey-list">
+      <div class="journey-item">
+        <div class="journey-dot">🇫🇷🇰🇷</div>
+        <div class="journey-body">
+          <p class="journey-label">유년기</p>
+          <p class="journey-text">프랑스 &amp; 한국 — 부모님: 불어불문학 교수 · 알리앙스 프랑세즈 강사</p>
+        </div>
+      </div>
+      <div class="journey-item">
+        <div class="journey-dot">🎓</div>
+        <div class="journey-body">
+          <p class="journey-label">학업</p>
+          <p class="journey-text">외고 자퇴 후 직접 선택한 길 — 바깔로레아 경제·사회 계열 + 파리 ESG 그랑제꼴 MBA (미디어 시장 프로덕션)</p>
+        </div>
+      </div>
+      <div class="journey-item">
+        <div class="journey-dot">🇫🇷</div>
+        <div class="journey-body">
+          <p class="journey-label">프랑스 커리어</p>
+          <p class="journey-text">Universal Music · Fnac · SFR · 프랑스 &amp; 한불 광고 에이전시 · 글로벌 IT 스타트업</p>
+        </div>
+      </div>
+      <div class="journey-item">
+        <div class="journey-dot">🇧🇷</div>
+        <div class="journey-body">
+          <p class="journey-label">브라질 커리어 (5년)</p>
+          <p class="journey-text">삼성전자 SDS 중남미 광고 기획 &amp; 데이터 분석 슈퍼바이저</p>
+        </div>
+      </div>
+      <div class="journey-item">
+        <div class="journey-dot">🇰🇷</div>
+        <div class="journey-body">
+          <p class="journey-label">한국 복귀</p>
+          <p class="journey-text">사이버보안 시니어 글로벌 마케팅, 로컬라이제이션 총괄</p>
+        </div>
+      </div>
+      <div class="journey-item">
+        <div class="journey-dot">🌱</div>
+        <div class="journey-body">
+          <p class="journey-label">2011~ 현재 (15년)</p>
+          <p class="journey-text">프리랜서 FLE 프랑스어 튜터링 · 통번역 · 로컬라이제이션<br>Polyglot: 유창 🇰🇷 🇫🇷 🇺🇲 🇧🇷 · 기초 🇨🇳 🇪🇸</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 수업 방식 3단계 -->
+  <div class="section-block">
+    <h2 class="block-title">Do! 우리! 수업은 이렇게 진행됩니다</h2>
+    <div class="step-card">
+      <div class="step-head">
+        <span class="step-num">1️⃣</span>
+        <span class="step-name">Do: 먼저 해보기</span>
+      </div>
+      <div class="step-body">
+        <p><strong>정밀 문의 및 상담 (약 15~30분)</strong><br>구글폼으로 학습 이력과 목표를 받으며, 여러분의 학습 지도를 그려드립니다.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-head">
+        <span class="step-num">2️⃣</span>
+        <span class="step-name">우리: 같이 하기</span>
+      </div>
+      <div class="step-body">
+        <p><strong>체험 수업 (60분)</strong><br>진단 결과를 바탕으로 맞춤 커리큘럼 프로토타입과 실제 코칭 방식을 미리 확인하게 됩니다.</p>
+      </div>
+    </div>
+    <div class="step-card">
+      <div class="step-head">
+        <span class="step-num">3️⃣</span>
+        <span class="step-name">함께 해요: 본인 속도에 맞추기</span>
+      </div>
+      <div class="step-body">
+        <p><strong>밀착 코칭 · 비동기 피드백</strong><br>양적 확장(어휘)과 질적 깊이(뉘앙스)를 함께 잡으며, 여러분 속도에 맞춘 피드백으로 흐름을 유지합니다.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Moi-Toi-Nous 커리큘럼 -->
+  <div class="section-block">
+    <h2 class="block-title">Do! 우리! 독보적 커리큘럼<br><span style="font-size:1rem; font-weight:600; color:var(--brick);">Moi — Toi — Nous</span></h2>
+    <p class="block-text" style="margin-bottom:16px; font-size:0.85rem;">프랑스 취업 시 필수인 "Lettre de Motivation"의 논리 구조 — ① 나를 명확히 정의하고 → ② 너의 입장을 이해하고 → ③ 우리로 자연스럽게 이어지는 흐름 — 이 사고법을 프랑스어로 함께 익혀요.</p>
+
+    <div class="phase-card">
+      <div class="phase-head">
+        <span class="phase-label">Phase 1</span>
+        <span class="phase-title">Moi</span>
+        <span class="phase-sub">3~6회차 · 나에 대해</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-goal">핵심 목표: 한국어 번역 회로를 끊고, 프랑스어의 기초 뼈대를 내 몸에 이식합니다.</p>
+        <ul class="phase-list">
+          <li>듣기: 연음과 묵음의 법칙으로 원어민의 소리가 '나에게' 들리기 시작합니다</li>
+          <li>말하기: 암기가 아닌 현재형, 조건법으로 내 의견과 상황을 있는 그대로 묘사합니다</li>
+        </ul>
+        <p class="phase-change">✨ 변화: 막연한 불안감이 사라지고, 프랑스어의 논리 구조가 보이기 시작합니다.</p>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-head">
+        <span class="phase-label">Phase 2</span>
+        <span class="phase-title">Toi</span>
+        <span class="phase-sub">7~12회차 · 상대방에 대해</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-goal">핵심 목표: 단순 전달을 넘어, 상황과 상대에 맞는 '뉘앙스'를 장착합니다.</p>
+        <ul class="phase-list">
+          <li>쓰기: 격식·비격식 레지스터의 특징을 인지해 품격 있는 문장을 구성합니다</li>
+          <li>사고의 확장: 과거·미래 시제의 미세한 차이를 파악합니다. 시제가 문법이 아니라 '태도'가 됩니다</li>
+        </ul>
+        <p class="phase-change">✨ 변화: 한국어 직역에서 벗어나, 상황에 적합한 단어를 골라 쓰는 감각이 깨어납니다.</p>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-head">
+        <span class="phase-label">Phase 3</span>
+        <span class="phase-title">Nous</span>
+        <span class="phase-sub">13~20회차 · 우리 함께</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-goal">핵심 목표: 100% 개인화된 주제로 잠재력을 극대화하는 티키타카.</p>
+        <ul class="phase-list">
+          <li>맞춤형 테마: 학습자의 니즈(시사·예술·비즈니스 등) 100% 개인화 콘텐츠</li>
+          <li>실전 응용: 세밀한 조건법으로 복잡한 감정과 논리를 뉘앙스 있게 표현합니다</li>
+        </ul>
+        <p class="phase-change">✨ 변화: "내가 불어로 이런 말까지 할 수 있다고?" 스스로 응용력과 재미를 실감합니다.</p>
+      </div>
+    </div>
+
+    <!-- 스페셜 케어 -->
+    <div class="info-list" style="margin-top:4px;">
+      <div class="info-row">
+        <span class="info-label">매주 케어 ①</span>
+        <span class="info-value">개인 맞춤 과제 — 매 수업 후 다음 세션 전까지 학습자만의 속도에 맞춘 가이드</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">매주 케어 ②</span>
+        <span class="info-value">비동기 피드백 — 수업 시간 외에도 끊기지 않는 1:1 밀착 교정 서비스</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 후기 -->
+  <div class="section-block">
+    <h2 class="block-title">Do! 우리! 수업을 경험한 분들</h2>
+    <div class="review-q">
+      <p>"학원 수업은 일정 조율이 어려웠고, 언어 학습 앱은 너무 기초적인 내용 위주로만 구성되어 있었습니다. 그러던 중 스레드를 통해 두리 선생님을 알게 되어 1:1 맞춤 수업을 시작하게 되었고 지금까지 그 인연을 이어가고 있습니다."</p>
+      <p class="who">한○○님 · 헤어 디자이너 (정기 수업)</p>
+    </div>
+    <div class="review-q">
+      <p>"온라인 수업임에도 선생님의 예리한 감각으로 저의 발음과 약점을 즉각적으로 캐치해주셔서 정말 좋았습니다. 알짜배기 정규 수업 1시간을 체험한 기분이었습니다."</p>
+      <p class="who">김○○님 (체험 수업)</p>
+    </div>
+    <div class="review-q">
+      <p>"평소에 한국 문법용어가 어려웠는데 오히려 원어로 그 뜻을 가지고 풀어서 보니 이해하기가 더 쉬워서 좋았습니다!"</p>
+      <p class="who">이○○님 (특강)</p>
+    </div>
+
+    <p style="font-size:0.78rem; font-weight:700; letter-spacing:0.08em; color:var(--muted); text-transform:uppercase; margin: 20px 0 10px;">🌏 브라질 학생 후기</p>
+    <div class="review-q">
+      <p>"국제관계학 전공이라, 외국어 하나가 더 있으면 일하고 싶은 분야의 문이 더 열린다고 생각했죠."</p>
+      <p class="who">Júlia · 국제관계학 전공</p>
+    </div>
+    <div class="review-q">
+      <p>"프랑스 병원 인턴십 준비를 위해, 지금은 유지·발전을 위해 — 두 번 모두 두우리 선생님과 함께했어요."</p>
+      <p class="who">Beatriz · 산부인과 의사</p>
+    </div>
+    <div class="review-q">
+      <p>"프랑스 문화를 사랑해서 여행을 자주 다녀요. 문법은 비중을 줄여 진행해요. 레벨 향상이 정말 빨랐고, 발음도 아주 좋아졌어요."</p>
+      <p class="who">Robson · 광고 기획자</p>
+    </div>
+
+    <a href="reviews.html" style="display:inline-block; margin-top:8px; color:var(--brick); font-size:0.88rem; font-weight:700;">모든 후기 보기 →</a>
+  </div>
+
+  <!-- 패키지 안내 -->
+  <div class="section-block">
+    <h2 class="block-title">온라인 수업 패키지 안내</h2>
+
+    <div class="pkg-grid">
+
+      <!-- 체험 -->
+      <div class="pkg-card">
+        <p class="pkg-badge">체험</p>
+        <p class="pkg-name">체험 수업</p>
+        <p class="pkg-price-main">3만원</p>
+        <p class="pkg-sessions">60분 1회</p>
+        <p class="pkg-refund">→ 10회 이상 등록 시 환급</p>
+      </div>
+
+      <!-- 스타터 -->
+      <div class="pkg-card">
+        <p class="pkg-badge">10회</p>
+        <p class="pkg-name">스타터</p>
+        <p class="pkg-price-main">60만원</p>
+        <p class="pkg-sessions">10회 선결제</p>
+        <p class="pkg-bonus">+1회 보너스 (총 11회)</p>
+        <p class="pkg-unit">실질 54,545원/회</p>
+        <p class="pkg-save">6만원 절약</p>
+      </div>
+
+      <!-- 레귤러 (추천) -->
+      <div class="pkg-card pkg-highlight">
+        <p class="pkg-badge">추천</p>
+        <p class="pkg-name">레귤러</p>
+        <p class="pkg-price-main">120만원</p>
+        <p class="pkg-sessions">20회 선결제</p>
+        <p class="pkg-bonus">+3회 보너스 (총 23회)</p>
+        <p class="pkg-unit">실질 52,174원/회</p>
+        <p class="pkg-save">18만원 절약</p>
+      </div>
+
+      <!-- 인텐시브 -->
+      <div class="pkg-card">
+        <p class="pkg-badge">30회</p>
+        <p class="pkg-name">인텐시브</p>
+        <p class="pkg-price-main">180만원</p>
+        <p class="pkg-sessions">30회 선결제</p>
+        <p class="pkg-bonus">+5회 보너스 (총 35회)</p>
+        <p class="pkg-unit">실질 51,429원/회</p>
+        <p class="pkg-save">30만원 절약</p>
+      </div>
+
+    </div>
+    <!-- 형태/레벨/언어/추천인 정보 제거됨 -->
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-block">
+    <h2 class="block-title">자주 묻는 질문</h2>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary>Q. 수업의 커리큘럼은 어떻게 되나요?</summary>
+        <div class="faq-answer">
+          레벨과 목표를 기준으로 일반적인 커리큘럼은 있지만, 각자의 성향과 목표에 따라 문법, 회화, 독해의 비율이 달라집니다. 커리큘럼은 패키지 종류에 상관없이 동일하며 깊이 정도만 달라집니다. 직접 튜터가 기획하는 시사 뉴스나 문제 풀이도 학생마다 다르게 구성됩니다.<br><br>
+          수업 방식은 튜터의 1차 제안과 학생과의 소통으로 함께 조율하여 만들어갑니다.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Q. 수업의 특정 목표가 없어도 되나요?</summary>
+        <div class="faq-answer">
+          네, 없어도 됩니다. 처음 상담에서 현재 실력과 방향성을 함께 점검하고, 목표 설정부터 도와드립니다. "일단 시작해보고 싶다"는 것만으로도 충분합니다.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Q. 가격은 어떻게 되나요?</summary>
+        <div class="faq-answer">
+          2026년 기준 시간당 70,000원입니다. 매 수업마다 다음 세션 전까지 혼자 공부할 과제와 교정, 가이드가 포함됩니다.<br><br>
+          세션당 시간(60~90분), 횟수, 강도, 일회성 여부에 따라 최종 견적이 정해집니다.
+          <ul>
+            <li>10회 패키지 결제 시 1~2회차 추가</li>
+            <li>정기 코칭(주 2회 이상 3개월) 시 중간 점검 세션 제공</li>
+            <li>추천한 학생의 '스타터' 패키지 결제 시, 본인 1회 수업 무료 제공</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Q. 온라인으로만 진행되나요?</summary>
+        <div class="faq-answer">
+          네, 현재는 Zoom 화상 수업으로만 진행됩니다. 녹화 여부는 학생과 합의 후 결정합니다.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>Q. 체험 수업은 어떻게 신청하나요?</summary>
+        <div class="faq-answer">
+          아래 구글폼으로 문의 주시면 48시간 이내 회신드립니다. 체험 수업은 60분으로, 학습 진단과 실제 수업 방식을 함께 경험하게 됩니다.
+        </div>
+      </details>
+
+    </div><!-- /faq-list -->
+  </div><!-- /faq section-block -->
+
+  <!-- 하단 CTA -->
+  <div class="section-block">
+    <div class="cta-box">
+      <p class="cta-box-chip">START NOW</p>
+      <p class="cta-box-title">지금 바로 시작할 준비가 됐다면</p>
+      <p class="cta-box-desc">구글폼으로 학습 이력과 목표를 알려주세요.<br>48시간 이내 회신 후 체험 수업 일정을 잡아드립니다.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScUzGDy_m8lEHpTKIbJEwN2l82OEB6JCyVBwXl5xCWEMEulcw/viewform"
+         target="_blank" rel="noopener"
+         class="cta-btn" style="background:rgba(255,255,255,0.18);color:var(--white);border:1.5px solid rgba(255,255,255,0.5);margin-top:4px;">
+        📅 두우리 선생님과 시간대 얼른 잡기
+      </a>
+      <p class="cta-box-flow">신청 → 상담 → 체험 수업 예약 확정</p>
+    </div>
+  </div>
+
+</div><!-- /content-wrap -->
+<footer class="site-footer" id="site-footer"></footer>
+</div><!-- /page-body -->
+
+<div id="kakao-float"></div>
+
+<!-- ── 체크 결과 모달 ────────────────────────────── -->
+<div id="check-modal-bg" onclick="if(event.target===this)closeCheckModal()">
+  <div id="check-modal">
+    <button id="check-modal-close" onclick="closeCheckModal()">✕</button>
+    <div class="cm-badge" id="cm-badge">⚠️ 3개 이상 해당</div>
+    <p class="cm-title" id="cm-title">지금 멈춰 있는 자리는<br>'교재가 부족해서'가 아닙니다.</p>
+    <p class="cm-body" id="cm-body">
+      혼자 공부한 분들이 1년쯤 되면 거의 다 같은 자리에서 멈춰요.<br>
+      그 자리의 정체와 다음 한 걸음을 제가 같이 짚어드립니다.
+    </p>
+    <div class="cm-btns">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScUzGDy_m8lEHpTKIbJEwN2l82OEB6JCyVBwXl5xCWEMEulcw/viewform"
+         target="_blank" rel="noopener" class="cm-btn-left" onclick="closeCheckModal()">
+        📅 두우리 선생님과<br>시간대 얼른 잡기
+      </a>
+      <button class="cm-btn-right" onclick="scrollToWhy()">
+        커리큘럼 좀 더 보기 →
+      </button>
+    </div>
+  </div>
+</div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>initComponents();</script>
+<script>
+(function() {
+  var shown3 = false, shown6 = false;
+
+  document.querySelectorAll('.checklist-item').forEach(function(item) {
+    item.addEventListener('click', function() {
+      this.classList.toggle('checked');
+      var count = document.querySelectorAll('.checklist-item.checked').length;
+      if (count >= 6 && !shown6) {
+        shown6 = true;
+        openCheckModal(6);
+      } else if (count >= 3 && !shown3) {
+        shown3 = true;
+        openCheckModal(3);
+      }
+    });
+  });
+
+  window.openCheckModal = function(count) {
+    var badge = document.getElementById('cm-badge');
+    var title = document.getElementById('cm-title');
+    var body  = document.getElementById('cm-body');
+    if (count >= 6) {
+      badge.textContent = '⚠️ 6개 이상 해당';
+      title.innerHTML   = '이건 의지나 교재의 문제가<br>아닙니다.';
+      body.innerHTML    = '지금 이 자리는 <strong>혼자 해결하기 어려운 구간</strong>입니다.<br>'
+        + '한국어 화자가 프랑스어를 배울 때 반드시 거치는 정체 구간이에요.<br>'
+        + '두우리 선생님과 6주면 이 자리를 벗어날 수 있습니다.';
+    } else {
+      badge.textContent = '⚠️ 3개 이상 해당';
+      title.innerHTML   = '지금 멈춰 있는 자리는<br>\'교재가 부족해서\'가 아닙니다.';
+      body.innerHTML    = '혼자 공부한 분들이 1년쯤 되면 거의 다 같은 자리에서 멈춰요.<br>'
+        + '그 자리의 정체와 다음 한 걸음을 제가 같이 짚어드립니다.';
+    }
+    document.getElementById('check-modal-bg').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  };
+
+  window.closeCheckModal = function() {
+    document.getElementById('check-modal-bg').classList.remove('open');
+    document.body.style.overflow = '';
+  };
+
+  window.scrollToWhy = function() {
+    closeCheckModal();
+    setTimeout(function() {
+      var el = document.getElementById('why-doouri');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  };
+})();
+</script>
+</body>
+</html>

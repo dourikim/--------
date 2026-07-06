@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>두우리 프랑스어 인강</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── 앱 기반 ─────────────────────────────────── */
+    * { box-sizing: border-box; }
+    body { background: #f5f3f2; font-family: var(--font-body); }
+
+    .lp-app {
+      max-width: 480px; margin: 0 auto;
+      min-height: 100vh; background: var(--white);
+      display: flex; flex-direction: column;
+      position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.08);
+    }
+
+    /* ── 상단 헤더 ────────────────────────────────── */
+    .lp-header {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      height: 56px; display: flex; align-items: center;
+      padding: 0 16px; gap: 12px;
+    }
+    .lp-logo {
+      font-family: var(--font-heading); font-size: 0.88rem; font-weight: 700;
+      color: var(--dark); flex: 1; white-space: nowrap;
+    }
+    .lp-logo span { color: var(--brick); }
+    .lp-mode-toggle {
+      display: flex; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 999px; padding: 3px; gap: 2px;
+    }
+    .lp-mode-btn {
+      font-size: 0.7rem; font-weight: 700; padding: 5px 11px;
+      border-radius: 999px; border: none; cursor: pointer;
+      background: transparent; color: var(--muted); transition: all 0.2s;
+    }
+    .lp-mode-btn.active { background: var(--dark); color: var(--white); }
+
+    /* ── 콘텐츠 + 하단 네비 ───────────────────────── */
+    .lp-content { flex: 1; overflow-y: auto; padding-bottom: 72px; }
+    .lp-view { display: none; }
+    .lp-view.active { display: block; }
+
+    .lp-bottom-nav {
+      position: sticky; bottom: 0; z-index: 200;
+      background: var(--white); border-top: 1px solid var(--border);
+      display: flex;
+    }
+    .lp-nav-btn {
+      flex: 1; border: none; background: none; padding: 10px 4px 12px;
+      cursor: pointer; display: flex; flex-direction: column;
+      align-items: center; gap: 3px; color: var(--muted); transition: color 0.15s;
+    }
+    .lp-nav-btn.active { color: var(--brick); }
+    .lp-nav-btn svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .lp-nav-label { font-size: 0.62rem; font-weight: 700; }
+
+    /* ══════════════════════════════════════════════
+       ① 수강생 — 대시보드
+    ══════════════════════════════════════════════ */
+    .dash-hero {
+      background: var(--dark); padding: 24px 20px 20px;
+    }
+    .dash-greeting { font-size: 0.7rem; color: rgba(255,255,255,0.45); margin-bottom: 4px; }
+    .dash-name {
+      font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700;
+      color: var(--white); margin-bottom: 20px; line-height: 1.3;
+    }
+    .dash-name em { color: #f4a47a; font-style: normal; }
+    .dash-stats { display: flex; gap: 0; margin-bottom: 18px; }
+    .dash-stat { flex: 1; display: flex; flex-direction: column; gap: 3px; padding-right: 16px; }
+    .dash-stat + .dash-stat { padding-left: 16px; padding-right: 0; border-left: 1px solid rgba(255,255,255,0.12); }
+    .dash-stat-n {
+      font-family: var(--font-heading); font-size: 1.7rem; font-weight: 700;
+      color: var(--white); line-height: 1;
+    }
+    .dash-stat-n small { font-size: 0.8rem; color: rgba(255,255,255,0.5); }
+    .dash-stat-l { font-size: 0.62rem; color: rgba(255,255,255,0.4); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .dash-progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 0.65rem; color: rgba(255,255,255,0.4); margin-bottom: 5px;
+    }
+    .dash-progress-bar { height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; overflow: hidden; }
+    .dash-progress-fill { height: 100%; background: var(--brick); border-radius: 2px; }
+
+    /* 레벨 진행 */
+    .dash-level-strip {
+      margin-top: 14px; padding: 12px 14px;
+      background: rgba(255,255,255,0.05); border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .dash-level-label { font-size: 0.62rem; color: rgba(255,255,255,0.4); font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 8px; }
+    .dash-level-bar { display: flex; align-items: center; gap: 0; position: relative; }
+    .dash-level-item { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; position: relative; z-index: 1; }
+    .dash-level-dot {
+      width: 20px; height: 20px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.6rem; font-weight: 700;
+    }
+    .dash-level-dot.lv-done { background: var(--brick); color: white; }
+    .dash-level-dot.lv-cur  { background: var(--brick); color: white; box-shadow: 0 0 0 3px rgba(194,74,53,0.35); }
+    .dash-level-dot.lv-lock { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); }
+    .dash-level-name { font-size: 0.58rem; color: rgba(255,255,255,0.45); white-space: nowrap; }
+    .dash-level-name.lv-cur-name { color: var(--brick); font-weight: 700; }
+    .dash-level-line {
+      position: absolute; top: 10px; left: 10%; right: 10%; height: 2px;
+      background: rgba(255,255,255,0.08); z-index: 0;
+    }
+    .dash-level-line-fill {
+      height: 100%; background: var(--brick); width: 37%;
+    }
+
+    /* D-day 미션 마감 카드 */
+    .mission-deadline-card {
+      margin: 12px 16px 0; padding: 12px 14px;
+      background: rgba(194,74,53,0.06); border: 1px solid rgba(194,74,53,0.2);
+      border-radius: 10px; display: flex; align-items: center; gap: 12px;
+      cursor: pointer;
+    }
+    .mdc-dday {
+      font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700;
+      color: var(--brick); line-height: 1; flex-shrink: 0;
+    }
+    .mdc-dday small { font-size: 0.7rem; }
+    .mdc-info { flex: 1; min-width: 0; }
+    .mdc-title { font-size: 0.8rem; font-weight: 700; color: var(--dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .mdc-sub { font-size: 0.68rem; color: var(--muted); margin-top: 2px; }
+    .mdc-btn { background: var(--brick); color: white; font-size: 0.72rem; font-weight: 700; padding: 7px 12px; border-radius: 7px; border: none; cursor: pointer; flex-shrink: 0; }
+
+    /* 현재 챕터 카드 */
+    .current-ch-card {
+      margin: 16px 16px 0; padding: 14px;
+      background: var(--white); border: 1.5px solid var(--brick);
+      border-radius: 12px;
+    }
+    .ccc-label { font-size: 0.62rem; font-weight: 700; color: var(--brick); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 5px; }
+    .ccc-week { font-size: 0.7rem; color: var(--muted); margin-bottom: 2px; }
+    .ccc-title {
+      font-family: var(--font-heading); font-size: 0.92rem; font-weight: 700;
+      color: var(--dark); line-height: 1.4; margin-bottom: 12px;
+    }
+    .ccc-btns { display: flex; gap: 8px; }
+    .ccc-btn {
+      flex: 1; padding: 10px; border-radius: 8px; border: none; cursor: pointer;
+      font-size: 0.78rem; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 6px;
+    }
+    .ccc-btn-play { background: var(--brick); color: var(--white); }
+    .ccc-btn-mission { background: var(--surface); color: var(--dark); border: 1px solid var(--border); }
+
+    /* 여정 맵 */
+    .journey-section { padding: 16px 16px 0; }
+    .journey-title {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+    }
+    .journey-weeks { display: flex; flex-direction: column; gap: 8px; padding-bottom: 16px; }
+
+    .journey-week {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; cursor: pointer; transition: border-color 0.2s;
+    }
+    .journey-week.j-current { border-color: var(--brick); }
+    .journey-week.j-locked { opacity: 0.55; cursor: default; }
+
+    .journey-week-head {
+      padding: 11px 14px; display: flex; align-items: center; gap: 10px;
+    }
+    .j-badge {
+      width: 26px; height: 26px; border-radius: 999px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700;
+    }
+    .j-badge.done { background: var(--brick); color: var(--white); }
+    .j-badge.cur {
+      background: var(--brick); color: var(--white); position: relative;
+    }
+    .j-badge.cur::after {
+      content: ''; position: absolute; inset: -3px;
+      border: 2px solid var(--brick); border-radius: 999px;
+      opacity: 0.35; animation: jpulse 1.8s ease infinite;
+    }
+    @keyframes jpulse {
+      0%,100% { transform: scale(0.95); opacity: 0.4; }
+      50% { transform: scale(1.08); opacity: 0.15; }
+    }
+    .j-badge.locked { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+
+    .j-week-info { flex: 1; min-width: 0; }
+    .j-week-title { font-size: 0.8rem; font-weight: 700; color: var(--dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .j-week-sub { font-size: 0.67rem; color: var(--muted); margin-top: 1px; }
+
+    .j-dots { display: flex; gap: 4px; padding-right: 4px; align-items: center; }
+    .j-dot { width: 7px; height: 7px; border-radius: 999px; }
+    .j-dot.done { background: var(--brick); }
+    .j-dot.cur  { background: var(--brick); box-shadow: 0 0 0 2.5px rgba(194,74,53,0.22); }
+    .j-dot.next { background: rgba(194,74,53,0.2); }
+    .j-dot.locked { background: var(--border); }
+    .j-chevron { font-size: 0.7rem; color: var(--muted); flex-shrink: 0; transition: transform 0.2s; }
+    .journey-week.expanded .j-chevron { transform: rotate(180deg); }
+
+    /* 챕터 펼침 */
+    .j-chapters { display: none; border-top: 1px solid var(--border); }
+    .journey-week.expanded .j-chapters { display: block; }
+    .j-ch-row {
+      display: flex; align-items: center; gap: 9px; padding: 9px 14px;
+      border-bottom: 1px solid var(--surface); cursor: pointer;
+    }
+    .j-ch-row:last-child { border-bottom: none; }
+    .j-ch-num {
+      width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+      font-size: 0.65rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .j-ch-num.done  { background: var(--brick); color: white; }
+    .j-ch-num.cur   { background: #fff9f8; color: var(--brick); border: 1.5px solid var(--brick); }
+    .j-ch-num.locked{ background: var(--surface); color: var(--muted); }
+    .j-ch-title { font-size: 0.78rem; color: var(--dark); flex: 1; line-height: 1.4; }
+    .j-ch-title.dim { color: var(--muted); }
+    .j-ch-miss { font-size: 0.62rem; font-weight: 700; color: var(--brick); background: rgba(194,74,53,0.08); padding: 2px 7px; border-radius: 999px; flex-shrink: 0; }
+    .j-ch-play { color: var(--brick); flex-shrink: 0; font-size: 0.8rem; }
+
+    /* 보너스 */
+    .bonus-card {
+      margin: 0 16px 16px; padding: 14px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--brick);
+      border-radius: 0 12px 12px 0;
+    }
+    .bonus-label { font-size: 0.7rem; font-weight: 700; color: var(--brick); margin-bottom: 6px; }
+    .bonus-item { font-size: 0.78rem; color: var(--muted); line-height: 1.9; }
+
+    /* ══════════════════════════════════════════════
+       ② 수강생 — 플레이어
+    ══════════════════════════════════════════════ */
+    .player-video {
+      width: 100%; aspect-ratio: 16/9; background: #0d0d0d;
+      position: relative; display: flex; align-items: center; justify-content: center;
+    }
+    .player-big-play {
+      width: 54px; height: 54px; border-radius: 999px;
+      background: rgba(255,255,255,0.15); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .player-big-play:hover { background: rgba(255,255,255,0.22); }
+    .player-big-play svg { width: 20px; height: 20px; fill: white; margin-left: 3px; }
+    .player-controls {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px 12px 10px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.65));
+    }
+    .player-seek { height: 3px; background: rgba(255,255,255,0.25); border-radius: 2px; margin-bottom: 8px; cursor: pointer; position: relative; }
+    .player-seek-fill { height: 100%; background: var(--brick); width: 22%; border-radius: 2px; }
+    .player-ctrl-row { display: flex; align-items: center; gap: 10px; }
+    .p-ctrl-btn { background: none; border: none; cursor: pointer; color: white; padding: 3px; display: flex; align-items: center; }
+    .p-ctrl-btn svg { width: 17px; height: 17px; fill: white; }
+    .player-time { font-size: 0.7rem; color: rgba(255,255,255,0.65); flex: 1; }
+    .player-speed-btn { font-size: 0.7rem; color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.12); padding: 3px 8px; border-radius: 4px; border: none; cursor: pointer; }
+    .player-fullscreen { margin-left: auto; }
+
+    .player-info { padding: 14px 16px 0; }
+    .player-week-lbl { font-size: 0.68rem; color: var(--muted); margin-bottom: 2px; }
+    .player-ch-title { font-family: var(--font-heading); font-size: 0.98rem; font-weight: 700; color: var(--dark); line-height: 1.4; margin-bottom: 12px; }
+
+    .player-tabs { display: flex; border-bottom: 1px solid var(--border); padding: 0 16px; }
+    .player-tab {
+      padding: 9px 12px; font-size: 0.78rem; font-weight: 700; color: var(--muted);
+      border: none; background: none; cursor: pointer;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+    }
+    .player-tab.active { color: var(--dark); border-bottom-color: var(--brick); }
+
+    .player-tab-body { display: none; padding: 14px 16px; }
+    .player-tab-body.active { display: block; }
+
+    /* 챕터 목록 탭 */
+    .player-ch-week-lbl { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding: 10px 0 5px; }
+    .player-ch-item {
+      display: flex; align-items: center; gap: 9px; padding: 9px 10px;
+      border-radius: 8px; cursor: pointer; transition: background 0.15s;
+    }
+    .player-ch-item:hover { background: var(--surface); }
+    .player-ch-item.playing { background: #fff9f8; }
+    .p-ch-n {
+      width: 22px; height: 22px; border-radius: 6px; flex-shrink: 0;
+      font-size: 0.65rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .p-ch-n.done { background: var(--brick); color: white; }
+    .p-ch-n.cur  { background: #fff9f8; color: var(--brick); border: 1.5px solid var(--brick); }
+    .p-ch-n.lock { background: var(--surface); color: var(--muted); }
+    .p-ch-info { flex: 1; min-width: 0; }
+    .p-ch-name { font-size: 0.78rem; color: var(--dark); line-height: 1.4; }
+    .p-ch-name.dim { color: var(--muted); }
+    .p-ch-dur { font-size: 0.65rem; color: var(--muted); }
+    .p-ch-miss-badge { font-size: 0.62rem; font-weight: 700; color: var(--brick); background: rgba(194,74,53,0.08); padding: 2px 7px; border-radius: 999px; flex-shrink: 0; }
+
+    /* 수업자료 탭 */
+    .material-item {
+      display: flex; align-items: center; gap: 12px; padding: 11px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 9px; margin-bottom: 8px;
+    }
+    .mat-icon { font-size: 1.1rem; flex-shrink: 0; }
+    .mat-name { font-size: 0.8rem; font-weight: 700; color: var(--dark); }
+    .mat-size { font-size: 0.68rem; color: var(--muted); }
+    .mat-dl { margin-left: auto; background: var(--brick); color: white; font-size: 0.7rem; font-weight: 700; padding: 6px 11px; border-radius: 6px; border: none; cursor: pointer; }
+
+    /* ══════════════════════════════════════════════
+       ③ 수강생 — 미션
+    ══════════════════════════════════════════════ */
+    .mission-sec { padding: 16px; }
+
+    .mission-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden; margin-bottom: 14px;
+    }
+    .mission-card-head {
+      padding: 14px 16px; background: var(--dark);
+    }
+    .mc-week { font-size: 0.65rem; color: rgba(255,255,255,0.45); margin-bottom: 3px; }
+    .mc-title { font-family: var(--font-heading); font-size: 0.92rem; font-weight: 700; color: var(--white); line-height: 1.4; }
+    .mc-badge {
+      display: inline-block; margin-top: 6px;
+      font-size: 0.62rem; font-weight: 700; padding: 2px 9px; border-radius: 999px;
+    }
+    .mc-badge-pending { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.7); }
+    .mc-badge-done { background: rgba(43,156,78,0.2); color: #6fd89a; }
+
+    .mission-card-body { padding: 14px 16px; }
+    .mission-desc { font-size: 0.8rem; color: var(--dark); line-height: 1.85; margin-bottom: 14px; }
+    .mission-desc li { margin-bottom: 3px; }
+
+    .mission-upload {
+      border: 2px dashed var(--border); border-radius: 10px;
+      padding: 22px 16px; text-align: center; cursor: pointer;
+      margin-bottom: 10px; transition: border-color 0.2s, background 0.2s;
+    }
+    .mission-upload:hover { border-color: var(--brick); background: #fff9f8; }
+    .mission-upload-icon { font-size: 1.4rem; margin-bottom: 7px; }
+    .mission-upload-text { font-size: 0.78rem; color: var(--muted); line-height: 1.65; }
+    .mission-upload-text strong { color: var(--brick); }
+    .mission-upload-types { font-size: 0.68rem; color: var(--muted); margin-top: 5px; background: var(--surface); display: inline-block; padding: 2px 10px; border-radius: 999px; }
+
+    .mission-textarea {
+      width: 100%; padding: 11px; border: 1px solid var(--border);
+      border-radius: 8px; font-size: 0.8rem; color: var(--dark);
+      font-family: var(--font-body); resize: vertical; min-height: 72px;
+      margin-bottom: 10px; outline: none;
+    }
+    .mission-textarea:focus { border-color: var(--brick); }
+    .mission-submit-btn {
+      width: 100%; padding: 13px; background: var(--brick); color: var(--white);
+      font-size: 0.88rem; font-weight: 700; border: none; border-radius: 10px; cursor: pointer;
+    }
+    /* 해라스쿨 스타일: 피드백 먼저, 재제출 아래 */
+    .inline-feedback-notice {
+      background: rgba(43,156,78,0.06); border: 1px solid rgba(43,156,78,0.2);
+      border-radius: 10px; padding: 10px 12px; margin-bottom: 10px;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 0.75rem; color: #2b9c4e; font-weight: 700;
+    }
+
+    /* 피드백 박스 */
+    .feedback-box {
+      margin-top: 14px; padding: 14px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-left: 3px solid var(--brick);
+      border-radius: 0 12px 12px 0;
+    }
+    .fb-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .fb-avatar {
+      width: 28px; height: 28px; border-radius: 999px;
+      background: var(--brick); color: white; font-size: 0.68rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .fb-name { font-size: 0.78rem; font-weight: 700; color: var(--dark); }
+    .fb-date { font-size: 0.65rem; color: var(--muted); }
+    .fb-text { font-size: 0.8rem; color: var(--dark); line-height: 1.8; margin-bottom: 10px; }
+    .fb-audio {
+      display: flex; align-items: center; gap: 10px; padding: 9px 12px;
+      background: var(--white); border: 1px solid var(--border); border-radius: 8px;
+      cursor: pointer;
+    }
+    .fb-audio-play {
+      width: 26px; height: 26px; border-radius: 999px; background: var(--brick);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .fb-audio-play svg { width: 10px; height: 10px; fill: white; margin-left: 2px; }
+    .fb-audio-bar { flex: 1; height: 3px; background: var(--border); border-radius: 2px; }
+    .fb-audio-time { font-size: 0.68rem; color: var(--muted); }
+
+    /* 제출 이력 */
+    .mission-history { margin-bottom: 8px; }
+    .mh-title { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+    .mh-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 0; border-bottom: 1px solid var(--border);
+    }
+    .mh-row:last-child { border-bottom: none; }
+    .mh-week { font-size: 0.7rem; font-weight: 700; color: var(--brick); min-width: 38px; }
+    .mh-name { font-size: 0.78rem; color: var(--dark); flex: 1; }
+    .mh-badge { font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; }
+    .badge-done { background: rgba(43,156,78,0.1); color: #2b9c4e; }
+    .badge-wait { background: rgba(194,74,53,0.08); color: var(--brick); }
+
+    /* ══════════════════════════════════════════════
+       ④ 운영자 — 수강생 현황
+    ══════════════════════════════════════════════ */
+    .admin-section { padding: 16px; }
+    .admin-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+    .admin-stat {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 14px; text-align: center;
+    }
+    .admin-stat.hi { border-color: var(--brick); background: #fff9f8; }
+    .admin-stat-n { font-family: var(--font-heading); font-size: 1.7rem; font-weight: 700; color: var(--dark); line-height: 1; }
+    .admin-stat.hi .admin-stat-n { color: var(--brick); }
+    .admin-stat-l { font-size: 0.68rem; color: var(--muted); margin-top: 4px; font-weight: 700; }
+
+    .admin-sec-title {
+      font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700; color: var(--dark);
+      margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .admin-sec-title a { font-size: 0.7rem; color: var(--brick); font-family: var(--font-body); font-weight: 700; cursor: pointer; text-decoration: none; }
+
+    .student-list { display: flex; flex-direction: column; gap: 8px; }
+    .student-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 13px 14px;
+    }
+    .sc-row1 { display: flex; align-items: center; gap: 9px; margin-bottom: 8px; }
+    .sc-avatar {
+      width: 30px; height: 30px; border-radius: 999px;
+      font-size: 0.7rem; font-weight: 700; color: white;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .sc-name { font-size: 0.82rem; font-weight: 700; color: var(--dark); flex: 1; }
+    .sc-pct { font-size: 0.7rem; font-weight: 700; color: var(--brick); }
+    .sc-bar-bg { height: 5px; background: var(--surface); border-radius: 3px; margin-bottom: 7px; overflow: hidden; }
+    .sc-bar { height: 100%; background: var(--brick); border-radius: 3px; }
+    .sc-meta { display: flex; gap: 12px; }
+    .sc-tag { font-size: 0.65rem; color: var(--muted); }
+    .sc-tag strong { color: var(--dark); }
+    .sc-miss-badge {
+      font-size: 0.62rem; font-weight: 700; padding: 2px 8px;
+      border-radius: 999px; background: rgba(194,74,53,0.08); color: var(--brick);
+    }
+
+    /* ══════════════════════════════════════════════
+       ⑤ 운영자 — 영상 업로드
+    ══════════════════════════════════════════════ */
+    .upload-week-tabs {
+      display: flex; overflow-x: auto; gap: 8px; padding: 14px 16px 0;
+      scrollbar-width: none;
+    }
+    .upload-week-tabs::-webkit-scrollbar { display: none; }
+    .uw-tab {
+      flex-shrink: 0; padding: 7px 13px; font-size: 0.75rem; font-weight: 700;
+      border: 1px solid var(--border); border-radius: 999px; color: var(--muted);
+      background: var(--white); cursor: pointer; white-space: nowrap;
+    }
+    .uw-tab.active { border-color: var(--brick); color: var(--brick); background: #fff9f8; }
+
+    .upload-ch-list { padding: 12px 16px; display: flex; flex-direction: column; gap: 7px; }
+    .upload-ch-row {
+      display: flex; align-items: center; gap: 10px; padding: 11px 12px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; cursor: pointer; transition: border-color 0.15s;
+    }
+    .upload-ch-row.sel { border-color: var(--brick); background: #fff9f8; }
+    .uch-n {
+      width: 26px; height: 26px; border-radius: 7px; flex-shrink: 0;
+      font-size: 0.7rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .uch-n.up { background: var(--dark); color: white; }
+    .uch-n.empty { background: var(--surface); color: var(--muted); border: 1px dashed var(--border); }
+    .uch-title { font-size: 0.8rem; color: var(--dark); flex: 1; line-height: 1.4; }
+    .uch-status { font-size: 0.62rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; flex-shrink: 0; }
+    .uch-status.ok { background: rgba(43,156,78,0.1); color: #2b9c4e; }
+    .uch-status.no { background: var(--surface); color: var(--muted); border: 1px solid var(--border); }
+
+    .upload-area-sec { padding: 0 16px 16px; }
+    .upload-selected-ch {
+      font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: var(--dark);
+      margin-bottom: 12px; padding: 10px 14px;
+      background: #fff9f8; border: 1px solid var(--brick); border-radius: 8px;
+    }
+    .upload-dropzone {
+      border: 2px dashed var(--border); border-radius: 12px;
+      padding: 30px 20px; text-align: center; cursor: pointer; margin-bottom: 10px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .upload-dropzone:hover { border-color: var(--brick); background: #fff9f8; }
+    .ud-icon { font-size: 2rem; margin-bottom: 8px; }
+    .ud-text { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+    .ud-text strong { color: var(--dark); }
+    .ud-limit { font-size: 0.7rem; color: var(--muted); background: var(--surface); border: 1px solid var(--border); padding: 3px 10px; border-radius: 999px; display: inline-block; margin-top: 7px; }
+
+    .upload-progress-card {
+      padding: 12px 14px; background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; margin-bottom: 8px;
+    }
+    .upc-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .upc-icon { font-size: 0.9rem; }
+    .upc-name { font-size: 0.78rem; font-weight: 700; color: var(--dark); flex: 1; }
+    .upc-pct { font-size: 0.7rem; font-weight: 700; color: var(--brick); }
+    .upc-bar-bg { height: 4px; background: var(--surface); border-radius: 2px; overflow: hidden; }
+    .upc-bar { height: 100%; background: var(--brick); width: 67%; border-radius: 2px; animation: uploading 1.5s ease-in-out infinite alternate; }
+    @keyframes uploading { from { opacity: 0.7; } to { opacity: 1; } }
+    .upc-meta { font-size: 0.67rem; color: var(--muted); margin-top: 5px; }
+
+    .upload-pdf-area { margin-bottom: 14px; }
+    .upload-pdf-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+    .upload-pdf-btn {
+      display: flex; align-items: center; gap: 8px; padding: 10px 14px;
+      border: 1px dashed var(--border); border-radius: 9px; cursor: pointer;
+      background: var(--surface); font-size: 0.78rem; color: var(--dark);
+    }
+    .upload-pdf-btn:hover { border-color: var(--brick); }
+
+    /* ══════════════════════════════════════════════
+       ⑥ 운영자 — 미션 피드백
+    ══════════════════════════════════════════════ */
+    .admin-mission-list { display: flex; flex-direction: column; gap: 10px; }
+    .admin-mission-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; overflow: hidden;
+    }
+    .amc-head {
+      padding: 11px 14px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 9px;
+    }
+    .amc-avatar {
+      width: 28px; height: 28px; border-radius: 999px;
+      font-size: 0.68rem; font-weight: 700; color: white;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .amc-name { font-size: 0.8rem; font-weight: 700; color: var(--dark); flex: 1; }
+    .amc-week { font-size: 0.65rem; color: var(--muted); }
+    .amc-new { font-size: 0.62rem; font-weight: 700; color: var(--brick); background: rgba(194,74,53,0.08); padding: 2px 8px; border-radius: 999px; }
+
+    .amc-body { padding: 12px 14px; }
+    .amc-content { font-size: 0.78rem; color: var(--dark); line-height: 1.75; margin-bottom: 9px; }
+    .amc-file {
+      display: flex; align-items: center; gap: 8px; padding: 8px 11px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 7px;
+      margin-bottom: 10px;
+    }
+    .amc-file-icon { font-size: 0.85rem; }
+    .amc-file-name { font-size: 0.73rem; color: var(--dark); flex: 1; }
+    .amc-file-dl { font-size: 0.68rem; color: var(--brick); font-weight: 700; cursor: pointer; }
+
+    .amc-actions { display: flex; gap: 8px; }
+    .amc-btn {
+      flex: 1; padding: 9px; border-radius: 8px; border: none; cursor: pointer;
+      font-size: 0.76rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; gap: 5px;
+    }
+    .amc-btn-primary { background: var(--brick); color: white; }
+    .amc-btn-secondary { background: var(--surface); color: var(--dark); border: 1px solid var(--border); }
+
+    /* ── 공통 유틸 ───────────────────────────────── */
+    .sec-divider { height: 8px; background: var(--surface); }
+    .inline-badge {
+      display: inline-block; font-size: 0.62rem; font-weight: 700;
+      padding: 2px 8px; border-radius: 999px;
+    }
+  </style>
+</head>
+<body>
+<div class="lp-app" id="app">
+
+  <!-- ── 상단 헤더 ── -->
+  <header class="lp-header">
+    <span class="lp-logo">두우리 <span>프랑스어</span></span>
+    <div class="lp-mode-toggle">
+      <button class="lp-mode-btn active" id="btn-student" onclick="switchMode('student')">수강생</button>
+      <button class="lp-mode-btn" id="btn-admin" onclick="switchMode('admin')">운영자</button>
+    </div>
+  </header>
+
+  <!-- ── 콘텐츠 ── -->
+  <main class="lp-content" id="lp-content">
+
+    <!-- ══ 수강생: 대시보드 ══ -->
+    <div class="lp-view active" id="v-dashboard">
+
+      <!-- 히어로 -->
+      <div class="dash-hero">
+        <p class="dash-greeting">안녕하세요 👋</p>
+        <p class="dash-name">오늘도 <em>프랑스어</em>로<br>사고하는 하루 시작해요</p>
+        <div class="dash-stats">
+          <div class="dash-stat">
+            <span class="dash-stat-n">12<small>일</small></span>
+            <span class="dash-stat-l">🔥 연속 학습</span>
+          </div>
+          <div class="dash-stat">
+            <span class="dash-stat-n">11<small>/40</small></span>
+            <span class="dash-stat-l">완료 챕터</span>
+          </div>
+          <div class="dash-stat">
+            <span class="dash-stat-n">3<small>주차</small></span>
+            <span class="dash-stat-l">현재 진도</span>
+          </div>
+        </div>
+        <div class="dash-progress-label">
+          <span>전체 진도</span><span>27.5%</span>
+        </div>
+        <div class="dash-progress-bar">
+          <div class="dash-progress-fill" style="width:27.5%"></div>
+        </div>
+
+        <!-- 레벨 진행 시스템 -->
+        <div class="dash-level-strip">
+          <p class="dash-level-label">나의 레벨</p>
+          <div class="dash-level-bar">
+            <div class="dash-level-line"><div class="dash-level-line-fill"></div></div>
+            <div class="dash-level-item">
+              <div class="dash-level-dot lv-done">✓</div>
+              <span class="dash-level-name">첫걸음</span>
+            </div>
+            <div class="dash-level-item">
+              <div class="dash-level-dot lv-done">✓</div>
+              <span class="dash-level-name">입문자</span>
+            </div>
+            <div class="dash-level-item">
+              <div class="dash-level-dot lv-cur">★</div>
+              <span class="dash-level-name lv-cur-name">꾸준러</span>
+            </div>
+            <div class="dash-level-item">
+              <div class="dash-level-dot lv-lock">4</div>
+              <span class="dash-level-name">페이스메이커</span>
+            </div>
+            <div class="dash-level-item">
+              <div class="dash-level-dot lv-lock">🏆</div>
+              <span class="dash-level-name">완주</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- D-day 미션 마감 카드 -->
+      <div class="mission-deadline-card" onclick="goToMission()">
+        <div class="mdc-dday">D<small>-4</small></div>
+        <div class="mdc-info">
+          <p class="mdc-title">3주차 미션 마감</p>
+          <p class="mdc-sub">ER/IR 동사 문장 + 음성 낭독 제출</p>
+        </div>
+        <button class="mdc-btn">인증하기</button>
+      </div>
+
+      <!-- 현재 챕터 빠른 진입 -->
+      <div class="current-ch-card">
+        <p class="ccc-label">▶ 지금 이어서</p>
+        <p class="ccc-week">3주차 · 챕터 12</p>
+        <p class="ccc-title">지시사 — 쟤 좀 봐봐, 쟤 누구?</p>
+        <div class="ccc-btns">
+          <button class="ccc-btn ccc-btn-play" onclick="goToPlayer()">▶ 강의 보기</button>
+          <button class="ccc-btn ccc-btn-mission" onclick="goToMission()">📝 미션</button>
+        </div>
+      </div>
+
+      <!-- 여정 맵 -->
+      <div class="journey-section">
+        <p class="journey-title">📍 나의 학습 여정</p>
+        <div class="journey-weeks" id="journey-weeks">
+          <!-- JS로 렌더 -->
+        </div>
+      </div>
+
+      <!-- 보너스 -->
+      <div class="bonus-card">
+        <p class="bonus-label">🎁 보너스 챕터 (8주 완강 후 해금)</p>
+        <p class="bonus-item">
+          Bonus 1 — 모든 대명사 복습<br>
+          Bonus 2 — 모든 시제 복습 · 활용 연습<br>
+          Bonus 3 — 구어체 레지스터 (스크립트 PDF 3개 포함)
+        </p>
+      </div>
+
+    </div><!-- /대시보드 -->
+
+    <!-- ══ 수강생: 플레이어 ══ -->
+    <div class="lp-view" id="v-player">
+
+      <div class="player-video">
+        <div class="player-big-play">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </div>
+        <div class="player-controls">
+          <div class="player-seek"><div class="player-seek-fill"></div></div>
+          <div class="player-ctrl-row">
+            <button class="p-ctrl-btn">
+              <svg viewBox="0 0 24 24"><polygon points="19,20 9,12 19,4"/><line x1="5" y1="19" x2="5" y2="5"/></svg>
+            </button>
+            <button class="p-ctrl-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+            </button>
+            <button class="p-ctrl-btn">
+              <svg viewBox="0 0 24 24"><polygon points="5,4 15,12 5,20"/><polygon points="14,4 24,12 14,20" style="fill:white"/><line x1="20" y1="4" x2="20" y2="20" style="stroke:white;stroke-width:2"/></svg>
+            </button>
+            <span class="player-time">7:14 / 32:40</span>
+            <button class="player-speed-btn">1.5x</button>
+            <button class="p-ctrl-btn player-fullscreen">
+              <svg viewBox="0 0 24 24" stroke="white" fill="none" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="player-info">
+        <p class="player-week-lbl">3주차 — 동사 변화 마스터</p>
+        <p class="player-ch-title">챕터 12 · 지시사 — 쟤 좀 봐봐, 쟤 누구?</p>
+      </div>
+
+      <div class="player-tabs">
+        <button class="player-tab active" onclick="switchPlayerTab(this,'pt-curriculum')">커리큘럼</button>
+        <button class="player-tab" onclick="switchPlayerTab(this,'pt-materials')">수업자료</button>
+        <button class="player-tab" onclick="switchPlayerTab(this,'pt-mission')">미션</button>
+      </div>
+
+      <!-- 커리큘럼 탭 -->
+      <div class="player-tab-body active" id="pt-curriculum">
+        <div id="player-ch-list"><!-- JS 렌더 --></div>
+      </div>
+
+      <!-- 수업자료 탭 -->
+      <div class="player-tab-body" id="pt-materials">
+        <div class="material-item">
+          <span class="mat-icon">📄</span>
+          <div><p class="mat-name">챕터 12 강의 노트.pdf</p><p class="mat-size">1.2 MB</p></div>
+          <button class="mat-dl">↓ 다운</button>
+        </div>
+        <div class="material-item">
+          <span class="mat-icon">📝</span>
+          <div><p class="mat-name">3주차 단어 연습 시트.pdf</p><p class="mat-size">840 KB</p></div>
+          <button class="mat-dl">↓ 다운</button>
+        </div>
+        <div class="material-item">
+          <span class="mat-icon">🎵</span>
+          <div><p class="mat-name">원어민 발음 예시 mp3</p><p class="mat-size">3.4 MB</p></div>
+          <button class="mat-dl">↓ 다운</button>
+        </div>
+      </div>
+
+      <!-- 미션 탭 (플레이어 내) -->
+      <div class="player-tab-body" id="pt-mission">
+        <div style="padding:4px 0 8px;">
+          <p style="font-size:0.8rem;color:var(--muted);line-height:1.7;margin-bottom:12px;">
+            3주차 미션은 챕터 15 이후 제출 가능합니다.<br>
+            <strong style="color:var(--dark);">현재 챕터 12 수강 중</strong>
+          </p>
+          <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:14px;text-align:center;">
+            <p style="font-size:1.5rem;margin-bottom:6px;">🔒</p>
+            <p style="font-size:0.78rem;color:var(--muted);">챕터 15까지 완료하면<br>미션이 해금됩니다</p>
+            <p style="font-size:0.7rem;color:var(--brick);margin-top:8px;font-weight:700;">3개 챕터 남음</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /플레이어 -->
+
+    <!-- ══ 수강생: 미션 ══ -->
+    <div class="lp-view" id="v-mission">
+      <div class="mission-sec">
+
+        <!-- 완료 미션 예시 (1주차) -->
+        <div class="mission-card">
+          <div class="mission-card-head">
+            <p class="mc-week">1주차 미션</p>
+            <p class="mc-title">프랑스어로 나를 소개하는 문장 5개 만들기</p>
+            <span class="mc-badge mc-badge-done">✓ 피드백 완료</span>
+          </div>
+          <div class="mission-card-body">
+            <!-- 해라스쿨 스타일: 최근 피드백을 제출 form 위에 바로 노출 -->
+            <div class="feedback-box">
+              <div class="fb-header">
+                <div class="fb-avatar">두</div>
+                <div>
+                  <p class="fb-name">김두우리 선생님 · 최근 피드백</p>
+                  <p class="fb-date">2026.06.22</p>
+                </div>
+              </div>
+              <p class="fb-text">être 동사 활용이 정확해서 좋았어요! 특히 직업을 표현할 때 관사를 빼는 부분을 잘 적용하셨네요. 3번 문장에서 형용사 성수 일치를 한 번 더 확인해보세요 😊</p>
+              <div class="fb-audio">
+                <div class="fb-audio-play">
+                  <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+                <div class="fb-audio-bar"></div>
+                <span class="fb-audio-time">1:24</span>
+              </div>
+            </div>
+            <!-- 피드백 반영 후 재제출 구역 -->
+            <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);">
+              <p style="font-size:0.72rem;font-weight:700;color:var(--muted);letter-spacing:0.04em;margin-bottom:8px;">피드백 반영 후 재제출 (선택)</p>
+              <div class="mission-upload" style="padding:14px;">
+                <div class="mission-upload-icon" style="font-size:1rem;">📎</div>
+                <p class="mission-upload-text" style="font-size:0.72rem;">수정본 파일 첨부 (선택)</p>
+              </div>
+              <button class="mission-submit-btn" style="background:var(--dark);font-size:0.8rem;">재제출하기</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 제출 대기 중 (2주차) -->
+        <div class="mission-card">
+          <div class="mission-card-head">
+            <p class="mc-week">2주차 미션</p>
+            <p class="mc-title">부정문·의문문을 활용해 대화 스크립트 작성</p>
+            <span class="mc-badge mc-badge-pending">⏳ 피드백 대기 중</span>
+          </div>
+          <div class="mission-card-body">
+            <p class="mission-desc" style="color:var(--muted);font-size:0.78rem;">제출 완료 · 피드백을 기다리고 있어요</p>
+          </div>
+        </div>
+
+        <!-- 현재 미션 (3주차 — 아직 잠김) -->
+        <div class="mission-card">
+          <div class="mission-card-head">
+            <p class="mc-week">3주차 미션 (챕터 15 완료 후 해금)</p>
+            <p class="mc-title">ER/IR 동사를 활용한 일상 문장 10개 + 음성 낭독</p>
+            <span class="mc-badge mc-badge-pending">🔒 미해금</span>
+          </div>
+          <div class="mission-card-body">
+            <p style="font-size:0.78rem;color:var(--muted);margin-bottom:12px;line-height:1.7;">
+              미션 내용:<br>
+              • ER 동사 5개, IR 동사 5개 각각 문장 구성<br>
+              • 직접 낭독한 음성 파일 (1~2분) 제출<br>
+              • 추가 메모: 작성하면서 어려웠던 부분 기록
+            </p>
+            <div class="mission-upload" style="opacity:0.5;pointer-events:none;">
+              <div class="mission-upload-icon">🎙️</div>
+              <p class="mission-upload-text">파일을 클릭하거나 끌어다 놓으세요<br><strong>영상 · 음성 · 이미지 · PDF</strong></p>
+              <span class="mission-upload-types">최대 500MB</span>
+            </div>
+            <textarea class="mission-textarea" placeholder="메모를 입력하세요..." disabled></textarea>
+            <button class="mission-submit-btn" disabled style="opacity:0.5;cursor:not-allowed;">🔒 챕터 15 완료 후 인증 가능</button>
+          </div>
+        </div>
+
+        <!-- 제출 이력 -->
+        <div class="mission-history">
+          <p class="mh-title">제출 이력</p>
+          <div class="mh-row">
+            <span class="mh-week">1주차</span>
+            <span class="mh-name">나를 소개하는 문장 5개</span>
+            <span class="mh-badge badge-done">피드백 완료</span>
+          </div>
+          <div class="mh-row">
+            <span class="mh-week">2주차</span>
+            <span class="mh-name">부정문·의문문 대화 스크립트</span>
+            <span class="mh-badge badge-wait">대기 중</span>
+          </div>
+          <div class="mh-row">
+            <span class="mh-week">3주차</span>
+            <span class="mh-name">ER/IR 동사 문장 + 낭독</span>
+            <span class="mh-badge" style="background:var(--surface);color:var(--muted);border:1px solid var(--border);">미해금</span>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /미션 -->
+
+    <!-- ══ 운영자: 수강생 현황 ══ -->
+    <div class="lp-view" id="v-students">
+      <div class="admin-section">
+
+        <div class="admin-stat-grid">
+          <div class="admin-stat">
+            <p class="admin-stat-n">28</p>
+            <p class="admin-stat-l">총 수강생</p>
+          </div>
+          <div class="admin-stat hi">
+            <p class="admin-stat-n">5</p>
+            <p class="admin-stat-l">🔔 미션 대기</p>
+          </div>
+          <div class="admin-stat">
+            <p class="admin-stat-n">62%</p>
+            <p class="admin-stat-l">평균 진도율</p>
+          </div>
+          <div class="admin-stat">
+            <p class="admin-stat-n">3</p>
+            <p class="admin-stat-l">이번 주 신규</p>
+          </div>
+        </div>
+
+        <div class="admin-sec-title">
+          <span>수강생 진도 현황</span>
+          <a>전체 보기 →</a>
+        </div>
+
+        <div class="student-list">
+          <div class="student-card">
+            <div class="sc-row1">
+              <div class="sc-avatar" style="background:#5b6ca8;">김</div>
+              <span class="sc-name">김○○</span>
+              <span class="sc-pct">72%</span>
+            </div>
+            <div class="sc-bar-bg"><div class="sc-bar" style="width:72%"></div></div>
+            <div class="sc-meta">
+              <span class="sc-tag">5주차 · 챕터 <strong>29</strong></span>
+              <span class="sc-tag">🔥 <strong>18일</strong> 연속</span>
+              <span class="sc-miss-badge">미션 대기</span>
+            </div>
+          </div>
+          <div class="student-card">
+            <div class="sc-row1">
+              <div class="sc-avatar" style="background:#a86b5b;">박</div>
+              <span class="sc-name">박○○</span>
+              <span class="sc-pct">55%</span>
+            </div>
+            <div class="sc-bar-bg"><div class="sc-bar" style="width:55%"></div></div>
+            <div class="sc-meta">
+              <span class="sc-tag">4주차 · 챕터 <strong>22</strong></span>
+              <span class="sc-tag">🔥 <strong>7일</strong> 연속</span>
+            </div>
+          </div>
+          <div class="student-card">
+            <div class="sc-row1">
+              <div class="sc-avatar" style="background:#5b8a6e;">이</div>
+              <span class="sc-name">이○○</span>
+              <span class="sc-pct">27%</span>
+            </div>
+            <div class="sc-bar-bg"><div class="sc-bar" style="width:27%"></div></div>
+            <div class="sc-meta">
+              <span class="sc-tag">3주차 · 챕터 <strong>11</strong></span>
+              <span class="sc-tag">마지막 접속 <strong>3일 전</strong></span>
+              <span class="sc-miss-badge">미션 대기</span>
+            </div>
+          </div>
+          <div class="student-card">
+            <div class="sc-row1">
+              <div class="sc-avatar" style="background:#7a5a8a;">최</div>
+              <span class="sc-name">최○○</span>
+              <span class="sc-pct">100%</span>
+            </div>
+            <div class="sc-bar-bg"><div class="sc-bar" style="width:100%;background:#2b9c4e;"></div></div>
+            <div class="sc-meta">
+              <span class="sc-tag" style="color:#2b9c4e;font-weight:700;">🏆 완강!</span>
+              <span class="sc-tag">🔥 <strong>56일</strong> 연속</span>
+            </div>
+          </div>
+          <div class="student-card">
+            <div class="sc-row1">
+              <div class="sc-avatar" style="background:#c24a35;">정</div>
+              <span class="sc-name">정○○</span>
+              <span class="sc-pct">42%</span>
+            </div>
+            <div class="sc-bar-bg"><div class="sc-bar" style="width:42%"></div></div>
+            <div class="sc-meta">
+              <span class="sc-tag">3주차 · 챕터 <strong>17</strong></span>
+              <span class="sc-tag">마지막 접속 <strong>오늘</strong></span>
+              <span class="sc-miss-badge">미션 대기</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /수강생 현황 -->
+
+    <!-- ══ 운영자: 업로드 ══ -->
+    <div class="lp-view" id="v-upload">
+
+      <div class="upload-week-tabs" id="upload-week-tabs">
+        <!-- JS 렌더 -->
+      </div>
+
+      <div class="upload-ch-list" id="upload-ch-list">
+        <!-- JS 렌더 -->
+      </div>
+
+      <div class="upload-area-sec">
+        <div class="upload-selected-ch" id="upload-selected-ch">
+          📌 챕터 선택 후 업로드하세요
+        </div>
+
+        <!-- 업로드 중 표시 (예시) -->
+        <div class="upload-progress-card">
+          <div class="upc-top">
+            <span class="upc-icon">🎬</span>
+            <span class="upc-name">챕터 12 — 지시사 강의.mp4</span>
+            <span class="upc-pct">67%</span>
+          </div>
+          <div class="upc-bar-bg"><div class="upc-bar"></div></div>
+          <p class="upc-meta">895 MB / 1.3 GB · 예상 남은 시간 약 4분</p>
+        </div>
+
+        <div class="upload-dropzone">
+          <div class="ud-icon">☁️</div>
+          <p class="ud-text">클릭하거나 영상 파일을 끌어다 놓으세요<br><strong>MP4, MOV, AVI 지원</strong></p>
+          <span class="ud-limit">최대 2 GB / 챕터</span>
+        </div>
+
+        <div class="upload-pdf-area">
+          <p class="upload-pdf-label">강의자료 PDF (선택)</p>
+          <div class="upload-pdf-btn">
+            📄 <span>PDF 파일 첨부</span>
+          </div>
+        </div>
+
+        <button style="width:100%;padding:13px;background:var(--dark);color:white;font-size:0.88rem;font-weight:700;border:none;border-radius:10px;cursor:pointer;">
+          챕터 업로드 완료
+        </button>
+      </div>
+
+    </div><!-- /업로드 -->
+
+    <!-- ══ 운영자: 미션 피드백 ══ -->
+    <div class="lp-view" id="v-feedback">
+      <div class="admin-section">
+
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px;">
+          <span style="font-family:var(--font-heading);font-size:0.9rem;font-weight:700;color:var(--dark);">미션 검토</span>
+          <span style="font-size:0.7rem;font-weight:700;color:var(--brick);background:rgba(194,74,53,0.1);padding:3px 9px;border-radius:999px;">5건 대기</span>
+        </div>
+
+        <div class="admin-mission-list">
+
+          <div class="admin-mission-card">
+            <div class="amc-head">
+              <div class="amc-avatar" style="background:#5b6ca8;">김</div>
+              <span class="amc-name">김○○</span>
+              <span class="amc-week">5주차 미션</span>
+              <span class="amc-new">NEW</span>
+            </div>
+            <div class="amc-body">
+              <p class="amc-content">"관계대명사를 활용해서 최대한 긴 문장을 만들어보려고 했어요. qui와 que 구분이 아직 헷갈려서 몇 번 고쳤습니다..."</p>
+              <div class="amc-file">
+                <span class="amc-file-icon">🎵</span>
+                <span class="amc-file-name">김○○_5주차_낭독.mp3</span>
+                <span class="amc-file-dl">▶ 듣기</span>
+              </div>
+              <div class="amc-file">
+                <span class="amc-file-icon">📄</span>
+                <span class="amc-file-name">김○○_5주차_작문.pdf</span>
+                <span class="amc-file-dl">↓ 보기</span>
+              </div>
+              <div class="amc-actions">
+                <button class="amc-btn amc-btn-primary">🎙️ 음성 피드백</button>
+                <button class="amc-btn amc-btn-secondary">✏️ 글 피드백</button>
+                <button class="amc-btn amc-btn-secondary" style="flex:0.6;">📎 파일</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-mission-card">
+            <div class="amc-head">
+              <div class="amc-avatar" style="background:#c24a35;">정</div>
+              <span class="amc-name">정○○</span>
+              <span class="amc-week">3주차 미션</span>
+              <span class="amc-new">NEW</span>
+            </div>
+            <div class="amc-body">
+              <p class="amc-content">ER동사 문장 5개, IR동사 문장 5개 작성했습니다. aller 동사가 특이하다는 게 신기했어요!</p>
+              <div class="amc-file">
+                <span class="amc-file-icon">🎬</span>
+                <span class="amc-file-name">정○○_3주차_영상.mp4</span>
+                <span class="amc-file-dl">▶ 보기</span>
+              </div>
+              <div class="amc-actions">
+                <button class="amc-btn amc-btn-primary">🎙️ 음성 피드백</button>
+                <button class="amc-btn amc-btn-secondary">✏️ 글 피드백</button>
+                <button class="amc-btn amc-btn-secondary" style="flex:0.6;">📎 파일</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="admin-mission-card">
+            <div class="amc-head">
+              <div class="amc-avatar" style="background:#5b8a6e;">이</div>
+              <span class="amc-name">이○○</span>
+              <span class="amc-week">2주차 미션</span>
+              <span class="amc-new">NEW</span>
+            </div>
+            <div class="amc-body">
+              <p class="amc-content">부정문 만드는 게 한국어랑 너무 달라서 어려웠는데 재밌었습니다. ne...pas 위치를 계속 까먹어요 😅</p>
+              <div class="amc-file">
+                <span class="amc-file-icon">🖼️</span>
+                <span class="amc-file-name">이○○_2주차_손글씨.jpg</span>
+                <span class="amc-file-dl">↓ 보기</span>
+              </div>
+              <div class="amc-actions">
+                <button class="amc-btn amc-btn-primary">🎙️ 음성 피드백</button>
+                <button class="amc-btn amc-btn-secondary">✏️ 글 피드백</button>
+                <button class="amc-btn amc-btn-secondary" style="flex:0.6;">📎 파일</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div><!-- /미션 피드백 -->
+
+  </main><!-- /lp-content -->
+
+  <!-- ── 하단 네비게이션 ── -->
+  <nav class="lp-bottom-nav" id="bottom-nav">
+    <!-- JS 렌더 -->
+  </nav>
+
+</div><!-- /app -->
+
+<script>
+// ── 커리큘럼 데이터 ─────────────────────────────
+const WEEKS = [
+  { n:1, title:'프랑스어 기초 동사와 문장 구조', chapters:[
+    [1,'être 동사 — 프랑스어의 매력 파헤치기', false],
+    [2,'avoir — 프랑스어 구조 감 잡기', false],
+    [3,'비인칭 주어의 매력 파헤치기', false],
+    [4,'형용사의 세계 — 성별·단수·복수', false],
+    [5,'프랑스어 숫자 70·80·90 🤯', true],
+  ]},
+  { n:2, title:'표현 확장 — 부정·의문·소유·가족', chapters:[
+    [6,'부정문과 의문문 — 프랑스식 대답의 사고방식', false],
+    [7,'명사·관사 + 국가 — 프랑스의 성별 논쟁', false],
+    [8,'소유 대명사 — 소유한 사람보다 물건이 더 중요하다고?', false],
+    [9,'가족 명칭 + C\'est / Il est', false],
+    [10,'형용사 2 + 과거분사 — 숨은 비밀', true],
+  ]},
+  { n:3, title:'동사 변화 마스터 — ER·IR·OIR·RE', chapters:[
+    [11,'지시사 — 쟤 좀 봐봐, 쟤 누구?', false],
+    [12,'부정관사·숫자·그룹 명사 벤 다이어그램', false],
+    [13,'ER 동사 — 선입견 부수기 👊', false],
+    [14,'aller + 장소·시간 (계절, 월, 시대)', false],
+    [15,'IR·OIR·RE 동사 — 언어학자 되기 🤓', true],
+  ]},
+  { n:4, title:'조건법·비교급·복합과거 — 표현의 깊이', chapters:[
+    [16,'조건법 (pouvoir·vouloir·devoir) 🕹', false],
+    [17,'비교급·최상급 — 침묵할 것인가, 발음할 것인가?', false],
+    [18,'제롱디프 + "Venir de" ✌️', false],
+    [19,'prendre·mettre + 직접 목적 대명사 🔩', false],
+    [20,'관사 총정리 + 대명사 EN 😎', true],
+  ]},
+  { n:5, title:'대명사 완전 정복 — 재귀·관계·간접', chapters:[
+    [21,'재귀 동사 + 근접 미래 🎠', false],
+    [22,'간접 목적 대명사 — 문법이 필수가 되는 순간', false],
+    [23,'관계 대명사 — 수많은 문장이 프랑스어로 🪄', false],
+    [24,'왕래 동사 — 유럽인이 손을 자주 쓰는 이유 🫵', false],
+    [25,'의문문 2 — 어린 왕자의 질문을 프랑스어로 🧣', true],
+  ]},
+  { n:6, title:'복합 과거 심화 + 미래·반과거', chapters:[
+    [26,'복합 과거 심화 🤠', false],
+    [27,'미래 + 조건법 2 + 가정법 🤯', false],
+    [28,'시간과 공간 — 삶의 발자취: Le Parcours', false],
+    [29,'반과거 (vs 복합과거) — 두 과거의 콜라보 🍿', false],
+    [30,'간접 화법 + 논리 접속 🧠', true],
+  ]},
+  { n:7, title:'고급 문법 — 접속법·대과거·조건법과거', chapters:[
+    [31,'접속법 1 — 프랑스어 문법의 위상 😯', false],
+    [32,'대과거 + 전미래 🪬', false],
+    [33,'조건법 과거 + 가정법 👨‍⚖️', false],
+    [34,'과거 간접 화법 😏', false],
+    [35,'접속법 2 (심화) — 의견의 밀당 💬', true],
+  ]},
+  { n:8, title:'총정리 + 실전 표현', chapters:[
+    [36,'부사 — 잘 따라오고 있는지 중간 점검 📔', false],
+    [37,'강세 인칭 대명사 — 은어를 가르치는 선생님 😭', false],
+    [38,'명령법 + 공간 표현 😌', false],
+    [39,'간접 화법 완성편', false],
+    [40,'최종 정리 — 모든 것이 연결된다 🎓', true],
+  ]},
+];
+
+const CURRENT_CH = 12;
+const DONE_THROUGH = 11;
+
+// ── 상태 ─────────────────────────────────────────
+let mode = 'student'; // 'student' | 'admin'
+let studentView = 'dashboard'; // dashboard | player | mission
+let adminView = 'students'; // students | upload | feedback
+let expandedWeek = 3;
+let uploadWeek = 1;
+
+// ── 모드 전환 ─────────────────────────────────────
+function switchMode(m) {
+  mode = m;
+  document.getElementById('btn-student').classList.toggle('active', m === 'student');
+  document.getElementById('btn-admin').classList.toggle('active', m === 'admin');
+  renderBottomNav();
+  if (m === 'student') showView(studentView === 'dashboard' ? 'v-dashboard' : studentView === 'player' ? 'v-player' : 'v-mission');
+  else showView(adminView === 'students' ? 'v-students' : adminView === 'upload' ? 'v-upload' : 'v-feedback');
+}
+
+function showView(id) {
+  document.querySelectorAll('.lp-view').forEach(v => v.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ── 수강생 네비 ───────────────────────────────────
+const studentNavs = [
+  { id:'v-dashboard', label:'대시보드', icon:'<path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>' },
+  { id:'v-player',    label:'강의',    icon:'<circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>' },
+  { id:'v-mission',   label:'미션',    icon:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>' },
+];
+const adminNavs = [
+  { id:'v-students', label:'수강생',  icon:'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>' },
+  { id:'v-upload',   label:'업로드',  icon:'<polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/>' },
+  { id:'v-feedback', label:'미션검토', icon:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' },
+];
+
+function renderBottomNav() {
+  const nav = document.getElementById('bottom-nav');
+  const navs = mode === 'student' ? studentNavs : adminNavs;
+  const curView = mode === 'student'
+    ? (studentView === 'dashboard' ? 'v-dashboard' : studentView === 'player' ? 'v-player' : 'v-mission')
+    : (adminView === 'students' ? 'v-students' : adminView === 'upload' ? 'v-upload' : 'v-feedback');
+  nav.innerHTML = navs.map(n => `
+    <button class="lp-nav-btn ${curView === n.id ? 'active' : ''}" onclick="navTo('${n.id}')">
+      <svg viewBox="0 0 24 24">${n.icon}</svg>
+      <span class="lp-nav-label">${n.label}</span>
+    </button>
+  `).join('');
+}
+
+function navTo(id) {
+  if (mode === 'student') {
+    studentView = id === 'v-dashboard' ? 'dashboard' : id === 'v-player' ? 'player' : 'mission';
+  } else {
+    adminView = id === 'v-students' ? 'students' : id === 'v-upload' ? 'upload' : 'feedback';
+  }
+  showView(id);
+  renderBottomNav();
+}
+
+function goToPlayer() { navTo('v-player'); }
+function goToMission() { navTo('v-mission'); }
+
+// ── 여정 맵 렌더 ──────────────────────────────────
+function renderJourneyMap() {
+  const container = document.getElementById('journey-weeks');
+  container.innerHTML = WEEKS.map(w => {
+    const allDone = w.chapters.every(c => c[0] <= DONE_THROUGH);
+    const isCurrent = w.chapters.some(c => c[0] === CURRENT_CH);
+    const isLocked = w.chapters.every(c => c[0] > CURRENT_CH);
+    const badgeClass = allDone ? 'done' : isCurrent ? 'cur' : 'locked';
+    const weekClass = allDone ? '' : isCurrent ? 'j-current' : 'j-locked';
+    const isExpanded = w.n === expandedWeek ? 'expanded' : '';
+
+    const dots = w.chapters.map(c => {
+      if (c[0] <= DONE_THROUGH) return '<span class="j-dot done"></span>';
+      if (c[0] === CURRENT_CH) return '<span class="j-dot cur"></span>';
+      if (!isLocked) return '<span class="j-dot next"></span>';
+      return '<span class="j-dot locked"></span>';
+    }).join('');
+
+    const doneCount = w.chapters.filter(c => c[0] <= DONE_THROUGH).length;
+    const sub = allDone ? '완료 ✓' : isCurrent ? `${doneCount}/5 챕터` : '잠김 🔒';
+
+    const chapters = w.chapters.map(c => {
+      const isDone = c[0] <= DONE_THROUGH;
+      const isCur = c[0] === CURRENT_CH;
+      const isLock = c[0] > CURRENT_CH;
+      const numClass = isDone ? 'done' : isCur ? 'cur' : 'locked';
+      const titleClass = isLock ? 'dim' : '';
+      const missTag = c[2] ? '<span class="j-ch-miss">미션</span>' : '';
+      const playIcon = (isDone || isCur) ? '<span class="j-ch-play">▶</span>' : '';
+      return `
+        <div class="j-ch-row" ${(isDone||isCur)?'onclick="goToPlayer()"':''}>
+          <span class="j-ch-num ${numClass}">${c[0]}</span>
+          <span class="j-ch-title ${titleClass}">${c[1]}</span>
+          ${missTag}${playIcon}
+        </div>`;
+    }).join('');
+
+    return `
+      <div class="journey-week ${weekClass} ${isExpanded}" onclick="toggleWeek(${w.n}, event)">
+        <div class="journey-week-head">
+          <span class="j-badge ${badgeClass}">${allDone ? '✓' : w.n}</span>
+          <div class="j-week-info">
+            <p class="j-week-title">${w.n}주차 · ${w.title}</p>
+            <p class="j-week-sub">${sub}</p>
+          </div>
+          <div class="j-dots">${dots}</div>
+          <span class="j-chevron">▾</span>
+        </div>
+        <div class="j-chapters">${chapters}</div>
+      </div>`;
+  }).join('');
+}
+
+function toggleWeek(n, e) {
+  // 잠긴 주차는 열지 않음
+  const week = WEEKS[n-1];
+  if (week.chapters.every(c => c[0] > CURRENT_CH)) return;
+  expandedWeek = expandedWeek === n ? null : n;
+  renderJourneyMap();
+}
+
+// ── 영상 시간 (챕터별 더미 데이터) ──────────────────
+const CH_DURATIONS = {
+  1:'35:12', 2:'28:44', 3:'32:05', 4:'41:18', 5:'38:30',
+  6:'40:24', 7:'42:54', 8:'36:10', 9:'29:55', 10:'44:02',
+  11:'38:47', 12:'33:21', 13:'45:09', 14:'37:33', 15:'41:56',
+  16:'39:14', 17:'43:28', 18:'35:52', 19:'30:17', 20:'46:03',
+  21:'38:09', 22:'42:37', 23:'44:51', 24:'36:25', 25:'40:18',
+  26:'37:44', 27:'43:12', 28:'39:28', 29:'41:05', 30:'44:37',
+  31:'38:22', 32:'45:49', 33:'42:13', 34:'36:58', 35:'47:24',
+  36:'33:45', 37:'40:31', 38:'38:56', 39:'43:17', 40:'52:08',
+};
+// 첨부파일 있는 챕터 (짝수 챕터)
+const HAS_MATERIAL = new Set([2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,36,38,40]);
+
+// ── 플레이어 챕터 목록 렌더 ───────────────────────
+function renderPlayerChapterList() {
+  const container = document.getElementById('player-ch-list');
+  container.innerHTML = WEEKS.map(w => {
+    const chs = w.chapters.map(c => {
+      const isDone = c[0] <= DONE_THROUGH;
+      const isCur = c[0] === CURRENT_CH;
+      const isLock = c[0] > CURRENT_CH;
+      const nc = isDone ? 'done' : isCur ? 'cur' : 'lock';
+      const tc = isLock ? 'dim' : '';
+      const miss = c[2] ? '<span class="p-ch-miss-badge">미션</span>' : '';
+      const matBadge = HAS_MATERIAL.has(c[0]) && !isLock ? '<span style="font-size:0.58rem;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:1px 6px;border-radius:4px;flex-shrink:0;">📎 자료</span>' : '';
+      const dur = !isLock ? `<span style="font-size:0.62rem;color:var(--muted);">${CH_DURATIONS[c[0]] || '35:00'}</span>` : '';
+      return `
+        <div class="player-ch-item ${isCur ? 'playing' : ''}">
+          <span class="p-ch-n ${nc}">${isDone ? '✓' : c[0]}</span>
+          <div class="p-ch-info" style="min-width:0;">
+            <p class="p-ch-name ${tc}">${c[1]}</p>
+            <div style="display:flex;align-items:center;gap:6px;margin-top:2px;">
+              ${dur}${miss}${matBadge}
+            </div>
+          </div>
+        </div>`;
+    }).join('');
+    return `<p class="player-ch-week-lbl">${w.n}주차 · ${w.title}</p>${chs}`;
+  }).join('');
+}
+
+// ── 업로드 뷰 렌더 ────────────────────────────────
+function renderUploadView() {
+  const tabsEl = document.getElementById('upload-week-tabs');
+  tabsEl.innerHTML = WEEKS.map(w => `
+    <button class="uw-tab ${w.n === uploadWeek ? 'active' : ''}" onclick="selectUploadWeek(${w.n})">${w.n}주차</button>
+  `).join('');
+
+  const week = WEEKS[uploadWeek - 1];
+  const chListEl = document.getElementById('upload-ch-list');
+  chListEl.innerHTML = week.chapters.map((c, i) => {
+    const uploaded = c[0] <= 10; // 챕터 10까지 업로드 완료 (데모)
+    return `
+      <div class="upload-ch-row" onclick="selectUploadCh(${c[0]}, '${c[1].replace(/'/g,"\\'")}', this)">
+        <span class="uch-n ${uploaded ? 'up' : 'empty'}">${c[0]}</span>
+        <span class="uch-title">${c[1]}</span>
+        <span class="uch-status ${uploaded ? 'ok' : 'no'}">${uploaded ? '업로드 완료' : '미업로드'}</span>
+      </div>`;
+  }).join('');
+}
+
+function selectUploadWeek(n) {
+  uploadWeek = n;
+  renderUploadView();
+}
+
+function selectUploadCh(n, title, el) {
+  document.querySelectorAll('.upload-ch-row').forEach(r => r.classList.remove('sel'));
+  el.classList.add('sel');
+  document.getElementById('upload-selected-ch').textContent = `📌 챕터 ${n} · ${title}`;
+}
+
+// ── 플레이어 탭 전환 ──────────────────────────────
+function switchPlayerTab(btn, targetId) {
+  document.querySelectorAll('.player-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.player-tab-body').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(targetId).classList.add('active');
+}
+
+// ── 초기화 ────────────────────────────────────────
+renderBottomNav();
+renderJourneyMap();
+renderPlayerChapterList();
+renderUploadView();
+
+// 3주차 자동 펼침
+document.addEventListener('DOMContentLoaded', () => {});
+</script>
+</body>
+</html>

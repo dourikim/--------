@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>통번역 · 로컬화 이력 | 김두우리</title>
+  <meta name="description" content="엔터테인먼트, IT, 기업까지. 한불 통번역 및 로컬라이제이션 이력을 확인하세요."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+  /* ═══ 포트폴리오 전용 스타일 ═══════════════════════════════ */
+
+  /* 카드 기본 */
+  .pf-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    background: var(--white);
+    transition: box-shadow 0.22s, transform 0.22s;
+  }
+  .pf-card:hover {
+    box-shadow: 0 8px 28px rgba(46,14,12,0.1);
+    transform: translateY(-2px);
+  }
+
+  /* 썸네일 영역 */
+  .pf-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    background: var(--surface);
+    flex-shrink: 0;
+  }
+  .pf-thumb img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .pf-card:hover .pf-thumb img { transform: scale(1.04); }
+
+  /* 카드 바디 */
+  .pf-card-body { padding: 18px 20px 20px; }
+
+  /* 데스크톱: 가로 배치 */
+  @media (min-width: 769px) {
+    .pf-card.pf-h {
+      display: flex;
+      flex-direction: row;
+    }
+    .pf-card.pf-h .pf-thumb {
+      width: 40%;
+      aspect-ratio: auto;
+      min-height: 210px;
+    }
+    .pf-card.pf-h .pf-card-body {
+      flex: 1;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    /* 이미지 오른쪽 */
+    .pf-card.pf-h.pf-reverse { flex-direction: row-reverse; }
+  }
+
+  /* 비디오 embed */
+  .pf-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: #000;
+    overflow: hidden;
+  }
+  .pf-embed iframe {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    border: none;
+  }
+
+  /* 메타 / 타이틀 */
+  .pf-year  { font-size: 0.71rem; font-weight: 700; letter-spacing: 0.08em; color: var(--brick); text-transform: uppercase; margin-bottom: 3px; }
+  .pf-title { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: 2px; line-height: 1.32; }
+  .pf-place { font-size: 0.78rem; color: var(--muted); margin-bottom: 10px; }
+  .pf-list  { padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; }
+  .pf-list li { font-size: 0.84rem; color: var(--muted); line-height: 1.65; }
+
+  /* 클라이언트 칩 */
+  .pf-clients { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+  .pf-client  { padding: 4px 10px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; font-size: 0.73rem; font-weight: 600; color: var(--dark); }
+
+  /* 스킬 칩 */
+  .pf-skills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .pf-skill  { padding: 5px 11px; background: rgba(194,74,53,0.08); border-radius: 999px; font-size: 0.77rem; font-weight: 600; color: var(--brick); }
+
+  /* 섹션 구분 라벨 */
+  .pf-sec { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 24px 0 10px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+
+  /* 통계 행 */
+  .pf-stats { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 0; }
+  .pf-stat  { flex: 1; min-width: 64px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 10px 6px; text-align: center; }
+  .pf-stat-n { font-size: 1.2rem; font-weight: 800; color: var(--brick); display: block; }
+  .pf-stat-l { font-size: 0.66rem; color: var(--muted); }
+
+  /* K-POP 트리오 링크 */
+  .pf-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px; }
+  @media (max-width: 480px) { .pf-trio { grid-template-columns: 1fr 1fr; } }
+  .pf-trio-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; padding: 12px 8px; background: var(--dark); color: var(--white); border-radius: 8px; font-size: 0.76rem; font-weight: 700; text-align: center; transition: background 0.18s; text-decoration: none; }
+  .pf-trio-btn:hover { background: var(--brick); }
+  .pf-trio-btn .ti { font-size: 1.3rem; }
+
+  /* 링크 버튼 */
+  .pf-link { display: inline-flex; align-items: center; gap: 5px; color: var(--brick); font-size: 0.82rem; font-weight: 600; margin-top: 10px; text-decoration: underline; }
+
+  /* 전체 wrap padding */
+  .pf-wrap { padding: 0 20px 40px; max-width: 720px; margin: 0 auto; }
+  @media (min-width: 769px) { .pf-wrap { padding: 0 32px 60px; } }
+
+  /* ══ 폰트 가이드라인 적용 ════════════════ */
+  .pf-title {
+    font-family: var(--font-heading);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.3;
+  }
+  .pf-year {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--brick);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .pf-sec {
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+  .pf-stat-n { font-family: var(--font-heading); font-size: 1.4rem; font-weight: 700; }
+
+  /* ══ 탭 바: 3등분 중앙 정렬 ═════════════ */
+  #tabs-bar {
+    overflow: visible;
+    overflow-x: clip;
+  }
+  #tabs-bar .tab-btn {
+    flex: 1;
+    flex-shrink: 1;
+    text-align: center;
+    padding: 14px 6px;
+    font-size: 0.82rem;
+    white-space: normal;
+    word-break: keep-all;
+    line-height: 1.3;
+  }
+
+  /* ══ 카드 비율 조정 ══════════════════════ */
+  @media (min-width: 769px) {
+    .pf-card.pf-h .pf-thumb  { width: 38%; }
+    .pf-card.pf-h.pf-reverse .pf-thumb { width: 38%; }
+
+    /* K-POP 카드 가로 레이아웃 */
+    .pf-card.kpop-card {
+      display: flex;
+      flex-direction: row;
+    }
+    .pf-card.kpop-card .pf-thumb {
+      width: 38%;
+      aspect-ratio: auto;
+      min-height: 240px;
+      flex-shrink: 0;
+    }
+    .pf-card.kpop-card .pf-card-body {
+      flex: 1;
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    /* 영상 embed 카드: 좌우 레이아웃 */
+    .pf-card:has(.pf-embed + .pf-card-body),
+    .pf-card:has(.pf-embed ~ .pf-card-body) {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+    }
+    .pf-card:has(.pf-embed + .pf-card-body) .pf-embed,
+    .pf-card:has(.pf-embed ~ .pf-card-body) .pf-embed {
+      width: 52%;
+      flex-shrink: 0;
+      aspect-ratio: auto;
+      min-height: 220px;
+    }
+    .pf-card:has(.pf-embed + .pf-card-body) .pf-card-body,
+    .pf-card:has(.pf-embed ~ .pf-card-body) .pf-card-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 24px 22px;
+    }
+  }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu" id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <!-- 히어로 -->
+  <div class="page-hero ph-dark">
+    <p class="page-hero-chip">📑 통번역 · Tech 로컬화 · 프로덕션 PM</p>
+    <h1 class="page-hero-title">뉘앙스까지<br>책임지는 전문가</h1>
+    <p class="page-hero-desc">2011년부터 엔터테인먼트 · IT · 기업을 아우르는 한불 통번역 및 로컬라이제이션.</p>
+  </div>
+
+  <!-- 탭 바 -->
+  <div class="tabs-bar" id="tabs-bar">
+    <button class="tab-btn active" data-tab="interp">🎙️ 통번역</button>
+    <button class="tab-btn"        data-tab="tech">💻 Tech 로컬화</button>
+    <button class="tab-btn"        data-tab="prod">🎬 프로덕션 PM</button>
+  </div>
+
+  <!-- ═══ 언어 패널 래퍼 ═══ -->
+  <div id="lang-panels">
+
+  <!-- ════════════ 한국어 ════════════ -->
+  <div class="lang-panel active" data-lang="ko">
+
+    <!-- ── 통번역 탭 ── -->
+    <div class="tab-panel active" data-tab="interp">
+    <div class="pf-wrap">
+
+      <!-- 스킬 칩 -->
+      <div class="pf-skills">
+        <span class="pf-skill">한↔불 순차·동시통역</span>
+        <span class="pf-skill">한↔영</span><span class="pf-skill">포↔불</span>
+        <span class="pf-skill">기업 VIP 현장</span>
+        <span class="pf-skill">아티스트 투어 동행</span>
+        <span class="pf-skill">영화제·공연 현장</span>
+        <span class="pf-skill">영화 시나리오·자막</span>
+        <span class="pf-skill">다큐 인터뷰 번역</span>
+        <span class="pf-skill">PPM·웹사이트·STT</span>
+      </div>
+
+      <!-- 자격 -->
+      <p class="pf-sec">🎓 자격 및 수료</p>
+      <div class="pf-card">
+        <div class="pf-card-body">
+          <p class="pf-year">2025 · 영상번역 교육</p>
+          <p class="pf-title">함혜숙 영어 영상번역 입문 과정 수료</p>
+          <p class="pf-place">더라인 영상번역 아카데미 | 온라인</p>
+          <ul class="pf-list">
+            <li>넷플릭스·왓챠·웨이브·디즈니플러스 등 OTT 플랫폼 기준 영어→한국어 영상번역 실무</li>
+            <li>화면 싱크 · 두 줄 제한 · 구어체 표현 — 실전 피드백 중심 트레이닝</li>
+          </ul>
+          <div class="pf-clients">
+            <span class="pf-client">더라인 영상번역 아카데미</span>
+            <span class="pf-client">강사 함혜숙</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LG VIP -->
+      <p class="pf-sec">⭐ 최근 수행</p>
+      <div class="pf-card pf-h">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/lg_trip.jpg"
+               alt="LG전자 프랑스 VIP 트립" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2025 · 기업 VIP 행사</p>
+          <p class="pf-title">LG전자 트립 행사: 프랑스 VIP 현장 순차통역</p>
+          <p class="pf-place">서울 · 부산 · 마곡 · 하남 | 5박 6일</p>
+          <ul class="pf-list">
+            <li>LG 평택 칠러 공장 쇼룸·라인 투어, 창원 공장 제조 라인 투어</li>
+            <li>하남 스타필드 레퍼런스 사이트 방문, 마곡 사이언스파크 시설 투어</li>
+          </ul>
+          <div class="pf-clients"><span class="pf-client">LG Electronics</span></div>
+        </div>
+      </div>
+
+      <!-- 주요 이력 -->
+      <p class="pf-sec">📁 주요 이력</p>
+
+      <!-- 한-불 영상 번역 -->
+      <div class="pf-card pf-h pf-reverse">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/subtitle.jpg"
+               alt="한-불 영상 자막 번역" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2011~ · 문화 · 엔터테인먼트</p>
+          <p class="pf-title">한-불 영상·문화 콘텐츠 번역: PPM · 자막 · 시나리오</p>
+          <p class="pf-place">파리 &amp; 서울 | 프리랜서</p>
+          <ul class="pf-list">
+            <li>PPM 문서, 웹사이트, 자막, 시나리오/스크립트 한-불 번역</li>
+            <li>아티스트 인터뷰, 문화 행사 평론, 아티스트 프레스킷</li>
+          </ul>
+          <a href="https://vimeo.com/163267082" target="_blank" rel="noopener" class="pf-link">▶ 번역 레퍼런스 (Vimeo)</a>
+          <div class="pf-clients">
+            <span class="pf-client">자라섬 Jazz Festival</span>
+            <span class="pf-client">The French Connection</span>
+            <span class="pf-client">Elephant at Work</span>
+            <span class="pf-client">Renault-Samsung</span>
+            <span class="pf-client">BNP Paribas</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Santo André -->
+      <div class="pf-card pf-h">
+        <div class="pf-thumb">
+          <img src="https://static.wixstatic.com/media/3667e6_d27f056b3f844ac6a3827e901b68eca4~mv2.jpeg"
+               alt="Santo André 시청" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2021 · 공공 기관 회의</p>
+          <p class="pf-title">Santo André 시청: 지속가능 도시 모빌리티 PT↔FR</p>
+          <p class="pf-place">Santo André, São Paulo</p>
+          <ul class="pf-list">
+            <li>상파울루 주 산투안드레 시청 지속가능 프로젝트 통역 참여</li>
+            <li>프랑스 리옹대학교 전문가 2인 대상 포르투갈어 ↔ 프랑스어 순차통역</li>
+          </ul>
+          <div class="pf-clients">
+            <span class="pf-client">Prefeitura de Santo André</span>
+            <span class="pf-client">Université de Lyon</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FID Marseille -->
+      <div class="pf-card pf-h pf-reverse">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/fid.jpg"
+               alt="FID Marseille 홍상수" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2016 · 영화제</p>
+          <p class="pf-title">FID Marseille: 홍상수 감독 회고전 통역</p>
+          <p class="pf-place">Festival International de Documentaire, Marseille</p>
+          <ul class="pf-list">
+            <li>마르세유 국제영화제 FID Marseille에서 홍상수 감독 회고전 통역</li>
+            <li>한국어 ↔ 프랑스어 순차통역</li>
+          </ul>
+          <div class="pf-clients"><span class="pf-client">FID Marseille</span></div>
+        </div>
+      </div>
+
+      <!-- K-POP -->
+      <div class="pf-card kpop-card">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/kpop_cannes.jpg"
+               alt="2NE1 Cannes Lions 2012" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2011–2012 · K-POP 아티스트</p>
+          <p class="pf-title">2NE1 · PSY · SM Town: 아티스트 투어 동행</p>
+          <p class="pf-place">Cannes · Paris</p>
+          <ul class="pf-list">
+            <li><strong>2NE1</strong>: Cannes Lions 컨퍼런스 동행 · 패션 매거진 W 화보 촬영 (2012)</li>
+            <li><strong>PSY</strong>: 강남스타일 월드투어 파리 홍보 코디 · Universal Music France (2012)</li>
+            <li><strong>SM Town</strong>: 파리 제니스 공연 조명팀 코디네이션 (2011)</li>
+          </ul>
+          <div class="pf-trio">
+            <a href="https://bit.ly/WVkmHP" target="_blank" rel="noopener" class="pf-trio-btn">
+              <span class="ti">▶</span>2NE1 Cannes
+            </a>
+            <a href="https://bit.ly/SQhrRd" target="_blank" rel="noopener" class="pf-trio-btn">
+              <span class="ti">▶</span>PSY 파리
+            </a>
+            <a href="https://bit.ly/jzxoZi" target="_blank" rel="noopener" class="pf-trio-btn">
+              <span class="ti">▶</span>SM Town 제니스
+            </a>
+          </div>
+          <div class="pf-clients" style="margin-top:12px;">
+            <span class="pf-client">YG Entertainment</span>
+            <span class="pf-client">Universal Music France</span>
+            <span class="pf-client">SM Entertainment</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 나윤선 -->
+      <div class="pf-card pf-h">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/nayounson.jpg"
+               alt="나윤선 다큐멘터리" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2011 · 다큐멘터리</p>
+          <p class="pf-title">재즈 아티스트 나윤선: 스위스·한국 공동제작 다큐 번역 코디</p>
+          <p class="pf-place">6개국 로케이션 (프/벨/독/스위스/스웨덴/한국)</p>
+          <ul class="pf-list">
+            <li>한국어 / 영어 / 프랑스어 인터뷰 번역 · 리뷰 · 로케이션 관리</li>
+            <li>컨셉 기획 참여 · 6개국 스카우팅 및 물류 총괄</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 자라섬 -->
+      <div class="pf-card pf-h pf-reverse">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/jarasum.jpg"
+               alt="자라섬 국제 재즈 페스티벌" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2009 · 페스티벌 어시스턴트</p>
+          <p class="pf-title">자라섬 국제 재즈 페스티벌: 아트 디렉터 어시스턴트</p>
+          <p class="pf-place">가평 · 제6회 | 3일간 15만 관객 · 5개 무대 · 50개 공연</p>
+          <ul class="pf-list">
+            <li>라인업 기획 참여 · 테크니컬 라이더 · 머천다이징 관리</li>
+            <li>아티스트 페이지 번역 (한-불)</li>
+            <li>공급업체 협상 · 페스티벌 홍보 커뮤니케이션 (웹사이트, 홍보물, 굿즈)</li>
+          </ul>
+          <div class="pf-clients"><span class="pf-client">자라섬 International Jazz Festival</span></div>
+        </div>
+      </div>
+
+    </div><!-- /pf-wrap interp ko -->
+    </div>
+
+    <!-- ── Tech 로컬화 탭 ── -->
+    <div class="tab-panel" data-tab="tech">
+    <div class="pf-wrap">
+
+      <div class="pf-skills">
+        <span class="pf-skill">STT 음성 검수</span><span class="pf-skill">학습 데이터 생성</span>
+        <span class="pf-skill">오인식 키워드 분류</span><span class="pf-skill">UI/UX 문구 현지화</span>
+        <span class="pf-skill">CAT Tools</span><span class="pf-skill">격주 패치 QA</span>
+        <span class="pf-skill">Glossary 구축</span><span class="pf-skill">GitHub 리드미</span>
+        <span class="pf-skill">번역 벤더 관리</span><span class="pf-skill">한/영/불/일/아랍어</span>
+      </div>
+
+      <p class="pf-sec">⭐ 최근 수행</p>
+      <div class="pf-card">
+        <div class="pf-card-body">
+          <p class="pf-year">2025 · STT 품질 향상</p>
+          <p class="pf-title">LG AICC: 벨기에 BE 프랑스어 STT 검수</p>
+          <p class="pf-place">LG전자 AICC | 벨기에 (프랑스어)</p>
+          <ul class="pf-list">
+            <li>가전제품 상담 음성 30개 화자별 스크립트 검수</li>
+            <li>AI 자동 STT 결과 정확도 검수: 다빈도 오인식 키워드 분류</li>
+            <li>오인식 키워드 기반 학습용 문장 데이터 생성</li>
+          </ul>
+          <div class="pf-clients"><span class="pf-client">LG Electronics</span></div>
+        </div>
+      </div>
+
+      <p class="pf-sec">📁 주요 프로젝트</p>
+
+      <!-- Criminal IP -->
+      <div class="pf-card">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/criminal_ip.jpg"
+               alt="Criminal IP on Bleeping Computer" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2023–2024 · 사이버 보안 검색 엔진</p>
+          <p class="pf-title">AI Spera: Criminal IP 글로벌 로컬화 총괄</p>
+          <p class="pf-place">한 / 영 / 불 / 일 / 아랍어 — 5개국어</p>
+          <ul class="pf-list">
+            <li>격주 패치 UI → 5개 언어 로컬화 → 최종 QA · Glossary · CAT Tool</li>
+            <li>라이온브릿지 벤더 협업 · GitHub 리드미 6개 · API 연동 사례 11개</li>
+            <li>Bleeping Computer 독점 아티클 9건 · Udemy 강좌 1,600+ 수강생</li>
+            <li>글로벌·국내 행사 기획 (미국 RSAC, 국내 보안 컨퍼런스 등)</li>
+          </ul>
+          <div class="pf-stats">
+            <div class="pf-stat"><span class="pf-stat-n">5개</span><span class="pf-stat-l">언어</span></div>
+            <div class="pf-stat"><span class="pf-stat-n">9건</span><span class="pf-stat-l">독점 아티클</span></div>
+            <div class="pf-stat"><span class="pf-stat-n">1,600+</span><span class="pf-stat-l">Udemy 수강생</span></div>
+            <div class="pf-stat"><span class="pf-stat-n">11개</span><span class="pf-stat-l">API 사례</span></div>
+          </div>
+          <div class="pf-clients">
+            <span class="pf-client">AI Spera</span>
+            <span class="pf-client">Lionbridge</span>
+            <span class="pf-client">Bleeping Computer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ultra Interactive -->
+      <div class="pf-card pf-h">
+        <div class="pf-thumb">
+          <img src="https://static.wixstatic.com/media/3667e6_07564c76e2fb4a2ea44b4e7b3f47f77f~mv2.png"
+               alt="Ultra Interactive 앱" loading="lazy"
+               style="object-fit: contain; background: #f5f5f5;">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2013–2014 · 모바일 앱 로컬화</p>
+          <p class="pf-title">Ultra Interactive: 프랑스어 로컬화 코디네이터</p>
+          <p class="pf-place">한→불 | 서울 &amp; 파리</p>
+          <ul class="pf-list">
+            <li>한국 개발 소셜 앱 3개 전 단계 로컬화 총괄 · 60만+ 유저 달성</li>
+            <li>벤치마킹 → 한-불 번역 → UX/UI QA → GTM 전략 수립</li>
+            <li>블로그/이메일/SNS 콘텐츠 기획 · FB 광고 · B2C 파트너십</li>
+          </ul>
+          <div class="pf-clients"><span class="pf-client">Ultra Interactive</span></div>
+        </div>
+      </div>
+
+    </div><!-- /pf-wrap tech ko -->
+    </div>
+
+    <!-- ── 프로덕션 PM 탭 ── -->
+    <div class="tab-panel" data-tab="prod">
+    <div class="pf-wrap">
+
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px; margin-bottom:20px;">
+        <p style="font-size:0.85rem; font-weight:700; color:var(--dark);">🎓 MBA in Audiovisual Production</p>
+        <p style="font-size:0.78rem; color:var(--muted); margin-top:2px;">ESG 그랑제꼴, 파리 (2012) · 논문: <em>What digital is going to change for film distributors?</em></p>
+      </div>
+
+      <div class="pf-skills">
+        <span class="pf-skill">3D4K · VR · 360° 촬영</span><span class="pf-skill">프랑스 노동법 행정</span>
+        <span class="pf-skill">크루 50명+ 운영</span><span class="pf-skill">예산·보조금 관리</span>
+        <span class="pf-skill">콘티 번역·기술 조율</span><span class="pf-skill">DVD · 극장 상영</span>
+      </div>
+
+      <div class="pf-stats" style="margin-bottom:24px;">
+        <div class="pf-stat"><span class="pf-stat-n">50+</span><span class="pf-stat-l">크루 인원</span></div>
+        <div class="pf-stat"><span class="pf-stat-n">$15K+</span><span class="pf-stat-l">프로젝트 예산</span></div>
+        <div class="pf-stat"><span class="pf-stat-n">3,700석</span><span class="pf-stat-l">공연장 규모</span></div>
+        <div class="pf-stat"><span class="pf-stat-n">6개국</span><span class="pf-stat-l">로케이션 관리</span></div>
+      </div>
+
+      <p class="pf-sec">🎭 뮤지컬 · 공연 촬영</p>
+
+      <!-- 아서왕 — Vimeo embed -->
+      <div class="pf-card">
+        <div class="pf-embed">
+          <iframe src="https://player.vimeo.com/video/167142644?autoplay=0&title=0&byline=0&portrait=0"
+                  allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
+                  title="뮤지컬 아서왕의 전설 3D4K"></iframe>
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2016 · 3D4K 촬영</p>
+          <p class="pf-title">뮤지컬 '아서왕의 전설' 3D4K: 1st 어시스턴트 총괄</p>
+          <p class="pf-place">파리 팔레 데 콩그레 (3,700석)</p>
+          <ul class="pf-list">
+            <li>한국 촬영팀 콘티 번역 · 프랑스 오퍼레이션 팀 기술 세팅 조율</li>
+            <li>프랑스 노동법 기반 크루 50명+ 고용·행정·재정 관리 총괄</li>
+            <li>DVD 출시 · 한국 영화관 상영</li>
+          </ul>
+          <div class="pf-clients">
+            <span class="pf-client">Dove Attia Productions</span>
+            <span class="pf-client">Fabulous</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cirque du Soleil — YouTube embed -->
+      <div class="pf-card">
+        <div class="pf-embed">
+          <iframe src="https://www.youtube.com/embed/3ZE0bOopPmU?rel=0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen title="Cirque du Soleil Odysseo"></iframe>
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2015 · 3D4K 촬영</p>
+          <p class="pf-title">Cirque du Soleil 'Odysseo': 촬영 코디네이터</p>
+          <p class="pf-place">미국 현지 촬영 | Cavalia × Fabulous 공동제작</p>
+          <ul class="pf-list">
+            <li>신기술 미디어 전문 제작사 Fabulous와 협력, 3D4K 촬영 코디네이터</li>
+            <li>2015 칸 영화제 Marché du Film 소개 · ScreenX 버전 제작</li>
+          </ul>
+          <div class="pf-clients">
+            <span class="pf-client">Cavalia / Cirque du Soleil</span>
+            <span class="pf-client">Fabulous</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="pf-sec">✈️ 문화 프로젝트 · 아티스트 투어</p>
+
+      <!-- Korean Air — YouTube embed -->
+      <div class="pf-card">
+        <div class="pf-embed">
+          <iframe src="https://www.youtube.com/embed/dP0IvJqDPEk?rel=0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen title="Korean Air Guest House France"></iframe>
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2015 · Korean Air 프로젝트</p>
+          <p class="pf-title">Korean Air 'Guest House': 프랑스 7개 도시 코디네이터</p>
+          <p class="pf-place">프랑스 7개 도시</p>
+          <ul class="pf-list">
+            <li>대한항공 주최: 프랑스 7개 도시 독특한 숙박 경험 제공 콘테스트</li>
+            <li>특별 숙소 리서치 · 예산 산정 · 현지 협상 · SNS 커뮤니케이션</li>
+          </ul>
+          <div class="pf-clients"><span class="pf-client">Korean Air</span></div>
+        </div>
+      </div>
+
+      <p class="pf-sec">🎵 마케팅 · 디지털 음악</p>
+
+      <!-- 디지털 음악 -->
+      <div class="pf-card">
+        <div class="pf-card-body">
+          <p class="pf-year">2011–2012 · 인턴십</p>
+          <p class="pf-title">프랑스 디지털 음악 시장: MP3 마케팅 어시스턴트</p>
+          <p class="pf-place">🇫🇷 파리 | Ciné Culture · UGC Networks · SFR · Fnac</p>
+          <ul class="pf-list">
+            <li>MP3 다운로드 서비스 마케팅·세일즈 서포트 (유통사/프로듀서/서비스 운영사)</li>
+            <li>음원 릴리즈 스케줄·웹/앱 스토어 관리 · iTunes, Deezer, Spotify 협업</li>
+            <li>CRM 캠페인 · 트래픽 생성 · 실적 리포트 제공</li>
+          </ul>
+          <div class="pf-clients">
+            <span class="pf-client">Universal Music France</span>
+            <span class="pf-client">Fnac</span>
+            <span class="pf-client">SFR</span>
+            <span class="pf-client">Spotify</span>
+            <span class="pf-client">Deezer</span>
+            <span class="pf-client">UGC Networks</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /pf-wrap prod ko -->
+    </div>
+
+  </div><!-- /lang ko -->
+
+
+  <!-- ════════════ English ════════════ -->
+  <div class="lang-panel" data-lang="en">
+
+    <div class="tab-panel active" data-tab="interp">
+    <div class="pf-wrap">
+      <div class="pf-skills">
+        <span class="pf-skill">KO↔FR Interpretation</span><span class="pf-skill">KO↔EN</span>
+        <span class="pf-skill">PT↔FR</span><span class="pf-skill">Corporate VIP</span>
+        <span class="pf-skill">Artist Tours</span><span class="pf-skill">Film Subtitles</span>
+      </div>
+      <div class="pf-card pf-h">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/lg_trip.jpg" alt="LG Electronics VIP Trip" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2025 · Corporate VIP</p>
+          <p class="pf-title">LG Electronics Trip: On-site Consecutive Interpretation for French VIPs</p>
+          <p class="pf-place">Seoul · Busan · Magok · Hanam | 5 nights / 6 days</p>
+          <ul class="pf-list"><li>Factory tours (Pyeongtaek Chiller, Changwon), Starfield &amp; Science Park site visits</li></ul>
+          <div class="pf-clients"><span class="pf-client">LG Electronics</span></div>
+        </div>
+      </div>
+      <div class="pf-card pf-h pf-reverse">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/subtitle.jpg" alt="KO-FR film subtitle translation" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2011~ · Entertainment</p>
+          <p class="pf-title">KO↔FR Film &amp; Cultural Content: PPM · Subtitles · Scripts</p>
+          <p class="pf-place">Paris &amp; Seoul | Freelance</p>
+          <ul class="pf-list"><li>PPM documents, subtitles, scripts, artist press kits, cultural event commentary</li></ul>
+          <a href="https://vimeo.com/163267082" target="_blank" rel="noopener" class="pf-link">▶ Translation reference (Vimeo)</a>
+          <div class="pf-clients"><span class="pf-client">Jarasum Jazz Festival</span><span class="pf-client">The French Connection</span><span class="pf-client">Renault-Samsung</span></div>
+        </div>
+      </div>
+      <div class="pf-card pf-h">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/fid.jpg" alt="FID Marseille Hong Sang-soo" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2016 · Film Festival</p>
+          <p class="pf-title">FID Marseille: Hong Sang-soo Retrospective Interpreter</p>
+          <div class="pf-clients"><span class="pf-client">FID Marseille</span></div>
+        </div>
+      </div>
+      <div class="pf-card kpop-card">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/kpop_cannes.jpg" alt="2NE1 Cannes Lions 2012" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2011–2012 · K-POP</p>
+          <p class="pf-title">2NE1 · PSY · SM Town: Artist Tour Liaison</p>
+          <p class="pf-place">Cannes · Paris</p>
+          <ul class="pf-list">
+            <li>2NE1: Cannes Lions 2012 | PSY: Gangnam Style world tour promo | SM Town: Zénith Paris</li>
+          </ul>
+          <div class="pf-trio">
+            <a href="https://bit.ly/WVkmHP" target="_blank" rel="noopener" class="pf-trio-btn"><span class="ti">▶</span>2NE1 Cannes</a>
+            <a href="https://bit.ly/SQhrRd" target="_blank" rel="noopener" class="pf-trio-btn"><span class="ti">▶</span>PSY Paris</a>
+            <a href="https://bit.ly/jzxoZi" target="_blank" rel="noopener" class="pf-trio-btn"><span class="ti">▶</span>SM Town</a>
+          </div>
+          <div class="pf-clients" style="margin-top:12px;">
+            <span class="pf-client">YG Entertainment</span><span class="pf-client">Universal Music France</span><span class="pf-client">SM Entertainment</span>
+          </div>
+        </div>
+      </div>
+    </div></div>
+
+    <div class="tab-panel" data-tab="tech">
+    <div class="pf-wrap">
+      <div class="pf-skills">
+        <span class="pf-skill">STT QA</span><span class="pf-skill">UI/UX Localization</span>
+        <span class="pf-skill">CAT Tools</span><span class="pf-skill">Glossary</span>
+        <span class="pf-skill">GitHub README</span><span class="pf-skill">Vendor Management</span>
+        <span class="pf-skill">KO/EN/FR/JA/AR</span>
+      </div>
+      <div class="pf-card">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/criminal_ip.jpg" alt="Criminal IP" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2023–2024 · Cybersecurity</p>
+          <p class="pf-title">AI Spera: Criminal IP — Global Localization Lead</p>
+          <p class="pf-place">KO / EN / FR / JA / AR — 5 languages</p>
+          <ul class="pf-list">
+            <li>Bi-weekly patch UI → 5-language localization → QA · Glossary · CAT Tool</li>
+            <li>Lionbridge vendor collaboration · 6 GitHub READMEs · 11 API integration cases</li>
+            <li>9 exclusive Bleeping Computer articles · 1,600+ Udemy students</li>
+          </ul>
+          <div class="pf-stats">
+            <div class="pf-stat"><span class="pf-stat-n">5</span><span class="pf-stat-l">Languages</span></div>
+            <div class="pf-stat"><span class="pf-stat-n">9</span><span class="pf-stat-l">Articles</span></div>
+            <div class="pf-stat"><span class="pf-stat-n">1,600+</span><span class="pf-stat-l">Udemy Students</span></div>
+          </div>
+          <div class="pf-clients"><span class="pf-client">AI Spera</span><span class="pf-client">Lionbridge</span><span class="pf-client">Bleeping Computer</span></div>
+        </div>
+      </div>
+      <div class="pf-card pf-h">
+        <div class="pf-thumb">
+          <img src="https://static.wixstatic.com/media/3667e6_07564c76e2fb4a2ea44b4e7b3f47f77f~mv2.png" alt="Ultra Interactive" loading="lazy" style="object-fit:contain; background:#f5f5f5;">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2013–2014 · Mobile App</p>
+          <p class="pf-title">Ultra Interactive: French Localization Coordinator</p>
+          <ul class="pf-list"><li>3 Korean social apps — full localization · 600K+ users · benchmarking → translation → UX QA → GTM</li></ul>
+          <div class="pf-clients"><span class="pf-client">Ultra Interactive</span></div>
+        </div>
+      </div>
+    </div></div>
+
+    <div class="tab-panel" data-tab="prod">
+    <div class="pf-wrap">
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px; margin-bottom:20px;">
+        <p style="font-size:0.85rem; font-weight:700; color:var(--dark);">🎓 MBA in Audiovisual Production</p>
+        <p style="font-size:0.78rem; color:var(--muted); margin-top:2px;">ESG Grande École, Paris (2012)</p>
+      </div>
+      <div class="pf-stats" style="margin-bottom:24px;">
+        <div class="pf-stat"><span class="pf-stat-n">50+</span><span class="pf-stat-l">Crew</span></div>
+        <div class="pf-stat"><span class="pf-stat-n">$15K+</span><span class="pf-stat-l">Budget</span></div>
+        <div class="pf-stat"><span class="pf-stat-n">3,700</span><span class="pf-stat-l">Seats</span></div>
+        <div class="pf-stat"><span class="pf-stat-n">6</span><span class="pf-stat-l">Countries</span></div>
+      </div>
+      <div class="pf-card">
+        <div class="pf-embed">
+          <iframe src="https://player.vimeo.com/video/167142644?autoplay=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen title="Legend of King Arthur 3D4K"></iframe>
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2016 · Musical 3D4K</p>
+          <p class="pf-title">'Legend of King Arthur' 3D4K: 1st Assistant Director</p>
+          <p class="pf-place">Palais des Congrès, Paris (3,700 seats)</p>
+          <div class="pf-clients"><span class="pf-client">Dove Attia Productions</span><span class="pf-client">Fabulous</span></div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <div class="pf-embed">
+          <iframe src="https://www.youtube.com/embed/3ZE0bOopPmU?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Cirque du Soleil Odysseo"></iframe>
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2015 · 3D4K</p>
+          <p class="pf-title">Cirque du Soleil 'Odysseo': Shoot Coordinator</p>
+          <div class="pf-clients"><span class="pf-client">Cavalia / Cirque du Soleil</span><span class="pf-client">Fabulous</span></div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <div class="pf-embed">
+          <iframe src="https://www.youtube.com/embed/dP0IvJqDPEk?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Korean Air Guest House France"></iframe>
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2015 · Korean Air</p>
+          <p class="pf-title">Korean Air 'Guest House': France 7-City Coordinator</p>
+          <div class="pf-clients"><span class="pf-client">Korean Air</span></div>
+        </div>
+      </div>
+    </div></div>
+
+  </div><!-- /lang en -->
+
+
+  <!-- ════════════ Français ════════════ -->
+  <div class="lang-panel" data-lang="fr">
+
+    <div class="tab-panel active" data-tab="interp">
+    <div class="pf-wrap">
+      <div class="pf-skills">
+        <span class="pf-skill">Interprétation KO↔FR</span><span class="pf-skill">KO↔EN</span>
+        <span class="pf-skill">PT↔FR</span><span class="pf-skill">VIP entreprise</span>
+        <span class="pf-skill">Tournées artistes</span><span class="pf-skill">Sous-titres cinéma</span>
+      </div>
+      <div class="pf-card pf-h">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/lg_trip.jpg" alt="LG Electronics VIP Trip" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2025 · VIP Entreprise</p>
+          <p class="pf-title">LG Electronics : Interprétation consécutive pour VIP français</p>
+          <p class="pf-place">Séoul · Busan · Magok · Hanam | 5 nuits / 6 jours</p>
+          <div class="pf-clients"><span class="pf-client">LG Electronics</span></div>
+        </div>
+      </div>
+      <div class="pf-card pf-h pf-reverse">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/subtitle.jpg" alt="Traduction KO-FR" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2011~ · Divertissement</p>
+          <p class="pf-title">Traduction culturelle KO↔FR : PPM · Sous-titres · Scénarios</p>
+          <p class="pf-place">Paris &amp; Séoul | Freelance</p>
+          <a href="https://vimeo.com/163267082" target="_blank" rel="noopener" class="pf-link">▶ Référence traduction (Vimeo)</a>
+          <div class="pf-clients"><span class="pf-client">Jarasum Jazz Festival</span><span class="pf-client">The French Connection</span><span class="pf-client">Renault-Samsung</span></div>
+        </div>
+      </div>
+      <div class="pf-card pf-h">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/fid.jpg" alt="FID Marseille" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2016 · Festival</p>
+          <p class="pf-title">FID Marseille : Rétrospective Hong Sang-soo — Interprète</p>
+          <div class="pf-clients"><span class="pf-client">FID Marseille</span></div>
+        </div>
+      </div>
+      <div class="pf-card kpop-card">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/kpop_cannes.jpg" alt="2NE1 Cannes Lions" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2011–2012 · K-POP</p>
+          <p class="pf-title">2NE1 · PSY · SM Town : Liaison artiste en tournée</p>
+          <p class="pf-place">Cannes · Paris</p>
+          <div class="pf-trio">
+            <a href="https://bit.ly/WVkmHP" target="_blank" rel="noopener" class="pf-trio-btn"><span class="ti">▶</span>2NE1 Cannes</a>
+            <a href="https://bit.ly/SQhrRd" target="_blank" rel="noopener" class="pf-trio-btn"><span class="ti">▶</span>PSY Paris</a>
+            <a href="https://bit.ly/jzxoZi" target="_blank" rel="noopener" class="pf-trio-btn"><span class="ti">▶</span>SM Town</a>
+          </div>
+          <div class="pf-clients" style="margin-top:12px;"><span class="pf-client">YG Entertainment</span><span class="pf-client">Universal Music France</span><span class="pf-client">SM Entertainment</span></div>
+        </div>
+      </div>
+    </div></div>
+
+    <div class="tab-panel" data-tab="tech">
+    <div class="pf-wrap">
+      <div class="pf-skills">
+        <span class="pf-skill">Contrôle qualité STT</span><span class="pf-skill">Localisation UI/UX</span>
+        <span class="pf-skill">Outils CAT</span><span class="pf-skill">Glossaire</span>
+        <span class="pf-skill">README GitHub</span><span class="pf-skill">Gestion vendeur</span>
+      </div>
+      <div class="pf-card">
+        <div class="pf-thumb">
+          <img src="https://raw.githubusercontent.com/dourikim/portfolio/main/img/criminal_ip.jpg" alt="Criminal IP" loading="lazy">
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2023–2024 · Cybersécurité</p>
+          <p class="pf-title">AI Spera : Criminal IP — Responsable localisation globale</p>
+          <p class="pf-place">KO / EN / FR / JA / AR — 5 langues</p>
+          <ul class="pf-list">
+            <li>Interface bi-hebdomadaire → localisation 5 langues → QA final · Glossaire · Outil CAT</li>
+            <li>Collaboration Lionbridge · 6 README GitHub · 11 cas d'intégration API · 9 articles Bleeping Computer</li>
+          </ul>
+          <div class="pf-clients"><span class="pf-client">AI Spera</span><span class="pf-client">Lionbridge</span></div>
+        </div>
+      </div>
+    </div></div>
+
+    <div class="tab-panel" data-tab="prod">
+    <div class="pf-wrap">
+      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px; margin-bottom:20px;">
+        <p style="font-size:0.85rem; font-weight:700; color:var(--dark);">🎓 MBA en Production Audiovisuelle</p>
+        <p style="font-size:0.78rem; color:var(--muted); margin-top:2px;">ESG Grande École, Paris (2012)</p>
+      </div>
+      <div class="pf-card">
+        <div class="pf-embed">
+          <iframe src="https://player.vimeo.com/video/167142644?autoplay=0&title=0&byline=0&portrait=0" allow="autoplay; fullscreen" allowfullscreen title="La Légende du Roi Arthur 3D4K"></iframe>
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2016 · Comédie musicale 3D4K</p>
+          <p class="pf-title">'La Légende du Roi Arthur' 3D4K : 1ère assistante de production</p>
+          <p class="pf-place">Palais des Congrès, Paris (3 700 places)</p>
+          <div class="pf-clients"><span class="pf-client">Dove Attia Productions</span><span class="pf-client">Fabulous</span></div>
+        </div>
+      </div>
+      <div class="pf-card">
+        <div class="pf-embed">
+          <iframe src="https://www.youtube.com/embed/3ZE0bOopPmU?rel=0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="Cirque du Soleil Odysseo"></iframe>
+        </div>
+        <div class="pf-card-body">
+          <p class="pf-year">2015 · 3D4K</p>
+          <p class="pf-title">Cirque du Soleil 'Odysseo' : Coordinatrice de tournage</p>
+          <div class="pf-clients"><span class="pf-client">Cavalia / Cirque du Soleil</span><span class="pf-client">Fabulous</span></div>
+        </div>
+      </div>
+    </div></div>
+
+  </div><!-- /lang fr -->
+
+  </div><!-- /#lang-panels -->
+
+  <!-- 문의 섹션 -->
+  <div class="section-block" style="background:var(--brick); padding:32px 28px; margin-top:0;">
+    <h2 class="block-title" style="color:var(--white);">📩 프로젝트 문의 및 견적 요청</h2>
+    <p class="block-text" style="color:rgba(255,255,255,0.8); margin-bottom:16px;">어떤 작업인지 편하게 알려주세요. 빠르게 회신드립니다.</p>
+    <a href="https://docs.google.com/forms/d/1nzl9pqzN5dSdSRzJuBssOm3-e_6dsXgNA0J259rik7M/prefill"
+       target="_blank" rel="noopener"
+       class="cta-btn cta-brick">✉️ 문의 및 견적 요청하기</a>
+  </div>
+
+</div><!-- /content-wrap -->
+<footer class="site-footer" id="site-footer"></footer>
+</div><!-- /page-body -->
+
+<div class="kakao-float" id="kakao-float"></div>
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>
+  initComponents({ showLang: true });
+  initTabs('#tabs-bar');
+  switchPortfolioLang('ko');
+</script>
+</body>
+</html>

@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>나의 프랑스어 학습 유형은? | 두우리</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    :root {
+      --brick:       #C24A35;
+      --brick-dark:  #A33B28;
+      --brick-light: #F5E8E5;
+      --dark:        #2E0E0C;
+      --surface:     #FAF7F6;
+      --border:      #EDE5E3;
+      --muted:       #7A5550;
+      --white:       #FFFFFF;
+      --serif: 'Gowun Batang', Georgia, serif;
+      --sans:  'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--surface);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* ─────────── VIEW SHELL ─────────── */
+    .view { display: none; min-height: 100vh; }
+    .view.on { display: flex; flex-direction: column; align-items: center; }
+
+    /* ═══════════════════════════════════
+       LANDING
+    ═══════════════════════════════════ */
+    #v-land {
+      justify-content: center;
+      padding: 60px 24px 80px;
+      text-align: center;
+    }
+
+    .land-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--brick-light);
+      border: 1px solid rgba(194,74,53,.3);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brick);
+      margin-bottom: 28px;
+    }
+
+    .land-title {
+      font-family: var(--serif);
+      font-size: clamp(30px, 7vw, 46px);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+    .land-title em { color: var(--brick); font-style: normal; }
+
+    .land-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.9;
+      max-width: 340px;
+      margin: 0 auto 32px;
+    }
+
+    .land-stats {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .land-stat {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .land-cta {
+      display: inline-block;
+      background: var(--brick);
+      color: var(--white);
+      border: none;
+      border-radius: 14px;
+      padding: 16px 44px;
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(194,74,53,.35);
+      transition: all .2s;
+      text-decoration: none;
+    }
+    .land-cta:hover {
+      background: var(--brick-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(194,74,53,.35);
+    }
+
+    .land-foot {
+      margin-top: 52px;
+      font-size: 12px;
+      color: var(--border);
+    }
+    .land-foot strong { color: var(--muted); }
+
+    /* ═══════════════════════════════════
+       QUIZ
+    ═══════════════════════════════════ */
+    #v-quiz {
+      justify-content: flex-start;
+      background: var(--surface);
+    }
+
+    .qz-topbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: var(--surface);
+      padding: 16px 20px 12px;
+      z-index: 50;
+    }
+    .qz-top-row {
+      display: flex;
+      justify-content: space-between;
+      max-width: 580px;
+      margin: 0 auto 8px;
+    }
+    .qz-step { font-size: 13px; font-weight: 600; color: var(--muted); }
+    .qz-pct  { font-size: 13px; font-weight: 700; color: var(--brick); }
+    .qz-bar  {
+      height: 4px;
+      background: var(--border);
+      border-radius: 2px;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .qz-bar-fill {
+      height: 100%;
+      background: var(--brick);
+      border-radius: 2px;
+      transition: width .4s cubic-bezier(.4,0,.2,1);
+    }
+
+    .qz-body {
+      width: 100%;
+      max-width: 580px;
+      padding: 20px 20px 60px;
+      margin: 0 auto;
+    }
+
+    .qz-card {
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(46,14,12,.08);
+      animation: popUp .3s cubic-bezier(.22,.68,0,1.1) both;
+    }
+    @keyframes popUp {
+      from { opacity: 0; transform: translateY(14px) scale(.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .qz-head { padding: 28px 24px 18px; }
+
+    .qz-badge {
+      display: inline-block;
+      background: var(--brick-light);
+      color: var(--brick);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 14px;
+    }
+
+    .qz-q {
+      font-family: var(--serif);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.5;
+    }
+    .qz-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+      line-height: 1.6;
+    }
+
+    .qz-opts {
+      padding: 4px 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .qz-opt {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      cursor: pointer;
+      background: var(--white);
+      text-align: left;
+      width: 100%;
+      transition: border-color .12s, background .12s;
+    }
+    .qz-opt:hover {
+      border-color: var(--brick);
+      background: var(--brick-light);
+    }
+    .qz-opt.sel {
+      border-color: var(--brick);
+      background: var(--brick-light);
+    }
+
+    .opt-ico {
+      width: 38px; height: 38px; min-width: 38px;
+      background: var(--surface);
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+    }
+    .qz-opt.sel .opt-ico { background: rgba(194,74,53,.14); }
+
+    .opt-body { flex: 1; }
+    .opt-main { font-size: 14px; font-weight: 600; color: var(--dark); line-height: 1.4; }
+    .opt-hint { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
+
+    /* ═══════════════════════════════════
+       RESULT
+    ═══════════════════════════════════ */
+    #v-result {
+      justify-content: flex-start;
+    }
+
+    /* Hero */
+    .res-hero {
+      width: 100%;
+      background: var(--dark);
+      color: var(--white);
+      padding: 52px 24px 44px;
+      text-align: center;
+    }
+    .res-hero-label {
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.5);
+      font-weight: 600;
+      margin-bottom: 18px;
+    }
+    .res-emoji { font-size: 60px; line-height: 1; margin-bottom: 14px; }
+    .res-name {
+      font-family: var(--serif);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .res-name u {
+      text-decoration-color: var(--brick);
+      text-underline-offset: 5px;
+    }
+    .res-quote {
+      font-size: 14px;
+      color: rgba(255,255,255,.65);
+      font-style: italic;
+      line-height: 1.7;
+    }
+
+    /* Body */
+    .res-body {
+      width: 100%;
+      max-width: 580px;
+      padding: 0 20px 80px;
+      margin: 0 auto;
+    }
+
+    .res-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 14px;
+      box-shadow: 0 2px 14px rgba(46,14,12,.06);
+    }
+
+    .res-card-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .res-card-title .ti { font-size: 18px; }
+
+    .res-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.85;
+    }
+
+    /* Strengths grid */
+    .sf-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .sf-box {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 14px 12px;
+    }
+    .sf-box.str { border-top: 3px solid #4CAF50; }
+    .sf-box.ctn { border-top: 3px solid #FF9800; }
+    .sf-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .sf-box.str .sf-lbl { color: #388E3C; }
+    .sf-box.ctn .sf-lbl { color: #E65100; }
+    .sf-list { list-style: none; }
+    .sf-list li {
+      font-size: 12.5px;
+      color: var(--dark);
+      line-height: 1.65;
+      padding-left: 10px;
+      position: relative;
+    }
+    .sf-list li::before { content:'·'; position:absolute; left:0; }
+
+    /* Tips */
+    .tips { display: flex; flex-direction: column; gap: 14px; }
+    .tip  { display: flex; gap: 12px; align-items: flex-start; }
+    .tip-n {
+      width: 24px; height: 24px; min-width: 24px;
+      background: var(--brick);
+      color: var(--white);
+      border-radius: 50%;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tip-t { font-size: 14px; font-weight: 700; color: var(--dark); margin-bottom: 3px; }
+    .tip-s { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+    /* Warning */
+    .warn-box {
+      background: #FFFBF0;
+      border: 1px solid #FFE082;
+      border-radius: 10px;
+      padding: 16px;
+      font-size: 13.5px;
+      color: #5D4037;
+      line-height: 1.75;
+    }
+
+    /* Routine */
+    .routine-list { display: flex; flex-direction: column; gap: 8px; }
+    .routine-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--dark);
+      line-height: 1.6;
+    }
+    .routine-item .ri-label {
+      font-weight: 700;
+      color: var(--brick);
+      min-width: 36px;
+      font-size: 12px;
+    }
+
+    /* CTA block */
+    .res-cta-block {
+      background: var(--dark);
+      border-radius: 16px;
+      padding: 28px 24px;
+      margin-top: 14px;
+      text-align: center;
+      color: var(--white);
+    }
+    .res-cta-tag {
+      display: inline-block;
+      background: var(--brick);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+    .res-cta-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+    .res-cta-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,.65);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .res-cta-btn {
+      display: block;
+      background: var(--brick);
+      color: var(--white);
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      transition: background .15s;
+    }
+    .res-cta-btn:hover { background: var(--brick-dark); }
+
+    /* Share */
+    .res-share {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 20px 24px;
+      margin-top: 14px;
+      box-shadow: 0 2px 14px rgba(46,14,12,.06);
+    }
+    .share-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--dark);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .share-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .share-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 8px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--dark);
+      transition: all .15s;
+    }
+    .share-btn:hover { border-color: var(--brick); background: var(--brick-light); }
+    .share-btn span:first-child { font-size: 22px; }
+
+    .res-retry {
+      display: block;
+      width: 100%;
+      background: none;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 13px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all .15s;
+    }
+    .res-retry:hover { border-color: var(--muted); color: var(--dark); }
+
+    /* ═══════════════════════════════════
+       TOAST
+    ═══════════════════════════════════ */
+    #toast {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 308px;
+      background: var(--white);
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      box-shadow: 0 8px 32px rgba(46,14,12,.14);
+      z-index: 9999;
+      overflow: hidden;
+      animation: toastIn .42s cubic-bezier(.22,.68,0,1.2) both;
+      cursor: pointer;
+    }
+    #toast.out { animation: toastOut .3s ease forwards; }
+    #toast.gone { display: none; }
+
+    @keyframes toastIn {
+      from { opacity:0; transform: translateX(calc(100% + 24px)); }
+      to   { opacity:1; transform: translateX(0); }
+    }
+    @keyframes toastOut {
+      from { opacity:1; transform: translateX(0); }
+      to   { opacity:0; transform: translateX(calc(100% + 24px)); }
+    }
+
+    .toast-top {
+      padding: 14px 14px 10px;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .toast-flag {
+      width: 36px; height: 36px; min-width: 36px;
+      background: var(--brick-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .toast-words { flex: 1; }
+    .toast-tit { font-size: 13px; font-weight: 700; color: var(--dark); margin-bottom: 2px; }
+    .toast-sub { font-size: 11px; color: var(--muted); line-height: 1.5; }
+    .toast-x {
+      background: none; border: none; cursor: pointer;
+      color: var(--muted); font-size: 14px; padding: 2px 0 0;
+      flex-shrink: 0;
+    }
+    .toast-x:hover { color: var(--dark); }
+
+    .toast-foot {
+      padding: 0 14px 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .toast-go {
+      flex: 1;
+      background: var(--brick);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 9px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .15s;
+    }
+    .toast-go:hover { background: var(--brick-dark); }
+    .toast-cd { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+    .toast-bar { height: 3px; background: var(--border); }
+    .toast-fill {
+      height: 100%;
+      background: var(--brick);
+      width: 100%;
+      transition: width linear;
+    }
+
+    @media (max-width: 480px) {
+      #toast { top: 12px; right: 12px; left: 12px; width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+<div id="side-menu" class="side-menu"></div>
+<div id="menu-overlay" class="menu-overlay" onclick="closeMenu()"></div>
+<div id="kakao-float"></div>
+
+<!-- ═══════════════ LANDING ═══════════════ -->
+<div id="v-land" class="view on">
+  <div style="text-align:center; max-width:400px; width:100%; padding:0 20px;">
+    <h1 class="land-title">나의 프랑스어<br><em>학습 유형</em>은?</h1>
+    <p class="land-sub">지금 어떻게 배울 때 제일 잘 됐나요?<br>잠깐 솔직해져볼게요.<br>8가지 질문으로 딱 맞는 방법 찾아드려요.</p>
+    <div class="land-stats">
+      <span class="land-stat">⏱ 약 2분</span>
+      <span class="land-stat">📋 8문항</span>
+      <span class="land-stat">🎯 6가지 유형</span>
+    </div>
+    <button class="land-cta" onclick="startQuiz()">테스트 시작하기 →</button>
+    <p class="land-foot" style="margin-top:52px">🐼 Made by <strong>김두우리</strong> · 프랑스어 튜터</p>
+  </div>
+</div>
+
+<!-- ═══════════════ QUIZ ═══════════════ -->
+<div id="v-quiz" class="view">
+  <div class="qz-topbar">
+    <div class="qz-top-row">
+      <span class="qz-step" id="qz-step">1 / 8</span>
+      <span class="qz-pct"  id="qz-pct">0%</span>
+    </div>
+    <div class="qz-bar">
+      <div class="qz-bar-fill" id="qz-fill" style="width:0%"></div>
+    </div>
+  </div>
+  <div class="qz-body">
+    <div class="qz-card" id="qz-card"><!-- JS renders here --></div>
+  </div>
+</div>
+
+<!-- ═══════════════ RESULT ═══════════════ -->
+<div id="v-result" class="view"><!-- JS renders here --></div>
+
+<!-- ═══════════════ TOAST ═══════════════ -->
+<div id="toast" style="display:none" onclick="handleToastClick(event)">
+  <div class="toast-top">
+    <div class="toast-flag">🇫🇷</div>
+    <div class="toast-words">
+      <p class="toast-tit">학습 유형 아직 모르세요?</p>
+      <p class="toast-sub">8가지 질문으로 찾아드릴게요</p>
+    </div>
+    <button class="toast-x" onclick="dismissToast(event)">✕</button>
+  </div>
+  <div class="toast-foot">
+    <button class="toast-go" onclick="startQuiz()">2분 테스트 →</button>
+    <span class="toast-cd" id="t-cd">10초 후 닫힘</span>
+  </div>
+  <div class="toast-bar">
+    <div class="toast-fill" id="t-fill"></div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════
+   DATA — 8 QUESTIONS
+═══════════════════════════════════════════ */
+const QS = [
+  {
+    q: '지금 프랑스어, 어느 정도예요?',
+    sub: '가장 솔직하게 느껴지는 것을 골라주세요.',
+    opts: [
+      { e:'🌱', l:'Bonjour도 낯설어요', h:'완전 처음 시작', sc:{youtube:2, self_paced:2, threads:1} },
+      { e:'🌿', l:'발음·기초 인사말 정도는 알아요', h:'아직 초반', sc:{self_paced:2, threads:1, youtube:1} },
+      { e:'🌳', l:'간단한 문장은 읽고 쓸 수 있어요', h:'A2 수준', sc:{self_paced:2, intensive:1, one_on_one:1} },
+      { e:'🍀', l:'일상 대화는 어느 정도 돼요', h:'B1, 더 자연스럽게 다듬고 싶다', sc:{one_on_one:2, special:1, intensive:1} },
+      { e:'🎬', l:'두우리 인강 수강 중이에요!', h:'이미 커리큘럼을 듣고 있어요', sc:{special:5, one_on_one:1} },
+    ]
+  },
+  {
+    q: '프랑스어랑 알고 지낸 지 얼마나 됐어요?',
+    sub: '처음 접한 시점 기준이에요.',
+    opts: [
+      { e:'🥚', l:'아직 시작 전 (마음만 먹은 상태)', h:'', sc:{youtube:2, threads:2, self_paced:1} },
+      { e:'🐣', l:'3개월 미만, 새내기', h:'', sc:{self_paced:1, youtube:1, threads:1} },
+      { e:'🐥', l:'3~6개월차', h:'', sc:{self_paced:1, intensive:1} },
+      { e:'🐦', l:'6개월~1년, 좀 익숙해짐', h:'', sc:{one_on_one:1, intensive:1} },
+      { e:'🦅', l:'1년 이상, 꽤 됐어요', h:'', sc:{one_on_one:2, special:1} },
+    ]
+  },
+  {
+    q: '프랑스어, 왜 배우세요?',
+    sub: '가장 솔직한 이유를 하나 골라주세요.',
+    opts: [
+      { e:'✈️', l:'여행·파리에서 대화하고 싶어요', h:'실용 회화 목표', sc:{self_paced:1, youtube:1, threads:1} },
+      { e:'🎬', l:'프랑스 영화·음악·문화가 너무 좋아요', h:'문화와 언어를 함께', sc:{self_paced:2, youtube:2, threads:2} },
+      { e:'💼', l:'유학·취업·실무에 필요해요', h:'', sc:{one_on_one:3, intensive:2} },
+      { e:'🎓', l:'시험·자격증 목표가 있어요 (DELF 등)', h:'', sc:{one_on_one:3, intensive:3} },
+      { e:'💜', l:'그냥 좋아서요, 취미로', h:'강요 없이 내 속도로', sc:{self_paced:2, youtube:1, threads:1} },
+    ]
+  },
+  {
+    q: '파리 카페에서 주문을 잘못 받았어요. 당신은?',
+    sub: '직감적으로 더 가까운 쪽을 고르세요.',
+    opts: [
+      { e:'😅', l:'일단 몸짓·표정으로 어떻게든 해봐요', h:'상황에 유연하게 대응', sc:{self_paced:1, youtube:1, threads:1} },
+      { e:'🤓', l:'이런 상황 대비해서 표현을 미리 외워뒀어요', h:'준비하는 스타일', sc:{one_on_one:2, intensive:2} },
+    ]
+  },
+  {
+    q: '공부하다 모르는 게 생겼어요. 당신은?',
+    sub: '가장 솔직하게, 평소 행동에 가까운 것으로요.',
+    opts: [
+      { e:'📝', l:'일단 메모해두고 나중에 찾아봐요', h:'', sc:{self_paced:1, threads:1} },
+      { e:'🔍', l:'바로 검색하는데 원하는 답이 잘 없어요', h:'', sc:{self_paced:1, one_on_one:1} },
+      { e:'💬', l:'선생님한테 바로 물어보고 싶어요', h:'해결 안 되면 답답함', sc:{one_on_one:3, special:2} },
+      { e:'🤷', l:'일단 넘겨요 — 나중에 자연스럽게 알겠지', h:'', sc:{youtube:1, self_paced:1} },
+    ]
+  },
+  {
+    q: '프랑스어 공부 계획, 솔직히 어때요?',
+    sub: '자기 자신한테 솔직하게.',
+    opts: [
+      { e:'📅', l:'주차별 목표가 있고 지키려고 해요', h:'계획형, 체계가 있어야 잘 됨', sc:{intensive:3, one_on_one:1} },
+      { e:'🌊', l:'그날그날 달라요 — 계획표는 3일도 못 가요', h:'자유형, 루틴보다 감각', sc:{self_paced:2, youtube:1, threads:1} },
+    ]
+  },
+  {
+    q: '프랑스어 공부, 주로 언제 해요? (하고 싶어요?)',
+    sub: '현실적으로 가장 공부할 것 같은 시간대로.',
+    opts: [
+      { e:'🌅', l:'아침 루틴으로 30분', h:'', sc:{intensive:2, self_paced:1} },
+      { e:'🚌', l:'출퇴근·이동 틈틈이', h:'', sc:{threads:2, youtube:1, self_paced:1} },
+      { e:'☀️', l:'점심 짬짬이', h:'', sc:{threads:2, youtube:1} },
+      { e:'🌙', l:'밤에 몰아서 1~2시간', h:'', sc:{self_paced:1, intensive:1, one_on_one:1} },
+      { e:'📚', l:'주말에 카페에서 길게', h:'', sc:{self_paced:2, one_on_one:1} },
+    ]
+  },
+  {
+    q: '솔직히, 프랑스어 공부할 때 제일 큰 고민은?',
+    sub: '가장 공감 가는 것 하나를 고르세요.',
+    opts: [
+      { e:'🔥', l:'작심삼일... 꾸준히가 안 돼요', h:'', sc:{one_on_one:3, intensive:2} },
+      { e:'🤯', l:'문법이 너무 복잡해요 (성별·시제·활용)', h:'', sc:{one_on_one:2, special:2} },
+      { e:'👄', l:'읽고 이해는 되는데 말이 안 나와요', h:'', sc:{one_on_one:2, special:1} },
+      { e:'❓', l:'뭘 어떤 순서로 해야 할지 모르겠어요', h:'', sc:{one_on_one:3, intensive:1} },
+      { e:'🧩', l:'공부는 하는데 실력이 느는 느낌이 없어요', h:'', sc:{one_on_one:2, special:2, intensive:1} },
+    ]
+  },
+];
+
+/* ═══════════════════════════════════════════
+   RESULT TYPES (6개)
+═══════════════════════════════════════════ */
+const TYPES = {
+  one_on_one: {
+    emoji: '🌸',
+    name:  '밀착 케어형',
+    quote: '"나한테 맞는 방법으로 배워야 진짜 늘어요"',
+    desc:  '명확한 목표가 있고, 방향만 잘 잡히면 빠르게 성장하는 타입이에요. 혼자 공부할 때 특히 답답함을 느끼고, 내 질문에 정확히 대답해줄 사람이 있을 때 가장 잘 됩니다. 피드백 한 마디에 다음 단계로 훌쩍 올라가요.',
+    strengths: ['집중력이 높음', '피드백에 빠르게 반응', '목표 의식 강함'],
+    cautions:  ['혼자 하면 방향 잃기 쉬움', '완벽주의로 막힐 때 있음'],
+    tips: [
+      { t:'처음부터 1:1로 커리큘럼 설계', s:'내 수준·목표·속도에 맞게 맞춤 설계. 방향을 잡는 것부터 시작해요.' },
+      { t:'매 수업 끝에 다음 목표 설정', s:'선생님과 함께 다음 수업 목표를 잡으면 방향을 잃지 않아요.' },
+      { t:'모르는 건 그 자리에서 해결', s:'질문을 쌓아두지 말고 바로바로 해결하는 게 핵심이에요.' },
+    ],
+    routine: [
+      { label:'평일', text:'수업 전 예습 15분 → 1:1 수업 → 복습 10분' },
+      { label:'주말', text:'이번 주 배운 표현 정리 + 말하기 연습' },
+    ],
+    warning: '완벽하게 이해하고 넘어가려는 습관, 가끔은 "일단 앞으로"도 필요해요. 완벽주의가 오히려 속도를 늦출 수 있거든요.',
+    service:  '1:1 맞춤화 과외',
+    cta:      '1:1 과외 상담하기 →',
+    link:     '#contact',
+  },
+  special: {
+    emoji: '🔍',
+    name:  '탐구 파고들기형',
+    quote: '"이 부분만큼은 제대로 이해하고 넘어갈 거야"',
+    desc:  '이미 어느 정도 공부를 해왔는데, 특정 부분이 계속 걸려요. 전체를 처음부터 다시 하기는 아깝고, 딱 그 부분만 집중적으로 파고들고 싶은 타입이에요. 이해가 뚫리는 순간 빠르게 치고 올라갑니다.',
+    strengths: ['깊이 있는 이해력', '이해 후 오래 기억', '내 약점 파악 잘 됨'],
+    cautions:  ['한 곳에 너무 오래 머물 때 있음', '전체 흐름 놓칠 수 있음'],
+    tips: [
+      { t:'인강으로 흐름 잡고, 특강으로 점프', s:'전체 커리큘럼은 인강으로, 막히는 챕터만 1:1 특강으로 집중 해결.' },
+      { t:'막히는 챕터 리스트 만들기', s:'"이건 꼭 짚어야겠다" 싶은 부분을 메모해두고 특강 때 한 번에 해결.' },
+      { t:'특강 전 질문 미리 정리', s:'선생님과의 시간을 최대한 활용하려면 질문 리스트가 있어야 해요.' },
+    ],
+    routine: [
+      { label:'평일', text:'인강 1~2챕터 진도 → 막히는 부분 메모' },
+      { label:'특강', text:'메모한 질문 집중 해결 → 다음 구간 계획' },
+    ],
+    warning: '막힌 부분에만 집중하다 보면 전체 흐름이 흔들릴 수 있어요. 인강 진도도 꾸준히 병행하는 것이 핵심이에요.',
+    service:  '인강 + 원하는 챕터 1:1 특강',
+    cta:      '특강 신청하기 →',
+    link:     '#contact',
+  },
+  intensive: {
+    emoji: '⚡',
+    name:  '집중 완주형',
+    quote: '"시작했으면 끝을 봐야 직성이 풀려요"',
+    desc:  '한 번 할 때 제대로, 기간 안에 끝내는 스타일이에요. 느슨한 것보다 타이트한 스케줄이 더 잘 맞고, 목표와 마감이 있어야 성과가 납니다. "어떻게 그렇게 빨리 했어?" 소리 듣는 타입이에요.',
+    strengths: ['완주율 높음', '계획 실행력 강함', '마감 압박에 오히려 집중'],
+    cautions:  ['번아웃 주의', '"완벽하지 않으면 시작 못 해" 함정'],
+    tips: [
+      { t:'5개월 패키지로 데드라인 설정', s:'주 5회 × 8주 커리큘럼, 5개월 완주 플랜. 마감이 있어야 달려요.' },
+      { t:'매 챕터 미션 꼭 제출', s:'미션 제출 + 두우리 피드백이 있어서 "나 지금 잘 가고 있구나"가 느껴져요.' },
+      { t:'막혀도 일단 앞으로', s:'한 챕터에 너무 오래 머물지 마세요. 앞으로 가다 보면 이해되는 순간이 와요.' },
+    ],
+    routine: [
+      { label:'평일', text:'챕터 1개 완강 + 미션 작성 (30~45분)' },
+      { label:'주말', text:'이번 주 복습 + 다음 주 목표 설정' },
+    ],
+    warning: '"지금 상황이 완벽하지 않으면 시작 못 해요"는 금물이에요. 완벽한 타이밍은 없어요 — 지금이 가장 빠른 날이에요.',
+    service:  '프랑스어 인강 5개월 패키지',
+    cta:      '5개월 패키지 보러 가기 →',
+    link:     '#lectures',
+  },
+  self_paced: {
+    emoji: '🌿',
+    name:  '자기 리듬형',
+    quote: '"내 속도로, 내 방식으로 가면 돼요"',
+    desc:  '강요받기 싫고, 내 페이스로 천천히 쌓아가는 타입이에요. 바쁜 일상 속에서도 포기 없이 조금씩 갈 수 있어야 진짜 오래 갑니다. 느려도 꾸준한 게 이기는 타입이에요.',
+    strengths: ['지속성 높음', '스트레스 없이 공부', '자기 주도성 강함'],
+    cautions:  ['페이스 잃으면 오래 쉬게 됨', '목표가 흐릿해질 수 있음'],
+    tips: [
+      { t:'평생소장 인강으로 한 번 구매', s:'내 일정에 맞게 조금씩. 반복 수강도 가능하고, 부담 없이 시작해요.' },
+      { t:'주 3회 이상 짧게라도 켜두기', s:'긴 시간보다 빈도가 중요해요. 15분도 충분해요.' },
+      { t:'완벽주의 내려놓기', s:'오늘 챕터 절반만 했어도 충분해요. 쉬지 않는 것이 목표예요.' },
+    ],
+    routine: [
+      { label:'평일', text:'짬날 때 15~30분, 챕터 반 이상이면 충분' },
+      { label:'주말', text:'지난 챕터 복습 + 새 챕터 예습' },
+    ],
+    warning: '루틴이 한 번 깨지면 다시 켜기가 어려워져요. "오늘 하나만이라도" 원칙을 꼭 지켜보세요.',
+    service:  '프랑스어 인강 — 평생소장',
+    cta:      '평생소장 인강 보러 가기 →',
+    link:     '#lectures',
+  },
+  youtube: {
+    emoji: '🌍',
+    name:  '탐험가형',
+    quote: '"일단 보고, 느끼고, 그다음에 배워요"',
+    desc:  '교과서보다 실제 콘텐츠로 배우는 게 훨씬 재미있는 타입이에요. 문화와 언어를 함께 즐기면서 자연스럽게 흡수하는 걸 좋아합니다. 흥미가 있어야 오래가고, 흥미가 없으면 금방 손을 놓아요.',
+    strengths: ['흥미 지속력 높음', '자연스러운 흡수', '문화 이해도 높음'],
+    cautions:  ['체계적 공부가 부족할 수 있음', '기초 문법이 약해질 수 있음'],
+    tips: [
+      { t:'유튜브 채널 구독부터', s:'독해, 회화 표현, 프랑스 문화 해설 — 부담 없이 시작할 수 있어요.' },
+      { t:'관심 있는 주제부터', s:'여행, 음식, 드라마 — 내가 좋아하는 것과 연결하면 지속돼요.' },
+      { t:'보다가 욕심 나면 인강으로', s:'자연스럽게 체계를 잡고 싶을 때, 인강이 기다리고 있어요.' },
+    ],
+    routine: [
+      { label:'평일', text:'영상 1편 시청 + 표현 1~2개 메모' },
+      { label:'주말', text:'이번 주 메모한 표현 직접 써보기' },
+    ],
+    warning: '영상만 보는 것으로는 실력이 정체될 수 있어요. 보고 느끼는 것 + 직접 말해보는 연습을 꼭 더해주세요.',
+    service:  '무료 유튜브 미들폼',
+    cta:      '유튜브 채널 보러 가기 →',
+    link:     'https://youtube.com',
+  },
+  threads: {
+    emoji: '💡',
+    name:  '감각파형',
+    quote: '"핵심만 깔끔하게, 딱 필요한 것만요"',
+    desc:  '긴 영상보다 짧고 핵심적인 콘텐츠가 더 잘 맞는 타입이에요. 이동 중에도, 짬날 때도 쉽게 읽을 수 있는 포맷을 좋아하고, 인사이트를 빠르게 흡수하는 능력이 있어요.',
+    strengths: ['빠른 흡수력', '가볍게 꾸준히 가능', '핵심 파악 빠름'],
+    cautions:  ['깊이가 부족해질 수 있음', '단편 지식에 그칠 수 있음'],
+    tips: [
+      { t:'스레드 팔로우부터', s:'실용 표현, 뉘앙스, 문화 이야기를 짧은 텍스트로 만나보세요.' },
+      { t:'스크랩 습관 만들기', s:'눈에 들어오는 표현은 바로 저장. 나중에 복습할 때 금맥이 돼요.' },
+      { t:'표현 하나씩 직접 써보기', s:'오늘 읽은 표현으로 짧은 문장 하나 만들어보기 — 보는 것과 다른 차원이에요.' },
+    ],
+    routine: [
+      { label:'평일', text:'스레드 읽기 5분 + 표현 1개 저장' },
+      { label:'주말', text:'저장한 표현으로 짧은 문장 만들기' },
+    ],
+    warning: '핵심 요약의 편리함에 너무 익숙해지면 깊이가 얕아질 수 있어요. 가끔은 긴 콘텐츠에도 도전해보세요.',
+    service:  '무료 스레드 에센셜',
+    cta:      '스레드 팔로우하기 →',
+    link:     'https://threads.net',
+  },
+};
+
+/* ═══════════════════════════════════════════
+   STATE & VIEWS
+═══════════════════════════════════════════ */
+let qIdx = 0;
+let sc   = { one_on_one:0, special:0, intensive:0, self_paced:0, youtube:0, threads:0 };
+
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  window.scrollTo({ top: 0, behavior: 'instant' });
+}
+
+/* ═══════════════════════════════════════════
+   QUIZ
+═══════════════════════════════════════════ */
+function startQuiz() {
+  qIdx = 0;
+  sc   = { one_on_one:0, special:0, intensive:0, self_paced:0, youtube:0, threads:0 };
+  showView('v-quiz');
+  renderQ();
+  dismissToast();
+}
+
+function renderQ() {
+  const q    = QS[qIdx];
+  const pct  = Math.round((qIdx / QS.length) * 100);
+
+  document.getElementById('qz-step').textContent = `${qIdx + 1} / ${QS.length}`;
+  document.getElementById('qz-pct').textContent  = `${pct}%`;
+  document.getElementById('qz-fill').style.width = `${pct}%`;
+
+  const card = document.getElementById('qz-card');
+  card.style.animation = 'none';
+  void card.offsetHeight;
+  card.style.animation = '';
+
+  card.innerHTML = `
+    <div class="qz-head">
+      <span class="qz-badge">QUESTION ${qIdx + 1}</span>
+      <p class="qz-q">${q.q}</p>
+      ${q.sub ? `<p class="qz-sub">${q.sub}</p>` : ''}
+    </div>
+    <div class="qz-opts">
+      ${q.opts.map((o, i) => `
+        <button class="qz-opt" onclick="pick(${i})">
+          <span class="opt-ico">${o.e}</span>
+          <span class="opt-body">
+            <span class="opt-main">${o.l}</span>
+            ${o.h ? `<span class="opt-hint">${o.h}</span>` : ''}
+          </span>
+        </button>
+      `).join('')}
+    </div>
+  `;
+}
+
+function pick(i) {
+  // Highlight
+  document.querySelectorAll('.qz-opt')[i].classList.add('sel');
+
+  // Accumulate scores
+  const chosen = QS[qIdx].opts[i];
+  Object.entries(chosen.sc).forEach(([k, v]) => { sc[k] = (sc[k] || 0) + v; });
+
+  // Advance
+  setTimeout(() => {
+    qIdx++;
+    if (qIdx < QS.length) renderQ();
+    else showResult();
+  }, 280);
+}
+
+/* ═══════════════════════════════════════════
+   RESULT
+═══════════════════════════════════════════ */
+function showResult() {
+  const key = Object.entries(sc).reduce((a, b) => b[1] > a[1] ? b : a)[0];
+  const r   = TYPES[key];
+
+  document.getElementById('v-result').innerHTML = `
+    <div class="res-hero">
+      <p class="res-hero-label">당신의 프랑스어 학습 유형은</p>
+      <div class="res-emoji">${r.emoji}</div>
+      <h2 class="res-name"><u>${r.name}</u></h2>
+      <p class="res-quote">${r.quote}</p>
+    </div>
+
+    <div class="res-body">
+
+      <div class="res-card">
+        <p class="res-card-title"><span class="ti">✨</span> 이런 분이에요</p>
+        <p class="res-desc">${r.desc}</p>
+      </div>
+
+      <div class="res-card">
+        <p class="res-card-title"><span class="ti">🎯</span> 강점 &amp; 주의점</p>
+        <div class="sf-grid">
+          <div class="sf-box str">
+            <p class="sf-lbl">💪 강점</p>
+            <ul class="sf-list">${r.strengths.map(s=>`<li>${s}</li>`).join('')}</ul>
+          </div>
+          <div class="sf-box ctn">
+            <p class="sf-lbl">⚠️ 주의점</p>
+            <ul class="sf-list">${r.cautions.map(c=>`<li>${c}</li>`).join('')}</ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="res-card">
+        <p class="res-card-title"><span class="ti">💡</span> 딱 맞는 학습법 TOP 3</p>
+        <div class="tips">
+          ${r.tips.map((t,i)=>`
+            <div class="tip">
+              <span class="tip-n">${i+1}</span>
+              <div>
+                <p class="tip-t">${t.t}</p>
+                <p class="tip-s">${t.s}</p>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="res-card">
+        <p class="res-card-title"><span class="ti">⏰</span> 추천 루틴</p>
+        <div class="routine-list">
+          ${r.routine.map(rt=>`
+            <div class="routine-item">
+              <span class="ri-label">${rt.label}</span>
+              <span>${rt.text}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="res-card">
+        <p class="res-card-title"><span class="ti">🚨</span> 가장 조심할 것</p>
+        <div class="warn-box">${r.warning}</div>
+      </div>
+
+      <div class="res-cta-block">
+        <span class="res-cta-tag">추천 서비스</span>
+        <h3 class="res-cta-title">${r.service}</h3>
+        <p class="res-cta-sub">${r.name}에게 딱 맞는 방법이에요.<br>두우리와 함께 프랑스어 실력을 키워보세요.</p>
+        <a href="${r.link}" class="res-cta-btn" target="_blank">${r.cta}</a>
+      </div>
+
+      <div class="res-share">
+        <p class="share-title">🔗 결과 공유하기</p>
+        <div class="share-row">
+          <button class="share-btn" onclick="doShare('link')">
+            <span>🔗</span><span>링크 복사</span>
+          </button>
+          <button class="share-btn" onclick="doShare('kakao')">
+            <span>💬</span><span>카카오 공유</span>
+          </button>
+        </div>
+      </div>
+
+      <button class="res-retry" onclick="backToLand()">↩ 처음부터 다시 하기</button>
+
+    </div>
+  `;
+
+  showView('v-result');
+}
+
+function backToLand() {
+  qIdx = 0;
+  sc = { one_on_one:0, special:0, intensive:0, self_paced:0, youtube:0, threads:0 };
+  showView('v-land');
+}
+
+function doShare(type) {
+  if (type === 'link') {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => alert('링크가 복사됐어요!'))
+      .catch(() => alert(window.location.href));
+  } else {
+    alert('카카오 공유는 실제 도메인 연결 후 설정할 수 있어요.');
+  }
+}
+
+/* ═══════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════ */
+let _tInt = null;
+let _tSec = 10;
+
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    const el = document.getElementById('toast');
+    el.style.display = 'block';
+    _startToast();
+  }, 2500);
+});
+
+function _startToast() {
+  _tSec = 10;
+  const fill = document.getElementById('t-fill');
+  const cd   = document.getElementById('t-cd');
+  // Reset bar
+  fill.style.transition = 'none';
+  fill.style.width = '100%';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    fill.style.transition = `width ${_tSec}s linear`;
+    fill.style.width = '0%';
+  }));
+  _tInt = setInterval(() => {
+    _tSec--;
+    cd.textContent = `${_tSec}초 후 닫힘`;
+    if (_tSec <= 0) { clearInterval(_tInt); dismissToast(); }
+  }, 1000);
+}
+
+function dismissToast(e) {
+  if (e) e.stopPropagation();
+  clearInterval(_tInt);
+  const el = document.getElementById('toast');
+  el.classList.add('out');
+  el.addEventListener('animationend', () => el.classList.add('gone'), { once: true });
+}
+
+function handleToastClick(e) {
+  if (e.target.classList.contains('toast-x')) return;
+  dismissToast();
+  startQuiz();
+}
+</script>
+<script src="js/components.js"></script>
+<script>initComponents();</script>
+</body>
+</html>
