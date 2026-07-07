@@ -586,7 +586,6 @@ const PAGES = [
   { id: 'portfolio',      icon: '📑', name: '통번역 · 로컬화 이력',    file: 'portfolio.html',      defaultStatus: 'live' },
   { id: 'service-finder', icon: '🎯', name: '학습 유형 테스트',        file: 'service-finder.html', defaultStatus: 'live' },
   { id: 'learn',          icon: '🎓', name: '강의 수강 플랫폼',         file: 'learn.html',          defaultStatus: 'draft' },
-  { id: 'verify',         icon: '✅', name: '미션 인증 페이지',         file: 'verify.html',         defaultStatus: 'draft' },
 ];
 
 /* ══ 인증 ══ */
@@ -677,8 +676,10 @@ function toggleStatus(id) {
 }
 
 /* ══ 미리보기 ══ */
+let _previewFirstLoad = false;
 function openPreview(file, name) {
   document.getElementById('preview-title').textContent = name + ' 미리보기';
+  _previewFirstLoad = false;
   document.getElementById('preview-frame').src = file;
   document.getElementById('preview-modal').classList.add('open');
 }
@@ -686,6 +687,11 @@ function closePreview() {
   document.getElementById('preview-modal').classList.remove('open');
   document.getElementById('preview-frame').src = '';
 }
+document.getElementById('preview-frame').addEventListener('load', function() {
+  if (!_previewFirstLoad) { _previewFirstLoad = true; return; }
+  // iframe이 다른 페이지로 이동하면 모달 닫기
+  closePreview();
+});
 
 /* ══ UTM 빌더 ══ */
 function buildUTM() {
