@@ -722,244 +722,201 @@ function renderPages() {
         </div>
         <div class="page-actions">
           <span class="status-badge ${statusClass}" id="badge-${page.id}">${statusLabel}</span>
-          <button class="btn-sm" onclick="toggleStatus('${page.id}')">상태 변경</button>
-          <button class="btn-sm" onclick="openPreview('${page.file}', '${page.name}')">미리보기</button>
+          <button class="btn-sm" onclick="openPreview('${page.file}','${page.name}')">미리보기</button>
+          <select class="status-select" onchange="setPageStatus('${page.id}',this.value);renderPages()">
+            <option value="live"${status==='live'?' selected':''}>Live</option>
+            <option value="draft"${status==='draft'?' selected':''}>Draft</option>
+            <option value="hidden"${status==='hidden'?' selected':''}>숨김</option>
+          </select>
         </div>
-      </div>
-    `;
+      </div>`;
   }).join('');
 }
 
-function toggleStatus(id) {
-  const cur = getPageStatus(id);
-  const next = cur === 'live' ? 'draft' : cur === 'draft' ? 'hidden' : 'live';
-  setPageStatus(id, next);
-  renderPages();
-  const labels = { live: 'Live', draft: 'Draft', hidden: '숨김' };
-  showToast(`"${PAGES.find(p=>p.id===id)?.name}" → ${labels[next]}`);
-}
-
-/* ══ 미리보기 ══ */
-let _previewFirstLoad = false;
-function openPreview(file, name) {
-  document.getElementById('preview-title').textContent = name + ' 미리보기';
-  _previewFirstLoad = false;
-  document.getElementById('preview-frame').src = file;
-  document.getElementById('preview-modal').classList.add('open');
-}
-function closePreview() {
-  document.getElementById('preview-modal').classList.remove('open');
-  document.getElementById('preview-frame').src = '';
-}
-document.getElementById('preview-frame').addEventListener('load', function() {
-  if (!_previewFirstLoad) { _previewFirstLoad = true; return; }
-  // iframe이 다른 페이지로 이동하면 모달 닫기
-  closePreview();
-});
-
 /* ══ UTM 빌더 ══ */
 function buildUTM() {
-  const pageSelect = document.getElementById('utm-page');
-  const customWrap = document.getElementById('custom-url-wrap');
-  let baseUrl;
-  if (pageSelect.value === 'custom') {
-    customWrap.style.display = '';
-    baseUrl = document.getElementById('utm-custom').value || 'https://doouri.com/';
-  } else {
-    customWrap.style.display = 'none';
-    baseUrl = pageSelect.value;
-  }
-  const source   = document.getElementById('utm-source').value;
-  const medium   = document.getElementById('utm-medium').value;
-  const campaign = document.getElementById('utm-campaign').value;
-
-  const url = new URL(baseUrl);
-  url.searchParams.set('utm_source', source);
-  url.searchParams.set('utm_medium', medium);
-  if (campaign) url.searchParams.set('utm_campaign', campaign);
-
-  document.getElementById('utm-result').textContent = url.toString();
+  const page = document.getElementById('utm-page').value;
+  const source = document.getElementById('utm-source').value;
+  const medium = document.getElementById('utm-medium').value;
+  const campaign = (document.getElementById('utm-campaign').value || '').trim();
+  const custom = (document.getElementById('utm-custom').value || '').trim();
+  document.getElementById('custom-url-wrap').style.display = page === 'custom' ? 'block' : 'none';
+  const base = page === 'custom' ? custom : page;
+  if (!base) return;
+  const params = new URLSearchParams();
+  if (source) params.set('utm_source', source);
+  if (medium) params.set('utm_medium', medium);
+  if (campaign) params.set('utm_campaign', campaign);
+  document.getElementById('utm-result').textContent = base + (params.toString() ? '?' + params.toString() : '');
 }
 
 function copyUTM() {
   const text = document.getElementById('utm-result').textContent;
-  navigator.clipboard.writeText(text).then(() => showToast('링크 복사됨 ✓'));
+  if (text && text !== '링크가 여기에 생성됩니다') {
+    navigator.clipboard.writeText(text).then(() => showToast('링크가 복사됐어요! 👆'));
+  }
 }
 
-/* ══ GA4 데이터 대시보드 ══ */
+/* ══ GA4 대시보드 ══ */
 const GA4_PROPERTY = '544506676';
-const GA4_CLIENT_ID = '22648364020234-gldbcsfl16cftjvd11o9iqpalesi1hsn.apps.googleusercontent.com';
-let ga4AccessToken = null;
-let ga4Period = 30;
+const OAUTH_CLIENT_ID = '715189050110-8l2r6f9jem1dvor5tvhc07e02nomlsii.apps.googleusercontent.com';
+const GA4_SCOPE = 'https://www.googleapis.com/auth/analytics.readonly';
+let _tokenClient, _token, _days = 7;
 
 function initGA4() {
-  const script = document.createElement('script');
-  script.src = 'https://accounts.google.com/gsi/client';
-  script.onload = () => {
-    const savedToken = sessionStorage.getItem('ga4_token');
-    if (savedToken) {
-      ga4AccessToken = savedToken;
-      showDashState('loading');
-      ga4LoadAll();
-    } else {
-      showDashState('connect');
+  const saved = sessionStorage.getItem('ga4-token');
+  if (saved) {
+    try { _token = JSON.parse(saved); showDataState(); ga4LoadAll(); return; } catch(e) {}
+  }
+  if (!window.google?.accounts?.oauth2) {
+    const s = document.createElement('script');
+    s.src = 'https://accounts.google.com/gsi/client';
+    s.onload = _setupClient;
+    document.head.appendChild(s);
+  } else { _setupClient(); }
+}
+
+function _setupClient() {
+  _tokenClient = google.accounts.oauth2.initTokenClient({
+    client_id: OAUTH_CLIENT_ID,
+    scope: GA4_SCOPE,
+    callback: (r) => {
+      if (r.error) { showConnectState(); return; }
+      _token = r;
+      sessionStorage.setItem('ga4-token', JSON.stringify(r));
+      showDataState(); ga4LoadAll();
     }
-  };
-  document.head.appendChild(script);
+  });
 }
 
 function ga4SignIn() {
-  const tokenClient = google.accounts.oauth2.initTokenClient({
-    client_id: GA4_CLIENT_ID,
-    scope: 'https://www.googleapis.com/auth/analytics.readonly',
-    callback: (resp) => {
-      if (resp.access_token) {
-        ga4AccessToken = resp.access_token;
-        sessionStorage.setItem('ga4_token', ga4AccessToken);
-        showDashState('loading');
-        ga4LoadAll();
-      } else {
-        showDashState('connect');
-        showToast('연결 실패 — 다시 시도해주세요');
-      }
-    }
-  });
-  tokenClient.requestAccessToken();
+  if (!window.google?.accounts?.oauth2) { initGA4(); setTimeout(() => _tokenClient?.requestAccessToken(), 2000); }
+  else { if (!_tokenClient) _setupClient(); _tokenClient.requestAccessToken(); }
 }
 
 function ga4SignOut() {
-  if (ga4AccessToken && typeof google !== 'undefined') {
-    google.accounts.oauth2.revoke(ga4AccessToken, () => {});
-  }
-  ga4AccessToken = null;
-  sessionStorage.removeItem('ga4_token');
-  showDashState('connect');
+  if (_token) { google.accounts.oauth2.revoke(_token.access_token, () => {}); _token = null; }
+  sessionStorage.removeItem('ga4-token');
+  showConnectState();
 }
 
-function showDashState(state) {
-  ['connect', 'loading', 'data'].forEach(s => {
-    const el = document.getElementById('state-' + s);
-    if (el) el.style.display = (s === state) ? '' : 'none';
-  });
-  const pr = document.getElementById('period-row');
-  if (pr) pr.style.display = state === 'data' ? '' : 'none';
+function showConnectState() {
+  document.getElementById('state-connect').style.display = 'block';
+  document.getElementById('state-loading').style.display = 'none';
+  document.getElementById('state-data').style.display = 'none';
+  document.getElementById('period-row').style.display = 'none';
+}
+
+function showDataState() {
+  document.getElementById('state-connect').style.display = 'none';
+  document.getElementById('state-loading').style.display = 'none';
+  document.getElementById('state-data').style.display = 'block';
+  document.getElementById('period-row').style.display = 'flex';
 }
 
 function setPeriod(days, btn) {
-  ga4Period = days;
+  _days = days;
   document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
-  if (btn) btn.classList.add('active');
-  showDashState('loading');
+  btn.classList.add('active');
   ga4LoadAll();
 }
 
-async function ga4Report(body) {
-  const res = await fetch(
-    `https://analyticsdata.googleapis.com/v1beta/properties/${GA4_PROPERTY}:runReport`,
-    {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${ga4AccessToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    }
-  );
-  if (res.status === 401) {
-    ga4AccessToken = null;
-    sessionStorage.removeItem('ga4_token');
-    showDashState('connect');
-    showToast('로그인이 만료됐어요 — 다시 연결해주세요');
-    throw new Error('Unauthorized');
-  }
-  if (!res.ok) throw new Error('API error ' + res.status);
-  return res.json();
-}
-
 async function ga4LoadAll() {
-  const dateRange = { startDate: `${ga4Period}daysAgo`, endDate: 'today' };
+  if (!_token) return;
+  document.getElementById('state-loading').style.display = 'block';
+  document.getElementById('state-data').style.display = 'none';
+  const end = new Date().toISOString().slice(0,10);
+  const start = new Date(Date.now() - _days * 864e5).toISOString().slice(0,10);
   try {
-    const [kpiData, sourceData, pageData, deviceData] = await Promise.all([
-      ga4Report({
-        dateRanges: [dateRange],
-        metrics: [
-          { name: 'totalUsers' }, { name: 'sessions' },
-          { name: 'screenPageViews' }, { name: 'userEngagementDuration' }
-        ]
-      }),
-      ga4Report({
-        dateRanges: [dateRange],
-        dimensions: [{ name: 'sessionDefaultChannelGroup' }],
-        metrics: [{ name: 'sessions' }],
-        orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
-        limit: 8
-      }),
-      ga4Report({
-        dateRanges: [dateRange],
-        dimensions: [{ name: 'pageTitle' }],
-        metrics: [{ name: 'screenPageViews' }],
-        orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
-        limit: 6
-      }),
-      ga4Report({
-        dateRanges: [dateRange],
-        dimensions: [{ name: 'deviceCategory' }],
-        metrics: [{ name: 'sessions' }],
-        orderBys: [{ metric: { metricName: 'sessions' }, desc: true }]
-      })
+    const [kpi, src, pg, dev] = await Promise.all([
+      _ga4Req(['activeUsers','sessions','screenPageViews','averageSessionDuration'], [], start, end, 1),
+      _ga4Req(['sessions'], ['sessionDefaultChannelGroup'], start, end, 8),
+      _ga4Req(['screenPageViews'], ['pagePath'], start, end, 8),
+      _ga4Req(['sessions'], ['deviceCategory'], start, end, 6),
     ]);
-
-    // KPI
-    const mv = kpiData.rows?.[0]?.metricValues || [];
-    document.getElementById('kpi-users').textContent     = fmtNum(mv[0]?.value);
-    document.getElementById('kpi-sessions').textContent  = fmtNum(mv[1]?.value);
-    document.getElementById('kpi-pageviews').textContent = fmtNum(mv[2]?.value);
-    const totalSecs = parseInt(mv[3]?.value || 0);
-    const totalSess = parseInt(mv[1]?.value || 1);
-    document.getElementById('kpi-duration').textContent  = fmtDur(totalSecs / Math.max(totalSess, 1));
-
-    // 유입 채널
-    renderBarChart('chart-source',
-      (sourceData.rows || []).map(r => ({
-        label: ga4Channel(r.dimensionValues[0].value),
-        value: parseInt(r.metricValues[0].value)
-      })), '#C24A35');
-
-    // 인기 페이지
-    renderBarChart('chart-pages',
-      (pageData.rows || []).map(r => ({
-        label: r.dimensionValues[0].value
-          .replace(/\s*[|—]\s*프랑스어.*$/i, '').trim() || '(홈)',
-        value: parseInt(r.metricValues[0].value)
-      })), '#5B8E7D');
-
-    // 기기
-    renderBarChart('chart-device',
-      (deviceData.rows || []).map(r => ({
-        label: ga4Device(r.dimensionValues[0].value),
-        value: parseInt(r.metricValues[0].value)
-      })), '#7A5550');
-
-    showDashState('data');
-  } catch (e) {
-    if (e.message !== 'Unauthorized') {
-      showDashState('connect');
-      showToast('데이터 로드 실패 — 다시 시도해주세요');
-    }
+    const v = kpi.rows?.[0]?.metricValues || [];
+    document.getElementById('kpi-users').textContent = _fmt(v[0]?.value);
+    document.getElementById('kpi-sessions').textContent = _fmt(v[1]?.value);
+    document.getElementById('kpi-pageviews').textContent = _fmt(v[2]?.value);
+    const dur = Math.round(parseFloat(v[3]?.value || 0));
+    document.getElementById('kpi-duration').textContent = dur ? `${Math.floor(dur/60)}분 ${dur%60}초` : '—';
+    _renderBars('chart-source', src.rows);
+    _renderBars('chart-pages', pg.rows);
+    _renderBars('chart-device', dev.rows);
+    showDataState();
+  } catch(e) {
+    if (e.status === 401) { _token = null; sessionStorage.removeItem('ga4-token'); showConnectState(); return; }
+    document.getElementById('state-loading').style.display = 'none';
+    document.getElementById('state-data').style.display = 'block';
   }
 }
 
-function fmtNum(v) {
-  const n = parseInt(v || 0);
-  return n === 0 ? '0' : n.toLocaleString('ko-KR');
+async function _ga4Req(metrics, dims, start, end, limit) {
+  const body = {
+    dateRanges: [{ startDate: start, endDate: end }],
+    metrics: metrics.map(n => ({ name: n })),
+    limit,
+  };
+  if (dims.length) {
+    body.dimensions = dims.map(n => ({ name: n }));
+    body.orderBys = [{ metric: { metricName: metrics[0] }, desc: true }];
+    body.limit = 8;
+  }
+  const r = await fetch(`https://analyticsdata.googleapis.com/v1beta/properties/${GA4_PROPERTY}:runReport`, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${_token.access_token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!r.ok) { const e = await r.json(); throw { status: r.status, ...e }; }
+  return r.json();
 }
 
-function fmtDur(secs) {
-  const s = Math.round(secs);
-  if (isNaN(s) || s <= 0) return '0초';
-  if (s < 60) return s + '초';
-  const m = Math.floor(s / 60), r = s % 60;
-  return r > 0 ? `${m}분 ${r}초` : `${m}분`;
+function _fmt(v) {
+  if (!v) return '—';
+  const n = parseInt(v);
+  return n >= 1000 ? (n/1000).toFixed(1) + 'K' : String(n);
+}
+
+function _renderBars(id, rows) {
+  const el = document.getElementById(id);
+  if (!rows?.length) { el.innerHTML = '<p style="color:var(--muted);font-size:.82rem;padding:8px 0">데이터 없음</p>'; return; }
+  const max = Math.max(...rows.map(r => parseInt(r.metricValues[0].value) || 0));
+  const colors = ['#C24A35','#D4A017','#2D9E6B','#5B7FA6','#9B59B6','#E67E22','#1ABC9C','#E74C3C'];
+  el.innerHTML = rows.map((r, i) => {
+    const label = r.dimensionValues[0].value;
+    const val = parseInt(r.metricValues[0].value) || 0;
+    const pct = max ? Math.round(val / max * 100) : 0;
+    const short = label.length > 30 ? label.slice(0, 28) + '…' : label;
+    return `<div class="bar-row">
+      <div class="bar-label" title="${label}">${short}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${colors[i%colors.length]}"></div></div>
+      <div class="bar-val">${_fmt(String(val))}</div>
+    </div>`;
+  }).join('');
+}
+
+/* ══ 미리보기 ══ */
+function openPreview(file, name) {
+  document.getElementById('preview-title').textContent = name;
+  document.getElementById('preview-frame').src = file;
+  document.getElementById('preview-modal').style.display = 'block';
+}
+function closePreview() {
+  document.getElementById('preview-modal').style.display = 'none';
+  document.getElementById('preview-frame').src = '';
+}
+
+/* ══ 토스트 ══ */
+function showToast(msg) {
+  const t = document.getElementById('admin-toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
+ 0 ? `${m}분 ${r}초` : `${m}분`;
 }
 
 function ga4Channel(v) {
