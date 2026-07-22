@@ -176,23 +176,26 @@
       font-size: 0.85rem; font-weight: 700;
       color: var(--dark);
       background: var(--surface);
-      width: 28%; text-align: left;
+      width: 20%; text-align: left;
     }
     /* 두 상품 열 */
     .col-a, .col-b {
       text-align: center;
-      width: 36%;
+      width: 40%;
       color: var(--dark);
     }
     /* 헤더 행 */
-    .head-empty { background: var(--surface); border: none; }
+    .head-empty {
+      background: var(--surface);
+      border: none !important;
+      border-radius: var(--radius) 0 0 0;
+    }
     .head-a {
       background: var(--brick);
       color: var(--white);
       font-family: var(--font-heading);
       font-size: 0.95rem; font-weight: 700;
       padding: 16px 10px !important;
-      border-radius: var(--radius) 0 0 0;
       border: none !important;
     }
     .head-b {
@@ -228,14 +231,33 @@
     .pkg-muted { color: var(--muted); font-size: 0.77rem; display: block; margin-top: 2px; }
     .pkg-note  { font-size: 0.75rem; color: var(--muted); margin-top: var(--sp-8); text-align: center; }
 
-    /* ══ 커리큘럼 타임라인 ══════════════════ */
-    .curri-list { display: flex; flex-direction: column; gap: var(--sp-24); }
+    /* ══ 커리큘럼 컨테이너 (테두리 박스) ═════ */
+    .curri-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: var(--sp-24) var(--sp-16);
+    }
 
-    .curri-week { }
+    /* ══ 커리큘럼 타임라인 (토글) ═══════════ */
+    .curri-list { display: flex; flex-direction: column; gap: var(--sp-8); }
+
+    .curri-week {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: var(--sp-8);
+    }
+    .curri-week:last-of-type { border-bottom: none; padding-bottom: 0; }
+
     .curri-week-head {
       display: flex; align-items: center; gap: var(--sp-8);
       margin-bottom: var(--sp-8);
+      padding: 6px 2px;
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
     }
+    .curri-week-head::-webkit-details-marker { display: none; }
+    .curri-week-head::marker { content: ''; }
+
     .curri-week-badge {
       flex-shrink: 0;
       background: var(--brick);
@@ -247,6 +269,16 @@
       font-family: var(--font-heading);
       font-size: 0.88rem; font-weight: 700;
       color: var(--dark);
+      flex: 1;
+    }
+    .curri-toggle-icon {
+      flex-shrink: 0;
+      color: var(--muted);
+      font-size: 0.7rem;
+      transition: transform 0.2s ease;
+    }
+    .curri-week[open] > .curri-week-head .curri-toggle-icon {
+      transform: rotate(180deg);
     }
 
     .curri-chapters { display: flex; flex-direction: column; gap: 5px; padding-left: 2px; }
@@ -405,7 +437,413 @@
     </div>
   </div>
 
-  <!-- ④ 수강권 비교 ────────────────────────── -->
+  <!-- ⑤ 커리큘럼 ────────────────────────────── -->
+  <div class="ci-section">
+    <h2 class="ci-heading">🎯 40챕터 <span>3개월 여정</span></h2>
+
+    <div class="curri-box">
+    <div class="stat-row">
+      <div class="stat-card s-brick">
+        <p class="stat-num">40</p>
+        <p class="stat-label">핵심 챕터</p>
+        <p class="stat-sub">+ 보너스 3챕터</p>
+      </div>
+      <div class="stat-card s-dark">
+        <p class="stat-num">8주</p>
+        <p class="stat-label">총 여정</p>
+        <p class="stat-sub">어학원 3개월 분량 압축</p>
+      </div>
+    </div>
+
+    <p class="ci-body" style="margin-bottom:var(--sp-24);">
+      각 챕터마다 핵심 아이디어, 마무리 아이디어, 그리고 직접 해보는 미션까지 구성되어 있습니다. 주차를 눌러 유닛을 확인해 보세요.
+    </p>
+
+    <div class="curri-list">
+
+      <!-- 주 1 -->
+      <details class="curri-week" open>
+        <summary class="curri-week-head">
+          <span class="curri-week-badge">주 1</span>
+          <span class="curri-week-title">프랑스어 기초 동사와 문장 구조</span>
+          <span class="curri-toggle-icon">▾</span>
+        </summary>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">1</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">être 동사 — 프랑스어의 매력 파헤치기</span>
+              <span class="curri-ch-idea"> | 주어와 발음의 특징 알기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">2</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">être의 절친 avoir — 프랑스어 구조 감 잡기</span>
+              <span class="curri-ch-idea"> | 한국어 해석에서 벗어나는 연습</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">3</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">비인칭 주어의 매력 파헤치기</span>
+              <span class="curri-ch-idea"> | il y a, C'est, Nous sommes + 날짜</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">4</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">형용사의 세계 — 성별·단수·복수 따라 춤추는 변화</span>
+              <span class="curri-ch-idea"> | 패턴 시리즈로 형용사 변화 흐름 이해</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">5</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">프랑스어 숫자 70, 80, 90 🤯 — 수학 문제일까, 언어일까?</span>
+              <span class="curri-ch-idea"> | 숫자 요령 + 시간 표현</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 주 2 -->
+      <details class="curri-week" open>
+        <summary class="curri-week-head">
+          <span class="curri-week-badge">주 2</span>
+          <span class="curri-week-title">표현 확장 — 부정·의문·소유·가족</span>
+          <span class="curri-toggle-icon">▾</span>
+        </summary>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">6</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">부정문과 의문문 — 프랑스식 대답의 사고방식</span>
+              <span class="curri-ch-idea"> | 문어체 vs 회화체, est-ce que의 의도</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">7</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">명사·관사 + 국가 — 프랑스의 성별 논쟁</span>
+              <span class="curri-ch-idea"> | 영어·한국어와의 관사 개념 비교</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">8</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">소유 대명사 — 소유한 사람보다 물건이 더 중요하다고?</span>
+              <span class="curri-ch-idea"> | 이론 숙지 후 실제 활용·응용</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">9</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">가족 명칭 + C'est / Il est — 며느리가 '이쁜 딸'?</span>
+              <span class="curri-ch-idea"> | 프랑스의 연애·가족 관계 엿보기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">10</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">형용사 2 + 과거분사 — 나만 알았으면 하는 숨은 비밀</span>
+              <span class="curri-ch-idea"> | 위치에 따라 달라지는 형용사 의미</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 주 3 -->
+      <details class="curri-week" open>
+        <summary class="curri-week-head">
+          <span class="curri-week-badge">주 3</span>
+          <span class="curri-week-title">지시사·부정관사 정리 + 첫 동사 변화(ER)</span>
+          <span class="curri-toggle-icon">▾</span>
+        </summary>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">11</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">지시사 — 쟤 좀 봐봐, 쟤 누구?</span>
+              <span class="curri-ch-idea"> | 지시 대명사·형용사로 디테일 설명하기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">12</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">부정관사·숫자·그룹 명사 — 벤 다이어그램으로 정리!!</span>
+              <span class="curri-ch-idea"> | An과 Année의 차이 이해</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">13</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">ER 동사 — "지루한 암기"라는 선입견 부수기 👊</span>
+              <span class="curri-ch-idea"> | 규칙 패턴으로 단어장 확장</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">14</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">aller + 장소·시간 (계절, 월, 시대)</span>
+              <span class="curri-ch-idea"> | 축약 관사·국가·교통·날짜로 문장 풍부하게</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">15</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">부사 — 잘 따라오고 있는지 중간 점검 📔</span>
+              <span class="curri-ch-idea"> | Bon/bien의 2차적 의미, ne...pas 변형</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 주 4 -->
+      <details class="curri-week" open>
+        <summary class="curri-week-head">
+          <span class="curri-week-badge">주 4</span>
+          <span class="curri-week-title">불규칙 동사 마스터 + 조건법·비교급</span>
+          <span class="curri-toggle-icon">▾</span>
+        </summary>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">16</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">강세 인칭 대명사 — 은어를 가르치는 선생님 😭</span>
+              <span class="curri-ch-idea"> | FLE 전용 → 원어민 미디어로 전환</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">17</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">IR·OIR·RE 동사 — 프랑스어로 언어학자 되기 🤓</span>
+              <span class="curri-ch-idea"> | 어간·어미·접두사로 응용력 키우기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">18</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">조건법 (pouvoir·vouloir·devoir) — 프랑스식 예의 🕹</span>
+              <span class="curri-ch-idea"> | 상대를 배려하는 '거리' 만들기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">19</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">비교급·최상급 — 침묵할 것인가, 발음할 것인가?</span>
+              <span class="curri-ch-idea"> | 기준에 따라 바뀌는 구조적 논리</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">20</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">제롱디프 + "Venir de", "être en train de" — 멀티태스킹의 기술 ✌️</span>
+              <span class="curri-ch-idea"> | 격식체·문어체의 동시성 표현</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 주 5 -->
+      <details class="curri-week" open>
+        <summary class="curri-week-head">
+          <span class="curri-week-badge">주 5</span>
+          <span class="curri-week-title">관용구·전치사 심화 + 복합과거 입문</span>
+          <span class="curri-toggle-icon">▾</span>
+        </summary>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">21</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">prendre·mettre + 직접 목적 대명사 — '조립 가능한 시간' 🔩</span>
+              <span class="curri-ch-idea"> | 관용구 설계도 이해하기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">22</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">관사 총정리 + 대명사 EN — 이젠 남에게 설명할 수 있습니다! 😎</span>
+              <span class="curri-ch-idea"> | 모든 article contracté 복습</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">23</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">전치사 (de·à) + 구동사 + 대명사 Y — 역으로 배우는 구동사</span>
+              <span class="curri-ch-idea"> | 동사의 에너지가 흐르는 방향 이해</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">24</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">복합 과거 + 수동태 — être·avoir 업그레이드 🧗</span>
+              <span class="curri-ch-idea"> | 나의 데이터 시트: 현재까지의 경험</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">25</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">명령법 + 공간 표현 — 마침표 없어도 명령어 😌</span>
+              <span class="curri-ch-idea"> | 다양한 문체로 명령 표현</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 주 6 -->
+      <details class="curri-week" open>
+        <summary class="curri-week-head">
+          <span class="curri-week-badge">주 6</span>
+          <span class="curri-week-title">대명사 완전 정복 — 재귀·관계·간접</span>
+          <span class="curri-toggle-icon">▾</span>
+        </summary>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">26</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">재귀 동사 + 근접 미래 — 주어가 돌아옵니다 🎠</span>
+              <span class="curri-ch-idea"> | 라틴어 특유의 재귀 동사 파헤치기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">27</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">간접 목적 대명사 — 문법이 옵션이 아니라 필수가 되는 순간</span>
+              <span class="curri-ch-idea"> | COD·COI·강세 대명사 전체 복습</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">28</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">관계 대명사 — 한국인이 쓰는 수많은 문장이 프랑스어로 🪄</span>
+              <span class="curri-ch-idea"> | 한·불 사고방식 구조 비교</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">29</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">왕래 동사 — 유럽인이 손을 자주 쓰는 이유 🫵</span>
+              <span class="curri-ch-idea"> | 행동의 방향, 상황별 어휘 늘리기</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">30</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">의문문 2 — 어린 왕자의 질문을 프랑스어로 🧣</span>
+              <span class="curri-ch-idea"> | 화자의 태도를 담은 질문 구조</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 주 7 -->
+      <details class="curri-week" open>
+        <summary class="curri-week-head">
+          <span class="curri-week-badge">주 7</span>
+          <span class="curri-week-title">간접 화법부터 복합과거 심화, 미래·반과거까지</span>
+          <span class="curri-toggle-icon">▾</span>
+        </summary>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">31</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">간접 화법 + 논리 접속 — "말이 쏙쏙 귀에 들어와요" 🧠</span>
+              <span class="curri-ch-idea"> | 끊어진 문장을 논리적으로 연결</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">32</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">복합 과거 심화 — 세 번의 유닛으로 공부한 이유 🤠</span>
+              <span class="curri-ch-idea"> | 라틴어 기반 학습자도 어려워하는 복합 과거 완성</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">33</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">미래 + 조건법 2 + 가정법 — 자음 하나로 싸움이 나지 않으려면 🤯</span>
+              <span class="curri-ch-idea"> | 시제는 시점뿐 아니라 태도·톤을 결정</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">34</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">시간과 공간 — 삶의 발자취를 말하다: Le Parcours</span>
+              <span class="curri-ch-idea"> | 연속성을 표현하는 시간 표현</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">35</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">반과거 (vs 복합과거) — 두 과거의 콜라보 🍿</span>
+              <span class="curri-ch-idea"> | 정제된 글에 생동감 불어넣기</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 주 8 -->
+      <details class="curri-week" open>
+        <summary class="curri-week-head">
+          <span class="curri-week-badge">주 8</span>
+          <span class="curri-week-title">고급 문법 완성 — 접속법·대과거·조건법과거</span>
+          <span class="curri-toggle-icon">▾</span>
+        </summary>
+        <div class="curri-chapters">
+          <div class="curri-ch">
+            <span class="curri-ch-num">36</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">접속법 1 — 프랑스어 문법의 위상을 높여주는 것 😯</span>
+              <span class="curri-ch-idea"> | 직설법과의 차이 + 김두우리 공부 노하우 1/3</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">37</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">대과거 + 전미래 — 프랑스어 시제는 이제 내 손 안에 🪬</span>
+              <span class="curri-ch-idea"> | 기준점을 옮겨서 이해하기 + 노하우 2/3</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">38</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">조건법 과거 + 가정법 — 고소 당하지 않으려면 👨‍⚖️</span>
+              <span class="curri-ch-idea"> | 태도를 기준으로 올바른 시제 선택</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">39</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">과거 간접 화법 — "쟤가 니 험담 하던데?" 다 전달할 수 있습니다 😏</span>
+              <span class="curri-ch-idea"> | 산수처럼 한 칸씩 후퇴 + 노하우 3/3</span>
+            </div>
+          </div>
+          <div class="curri-ch">
+            <span class="curri-ch-num">40</span>
+            <div class="curri-ch-body">
+              <span class="curri-ch-main">접속법 2 (심화) — 프랑스적 사고방식: 의견의 밀당 💬</span>
+              <span class="curri-ch-idea"> | C1이 필요한 표현, ChatGPT로 DALF 준비</span>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- 보너스 -->
+      <div class="curri-bonus-box">
+        <p class="curri-bonus-title">🎁 보너스 챕터 (3개)</p>
+        <p class="curri-bonus-item">
+          <strong>Bonus 1</strong> — 모든 대명사 복습<br>
+          <strong>Bonus 2</strong> — 모든 시제 복습 · 활용 연습<br>
+          <strong>Bonus 3</strong> — 구어체 레지스터에 익숙해지기 (영상 3개 스크립트 PDF 제공)
+        </p>
+      </div>
+
+    </div><!-- /curri-list -->
+    </div><!-- /curri-box -->
+  </div>
+
+  <!-- ④ 수강권 비교 (기억해주세요 바로 위로 재배치) ─── -->
   <div class="ci-section">
     <h2 class="ci-heading">학습 스타일에 맞는 <span>수강권</span></h2>
 
@@ -454,392 +892,6 @@
       </table>
     </div>
     <p class="pkg-note">* 구매 시 메일로 300p+ 인강 수업 자료 PDF가 전달됩니다.</p>
-  </div>
-
-  <!-- ⑤ 커리큘럼 ────────────────────────────── -->
-  <div class="ci-section">
-    <h2 class="ci-heading">🎯 40챕터 <span>3개월 여정</span></h2>
-
-    <div class="stat-row">
-      <div class="stat-card s-brick">
-        <p class="stat-num">40</p>
-        <p class="stat-label">핵심 챕터</p>
-        <p class="stat-sub">+ 보너스 3챕터</p>
-      </div>
-      <div class="stat-card s-dark">
-        <p class="stat-num">8주</p>
-        <p class="stat-label">총 여정</p>
-        <p class="stat-sub">어학원 3개월 분량 압축</p>
-      </div>
-    </div>
-
-    <p class="ci-body" style="margin-bottom:var(--sp-24);">
-      각 챕터마다 핵심 아이디어, 마무리 아이디어, 그리고 직접 해보는 미션까지 구성되어 있습니다.
-    </p>
-
-    <div class="curri-list">
-
-      <!-- 주 1 -->
-      <div class="curri-week">
-        <div class="curri-week-head">
-          <span class="curri-week-badge">주 1</span>
-          <span class="curri-week-title">프랑스어 기초 동사와 문장 구조</span>
-        </div>
-        <div class="curri-chapters">
-          <div class="curri-ch">
-            <span class="curri-ch-num">1</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">être 동사 — 프랑스어의 매력 파헤치기</span>
-              <span class="curri-ch-idea"> | 주어와 발음의 특징 알기</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">2</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">être의 절친 avoir — 프랑스어 구조 감 잡기</span>
-              <span class="curri-ch-idea"> | 한국어 해석에서 벗어나는 연습</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">3</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">비인칭 주어의 매력 파헤치기</span>
-              <span class="curri-ch-idea"> | il y a, C'est, Nous sommes + 날짜</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">4</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">형용사의 세계 — 성별·단수·복수 따라 춤추는 변화</span>
-              <span class="curri-ch-idea"> | 패턴 시리즈로 형용사 변화 흐름 이해</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">5</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">프랑스어 숫자 70, 80, 90 🤯 — 수학 문제일까, 언어일까?</span>
-              <span class="curri-ch-idea"> | 숫자 요령 + 시간 표현</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 주 2 -->
-      <div class="curri-week">
-        <div class="curri-week-head">
-          <span class="curri-week-badge">주 2</span>
-          <span class="curri-week-title">표현 확장 — 부정·의문·소유·가족</span>
-        </div>
-        <div class="curri-chapters">
-          <div class="curri-ch">
-            <span class="curri-ch-num">6</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">부정문과 의문문 — 프랑스식 대답의 사고방식</span>
-              <span class="curri-ch-idea"> | 문어체 vs 회화체, est-ce que의 의도</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">7</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">명사·관사 + 국가 — 프랑스의 성별 논쟁</span>
-              <span class="curri-ch-idea"> | 영어·한국어와의 관사 개념 비교</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">8</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">소유 대명사 — 소유한 사람보다 물건이 더 중요하다고?</span>
-              <span class="curri-ch-idea"> | 이론 숙지 후 실제 활용·응용</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">9</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">가족 명칭 + C'est / Il est — 며느리가 '이쁜 딸'?</span>
-              <span class="curri-ch-idea"> | 프랑스의 연애·가족 관계 엿보기</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">10</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">형용사 2 + 과거분사 — 나만 알았으면 하는 숨은 비밀</span>
-              <span class="curri-ch-idea"> | 위치에 따라 달라지는 형용사 의미</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 주 3 -->
-      <div class="curri-week">
-        <div class="curri-week-head">
-          <span class="curri-week-badge">주 3</span>
-          <span class="curri-week-title">동사 변화 마스터 — ER·IR·OIR·RE</span>
-        </div>
-        <div class="curri-chapters">
-          <div class="curri-ch">
-            <span class="curri-ch-num">11</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">지시사 — 쟤 좀 봐봐, 쟤 누구?</span>
-              <span class="curri-ch-idea"> | 지시 대명사·형용사로 디테일 설명하기</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">12</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">부정관사·숫자·그룹 명사 — 벤 다이어그램으로 정리!!</span>
-              <span class="curri-ch-idea"> | An과 Année의 차이 이해</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">13</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">ER 동사 — "지루한 암기"라는 선입견 부수기 👊</span>
-              <span class="curri-ch-idea"> | 규칙 패턴으로 단어장 확장</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">14</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">aller + 장소·시간 (계절, 월, 시대)</span>
-              <span class="curri-ch-idea"> | 축약 관사·국가·교통·날짜로 문장 풍부하게</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">15</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">부사 — 잘 따라오고 있는지 중간 점검 📔</span>
-              <span class="curri-ch-idea"> | Bon/bien의 2차적 의미, ne...pas 변형</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">16</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">강세 인칭 대명사 — 은어를 가르치는 선생님 😭</span>
-              <span class="curri-ch-idea"> | FLE 전용 → 원어민 미디어로 전환</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">17</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">IR·OIR·RE 동사 — 프랑스어로 언어학자 되기 🤓</span>
-              <span class="curri-ch-idea"> | 어간·어미·접두사로 응용력 키우기</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 주 4 -->
-      <div class="curri-week">
-        <div class="curri-week-head">
-          <span class="curri-week-badge">주 4</span>
-          <span class="curri-week-title">조건법·비교급·복합과거 — 표현의 깊이</span>
-        </div>
-        <div class="curri-chapters">
-          <div class="curri-ch">
-            <span class="curri-ch-num">18</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">조건법 (pouvoir·vouloir·devoir) — 프랑스식 예의 🕹</span>
-              <span class="curri-ch-idea"> | 상대를 배려하는 '거리' 만들기</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">19</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">비교급·최상급 — 침묵할 것인가, 발음할 것인가?</span>
-              <span class="curri-ch-idea"> | 기준에 따라 바뀌는 구조적 논리</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">20</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">제롱디프 + "Venir de", "être en train de" — 멀티태스킹의 기술 ✌️</span>
-              <span class="curri-ch-idea"> | 격식체·문어체의 동시성 표현</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">21</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">prendre·mettre + 직접 목적 대명사 — '조립 가능한 시간' 🔩</span>
-              <span class="curri-ch-idea"> | 관용구 설계도 이해하기</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">22</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">관사 총정리 + 대명사 EN — 이젠 남에게 설명할 수 있습니다! 😎</span>
-              <span class="curri-ch-idea"> | 모든 article contracté 복습</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">23</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">전치사 (de·à) + 구동사 + 대명사 Y — 역으로 배우는 구동사</span>
-              <span class="curri-ch-idea"> | 동사의 에너지가 흐르는 방향 이해</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">24</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">복합 과거 + 수동태 — être·avoir 업그레이드 🧗</span>
-              <span class="curri-ch-idea"> | 나의 데이터 시트: 현재까지의 경험</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">25</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">명령법 + 공간 표현 — 마침표 없어도 명령어 😌</span>
-              <span class="curri-ch-idea"> | 다양한 문체로 명령 표현</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 주 5 -->
-      <div class="curri-week">
-        <div class="curri-week-head">
-          <span class="curri-week-badge">주 5</span>
-          <span class="curri-week-title">대명사 완전 정복 — 재귀·관계·간접</span>
-        </div>
-        <div class="curri-chapters">
-          <div class="curri-ch">
-            <span class="curri-ch-num">26</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">재귀 동사 + 근접 미래 — 주어가 돌아옵니다 🎠</span>
-              <span class="curri-ch-idea"> | 라틴어 특유의 재귀 동사 파헤치기</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">27</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">간접 목적 대명사 — 문법이 옵션이 아니라 필수가 되는 순간</span>
-              <span class="curri-ch-idea"> | COD·COI·강세 대명사 전체 복습</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">28</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">관계 대명사 — 한국인이 쓰는 수많은 문장이 프랑스어로 🪄</span>
-              <span class="curri-ch-idea"> | 한·불 사고방식 구조 비교</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">29</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">왕래 동사 — 유럽인이 손을 자주 쓰는 이유 🫵</span>
-              <span class="curri-ch-idea"> | 행동의 방향, 상황별 어휘 늘리기</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">30</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">의문문 2 — 어린 왕자의 질문을 프랑스어로 🧣</span>
-              <span class="curri-ch-idea"> | 화자의 태도를 담은 질문 구조</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">31</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">간접 화법 + 논리 접속 — "말이 쏙쏙 귀에 들어와요" 🧠</span>
-              <span class="curri-ch-idea"> | 끊어진 문장을 논리적으로 연결</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 주 6 -->
-      <div class="curri-week">
-        <div class="curri-week-head">
-          <span class="curri-week-badge">주 6</span>
-          <span class="curri-week-title">복합 과거 심화 + 미래 · 반과거</span>
-        </div>
-        <div class="curri-chapters">
-          <div class="curri-ch">
-            <span class="curri-ch-num">32</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">복합 과거 심화 — 세 번의 유닛으로 공부한 이유 🤠</span>
-              <span class="curri-ch-idea"> | 라틴어 기반 학습자도 어려워하는 복합 과거 완성</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">33</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">미래 + 조건법 2 + 가정법 — 자음 하나로 싸움이 나지 않으려면 🤯</span>
-              <span class="curri-ch-idea"> | 시제는 시점뿐 아니라 태도·톤을 결정</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">34</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">시간과 공간 — 삶의 발자취를 말하다: Le Parcours</span>
-              <span class="curri-ch-idea"> | 연속성을 표현하는 시간 표현</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">35</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">반과거 (vs 복합과거) — 두 과거의 콜라보 🍿</span>
-              <span class="curri-ch-idea"> | 정제된 글에 생동감 불어넣기</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 주 7 -->
-      <div class="curri-week">
-        <div class="curri-week-head">
-          <span class="curri-week-badge">주 7</span>
-          <span class="curri-week-title">고급 문법 — 접속법 · 대과거 · 조건법과거</span>
-        </div>
-        <div class="curri-chapters">
-          <div class="curri-ch">
-            <span class="curri-ch-num">36</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">접속법 1 — 프랑스어 문법의 위상을 높여주는 것 😯</span>
-              <span class="curri-ch-idea"> | 직설법과의 차이 + 김두우리 공부 노하우 1/3</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">37</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">대과거 + 전미래 — 프랑스어 시제는 이제 내 손 안에 🪬</span>
-              <span class="curri-ch-idea"> | 기준점을 옮겨서 이해하기 + 노하우 2/3</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">38</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">조건법 과거 + 가정법 — 고소 당하지 않으려면 👨‍⚖️</span>
-              <span class="curri-ch-idea"> | 태도를 기준으로 올바른 시제 선택</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">39</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">과거 간접 화법 — "쟤가 니 험담 하던데?" 다 전달할 수 있습니다 😏</span>
-              <span class="curri-ch-idea"> | 산수처럼 한 칸씩 후퇴 + 노하우 3/3</span>
-            </div>
-          </div>
-          <div class="curri-ch">
-            <span class="curri-ch-num">40</span>
-            <div class="curri-ch-body">
-              <span class="curri-ch-main">접속법 2 (심화) — 프랑스적 사고방식: 의견의 밀당 💬</span>
-              <span class="curri-ch-idea"> | C1이 필요한 표현, ChatGPT로 DALF 준비</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- 보너스 -->
-      <div class="curri-bonus-box">
-        <p class="curri-bonus-title">🎁 보너스 챕터 (3개)</p>
-        <p class="curri-bonus-item">
-          <strong>Bonus 1</strong> — 모든 대명사 복습<br>
-          <strong>Bonus 2</strong> — 모든 시제 복습 · 활용 연습<br>
-          <strong>Bonus 3</strong> — 구어체 레지스터에 익숙해지기 (영상 3개 스크립트 PDF 제공)
-        </p>
-      </div>
-
-    </div><!-- /curri-list -->
   </div>
 
   <!-- ⑥ 기억해 주세요 ────────────────────────── -->
