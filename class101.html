@@ -272,11 +272,16 @@
     }
     .curri-toggle-icon {
       flex-shrink: 0;
-      color: var(--muted);
-      font-size: 0.7rem;
+      display: flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px;
+      border: 1.5px solid var(--brick);
+      border-radius: 50%;
+      color: var(--brick);
+      font-size: 1rem; font-weight: 700;
+      line-height: 1;
       transition: transform 0.2s ease;
     }
-    .curri-week[open] > .curri-week-head .curri-toggle-icon {
+    .curri-week:not([open]) > .curri-week-head .curri-toggle-icon {
       transform: rotate(180deg);
     }
 
