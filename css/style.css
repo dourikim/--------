@@ -4,7 +4,7 @@
 
    팔레트:
    --white  #FFFFFF
-   --brick  #C24A35  (브릭레드 — 강조 버튼)
+   --brick  #C24A35  (브릭레드: 강조 버튼)
    --dark   #2E0E0C  (다크 브라운블랙)
    ============================================================ */
 
@@ -100,7 +100,7 @@ img { max-width: 100%; display: block; }
   gap: 4px;
 }
 
-/* 햄버거 버튼 — 모바일 기본 보임 */
+/* 햄버거 버튼: 모바일 기본 보임 */
 .hamburger-btn {
   width: 40px; height: 40px;
   display: flex;
@@ -120,7 +120,7 @@ img { max-width: 100%; display: block; }
   transition: all 0.25s;
 }
 
-/* 데스크톱 네비 — 모바일 기본 숨김 */
+/* 데스크톱 네비: 모바일 기본 숨김 */
 .desktop-nav {
   display: none;
   align-items: center;
@@ -177,7 +177,7 @@ img { max-width: 100%; display: block; }
 
 
 /* ══════════════════════════════════════════════════════
-   SIDE MENU — 모바일 전용
+   SIDE MENU: 모바일 전용
    ══════════════════════════════════════════════════════ */
 .menu-overlay {
   position: fixed; inset: 0;
@@ -267,15 +267,71 @@ img { max-width: 100%; display: block; }
 }
 .carousel-slide {
   flex: 0 0 100%;
-  padding: var(--sp-64) var(--sp-24);   /* 64px 24px — 8px 그리드 */
-  display: flex; flex-direction: column; gap: var(--sp-16);
-  min-height: 340px;
-  justify-content: flex-end;
+  height: 420px;
+  display: flex; flex-direction: column;
+  background: #f8f2f0;
+  overflow: hidden;
+  position: relative;
 }
 
-/* 슬라이드 2가지 배경 모드 */
-.slide-dark  { background: var(--dark); }
-.slide-light { background: var(--surface); border-bottom: 1px solid var(--border); }
+.slide-media {
+  order: 2;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow: hidden;
+  background: #f8f2f0;
+}
+.slide-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center top;
+}
+
+/* 모바일: 이미지 배경 투명 + 텍스트 오버레이 + 버튼 중앙 */
+@media (max-width: 767px) {
+  .slide-media {
+    position: absolute;
+    inset: 0;
+    opacity: 0.15;
+  }
+  .slide-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+  .slide-content {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .slide-cta {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* 텍스트 영역: 좌측, 남은 공간 차지 */
+.slide-content {
+  order: 1;
+  flex: 1;
+  min-width: 0;
+  display: flex; flex-direction: column; gap: var(--sp-16);
+  justify-content: flex-end;
+  padding: var(--sp-32) var(--sp-24);
+}
+
+/* 슬라이드 배경: 명망상(slide-dark/light 구분)은 유지하되 맨이례 배경은 모두 surface로 통일 (디자인 가이드 기준) */
+.slide-dark  { background: #f8f2f0; }
+.slide-light { background: #f8f2f0; }
 
 .slide-chip {
   display: inline-block;
@@ -289,15 +345,12 @@ img { max-width: 100%; display: block; }
 
 .slide-title {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 5.5vw, 2.4rem);
-  font-weight: 700; letter-spacing: -0.02em; line-height: 1.25;
+  font-size: clamp(1.6rem, 5.5vw, 2.8rem);
+  font-weight: 700; letter-spacing: -0.02em; line-height: 1.22;
+  color: var(--dark);
 }
-.slide-dark  .slide-title { color: var(--white); }
-.slide-light .slide-title { color: var(--dark); }
 
-.slide-desc { font-size: 0.88rem; line-height: 1.85; }
-.slide-dark  .slide-desc { color: rgba(255,255,255,0.6); }
-.slide-light .slide-desc { color: var(--muted); }
+.slide-desc { font-size: clamp(0.78rem, 2.2vw, 0.92rem); line-height: 1.85; color: var(--muted); }
 
 .slide-cta {
   display: inline-block;
@@ -458,6 +511,13 @@ img { max-width: 100%; display: block; }
 .cta-dark    { background: var(--dark); color: var(--white); }
 .cta-brick   { background: var(--brick); color: var(--white); }
 .cta-brick:hover { background: var(--brick-h); }
+/* 벽돌색 배경 위에 올리는 반전 버튼 (배경과 같은 색이라 안 보이는 문제 해결) */
+.cta-on-brick {
+  background: var(--white); color: var(--brick);
+  box-shadow: 0 2px 10px rgba(46,14,12,0.16);
+}
+.cta-on-brick:hover { background: #fff9f8; }
+
 .cta-outline {
   background: transparent; color: var(--dark);
   border: 2px solid var(--border);
@@ -477,25 +537,31 @@ img { max-width: 100%; display: block; }
 
 
 /* ══════════════════════════════════════════════════════
-   TABS BAR (통번역 — 스크롤해도 고정)
+   TABS BAR (통번역: 스크롤해도 고정)
    ══════════════════════════════════════════════════════ */
 .tabs-bar {
   position: sticky; top: var(--header-h);
   background: var(--white); z-index: 100;
-  border-bottom: 2px solid var(--border);
-  display: flex; overflow-x: auto; scrollbar-width: none;
+  border-bottom: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 8px; padding: 10px 16px;
 }
 .tabs-bar::-webkit-scrollbar { display: none; }
 
+/* 후기, 학습 콘텐츠 페이지의 필터 버튼과 같은 알약 형태입니다 */
 .tab-btn {
-  flex-shrink: 0; padding: 14px 22px;
-  font-size: 0.88rem; font-weight: 500; color: var(--muted);
-  background: none; border: none;
-  border-bottom: 2px solid transparent; margin-bottom: -2px;
-  transition: all 0.2s; font-family: 'Pretendard', sans-serif;
-  white-space: nowrap;
+  flex-shrink: 0; min-height: 38px; padding: 7px 15px;
+  font-size: 0.8rem; font-weight: 500; color: var(--muted);
+  background: none; cursor: pointer;
+  border: 1.5px solid var(--border); border-radius: 999px;
+  transition: all 0.18s; font-family: 'Pretendard', sans-serif;
+  white-space: nowrap; -webkit-tap-highlight-color: transparent;
 }
-.tab-btn.active { color: var(--brick); font-weight: 700; border-bottom-color: var(--brick); }
+.tab-btn:hover { border-color: var(--brick); color: var(--brick); }
+.tab-btn.active {
+  border-color: var(--brick); color: var(--brick);
+  background: rgba(194,74,53,0.07); font-weight: 700;
+}
 
 .tab-panel { display: none; padding: 28px 28px; }
 .tab-panel.active { display: block; }
@@ -631,7 +697,7 @@ img { max-width: 100%; display: block; }
   .hamburger-btn  { display: none !important; }
   .desktop-nav    { display: flex !important; }
 
-  /* 사이드 메뉴 — 데스크톱에서 완전 비활성 */
+  /* 사이드 메뉴: 데스크톱에서 완전 비활성 */
   .side-menu,
   .menu-overlay   { display: none !important; }
 
@@ -639,7 +705,10 @@ img { max-width: 100%; display: block; }
   .content-wrap   { max-width: 1080px; margin: 0 auto; padding: 0 48px; }
 
   /* 히어로 */
-  .carousel-slide { min-height: 420px; padding: 72px 56px 80px; }
+  .carousel-slide { height: 480px; flex-direction: row; align-items: stretch; }
+  .slide-media    { flex: 0 0 420px; }
+  .slide-media img { object-fit: contain; }
+  .slide-content  { padding: 56px 40px 56px 56px; }
   .page-hero      { padding: 56px 56px 48px; }
 
   /* 내부 패딩 확장 */

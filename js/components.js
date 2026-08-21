@@ -1,5 +1,5 @@
 /**
- * COMPONENTS.JS — 공통 헤더 / 사이드메뉴 / 푸터 / 카카오 버튼
+ * COMPONENTS.JS : 공통 헤더 / 사이드메뉴 / 푸터 / 카카오 버튼
  * 모든 페이지에서 자동 실행됩니다. 수정 불필요.
  *
  * ⚠️ 카카오 링크 변경: KAKAO_URL 값만 바꾸세요 (아래 31번째 줄)
@@ -12,7 +12,7 @@ const NAV_ITEMS = [
   { id: 'reviews',        label: '수업 후기',                  icon: '💬', href: 'reviews.html', sub: true },
   { id: 'class101',       label: '프랑스어 문법책 재해석 인강', icon: '📘', href: 'class101.html' },
   { id: 'content',        label: '학습 콘텐츠',                icon: '📒', href: 'content.html' },
-  { id: 'portfolio',      label: '통번역 · 로컬화 이력',       icon: '📑', href: 'portfolio.html' },
+  { id: 'portfolio',      label: '통번역, 로컬화',            icon: '📑', href: 'portfolio.html' },
   { id: 'service-finder', label: '🎯 학습 유형 테스트',         icon: '🎯', href: 'service-finder.html', sub: true },
 ];
 
@@ -33,7 +33,7 @@ function renderHeader({ showLang = false } = {}) {
 
   // 데스크톱 네비 링크 (sub 제외)
   const desktopLinks = NAV_ITEMS
-    .filter(i => !i.sub)
+    .filter(i => !i.sub || i.id === 'reviews')
     .map(i => `<a href="${i.href}" class="${cur === i.id ? 'active' : ''}">${i.label}</a>`)
     .join('');
 
@@ -169,7 +169,7 @@ function renderAdminBar() {
   ].join(';');
 
   bar.innerHTML = `
-    <span style="color:rgba(255,255,255,.6);">🔧 관리자 미리보기 모드 — 방문자에게는 이 바가 보이지 않아요</span>
+    <span style="color:rgba(255,255,255,.6);">🔧 관리자 미리보기 모드, 방문자에게는 이 바가 보이지 않아요</span>
     <a href="admin.html" style="
       color:#E8896F; font-weight:700; text-decoration:none;
       background:rgba(255,255,255,.08); padding:6px 14px;

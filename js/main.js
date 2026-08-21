@@ -1,6 +1,6 @@
 /**
  * ============================================================
- *  MAIN.JS — 인터랙션 (캐러셀, 탭, 태그 필터, 언어 전환)
+ *  MAIN.JS: 인터랙션 (캐러셀, 탭, 태그 필터, 언어 전환)
  *  ⚠️ 여기는 건드리지 않아도 됩니다.
  *     텍스트 수정은 content.js에서 하세요!
  * ============================================================
@@ -25,8 +25,7 @@ function initCarousel(wrapperSelector, opts = {}) {
   /* 도트 생성 */
   if (dotsEl) {
     dotsEl.innerHTML = Array.from({ length: total }, (_, i) =>
-      `<span class="dot${i === 0 ? ' active' : ''}" data-idx="${i}"></span>`
-    ).join('');
+      `<span class="dot${i === 0 ? ' active' : ''}" data-idx="${i}"></span>`).join('');
     dotsEl.querySelectorAll('.dot').forEach(dot => {
       dot.addEventListener('click', () => goTo(+dot.dataset.idx));
     });
@@ -36,8 +35,7 @@ function initCarousel(wrapperSelector, opts = {}) {
     current = (idx + total) % total;
     track.style.transform = `translateX(-${current * 100}%)`;
     dotsEl?.querySelectorAll('.dot').forEach((d, i) =>
-      d.classList.toggle('active', i === current)
-    );
+      d.classList.toggle('active', i === current));
   }
 
   function next() { goTo(current + 1); }
@@ -78,13 +76,11 @@ function initTabs(barSelector) {
 
   function activateTab(tabId) {
     bar.querySelectorAll('.tab-btn').forEach(b =>
-      b.classList.toggle('active', b.dataset.tab === tabId)
-    );
+      b.classList.toggle('active', b.dataset.tab === tabId));
     /* 현재 활성 lang-panel 안의 패널만 전환 */
     const activeLang = document.querySelector('.lang-panel.active') || document;
     activeLang.querySelectorAll('.tab-panel').forEach(p =>
-      p.classList.toggle('active', p.dataset.tab === tabId)
-    );
+      p.classList.toggle('active', p.dataset.tab === tabId));
   }
 
   bar.querySelectorAll('.tab-btn').forEach(btn => {
