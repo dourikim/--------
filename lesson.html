@@ -113,12 +113,6 @@
       margin: 12px 0;
       display: block;
     }
-    /* 이미지 로드 실패 시 숨김 처리 */
-    .lesson-img[src="img/lesson_illust1.png"],
-    .lesson-img[src="img/lesson_illust2.png"],
-    .lesson-img[src="img/lesson_package.png"] {
-      min-height: 0;
-    }
     .lesson-img:not([src]) { display: none; }
 
     /* ── 첫번째 CTA (설득 전) ─────────────── */
@@ -265,7 +259,7 @@
       margin-bottom: 0;
     }
 
-    /* 가격 — Gowun Batang */
+    /* 가격 : Gowun Batang */
     .pkg-price-main {
       font-family: var(--font-heading);
       font-size: 1.75rem; font-weight: 700;
@@ -281,7 +275,7 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* 보너스 / 절약 — 브릭 레드 강조 */
+    /* 보너스, 절약, 브릭 레드 강조 */
     .pkg-bonus {
       font-size: 0.78rem; font-weight: 700;
       color: var(--brick);
@@ -372,6 +366,78 @@
       font-size: 0.78rem; color: rgba(255,255,255,0.6);
       margin-top: 14px; line-height: 1.7;
     }
+
+    /* ============================================================
+       후기 캐러셀 (메인 페이지와 동일한 카드)
+    ============================================================ */
+    .reviews-carousel {
+      position: relative; overflow: hidden;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .review-slide {
+      flex: 0 0 82% !important;
+      height: auto !important;      /* style.css의 .carousel-slide{height:420px} 해제 */
+      min-height: 0 !important;
+      justify-content: flex-start !important;
+      padding: var(--sp-16) !important;
+      display: flex; flex-direction: column; align-items: stretch;
+      background: var(--white);
+      max-width: 360px;
+    }
+    .rs-card {
+      width: 100%; background: var(--white);
+      border: 2.5px solid var(--brick); border-radius: 14px;
+      padding: var(--sp-16);
+      display: flex; flex-direction: column; gap: var(--sp-8);
+    }
+    .rs-header { display: flex; align-items: flex-start; gap: var(--sp-8); }
+    .rs-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--brick);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--white); font-weight: 700; font-size: 0.82rem;
+    }
+    .rs-header-text { flex: 1; min-width: 0; }
+    .rs-handle { font-size: 0.82rem; font-weight: 700; color: var(--dark); line-height: 1.35; }
+    .rs-role-line { font-size: 0.72rem; color: #999; margin-top: 1px; line-height: 1.45; word-break: keep-all; }
+    .rs-stars {
+      color: var(--brick); font-size: 0.95rem; letter-spacing: 2px;
+      line-height: 1.2; flex-shrink: 0; margin-top: 1px;
+    }
+    .rs-lead {
+      font-family: var(--font-heading);
+      font-size: 0.95rem; font-weight: 700; color: var(--brick);
+      line-height: 1.55; letter-spacing: -0.01em; word-break: keep-all; margin-top: 2px;
+    }
+    .rs-quote { font-size: 0.84rem; color: var(--dark); line-height: 1.75; word-break: keep-all; }
+    .rs-footer {
+      display: flex; align-items: center; gap: var(--sp-8); flex-wrap: wrap;
+      padding-top: var(--sp-8); border-top: 1px solid var(--border); margin-top: auto;
+    }
+    .rs-badge {
+      display: inline-block; font-size: 0.68rem; font-weight: 600;
+      color: var(--brick); background: #FFF0EE;
+      border: 1px solid #F5C9C3; border-radius: 4px;
+      padding: 2px 7px; white-space: nowrap;
+    }
+    .rs-badge.brazil { color: #2b7a3b; background: #EEF7F0; border-color: #B8DFC1; }
+    .reviews-carousel .carousel-nav { padding: 0 2px; }
+    .reviews-carousel .carousel-arrow {
+      background: var(--white); border-color: var(--border);
+      width: 30px; height: 30px; font-size: 0.9rem;
+    }
+    .reviews-carousel .carousel-arrow:hover { border-color: var(--brick); color: var(--brick); }
+    #lesson-review-dots {
+      display: flex; justify-content: center; align-items: center;
+      gap: 7px; padding: 10px 0 4px; background: transparent; border: none;
+    }
+    #lesson-review-dots .dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--border); cursor: pointer; transition: all 0.25s;
+    }
+    #lesson-review-dots .dot.active { background: var(--brick); width: 22px; border-radius: 4px; }
   </style>
 </head>
 <body>
@@ -389,8 +455,7 @@
     <h1 class="page-hero-title">'Do! 우리!'<br>프랑스어 1:1 수업</h1>
     <p class="page-hero-desc">혹시 지금 프랑스어를 혼자 공부하다가, 멈춰 계시지 않나요?</p>
   </div>
-  <!-- ⚠️ 이미지: 노션 페이지 일러스트레이션1.png을 img/lesson_illust1.png로 저장하세요 -->
-  <img src="img/lesson_illust1.png" alt="" class="lesson-img" onerror="this.style.display='none'">
+  <img src="img/lesson_image1.jpg" alt="창가에서 프랑스어 교재로 공부하는 모습" class="lesson-img" loading="lazy">
 
   <!-- 정체기 체크리스트 -->
   <div class="section-block">
@@ -405,13 +470,12 @@
       <div class="checklist-item"><span class="checklist-box"></span>'이만큼 했는데 왜 늘지 않지?' 지난 3개월은 거의 같은 자리에 있다</div>
       <div class="checklist-item"><span class="checklist-box"></span>어디서부터 다시 잡아야 할지 모르겠다. 더 좋은 교재가 있으면 풀릴 것 같아 검색을 시작한다</div>
     </div>
-    <!-- ⚠️ 이미지: 노션 일러스트레이션2.png을 img/lesson_illust2.png로 저장하세요 -->
-    <img src="img/lesson_illust2.png" alt="" class="lesson-img" style="margin-top:10px;" onerror="this.style.display='none'">
+    <img src="img/lesson_image2.jpg" alt="프랑스어 학습 정체기를 나타낸 일러스트" class="lesson-img" style="margin-top:10px;" loading="lazy">
   </div>
 
   <!-- ── 첫 번째 CTA (설득 전 문의 유도) ──────────────────── -->
   <div class="section-block early-cta-block">
-    <p class="cta-lead">지금 바로 시작하고 싶다면 — 먼저 시간대를 잡을 수 있어요.</p>
+    <p class="cta-lead">지금 바로 시작하고 싶다면, 먼저 시간대를 잡을 수 있어요.</p>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLScUzGDy_m8lEHpTKIbJEwN2l82OEB6JCyVBwXl5xCWEMEulcw/viewform"
        target="_blank" rel="noopener"
        class="cta-btn cta-brick">📅 두우리 선생님과 시간대 얼른 잡기</a>
@@ -420,6 +484,7 @@
   <!-- 왜 두우리 선생님인가 -->
   <div class="section-block" id="why-doouri">
     <h2 class="block-title">왜 'Do! 우리!' 김두우리 선생님이어야 할까요?</h2>
+    <img src="img/lesson_image3.jpg" alt="김두우리 튜터" class="lesson-img">
     <p class="block-text" style="margin-bottom:16px;">단순히 프랑스에 오래 살아서가 아닙니다. 여러분과 같은 출발점에서, 다른 길을 통과해 도달했습니다.</p>
     <div class="reason-card">
       <h3>같은 길을 먼저 통과한 사람</h3>
@@ -443,21 +508,21 @@
         <div class="journey-dot">🇫🇷🇰🇷</div>
         <div class="journey-body">
           <p class="journey-label">유년기</p>
-          <p class="journey-text">프랑스 &amp; 한국 — 부모님: 불어불문학 교수 · 알리앙스 프랑세즈 강사</p>
+          <p class="journey-text">프랑스와 한국에서 자랐습니다. 부모님은 불어불문학 교수, 알리앙스 프랑세즈 강사</p>
         </div>
       </div>
       <div class="journey-item">
         <div class="journey-dot">🎓</div>
         <div class="journey-body">
           <p class="journey-label">학업</p>
-          <p class="journey-text">외고 자퇴 후 직접 선택한 길 — 바깔로레아 경제·사회 계열 + 파리 ESG 그랑제꼴 MBA (미디어 시장 프로덕션)</p>
+          <p class="journey-text">외고 자퇴 후 직접 선택한 길: 바깔로레아 경제, 사회 계열 + 파리 ESG 그랑제꼴 MBA (미디어 시장 프로덕션)</p>
         </div>
       </div>
       <div class="journey-item">
         <div class="journey-dot">🇫🇷</div>
         <div class="journey-body">
           <p class="journey-label">프랑스 커리어</p>
-          <p class="journey-text">Universal Music · Fnac · SFR · 프랑스 &amp; 한불 광고 에이전시 · 글로벌 IT 스타트업</p>
+          <p class="journey-text">Universal Music, Fnac, SFR, 프랑스와 한불 광고 에이전시, 글로벌 IT 스타트업</p>
         </div>
       </div>
       <div class="journey-item">
@@ -478,7 +543,7 @@
         <div class="journey-dot">🌱</div>
         <div class="journey-body">
           <p class="journey-label">2011~ 현재 (15년)</p>
-          <p class="journey-text">프리랜서 FLE 프랑스어 튜터링 · 통번역 · 로컬라이제이션<br>Polyglot: 유창 🇰🇷 🇫🇷 🇺🇲 🇧🇷 · 기초 🇨🇳 🇪🇸</p>
+          <p class="journey-text">프리랜서 FLE 프랑스어 튜터링, 통번역, 로컬라이제이션<br>Polyglot: 유창 🇰🇷 🇫🇷 🇺🇲 🇧🇷, 기초 🇨🇳 🇪🇸</p>
         </div>
       </div>
     </div>
@@ -511,21 +576,21 @@
         <span class="step-name">함께 해요: 본인 속도에 맞추기</span>
       </div>
       <div class="step-body">
-        <p><strong>밀착 코칭 · 비동기 피드백</strong><br>양적 확장(어휘)과 질적 깊이(뉘앙스)를 함께 잡으며, 여러분 속도에 맞춘 피드백으로 흐름을 유지합니다.</p>
+        <p><strong>밀착 코칭과 비동기 피드백</strong><br>양적 확장(어휘)과 질적 깊이(뉘앙스)를 함께 잡으며, 여러분 속도에 맞춘 피드백으로 흐름을 유지합니다.</p>
       </div>
     </div>
   </div>
 
   <!-- Moi-Toi-Nous 커리큘럼 -->
   <div class="section-block">
-    <h2 class="block-title">Do! 우리! 독보적 커리큘럼<br><span style="font-size:1rem; font-weight:600; color:var(--brick);">Moi — Toi — Nous</span></h2>
-    <p class="block-text" style="margin-bottom:16px; font-size:0.85rem;">프랑스 취업 시 필수인 "Lettre de Motivation"의 논리 구조 — ① 나를 명확히 정의하고 → ② 너의 입장을 이해하고 → ③ 우리로 자연스럽게 이어지는 흐름 — 이 사고법을 프랑스어로 함께 익혀요.</p>
+    <h2 class="block-title">Do! 우리! 독보적 커리큘럼<br><span style="font-size:1rem; font-weight:600; color:var(--brick);">Moi, Toi, Nous</span></h2>
+    <p class="block-text" style="margin-bottom:16px; font-size:0.85rem;">프랑스 취업 시 필수인 "Lettre de Motivation"의 논리 구조입니다. ① 나를 명확히 정의하고 → ② 너의 입장을 이해하고 → ③ 우리로 자연스럽게 이어지는 흐름, 이 사고법을 프랑스어로 함께 익혀요.</p>
 
     <div class="phase-card">
       <div class="phase-head">
         <span class="phase-label">Phase 1</span>
         <span class="phase-title">Moi</span>
-        <span class="phase-sub">3~6회차 · 나에 대해</span>
+        <span class="phase-sub">3~6회차, 나에 대해</span>
       </div>
       <div class="phase-body">
         <p class="phase-goal">핵심 목표: 한국어 번역 회로를 끊고, 프랑스어의 기초 뼈대를 내 몸에 이식합니다.</p>
@@ -541,13 +606,13 @@
       <div class="phase-head">
         <span class="phase-label">Phase 2</span>
         <span class="phase-title">Toi</span>
-        <span class="phase-sub">7~12회차 · 상대방에 대해</span>
+        <span class="phase-sub">7~12회차, 상대방에 대해</span>
       </div>
       <div class="phase-body">
         <p class="phase-goal">핵심 목표: 단순 전달을 넘어, 상황과 상대에 맞는 '뉘앙스'를 장착합니다.</p>
         <ul class="phase-list">
-          <li>쓰기: 격식·비격식 레지스터의 특징을 인지해 품격 있는 문장을 구성합니다</li>
-          <li>사고의 확장: 과거·미래 시제의 미세한 차이를 파악합니다. 시제가 문법이 아니라 '태도'가 됩니다</li>
+          <li>쓰기: 격식과 비격식 레지스터의 특징을 인지해 품격 있는 문장을 구성합니다</li>
+          <li>사고의 확장: 과거와 미래 시제의 미세한 차이를 파악합니다. 시제가 문법이 아니라 '태도'가 됩니다</li>
         </ul>
         <p class="phase-change">✨ 변화: 한국어 직역에서 벗어나, 상황에 적합한 단어를 골라 쓰는 감각이 깨어납니다.</p>
       </div>
@@ -557,12 +622,12 @@
       <div class="phase-head">
         <span class="phase-label">Phase 3</span>
         <span class="phase-title">Nous</span>
-        <span class="phase-sub">13~20회차 · 우리 함께</span>
+        <span class="phase-sub">13~20회차, 우리 함께</span>
       </div>
       <div class="phase-body">
         <p class="phase-goal">핵심 목표: 100% 개인화된 주제로 잠재력을 극대화하는 티키타카.</p>
         <ul class="phase-list">
-          <li>맞춤형 테마: 학습자의 니즈(시사·예술·비즈니스 등) 100% 개인화 콘텐츠</li>
+          <li>맞춤형 테마: 학습자의 니즈(시사, 예술, 비즈니스 등) 100% 개인화 콘텐츠</li>
           <li>실전 응용: 세밀한 조건법으로 복잡한 감정과 논리를 뉘앙스 있게 표현합니다</li>
         </ul>
         <p class="phase-change">✨ 변화: "내가 불어로 이런 말까지 할 수 있다고?" 스스로 응용력과 재미를 실감합니다.</p>
@@ -573,11 +638,11 @@
     <div class="info-list" style="margin-top:4px;">
       <div class="info-row">
         <span class="info-label">매주 케어 ①</span>
-        <span class="info-value">개인 맞춤 과제 — 매 수업 후 다음 세션 전까지 학습자만의 속도에 맞춘 가이드</span>
+        <span class="info-value">개인 맞춤 과제, 매 수업 후 다음 세션 전까지 학습자만의 속도에 맞춘 가이드</span>
       </div>
       <div class="info-row">
         <span class="info-label">매주 케어 ②</span>
-        <span class="info-value">비동기 피드백 — 수업 시간 외에도 끊기지 않는 1:1 밀착 교정 서비스</span>
+        <span class="info-value">비동기 피드백, 수업 시간 외에도 끊기지 않는 1:1 밀착 교정 서비스</span>
       </div>
     </div>
   </div>
@@ -585,33 +650,118 @@
   <!-- 후기 -->
   <div class="section-block">
     <h2 class="block-title">Do! 우리! 수업을 경험한 분들</h2>
-    <div class="review-q">
-      <p>"학원 수업은 일정 조율이 어려웠고, 언어 학습 앱은 너무 기초적인 내용 위주로만 구성되어 있었습니다. 그러던 중 스레드를 통해 두리 선생님을 알게 되어 1:1 맞춤 수업을 시작하게 되었고 지금까지 그 인연을 이어가고 있습니다."</p>
-      <p class="who">한○○님 · 헤어 디자이너 (정기 수업)</p>
-    </div>
-    <div class="review-q">
-      <p>"온라인 수업임에도 선생님의 예리한 감각으로 저의 발음과 약점을 즉각적으로 캐치해주셔서 정말 좋았습니다. 알짜배기 정규 수업 1시간을 체험한 기분이었습니다."</p>
-      <p class="who">김○○님 (체험 수업)</p>
-    </div>
-    <div class="review-q">
-      <p>"평소에 한국 문법용어가 어려웠는데 오히려 원어로 그 뜻을 가지고 풀어서 보니 이해하기가 더 쉬워서 좋았습니다!"</p>
-      <p class="who">이○○님 (특강)</p>
-    </div>
+    <section class="reviews-carousel" id="lesson-reviews" aria-label="수강생 후기">
+            <div class="carousel-track">
 
-    <p style="font-size:0.78rem; font-weight:700; letter-spacing:0.08em; color:var(--muted); text-transform:uppercase; margin: 20px 0 10px;">🌏 브라질 학생 후기</p>
-    <div class="review-q">
-      <p>"국제관계학 전공이라, 외국어 하나가 더 있으면 일하고 싶은 분야의 문이 더 열린다고 생각했죠."</p>
-      <p class="who">Júlia · 국제관계학 전공</p>
-    </div>
-    <div class="review-q">
-      <p>"프랑스 병원 인턴십 준비를 위해, 지금은 유지·발전을 위해 — 두 번 모두 두우리 선생님과 함께했어요."</p>
-      <p class="who">Beatriz · 산부인과 의사</p>
-    </div>
-    <div class="review-q">
-      <p>"프랑스 문화를 사랑해서 여행을 자주 다녀요. 문법은 비중을 줄여 진행해요. 레벨 향상이 정말 빨랐고, 발음도 아주 좋아졌어요."</p>
-      <p class="who">Robson · 광고 기획자</p>
-    </div>
+        <!-- 1. 김OO, 체험 수업 -->
+        <div class="carousel-slide review-slide">
+          <div class="rs-card">
+            <div class="rs-header">
+              <div class="rs-avatar">김</div>
+              <div class="rs-header-text">
+                <div class="rs-handle">김○○님</div>
+                <div class="rs-role-line">꼬르동 블루 유학 준비</div>
+              </div>
+              <div class="rs-stars">★★★★★</div>
+            </div>
+            <p class="rs-lead">“가벼운 오티가 아니라,<br>알짜배기 정규 수업 1시간”</p>
+            <p class="rs-quote">개인에 맞추어 준비를 많이 해오셨어요. 온라인인데도 제 발음과 약점을 즉각 캐치해서 바로 수정하고 보완해주셨습니다.</p>
+            <div class="rs-footer"><span class="rs-badge">체험 수업</span></div>
+          </div>
+        </div>
 
+        <!-- 2. Gabrielle, 브라질 -->
+        <div class="carousel-slide review-slide">
+          <div class="rs-card">
+            <div class="rs-header">
+              <div class="rs-avatar">G</div>
+              <div class="rs-header-text">
+                <div class="rs-handle">Gabrielle</div>
+                <div class="rs-role-line">금융 어시스턴트</div>
+              </div>
+              <div class="rs-stars">★★★★★</div>
+            </div>
+            <p class="rs-lead">“제가 관심 있는 주제로만<br>수업이 만들어져요”</p>
+            <p class="rs-quote">새로운 주제를 다룰 때마다 제 이야기를 끝까지 듣고, 어휘와 바꿔 쓸 표현, 발음까지 그 자리에서 짚어줍니다.</p>
+            <div class="rs-footer"><span class="rs-badge brazil">🇧🇷 브라질 학생</span></div>
+          </div>
+        </div>
+
+        <!-- 3. Fernando, 브라질 -->
+        <div class="carousel-slide review-slide">
+          <div class="rs-card">
+            <div class="rs-header">
+              <div class="rs-avatar">F</div>
+              <div class="rs-header-text">
+                <div class="rs-handle">Fernando</div>
+                <div class="rs-role-line">프랑스 이주 준비</div>
+              </div>
+              <div class="rs-stars">★★★★★</div>
+            </div>
+            <p class="rs-lead">“이주에 필요한 것만<br>골라서 배웠어요”</p>
+            <p class="rs-quote">언어만이 아니라 프랑스 일상 문화를 함께 보여주는 방식이 좋았습니다. 도착 15일 만에 빠르게 적응하고 있어요.</p>
+            <div class="rs-footer"><span class="rs-badge brazil">🇧🇷 브라질, 프랑스 이주</span></div>
+          </div>
+        </div>
+
+        <!-- 4. 한OO, +10회 수업 -->
+        <div class="carousel-slide review-slide">
+          <div class="rs-card">
+            <div class="rs-header">
+              <div class="rs-avatar">한</div>
+              <div class="rs-header-text">
+                <div class="rs-handle">한○○님</div>
+                <div class="rs-role-line">헤어 디자이너</div>
+              </div>
+              <div class="rs-stars">★★★★★</div>
+            </div>
+            <p class="rs-lead">“제 궁금증이<br>다음 수업의 내용이 됐어요”</p>
+            <p class="rs-quote">수업 중 궁금했던 점을 바로 체크해서 다음 시간에 더 깊게 다뤄주셨어요. 복습 과제도 부담 없는 양으로 맞춰주셨습니다.</p>
+            <div class="rs-footer"><span class="rs-badge">+10회 수업</span></div>
+          </div>
+        </div>
+
+        <!-- 5. Robson, 브라질 -->
+        <div class="carousel-slide review-slide">
+          <div class="rs-card">
+            <div class="rs-header">
+              <div class="rs-avatar">R</div>
+              <div class="rs-header-text">
+                <div class="rs-handle">Robson</div>
+                <div class="rs-role-line">광고 기획자</div>
+              </div>
+              <div class="rs-stars">★★★★★</div>
+            </div>
+            <p class="rs-lead">“문법 비중을 줄이고 회화부터,<br>제 목표대로”</p>
+            <p class="rs-quote">우선 편하게 말하는 게 목표라 회화와 발음에 집중했어요. 제 관심사에 맞는 주제와 연습 문제를 매번 새로 가져옵니다.</p>
+            <div class="rs-footer"><span class="rs-badge brazil">🇧🇷 브라질, 1년 이상 수강</span></div>
+          </div>
+        </div>
+
+        <!-- 6. Carol & Carlos, 브라질 -->
+        <div class="carousel-slide review-slide">
+          <div class="rs-card">
+            <div class="rs-header">
+              <div class="rs-avatar">C</div>
+              <div class="rs-header-text">
+                <div class="rs-handle">Carol &amp; Carlos</div>
+                <div class="rs-role-line">의사 부부</div>
+              </div>
+              <div class="rs-stars">★★★★★</div>
+            </div>
+            <p class="rs-lead">“둘이 함께 듣는데도,<br>각자에게 맞춰집니다”</p>
+            <p class="rs-quote">의료 어휘와 진료 상황 시뮬레이션까지 했어요. 한 사람에게 초점이 있을 때도 다른 한 사람이 소외되는 일이 없습니다.</p>
+            <div class="rs-footer"><span class="rs-badge brazil">🇧🇷 브라질, 부부 수업</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-arrow prev-btn" aria-label="이전 후기">&#8249;</button>
+        <button class="carousel-arrow next-btn" aria-label="다음 후기">&#8250;</button>
+      </div>
+    </section>
+    <div class="carousel-dots" id="lesson-review-dots" role="tablist"></div>
     <a href="reviews.html" style="display:inline-block; margin-top:8px; color:var(--brick); font-size:0.88rem; font-weight:700;">모든 후기 보기 →</a>
   </div>
 
@@ -763,6 +913,143 @@
 <script src="js/components.js"></script>
 <script src="js/main.js"></script>
 <script>initComponents();</script>
+<script>
+/* ============================================================
+   후기 캐러셀, 6장 무한 루프
+   원본 6장을 뒤에 한 벌 더 복제해두고, 마지막에서 다음으로 넘어갈 때
+   복제본까지 애니메이션한 뒤 트랜지션을 끈 채 처음으로 순간 이동시킵니다.
+============================================================ */
+(function () {
+  var wrapper = document.querySelector('#lesson-reviews');
+  if (!wrapper) return;
+  var track = wrapper.querySelector('.carousel-track');
+  var dotsWrap = document.getElementById('lesson-review-dots');
+  var originals = Array.prototype.slice.call(wrapper.querySelectorAll('.carousel-slide'));
+  var total = originals.length;
+  if (!total || !dotsWrap) return;
+
+  originals.forEach(function (sl) {
+    var c = sl.cloneNode(true);
+    c.classList.add('is-clone');
+    c.setAttribute('aria-hidden', 'true');
+    track.appendChild(c);
+  });
+
+  var EASE = 'transform .5s cubic-bezier(.4,0,.2,1)';
+  var cur = 0, timer = null, animating = false;
+
+  dotsWrap.innerHTML = Array.apply(null, { length: total }).map(function (_, i) {
+    return '<span class="dot' + (i === 0 ? ' active' : '') + '" data-idx="' + i + '"></span>';
+  }).join('');
+  var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll('.dot'));
+  dots.forEach(function (d) {
+    d.addEventListener('click', function () { goTo(+d.dataset.idx); reset(); });
+  });
+
+  function slideW() { return wrapper.querySelector('.review-slide').offsetWidth; }
+  function place(i, animate) {
+    track.style.transition = animate ? EASE : 'none';
+    track.style.transform = 'translateX(-' + (i * slideW()) + 'px)';
+  }
+  function syncDots() {
+    var act = ((cur % total) + total) % total;
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === act); });
+  }
+  function onEnd(fn) {
+    var done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      track.removeEventListener('transitionend', handler);
+      clearTimeout(fallback);
+      fn();
+    }
+    function handler(e) { if (e.target === track) finish(); }
+    var fallback = setTimeout(finish, 700);
+    track.addEventListener('transitionend', handler);
+  }
+  function goTo(i) {
+    if (animating) return;
+    cur = ((i % total) + total) % total;
+    place(cur, true); syncDots();
+  }
+  function next() {
+    if (animating) return;
+    animating = true;
+    cur += 1;
+    place(cur, true); syncDots();
+    onEnd(function () {
+      if (cur >= total) { cur -= total; place(cur, false); }
+      animating = false;
+    });
+  }
+  function prev() {
+    if (animating) return;
+    animating = true;
+    if (cur === 0) { cur = total; place(cur, false); void track.offsetWidth; }
+    cur -= 1;
+    place(cur, true); syncDots();
+    onEnd(function () { animating = false; });
+  }
+  function reset() {
+    clearInterval(timer);
+    timer = setInterval(function () {
+      if (document.hidden) return;
+      /* 전환 콜백이 씹혀 animating 이 걸려 있어도 다음 tick 에서 스스로 풀립니다.
+         tick 간격(2초)이 전환 시간(0.5초)보다 길어 안전합니다. */
+      animating = false;
+      next();
+    }, 2000);
+  }
+
+  wrapper.querySelector('.prev-btn').addEventListener('click', function () { prev(); reset(); });
+  wrapper.querySelector('.next-btn').addEventListener('click', function () { next(); reset(); });
+
+  var tx = 0;
+  wrapper.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  wrapper.addEventListener('touchend', function (e) {
+    var dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); reset(); }
+  });
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { place(cur, false); }, 150);
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) clearInterval(timer); else reset();
+  });
+
+  place(0, false);
+  reset();
+
+  /* 화면에 들어올 때마다 타이머를 다시 걸어, 어떤 이유로 멈춰도 되살아납니다 */
+  if (window.IntersectionObserver) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) reset(); });
+    }, { threshold: 0.2 }).observe(wrapper);
+  }
+})();
+
+/* 후기 카드 높이 통일 (복제본 포함) */
+function equalizeLessonReviewCards() {
+  var cards = document.querySelectorAll('#lesson-reviews .rs-card');
+  if (!cards.length) return;
+  Array.prototype.forEach.call(cards, function (c) { c.style.minHeight = ''; });
+  var maxH = Math.max.apply(null, Array.prototype.map.call(cards, function (c) { return c.offsetHeight; }));
+  Array.prototype.forEach.call(cards, function (c) { c.style.minHeight = maxH + 'px'; });
+}
+setTimeout(equalizeLessonReviewCards, 300);
+window.addEventListener('load', equalizeLessonReviewCards);
+(function () {
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(equalizeLessonReviewCards, 200);
+  });
+})();
+</script>
 <script>
 (function() {
   var shown3 = false, shown6 = false;
