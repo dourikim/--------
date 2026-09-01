@@ -113,8 +113,11 @@
          분홍 배경이 탭 바 양옆으로 삐져나오지 않게 하기 위함입니다. */
       max-width: none; margin: 0;
       position: sticky; top: var(--header-h, 60px); z-index: 40;
-      background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(8px);
+      /* 배경은 반투명 + 블러가 아니라 불투명 흰색을 씁니다.
+         아이폰 사파리에서 backdrop-filter 가 있으면 같은 화면의
+         position:fixed 상단 메뉴가 스크롤 중에 사라지는 문제가 있습니다.
+         다른 페이지의 고정 탭 바(.tabs-bar)와도 같은 방식입니다. */
+      background: var(--white, #FFFFFF);
       border-bottom: 1px solid var(--border, #EDE5E3);
       display: flex; flex-wrap: wrap; justify-content: center;
       gap: var(--sp-8, 8px);
@@ -357,7 +360,7 @@
   ============================================================ -->
   <div class="rv-facts">
     <div class="rv-fact">
-      <p class="rv-fact-v">19<small>명</small></p>
+      <p class="rv-fact-v">21<small>명</small></p>
       <p class="rv-fact-l">후기를 남겨주신<br>수강생</p>
     </div>
     <div class="rv-fact">
@@ -365,8 +368,8 @@
       <p class="rv-fact-l">2018년부터<br>쌓인 기록</p>
     </div>
     <div class="rv-fact">
-      <p class="rv-fact-v">2<small>개국</small></p>
-      <p class="rv-fact-l">한국, 브라질<br>같은 방식의 수업</p>
+      <p class="rv-fact-v">3<small>개국</small></p>
+      <p class="rv-fact-l">한국, 브라질, 캐나다<br>같은 방식의 수업</p>
     </div>
     <div class="rv-fact">
       <p class="rv-fact-v">A0<span class="to">~</span>C1</p>
@@ -385,9 +388,9 @@
 
   <!-- 카테고리 탭 -->
   <nav class="rv-nav" id="rv-nav" aria-label="후기 카테고리">
-    <a class="rv-tab" href="#t1" data-cat="t1">첫 수업 <em>7</em></a>
+    <a class="rv-tab" href="#t1" data-cat="t1">첫 수업 <em>9</em></a>
     <a class="rv-tab" href="#t2" data-cat="t2">나에게 맞는 수업 <em>3</em></a>
-    <a class="rv-tab" href="#t3" data-cat="t3">안 고쳐지던 것들 <em>3</em></a>
+    <a class="rv-tab" href="#t3" data-cat="t3">안 고쳐지던 것들 <em>4</em></a>
     <a class="rv-tab" href="#t4" data-cat="t4">진로가 된 프랑스어 <em>5</em></a>
   </nav>
 
@@ -421,6 +424,35 @@
           <p class="rv-lead">"원하는 바를 잘 파악해서 제안을 주셨어요."</p>
           <div class="rv-body">
             <p>학생의 의견을 잘 들어주시고 수용해주시는 부분이 좋았습니다. 수업을 부드럽게 리드해주시고, 설명이 자세해서 좋았습니다.</p>
+          </div>
+        </article>
+
+        <article class="rv-card">
+          <div class="rv-head">
+            <div class="rv-who"><p class="rv-name">김○○님</p><p class="rv-role">캐나다 거주</p></div>
+            <span class="rv-tag">체험 수업</span>
+          </div>
+          <p class="rv-lead">"제가 기존에 할 수 있는 외국어로부터 온 잘못된 발음 습관을 지적해주셔서 좋았어요."</p>
+          <div class="ba">
+            <div class="ba-col ba-before"><p class="ba-lb">수업 전</p><p class="ba-tx">다른 외국어에서 굳어진 발음 습관을 스스로는 알아채지 못함</p></div>
+            <div class="ba-arrow" aria-hidden="true"></div>
+            <div class="ba-col ba-after"><p class="ba-lb">체험 수업 뒤</p><p class="ba-tx">습관이 어디서 왔는지 짚고, 설문 답변에 맞춘 학습 내용까지 받음</p></div>
+          </div>
+          <div class="rv-body">
+            <p><b>발음 교정</b>: 선생님께서 여러가지 언어를 할 수 있으시기 때문에 얻을 수 있는 장점이었다고 생각합니다.</p>
+            <p><b>선생님과의 상호 작용</b>: 개인 과외라도 대단히 맞춤형 자료를 기대하지는 않았는데, 체험 수업인데도 제가 미리 작성한 설문지 내용을 바탕으로 제가 필요한 학습 내용을 준비해주셔서 도움이 많이 되었습니다.</p>
+          </div>
+        </article>
+
+        <article class="rv-card">
+          <div class="rv-head">
+            <div class="rv-who"><p class="rv-name">김○○님</p><p class="rv-role">통번역대학원</p></div>
+            <span class="rv-tag">체험 수업</span>
+          </div>
+          <p class="rv-lead">"일반적인 수업이나 교재에서는 접하기 어려운 구어체 등 다양한 레지스터를 배울 수 있었다는 점이 특히 만족스러웠습니다."</p>
+          <div class="rv-body">
+            <p>편안한 분위기에서 부담 없이 참여할 수 있어서 좋았습니다.</p>
+            <p>원어민이 아닌 한국인 선생님에게 문법을 배우는게 뉘앙스를 이해하는데 더 유리하겠다는 생각도 했습니다.</p>
           </div>
         </article>
 
@@ -657,6 +689,25 @@
             <p>수업마다 부담을 느끼지 않을 정도로 적절한 양의 복습 과제를 내주셔서 복습할 때도 큰 부담이 없었습니다. 수업 중 궁금했던 점을 바로바로 체크하셔서 다음 수업에서 더 깊게 다뤄주신 덕분에 매 수업이 정말 유익하고 즐거웠습니다. 이러한 맞춤화된 학습 콘텐츠와 세심한 피드백이 가장 만족스러운 부분이었습니다.</p>
             <p><span class="sp">수업 전과 비교해 어떤 부분이 개선되었나요?</span>가장 크게 달라진 점은 발음입니다. 세심하게 교정해주신 덕분에 보다 정확하고 자연스러운 발음이 가능해졌습니다. 상황별 역할을 설정해 질의응답을 주고받는 방식도 매우 유익했고, 덕분에 즉흥적인 소통 능력이 자연스럽게 향상되었습니다.</p>
             <p>무엇보다 대화 속 문법들을 함께 정리해주셔서 문법에 대한 부담이나 압박 없이 자연스럽게 익힐 수 있었고, 예전보다 훨씬 편안한 마음으로 학습에 몰입할 수 있었습니다.</p>
+          </div>
+        </article>
+
+        <!-- 김OO, 통번역대학원 -->
+        <article class="rv-card">
+          <div class="rv-head">
+            <div class="rv-who"><p class="rv-name">김○○님</p><p class="rv-role">통번역대학원, 10회 수강</p></div>
+            <span class="rv-tag">+10회 수업</span>
+          </div>
+          <p class="rv-lead">"보고서에 작성해주신 것처럼, 수업을 하다가 어느 시점에 약간 뚫리는 것 같은 기분을 느꼈어요."</p>
+          <div class="ba">
+            <div class="ba-col ba-before"><p class="ba-lb">수업 전</p><p class="ba-tx">어색한 표현들 때문에 늘 고민이 많았음</p></div>
+            <div class="ba-arrow" aria-hidden="true"></div>
+            <div class="ba-col ba-after"><p class="ba-lb">한 달, 10회 뒤</p><p class="ba-tx">어느 시점에 뚫리는 감각을 느끼고, 다음 학기에 다시 찾을 계획</p></div>
+          </div>
+          <div class="rv-body">
+            <p>한달동안 정말 감사했습니다. 항상 어색한 표현들 때문에 고민이 많았는데요.</p>
+            <p>부족한 부분이 발견되면 그 부분 채울 수 있게 바로 다음 수업때 준비해주셨던 것도 정말 좋았습니다.</p>
+            <p>너무 만족스러웠던 수업이라 아마 이번 학기 끝나면 다시 선생님을 찾게 되지 않을까 싶어요.</p>
           </div>
         </article>
 
@@ -1019,12 +1070,12 @@ if (typeof initComponents === 'function') initComponents();
     t.addEventListener('click', function (e) { e.preventDefault(); show(t.dataset.cat, true, true); });
   });
 
-  /* 주소에 카테고리가 있으면 그것으로, 없으면 나에게 맞는 수업으로 */
+  /* 주소에 카테고리가 있으면 그것으로, 없으면 첫 수업으로 */
   var start = (location.hash || '').replace('#', '');
   /* 주소에 해시가 있으면 그 카테고리를, 없으면 기본 카테고리를 해시 없이 엽니다.
      최초 로드에서 해시를 남기지 않아야 다시 방문했을 때 상단부터 보입니다. */
   if (!start || !show(start, false, false)) {
-    show('t2', false, false);
+    show('t1', false, false);
     window.scrollTo(0, 0);
   }
 
