@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { id: 'index',          label: '홈',                        icon: '🏠', href: 'index.html' },
   { id: 'lesson',         label: '1:1 프랑스어 수업',          icon: '🧑🏻‍💻', href: 'lesson.html' },
   { id: 'reviews',        label: '수업 후기',                  icon: '💬', href: 'reviews.html', sub: true },
-  { id: 'class101',       label: '프랑스어 문법책 재해석 인강', icon: '📘', href: 'class101.html' },
+  { id: 'course',         label: '바이블 문법책 재해석 인강',   icon: '📘', href: 'course.html' },
   { id: 'content',        label: '학습 콘텐츠',                icon: '📒', href: 'content.html' },
   { id: 'portfolio',      label: '통번역, 로컬화',            icon: '📑', href: 'portfolio.html' },
   { id: 'service-finder', label: '🎯 학습 유형 테스트',         icon: '🎯', href: 'service-finder.html', sub: true },
