@@ -11,11 +11,18 @@
 </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>프랑스어 전문가 김두우리</title>
-  <meta name="description" content="프랑스어 전문가 김두우리: 1:1 튜터링, 한불 통번역, Tech 로컬라이제이션"/>
-  <meta property="og:title"       content="프랑스어 전문가 김두우리"/>
-  <meta property="og:description" content="뾰족한 프랑스어를 알려드리고, 프랑스 문화를 파헤쳐 드립니다."/>
+  <title>프랑스어 전문가 김두우리 | 1:1 과외, 인강, 한불 통번역</title>
+  <meta name="description" content="프랑스 바칼로레아를 마치고 2011년부터 한국, 프랑스, 브라질에서 일해 온 프랑스어 전문가 김두우리입니다. 1:1 프랑스어 과외, 문법책 재해석 인강, 한불 통번역과 로컬라이제이션을 합니다."/>
+  <link rel="canonical" href="https://dourikim.com/index.html"/>
   <meta property="og:type"        content="website"/>
+  <meta property="og:url"         content="https://dourikim.com/"/>
+  <meta property="og:site_name"   content="Do! 우리! 프랑스어"/>
+  <meta property="og:title"       content="프랑스어 전문가 김두우리 | 1:1 과외, 인강, 한불 통번역"/>
+  <meta property="og:description" content="원어민 수업으로 안 되던 것이, 두 언어를 다 아는 사람과는 됩니다. 한국인이 어디서 막히는지 아는 프랑스어 수업."/>
+  <meta property="og:image"       content="https://dourikim.com/img/og-douri.jpg"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     /* ── 후기 캐러셀 전용 스타일 ────────────────────── */
@@ -224,6 +231,397 @@
       color: var(--brick);
     }
 
+
+    /* ══ 메인 스토리 ══════════════════════════════════
+       규칙 세 가지
+       1) 제목은 H2, 설명은 본문. 두 단계만 씁니다.
+       2) 증명 자료는 몇 장이든 합쳐서 폭 720px 안에 들어갑니다.
+          장수가 늘면 각 장이 그만큼 작아집니다.
+       3) 모바일에서는 좌우 화살표로 넘기는 캐러셀이 됩니다. */
+    .story { padding: 0; }
+    .sw { max-width: 760px; margin: 0 auto; padding: 0 4px; text-align: center; }
+
+
+    /* ── 인트로, 아웃트로 ── */
+    /* 웹에서만 넣는 줄바꿈 */
+    br.pc { display: none; }
+    @media (min-width: 761px) { br.pc { display: inline; } }
+
+    .intro { padding: 56px 0 60px; }
+    .intro-hello {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: clamp(0.95rem, 3.4vw, 1.08rem); line-height: 1.7;
+      color: var(--muted); letter-spacing: -0.02em; margin-bottom: 20px;
+      word-break: keep-all;
+    }
+    .intro-h {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: clamp(1.5rem, 6vw, 2.15rem); line-height: 1.5;
+      letter-spacing: -0.035em; color: var(--dark); word-break: keep-all;
+    }
+    .intro-h em { font-style: normal; color: var(--brick); }
+    .intro-p {
+      margin: 22px auto 0; max-width: 30em;
+      font-size: 0.92rem; line-height: 2; color: var(--muted); word-break: keep-all;
+    }
+
+    .outro { padding: 60px 0 64px; border-top: 1px solid var(--border); }
+    .outro-h {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: clamp(1.44rem, 5.8vw, 2rem); line-height: 1.5;
+      letter-spacing: -0.035em; color: var(--dark); word-break: keep-all;
+    }
+    .outro-h em { font-style: normal; color: var(--brick); }
+    .outro-tri {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px;
+      margin-top: 22px;
+    }
+    .outro-tri span {
+      font-size: 0.83rem; font-weight: 700; color: var(--dark);
+      border: 1px solid var(--border); background: var(--white);
+      border-radius: 100px; padding: 8px 16px;
+    }
+    .outro-p {
+      margin: 22px auto 0; max-width: 29em;
+      font-size: 0.9rem; line-height: 2; color: var(--muted); word-break: keep-all;
+    }
+
+    /* ── 히어로 특징 블록 ── */
+    .sb { padding: 54px 0; border-top: 1px solid var(--border); }
+    .sb-h {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: clamp(1.26rem, 5vw, 1.78rem); line-height: 1.52;
+      letter-spacing: -0.032em; color: var(--dark); word-break: keep-all;
+    }
+    .sb-h em { font-style: normal; color: var(--brick); }
+    .sb-p {
+      margin: 16px auto 0; max-width: 29em;
+      font-size: 0.9rem; line-height: 1.98; color: var(--muted); word-break: keep-all;
+    }
+
+    /* ── 증명 자료 : 합쳐서 720px ──
+       웹에서는 한 줄에 나란히, 장수가 늘면 각각 작아집니다. */
+    .proof {
+      --gap: 14px;
+      max-width: 720px; margin: 28px auto 0;
+      align-items: start;
+      display: grid; gap: var(--gap);
+      grid-auto-flow: column; grid-auto-columns: 1fr;
+      align-items: start;
+    }
+    .proof.one   { max-width: 560px; }
+    /* 증명 타일 : 자료가 무엇이든 같은 크기로 보여주고,
+       누르면 원래 크기로 크게 봅니다. */
+    .shot { display: block; }
+    .shot img, .shot video {
+      display: block; width: 100%; height: auto;
+      border-radius: 14px; border: 1px solid var(--border); background: var(--white);
+    }
+    .shot figcaption {
+      margin-top: 9px; font-size: 0.74rem; line-height: 1.6;
+      color: var(--muted); word-break: keep-all;
+    }
+
+    /* 모바일 : 좌우 화살표로 넘기는 캐러셀 */
+    @media (max-width: 760px) {
+      .proof {
+        display: flex; gap: 12px;
+        overflow-x: auto; scroll-snap-type: x mandatory;
+        padding: 0 14%; margin-left: -4px; margin-right: -4px;
+        -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      }
+      .proof::-webkit-scrollbar { display: none; }
+      .proof > * { flex: 0 0 78%; scroll-snap-align: center; }
+      /* 세로로 긴 카드는 폭을 좁게 잡아야 가로 자료와 높이가 비슷해집니다 */
+
+      .proof.one { padding: 0; }
+      .proof.one > * { flex: 0 0 100%; }
+      .pwrap { position: relative; }
+      .parrow {
+        position: absolute; top: 38%; transform: translateY(-50%);
+        width: 34px; height: 34px; border-radius: 50%;
+        border: 1px solid var(--border); background: rgba(255,255,255,.92);
+        color: var(--dark); font-size: 16px; line-height: 1;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer; z-index: 3; box-shadow: 0 2px 10px rgba(46,14,12,.12);
+      }
+      .parrow.prev { left: 2px; }
+      .parrow.next { right: 2px; }
+      .parrow[disabled] { opacity: .3; }
+    }
+    @media (min-width: 761px) { .parrow { display: none; } }
+
+    /* ── 릴스 : 작게 한 줄, 누르면 팝업 ── */
+    .reels {
+      max-width: 720px; margin: 28px auto 0;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+    }
+    .reel-btn {
+      display: block; padding: 0; border: 0; background: none; cursor: pointer;
+      text-align: center; font: inherit; color: inherit;
+    }
+    .reel-thumb {
+      position: relative; border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--dark);
+      aspect-ratio: 9 / 16;
+    }
+    .reel-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    .reel-thumb::after {
+      content: ''; position: absolute; left: 12px; bottom: 12px;
+      width: 30px; height: 30px; border-radius: 50%;
+      background: rgba(255,255,255,.92) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232E0E0C'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E") center/13px no-repeat;
+    }
+
+    /* 커버 이미지가 없을 때 쓰는 릴스 카드 */
+    .reel-thumb.ar45 { aspect-ratio: 4 / 5; }
+    .rt-card {
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #3A1512 0%, #6B241B 55%, #A33B28 100%);
+    }
+    .rt-card .rt-t {
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: 0.94rem; line-height: 1.6; letter-spacing: -0.02em;
+      color: #fff; text-align: center; padding: 0 16px;
+      word-break: keep-all;
+    }
+    .reel-btn figcaption, .reel-btn .rb-cap {
+      display: block;
+      margin-top: 8px; font-size: 0.73rem; line-height: 1.55;
+      color: var(--muted); word-break: keep-all;
+    }
+    .reel-btn:hover .reel-thumb { border-color: var(--brick); }
+
+    #reel-modal {
+      display: none; position: fixed; inset: 0; z-index: 12000;
+      background: rgba(46,14,12,.72); align-items: center; justify-content: center; padding: 20px;
+    }
+    #reel-modal.open { display: flex; }
+    .rm-box { position: relative; width: 100%; max-width: 340px; }
+    .rm-close {
+      position: absolute; top: -46px; right: 0;
+      width: 36px; height: 36px; border-radius: 50%; border: 0;
+      background: rgba(255,255,255,.92); color: var(--dark);
+      font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .rm-close:hover { background: var(--brick); color: #fff; }
+    .rm-frame {
+      display: block; width: 100%; aspect-ratio: 9 / 16; border: 0;
+      border-radius: 14px; background: #000;
+    }
+
+
+    /* 인트로 인물 사진 */
+    .intro-face { max-width: 380px; margin: 30px auto 0; }
+    .intro-face img { display: block; width: 100%; height: auto; border-radius: 14px; }
+    @media (min-width: 761px) { .intro-face { margin-left: 0; } }
+
+
+    /* 이미지 확대 : 증명 자료를 누르면 크게 봅니다 */
+    .shot img { cursor: zoom-in; }
+    #img-modal {
+      display: none; position: fixed; inset: 0; z-index: 12500;
+      background: rgba(46,14,12,.82); align-items: center; justify-content: center;
+      padding: 40px 24px;
+    }
+    #img-modal.open { display: flex; }
+    .im-box { position: relative; max-width: 1100px; max-height: 100%; }
+    .im-box img {
+      display: block; max-width: 100%; max-height: 84vh; width: auto; height: auto;
+      border-radius: 12px; background: var(--white);
+    }
+    .im-cap {
+      margin-top: 12px; text-align: center; font-size: 0.8rem;
+      color: rgba(255,255,255,.82); line-height: 1.6; word-break: keep-all;
+    }
+    .im-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 46px; height: 46px; border-radius: 50%; border: 0;
+      background: rgba(255,255,255,.9); color: var(--dark);
+      font-size: 22px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s, color .15s;
+    }
+    .im-nav:hover { background: var(--brick); color: #fff; }
+    .im-nav.prev { left: 18px; }
+    .im-nav.next { right: 18px; }
+    .im-count {
+      margin-top: 6px; text-align: center; font-family: var(--mono, inherit);
+      font-size: 0.72rem; letter-spacing: .08em; color: rgba(255,255,255,.5);
+    }
+    @media (max-width: 620px) {
+      .im-nav { width: 38px; height: 38px; font-size: 18px; }
+      .im-nav.prev { left: 6px; }
+      .im-nav.next { right: 6px; }
+      #img-modal { padding: 56px 12px; }
+    }
+    .im-close {
+      position: absolute; top: -44px; right: 0;
+      width: 36px; height: 36px; border-radius: 50%; border: 0;
+      background: rgba(255,255,255,.92); color: var(--dark);
+      font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .im-close:hover { background: var(--brick); color: #fff; }
+    /* 인스타그램 임베드 : 좁은 칸에서도 칸 폭에 맞게 */
+    .igrow {
+      max-width: 720px; margin: 16px auto 0;
+      display: grid; gap: 14px; grid-auto-flow: column; grid-auto-columns: 1fr;
+    }
+    @media (min-width: 761px) { .igrow { margin-left: 0; } }
+    @media (max-width: 760px) {
+      .igrow {
+        display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+        padding: 0 12%; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      }
+      .igrow::-webkit-scrollbar { display: none; }
+      .igrow > * { flex: 0 0 76%; scroll-snap-align: center; }
+    }
+    /* 인스타 임베드 : 영상만 남기고 위아래 군더더기를 잘라냅니다.
+       프로필 줄과 좋아요, 댓글 줄이 사진 옆에서 자리를 너무 차지해서
+       위로 --ig-top, 아래로 --ig-bottom 만큼 끌어당겨 가립니다.
+       재생 영역은 그대로라 그 자리에서 눌러서 재생됩니다. */
+    .ig {
+      --ig-top: 54px;
+      --ig-bottom: 122px;
+      min-width: 0; overflow: hidden;
+      border: 1px solid var(--border); border-radius: 14px;
+      background: var(--white);
+    }
+    .ig .instagram-media {
+      min-width: 0 !important; width: 100% !important;
+      max-width: 100% !important;
+      margin: calc(var(--ig-top) * -1) 0 calc(var(--ig-bottom) * -1) 0 !important;
+      border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+    }
+    @media (max-width: 760px) {
+      .ig { --ig-top: 48px; --ig-bottom: 112px; }
+    }
+
+    /* 이미지 확대 : 증명 자료를 누르면 크게 봅니다 */
+    .shot img { cursor: zoom-in; }
+    #img-modal {
+      display: none; position: fixed; inset: 0; z-index: 12500;
+      background: rgba(46,14,12,.82); align-items: center; justify-content: center;
+      padding: 40px 24px;
+    }
+    #img-modal.open { display: flex; }
+    .im-box { position: relative; max-width: 1100px; max-height: 100%; }
+    .im-box img {
+      display: block; max-width: 100%; max-height: 84vh; width: auto; height: auto;
+      border-radius: 12px; background: var(--white);
+    }
+    .im-cap {
+      margin-top: 12px; text-align: center; font-size: 0.8rem;
+      color: rgba(255,255,255,.82); line-height: 1.6; word-break: keep-all;
+    }
+    .im-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 46px; height: 46px; border-radius: 50%; border: 0;
+      background: rgba(255,255,255,.9); color: var(--dark);
+      font-size: 22px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .15s, color .15s;
+    }
+    .im-nav:hover { background: var(--brick); color: #fff; }
+    .im-nav.prev { left: 18px; }
+    .im-nav.next { right: 18px; }
+    .im-count {
+      margin-top: 6px; text-align: center; font-family: var(--mono, inherit);
+      font-size: 0.72rem; letter-spacing: .08em; color: rgba(255,255,255,.5);
+    }
+    @media (max-width: 620px) {
+      .im-nav { width: 38px; height: 38px; font-size: 18px; }
+      .im-nav.prev { left: 6px; }
+      .im-nav.next { right: 6px; }
+      #img-modal { padding: 56px 12px; }
+    }
+    .im-close {
+      position: absolute; top: -44px; right: 0;
+      width: 36px; height: 36px; border-radius: 50%; border: 0;
+      background: rgba(255,255,255,.92); color: var(--dark);
+      font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .im-close:hover { background: var(--brick); color: #fff; }
+    /* 인스타그램 임베드 : 좁은 칸에서도 칸 폭에 맞게 */
+    .igrow {
+      max-width: 720px; margin: 16px auto 0;
+      display: grid; gap: 14px; grid-auto-flow: column; grid-auto-columns: 1fr;
+    }
+    @media (min-width: 761px) { .igrow { margin-left: 0; } }
+    @media (max-width: 760px) {
+      .igrow {
+        display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+        padding: 0 12%; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      }
+      .igrow::-webkit-scrollbar { display: none; }
+      .igrow > * { flex: 0 0 76%; scroll-snap-align: center; }
+    }
+    .ig { min-width: 0; }
+    .ig .instagram-media {
+      min-width: 0 !important; width: 100% !important;
+      max-width: 100% !important; margin: 0 !important;
+      border-radius: 12px !important;
+    }
+    .igrow {
+      max-width: 720px; margin: 16px auto 0;
+      display: grid; gap: 14px; grid-auto-flow: column; grid-auto-columns: 1fr;
+    }
+    @media (min-width: 761px) { .igrow { margin-left: 0; } }
+    @media (max-width: 760px) {
+      .igrow {
+        display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
+        padding: 0 12%; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      }
+      .igrow::-webkit-scrollbar { display: none; }
+      .igrow > * { flex: 0 0 76%; scroll-snap-align: center; }
+    }
+    .ig .instagram-media {
+      min-width: 0 !important; width: 100% !important;
+      max-width: 100% !important; margin: 0 !important;
+      border-radius: 12px !important;
+    }
+
+    /* 원어민 블록 밑에 붙는 후기 캐러셀 */
+    .rev-slot { margin: 4px 0 0; }
+    .rev-slot .reviews-section { padding-top: 6px !important; }
+    .rev-slot .section-label { text-align: left; }
+    @media (max-width: 760px) { .rev-slot .section-label { text-align: center; } }
+    /* ── 후기 페이지에서 가져온 세 가지 공통점 ── */
+    .rv-sum {
+      background: var(--dark); border-radius: 16px;
+      padding: 46px 30px; margin: 8px 0 0; text-align: left;
+    }
+    @media (max-width: 640px) { .rv-sum { padding: 36px 22px; border-radius: 14px; } }
+    .rv-sum-t {
+      font-family: var(--font-heading); font-size: clamp(1.2rem, 4.4vw, 1.5rem);
+      font-weight: 700; color: var(--white); line-height: 1.55; letter-spacing: -0.02em;
+      word-break: keep-all; margin-bottom: 24px;
+    }
+    .rv-sum-t span { color: #f4a47a; }
+    .rv-sum-list { display: flex; flex-direction: column; gap: 14px; }
+    .rv-sum-i { border-left: 2px solid rgba(244,164,122,.5); padding-left: 14px; }
+    .rv-sum-q { font-size: 0.88rem; color: rgba(255,255,255,.88); line-height: 1.8; word-break: keep-all; }
+    .rv-sum-w { font-size: 0.72rem; color: rgba(255,255,255,.42); margin-top: 6px; }
+    .rv-sum-f {
+      font-size: 0.82rem; color: rgba(255,255,255,.55); line-height: 1.9;
+      margin-top: 24px; word-break: keep-all;
+    }
+
+    /* 웹에서는 왼쪽 정렬로 읽습니다.
+       모바일에서만 짧은 줄을 가운데로 모읍니다. */
+    @media (min-width: 761px) {
+      .sw { max-width: 860px; text-align: left; }
+      .intro-h, .sb-h, .outro-h { max-width: 24em; }
+      /* 인트로는 글이 왼쪽, 사진이 오른쪽 */
+      .intro { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 44px; align-items: center; }
+      .intro-face { margin: 0; max-width: 100%; }
+      .intro-h { max-width: 100%; }
+      .intro-p { max-width: 100%; }
+      .intro-p, .sb-p, .outro-p { margin-left: 0; margin-right: 0; max-width: 34em; }
+      .proof, .reels { margin-left: 0; margin-right: 0; }
+      .outro-tri { justify-content: flex-start; }
+      br.mo { display: none; }
+    }
+
   /* ── 학습 유형 퀴즈 토스트 팝업 ──────────────────── */
   #quiz-toast {
     position: fixed;
@@ -407,7 +805,7 @@
           <img src="img/index_class101_caroussel.png" alt="클래스101 온라인 강의" loading="lazy">
         </div>
         <div class="slide-content">
-          <span class="slide-chip">📘 클래스101 인강</span>
+          <span class="slide-chip">📘 바이블 문법책 재해석 인강</span>
           <h2 class="slide-title">집에서 시작하는<br>프랑스식 사고방식</h2>
           <p class="slide-desc">문법책 한 권으로 평생 쓸 체계를 만드는<br>온라인 강의입니다.</p>
           <a href="course.html" class="slide-cta">강의 살펴보기</a>
@@ -450,177 +848,296 @@
   <!-- 히어로 캐러셀 도트 -->
   <div class="carousel-dots" role="tablist" aria-label="슬라이드 선택"></div>
 
-  <!-- ══ 릴스 피드 섹션 ══ -->
-  <section class="reel-feed">
+  <!-- ══ 메인 스토리 ══ -->
+  <section class="story" aria-label="김두우리 소개">
+    <div class="sw">
 
-    <!-- 아이템 1 : 메인 헤드라인 -->
-    <div class="reel-item reel-headline" data-drag>
-      <p>실제 프랑스어 선생님들이 수업 요청하는<br><strong>프랑스어 수업을 제공합니다.</strong> :)</p>
+      <!-- 인트로 -->
+      <div class="intro">
+        <div class="intro-text">
+        <h2 class="intro-hello">안녕하세요, 프랑스어 전문가 김두우리입니다.</h2>
+        <h1 class="intro-h">프랑스어를 하는 것과 설명할 수 있는 것은 다른 일이었습니다.<br> 그 차이를 혼자 파고들었고, <em>현장에서 검증해왔습니다.</em></h1>
+        <p class="intro-p">수업에서는 학습자가 막히는 지점을, 통번역에서는 언어 사이에서 사라지는 의미를,<br class="pc"> 기업 프로젝트에서는 반복되는 오류를 봤습니다.<br> 세 곳 모두 같은 질문에서 시작했어요. 이 말이 이 사람에게, 이 상황에서, 정확하게 전달되는가.</p>
+        </div>
+        <figure class="intro-face">
+          <img src="img/douri_portrait.jpg" alt="프랑스어 전문가 김두우리" loading="eager">
+        </figure>
+      </div>
+
+      <!-- ▼ 히어로 특징 : 도착하는 대로 이어 붙입니다 ▼ -->
+
+      <div class="sb">
+        <h2 class="sb-h">원어민의 감각을<br> <em>학습자의 언어로 풀어냅니다.</em></h2>
+        <p class="sb-p">"왜 이렇게 말하지?"까지 그냥 넘기지 않습니다.<br class="pc"> 자연스럽게 쓰이는 표현도 이유 없이 외우지 않도록, 두 언어의 차이와 구조를 정확히 설명합니다.</p>
+        <div class="pwrap">
+          <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
+          <div class="proof">
+            <figure class="shot">
+              <img src="img/p4_voices.jpg" alt="한국어로 질문할 수 있는 한국인 선생님을 찾고 있었다는 문의와, 한국 문법 용어보다 원어로 푸는 쪽이 쉬웠다는 후기" loading="lazy">
+              <figcaption>실제 문의와 후기</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="img/p4_challenge.jpg" alt="한국인들에게 힘든 발음을 훑는 챌린지 수업 자료" loading="lazy">
+              <figcaption>한국인이 막히는 지점부터 짠 수업</figcaption>
+            </figure>
+            <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DW-MazrihWn/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,.18),0 2px 12px 0 rgba(0,0,0,.12);margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
+          </div>
+          <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
+        </div>
+      </div>
+
+      <div class="rev-slot">
+    <section class="reviews-section" style="padding-top:20px;">
+      <p class="section-label" style="margin-bottom:10px;">실제 수강생들의 진짜 후기</p>
+  
+      <!-- 후기 캐러셀 -->
+      <section class="reviews-carousel" id="reviews-carousel" aria-label="수강생 후기">
+        <div class="carousel-track">
+  
+          <!-- 1, Rafael (브라질, 프랑스 거주 3년차) -->
+          <div class="carousel-slide review-slide">
+            <div class="rs-card">
+              <div class="rs-header">
+                <div class="rs-avatar">R</div>
+                <div class="rs-header-text">
+                  <div class="rs-handle">Rafael</div>
+                  <div class="rs-role-line">IT 종사, 프랑스 거주 3년차</div>
+                </div>
+                <div class="rs-stars">★★★★★</div>
+              </div>
+              <p class="rs-lead">“프랑스에 3년을 살았는데도<br>실력이 제자리였어요”</p>
+              <p class="rs-quote">우리가 어느 부분에서 막히는지 이미 알고 있어서 수업 진행이 훨씬 수월합니다. 획일적인 프로그램 대신 제 생활 환경에 맞춘 연습 문제를 만들어줘요.</p>
+              <div class="rs-footer"><span class="rs-badge brazil">브라질 출신, 프랑스 거주</span></div>
+            </div>
+          </div>
+  
+          <!-- 2, Antonio (브라질, 2년) -->
+          <div class="carousel-slide review-slide">
+            <div class="rs-card">
+              <div class="rs-header">
+                <div class="rs-avatar">A</div>
+                <div class="rs-header-text">
+                  <div class="rs-handle">Antonio</div>
+                  <div class="rs-role-line">프랑스 은행 중남미 총괄</div>
+                </div>
+                <div class="rs-stars">★★★★★</div>
+              </div>
+              <p class="rs-lead">“메시지 한 줄도<br>그냥 넘어가지 않아요”</p>
+              <p class="rs-quote">WhatsApp으로 간단히 쓴 문장 하나까지 오류를 짚어주고 더 나은 표현을 알려줍니다. 실제 프랑스인들이 어떻게 말하는지에 맞춰 제 표현 스타일까지 다듬어줘요.</p>
+              <div class="rs-footer"><span class="rs-badge brazil">브라질, 2년 수강</span></div>
+            </div>
+          </div>
+  
+          <!-- 3, Roberto (프랑스어 교사) -->
+          <div class="carousel-slide review-slide">
+            <div class="rs-card">
+              <div class="rs-header">
+                <div class="rs-avatar">R</div>
+                <div class="rs-header-text">
+                  <div class="rs-handle">Roberto</div>
+                  <div class="rs-role-line">프랑스어, 포르투갈어 교사</div>
+                </div>
+                <div class="rs-stars">★★★★★</div>
+              </div>
+              <p class="rs-lead">“문법의 미묘한 차이까지<br>알고 있는 선생님이에요”</p>
+              <p class="rs-quote">항상 좋은 예시와 참고 자료를 제시해줍니다. 두 언어를 비교해서 설명할 때 그 차이가 특히 크게 느껴져요.</p>
+              <div class="rs-footer"><span class="rs-badge brazil">브라질, 2년째 언어 교환</span></div>
+            </div>
+          </div>
+  
+          <!-- 4, 이○○님 (특강) -->
+          <div class="carousel-slide review-slide">
+            <div class="rs-card">
+              <div class="rs-header">
+                <div class="rs-avatar">이</div>
+                <div class="rs-header-text">
+                  <div class="rs-handle">이○○님</div>
+                  <div class="rs-role-line">B1 취득 목표</div>
+                </div>
+                <div class="rs-stars">★★★★★</div>
+              </div>
+              <p class="rs-lead">“한국 문법 용어보다<br>원어로 푸니 더 쉬웠어요”</p>
+              <p class="rs-quote">설명과 예시가 디테일해서 이해가 쉬웠고, 단순히 듣고 끝나는 수업이 아니었습니다. 무료 수업이라 기대하지 않았는데 얻어간 게 많았어요.</p>
+              <div class="rs-footer"><span class="rs-badge">특강</span></div>
+            </div>
+          </div>
+  
+          <!-- 5, Vinícius (브라질) -->
+          <div class="carousel-slide review-slide">
+            <div class="rs-card">
+              <div class="rs-header">
+                <div class="rs-avatar">V</div>
+                <div class="rs-header-text">
+                  <div class="rs-handle">Vinícius</div>
+                  <div class="rs-role-line">박사과정 연구자, 동물학</div>
+                </div>
+                <div class="rs-stars">★★★★★</div>
+              </div>
+              <p class="rs-lead">“Bonjour도 못 하던 제가,<br>지금 파리에서 박사과정 중입니다”</p>
+              <p class="rs-quote">박사과정에 필요한 프랑스어가 무엇인지, 제가 어디서 어려워하는지를 정확히 이해해줬습니다. 지금은 소르본 소속으로 파리 국립자연사박물관에서 연구하고 있어요.</p>
+              <div class="rs-footer"><span class="rs-badge brazil">브라질 학생</span></div>
+            </div>
+          </div>
+  
+        </div><!-- /carousel-track -->
+  
+        <div class="carousel-nav">
+          <button class="carousel-arrow prev-btn" aria-label="이전 후기">‹</button>
+          <button class="carousel-arrow next-btn" aria-label="다음 후기">›</button>
+        </div>
+      </section>
+  
+      <!-- 후기 캐러셀 도트 (reviews-section 자식 → initCarousel이 reviews-carousel의 parentElement 탐색) -->
+      <div class="reviews-dots" id="reviews-dots" role="tablist"></div>
+  
+      <a href="reviews.html" class="btn-more-reviews">모든 후기 보기</a>
+    </section>
+      </div>
+
+      <div class="sb">
+        <h2 class="sb-h">프랑스에서는 문제를 푸는 방법도,<br> <em>의견을 말하는 방식도 달랐습니다.</em></h2>
+        <p class="sb-p">언어가 문제가 아니었어요. 생각하는 방법 자체가 한국식이었습니다. 그래서 남들보다 1년을 더 써서 프랑스 고등학교 과정을 다시 밟았습니다. 바칼로레아까지 마치고 나서야, 프랑스어가 제 문장이 됐어요.</p>
+        <p class="sb-p">그때 익힌 사고방식을 한국인이 따라올 수 있는 순서로 다시 짜서, <b>프랑스식 사고방식을 키우는 심층 인강</b>을 기획까지 했습니다.</p>
+        <div class="pwrap">
+          <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
+          <div class="proof">
+            <figure class="shot">
+              <img src="img/bac_diploma.jpg" alt="프랑스 바칼로레아 일반계 경제사회 계열 디플롬" loading="lazy">
+              <figcaption>Baccalauréat Général, Série Économique et Sociale</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="img/course_compare.jpg" alt="일반 강의와 문법책으로 사고방식을 기르는 강의의 차이" loading="lazy">
+              <figcaption>사고방식을 기르는 강의로 재해석</figcaption>
+            </figure>
+            <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVtU7lwidvs/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,.18),0 2px 12px 0 rgba(0,0,0,.12);margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
+          </div>
+          <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
+        </div>
+      </div>
+
+      <div class="sb">
+        <h2 class="sb-h">통역도 번역도,<br> <em>결국 현장에서 판단하는 일</em>입니다.</h2>
+        <p class="sb-p">영화 시나리오와 자막, 기업 문서와 기술 번역, 그리고 행사 현장의 순차통역까지 해왔습니다. 문장을 옮기는 일보다, 이 자리에서 무엇이 생략됐고 듣는 쪽 언어에서는 그걸 어디에 넣어야 하는지를 판단하는 일이 더 큽니다.</p>
+        <p class="sb-p">도구도 마찬가지예요. CAT 툴이 필수인지 묻는 자리에서, 툴을 가졌는지가 아니라 그 툴이 어떤 프로세스에서 왜 필요한지를 설명할 수 있는지가 실력이라고 답했습니다.</p>
+        <div class="pwrap">
+          <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
+          <div class="proof">
+            <figure class="shot">
+              <img src="img/p5_scenario.jpg" alt="한국 영화 시나리오를 한국어에서 프랑스어로 번역해달라는 프랑스 제작사의 의뢰 메일" loading="lazy">
+              <figcaption>시나리오 번역 의뢰, 파리 제작사</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="img/p5_interpret.jpg" alt="영화 감독 대담 현장 순차통역" loading="lazy">
+              <figcaption>영화 감독 대담 순차통역</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="img/p5_field.jpg" alt="프랑스어 현장에서 만난 사람들" loading="lazy">
+              <figcaption>현장에서</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="img/p5_cat.jpg" alt="CAT 툴이 필수인지 묻는 질문에 남긴 답변" loading="lazy">
+              <figcaption>CAT 툴 질문에 남긴 답</figcaption>
+            </figure>
+          </div>
+          <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
+        </div>
+      </div>
+
+      <div class="sb">
+        <h2 class="sb-h">제 분석 능력은<br> <em>수업 밖에서도 같은 일</em>을 합니다.</h2>
+        <p class="sb-p">한 사람의 프랑스어를 점검하는 일과, 기업의 음성 데이터를 대량으로 검수하는 일은 방식이 같습니다. 어디서 왜 틀렸는지 유형으로 나누고, 고칠 순서를 정하는 거예요.</p>
+        <div class="pwrap">
+          <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
+          <div class="proof">
+            <figure class="shot">
+              <img src="img/report_sample.jpg" alt="수강생 결과 보고서 1쪽" loading="lazy">
+              <figcaption>결과 보고서, 목표와 피드백</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="img/report_sample2.jpg" alt="수강생 결과 보고서 2쪽" loading="lazy">
+              <figcaption>결과 보고서, 학습 방향과 총평</figcaption>
+            </figure>
+            <figure class="shot">
+              <img src="img/stt_sample.jpg" alt="기업 프랑스어 음성 데이터 검수 기준서" loading="lazy">
+              <figcaption>기업 음성 데이터 검수 기준서</figcaption>
+            </figure>          </div>
+          <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
+        </div>
+      </div>
+
+      <div class="sb">
+        <h2 class="sb-h">자료도 AI도 넘칩니다.<br> 남는 건 <em>고르는 기준</em>이에요.</h2>
+        <p class="sb-p">AI 툴이 언어 교사와 통번역사를 위협한다고들 하죠. 저는 그 도구를 어떻게 쓰는지까지 함께 봅니다. 지금 본인에게 맞는 학습 방법과 자료를 고르고, 나중에는 혼자서도 이어갈 수 있는 자립성을 만드는 게 목표예요.</p>
+        <div class="pwrap">
+          <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
+          <div class="proof">
+            <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DblcaNGlOQN/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
+            <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXZab31CqVX/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
+          </div>
+          <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
+        </div>
+      </div>
+
+      <!-- ▲ 히어로 특징 끝 ▲ -->
+
+      <!-- 아웃트로 -->
+      <div class="outro">
+        <h2 class="outro-h">가르치고, 옮기고, 검수합니다.<br class="mo"> <em>전부 한 사람이.</em></h2>
+        <div class="outro-tri">
+          <span>1:1 프랑스어 수업</span>
+          <span>한불 통번역</span>
+          <span>기업 언어 품질 관리</span>
+        </div>
+        <p class="outro-p">세 가지로 보이지만 하나의 질문에서 나옵니다. 이 말이 이 사람에게, 이 상황에서, 정확하게 전달되는가. 가르치며 발견한 오류는 검수의 기준이 되고, 통역 현장의 감각은 수업으로 돌아옵니다.</p>
+      </div>
+
+      <!-- 후기 페이지에서 가져온 세 가지 공통점 -->
+      <div class="rv-sum">
+        <h2 class="rv-sum-t">오래 배운 사람일수록,<br><span>같은 이야기</span>를 합니다.</h2>
+        <div class="rv-sum-list">
+          <div class="rv-sum-i">
+            <p class="rv-sum-q">"세심하게 교정해주신 덕분에 보다 정확하고 자연스러운 발음이 가능해졌습니다."</p>
+            <p class="rv-sum-w">한○○님, 헤어 디자이너, 10회 이상 수강</p>
+          </div>
+          <div class="rv-sum-i">
+            <p class="rv-sum-q">"WhatsApp으로 간단히 쓴 메시지 하나도 선생님의 세심한 눈을 피해 가지 않습니다."</p>
+            <p class="rv-sum-w">Antonio, 브라질, 2년 수강</p>
+          </div>
+          <div class="rv-sum-i">
+            <p class="rv-sum-q">"프랑스어 문법의 미묘한 차이까지 잘 알고, 항상 좋은 예시와 참고 자료를 제시해줍니다."</p>
+            <p class="rv-sum-w">Roberto, 프랑스어 교사, 브라질</p>
+          </div>
+        </div>
+        <p class="rv-sum-f">세 분이 말하는 건 교정을 얼마나 자주 하느냐가 아니라, 어디까지 하느냐입니다. 수업 시간 밖에서 쓴 문장 한 줄도 대상이 됩니다.</p>
+      </div>
+
     </div>
-
-    <!-- 아이템 2 : 부제 -->
-    <div class="reel-item reel-subline" data-drag>
-      <p>한국인들이 놓치는 프랑스어의 뉘앙스,<br>뾰족한 공부 방법을 알려드립니다!</p>
-    </div>
-
-    <!-- 아이템 3 : 릴스 1 -->
-    <div class="reel-item reel-embed-item" data-drag>
-      <blockquote class="instagram-media"
-        data-instgrm-permalink="https://www.instagram.com/reel/DW-MazrihWn/?utm_source=ig_embed"
-        data-instgrm-version="14"
-        style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,0.18),0 2px 12px 0 rgba(0,0,0,0.12);margin:0 auto;max-width:300px;min-width:240px;padding:0;width:calc(100% - 2px);">
-      </blockquote>
-    </div>
-
-    <!-- 아이템 4 : 공감 헤드라인 -->
-    <div class="reel-item reel-alt" data-drag>
-      <p>넘쳐나는 학습 자료로 프랑스어 독학은 시작했지만,<br>실력이 느는 것 같지 않고, 공부 방법이 맞는지 모르겠어요...</p>
-    </div>
-
-    <!-- 아이템 5 : 릴스 2 -->
-    <div class="reel-item reel-embed-item" data-drag>
-      <blockquote class="instagram-media"
-        data-instgrm-permalink="https://www.instagram.com/reel/DXZab31CqVX/?utm_source=ig_embed"
-        data-instgrm-version="14"
-        style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,0.18),0 2px 12px 0 rgba(0,0,0,0.12);margin:0 auto;max-width:300px;min-width:240px;padding:0;width:calc(100% - 2px);">
-      </blockquote>
-    </div>
-
   </section>
 
-  <!-- ══ 학습 유형 테스트 배너 ══ -->
-  <a href="service-finder.html" class="quiz-banner">
-    <div class="quiz-banner-left">
-      <p class="quiz-banner-eyebrow">🎯 2분 테스트</p>
-      <p class="quiz-banner-title">나의 프랑스어 학습 유형은?</p>
-      <p class="quiz-banner-sub">8문항, 6가지 유형, 맞춤 추천</p>
+  
+<!-- 이미지 확대 -->
+<div id="img-modal" role="dialog" aria-modal="true" aria-label="이미지 크게 보기" onclick="if(event.target===this)closeImg()">
+  <button class="im-nav prev" type="button" onclick="stepImg(-1)" aria-label="이전 자료">&#8249;</button>
+  <div class="im-box">
+    <button class="im-close" type="button" onclick="closeImg()" aria-label="닫기">&#10005;</button>
+    <img id="im-src" src="" alt="">
+    <p class="im-cap" id="im-cap"></p>
+    <p class="im-count" id="im-count"></p>
+  </div>
+  <button class="im-nav next" type="button" onclick="stepImg(1)" aria-label="다음 자료">&#8250;</button>
+</div>
+
+<!-- 릴스 팝업 -->
+  <div id="reel-modal" role="dialog" aria-modal="true" aria-label="릴스 보기" onclick="if(event.target===this)closeReel()">
+    <div class="rm-box">
+      <button class="rm-close" type="button" onclick="closeReel()" aria-label="닫기">&#10005;</button>
+      <iframe id="rm-frame" class="rm-frame" src="" allowtransparency="true" allowfullscreen title="인스타그램 릴스"></iframe>
     </div>
-    <span class="quiz-banner-cta">테스트 하기 →</span>
-  </a>
+  </div>
+
+  <!-- 학습 유형 테스트 배너와 토스트 팝업은 parked-quiz.html 로 옮겨 대기 중입니다 -->
 
   <!-- ══ 후기 섹션 ══ -->
-  <section class="reviews-section" style="padding-top:20px;">
-    <p class="section-label" style="margin-bottom:10px;">실제 수강생들의 진짜 후기</p>
-
-    <!-- 후기 캐러셀 -->
-    <section class="reviews-carousel" id="reviews-carousel" aria-label="수강생 후기">
-      <div class="carousel-track">
-
-        <!-- 1, Júlia (브라질) -->
-        <div class="carousel-slide review-slide">
-          <div class="rs-card">
-            <div class="rs-header">
-              <div class="rs-avatar">J</div>
-              <div class="rs-header-text">
-                <div class="rs-handle">Júlia</div>
-                <div class="rs-role-line">국제관계학 전공</div>
-              </div>
-              <div class="rs-stars">★★★★★</div>
-            </div>
-            <p class="rs-lead">“즐거우면서 효과적이라,<br>매일 조금씩 더 하고 싶어져요”</p>
-            <p class="rs-quote">이야기하기 좋아하는 시사 주제로 대화를 구성해주고, 문법 연습과 복습은 꼼꼼히 해서 실수를 최소화해줘요. 9개월 만에 매일 공부하는 습관까지 생겼습니다.</p>
-            <div class="rs-footer"><span class="rs-badge brazil">🇧🇷 브라질 학생</span></div>
-          </div>
-        </div>
-
-        <!-- 2, 한○○님 (+10회 수업) -->
-        <div class="carousel-slide review-slide">
-          <div class="rs-card">
-            <div class="rs-header">
-              <div class="rs-avatar">한</div>
-              <div class="rs-header-text">
-                <div class="rs-handle">한○○님</div>
-                <div class="rs-role-line">헤어 디자이너</div>
-              </div>
-              <div class="rs-stars">★★★★★</div>
-            </div>
-            <p class="rs-lead">“가장 크게 달라진 건 발음,<br>그리고 문법 부담이 사라진 것”</p>
-            <p class="rs-quote">실생활 표현 중심에 상황별 역할극까지 하니 즉흥적인 대화가 늘었고, 문법은 대화 속에서 정리해주셔서 압박이 없었습니다.</p>
-            <div class="rs-footer"><span class="rs-badge">+10회 수업</span></div>
-          </div>
-        </div>
-
-        <!-- 3, Antonio (브라질, 2년) -->
-        <div class="carousel-slide review-slide">
-          <div class="rs-card">
-            <div class="rs-header">
-              <div class="rs-avatar">A</div>
-              <div class="rs-header-text">
-                <div class="rs-handle">Antonio</div>
-                <div class="rs-role-line">프랑스 은행 중남미 총괄</div>
-              </div>
-              <div class="rs-stars">★★★★★</div>
-            </div>
-            <p class="rs-lead">“프랑스 현지 친구와<br>대화하는 느낌이에요”</p>
-            <p class="rs-quote">WhatsApp 메시지 한 줄까지 교정해주고, 기사와 영화, 토론으로 지금의 프랑스를 다룹니다. 2년째 함께하고 있어요.</p>
-            <div class="rs-footer"><span class="rs-badge brazil">🇧🇷 브라질, 2년 수강</span></div>
-          </div>
-        </div>
-
-        <!-- 4, 김○○님 (체험 수업) -->
-        <div class="carousel-slide review-slide">
-          <div class="rs-card">
-            <div class="rs-header">
-              <div class="rs-avatar">김</div>
-              <div class="rs-header-text">
-                <div class="rs-handle">김○○님</div>
-                <div class="rs-role-line">꼬르동 블루 유학 준비</div>
-              </div>
-              <div class="rs-stars">★★★★★</div>
-            </div>
-            <p class="rs-lead">“가벼운 오티가 아니라,<br>알짜배기 정규 수업 1시간”</p>
-            <p class="rs-quote">온라인인데도 제 발음과 약점을 즉각 캐치해서 바로 수정해주셨어요. 개인에 맞춰 준비를 많이 해오신 게 느껴졌습니다.</p>
-            <div class="rs-footer"><span class="rs-badge">체험 수업</span></div>
-          </div>
-        </div>
-
-        <!-- 5, Vinícius (브라질) -->
-        <div class="carousel-slide review-slide">
-          <div class="rs-card">
-            <div class="rs-header">
-              <div class="rs-avatar">V</div>
-              <div class="rs-header-text">
-                <div class="rs-handle">Vinícius</div>
-                <div class="rs-role-line">프랑스 파리에서 박사과정</div>
-              </div>
-              <div class="rs-stars">★★★★★</div>
-            </div>
-            <p class="rs-lead">“Bonjour도 못 하던 제가,<br>지금 파리에서 박사과정 중입니다”</p>
-            <p class="rs-quote">입문에서 시작해 듣기, 읽기, 쓰기까지 가능해졌고, 현재 소르본 소속으로 파리 국립자연사박물관에서 연구하고 있습니다.</p>
-            <div class="rs-footer"><span class="rs-badge brazil">🇧🇷 브라질 학생</span></div>
-          </div>
-        </div>
-
-        <!-- 6, 이○○님 (특강) -->
-        <div class="carousel-slide review-slide">
-          <div class="rs-card">
-            <div class="rs-header">
-              <div class="rs-avatar">이</div>
-              <div class="rs-header-text">
-                <div class="rs-handle">이○○님</div>
-                <div class="rs-role-line">B1 취득 목표</div>
-              </div>
-              <div class="rs-stars">★★★★★</div>
-            </div>
-            <p class="rs-lead">“무료 수업이라 기대 안 했는데,<br>얻어간 게 많았어요”</p>
-            <p class="rs-quote">설명과 예시가 디테일해서 이해가 쉬웠고, 한국어 문법 용어보다 원어로 풀어주시니 오히려 더 잘 들어왔습니다.</p>
-            <div class="rs-footer"><span class="rs-badge">특강</span></div>
-          </div>
-        </div>
-
-      </div><!-- /carousel-track -->
-
-      <div class="carousel-nav">
-        <button class="carousel-arrow prev-btn" aria-label="이전 후기">‹</button>
-        <button class="carousel-arrow next-btn" aria-label="다음 후기">›</button>
-      </div>
-    </section>
-
-    <!-- 후기 캐러셀 도트 (reviews-section 자식 → initCarousel이 reviews-carousel의 parentElement 탐색) -->
-    <div class="reviews-dots" id="reviews-dots" role="tablist"></div>
-
-    <a href="reviews.html" class="btn-more-reviews">모든 후기 보기</a>
-  </section>
 
 </div><!-- /content-wrap -->
 <footer class="site-footer" id="site-footer"></footer>
@@ -634,7 +1151,7 @@
   initComponents();
   initCarousel('#main-carousel', { interval: 3000 });
 
-  /* ══ 후기 캐러셀 : 6장 무한 루프 ══
+  /* ══ 후기 캐러셀 : 5장 무한 루프 ══
      원본 6장을 뒤에 한 벌 더 복제해두고, 마지막에서 다음으로 넘어갈 때
      복제본까지 애니메이션한 뒤 트랜지션을 끈 채 처음으로 순간 이동시킨다.
      → 마지막 카드 뒤에 빈 공간이 생기지 않고 계속 돈다. */
@@ -772,6 +1289,115 @@
     }
   })();
 
+
+  /* ══ 증명 자료 캐러셀 (모바일) + 릴스 팝업 ══ */
+  (function () {
+    /* 모바일에서 좌우 화살표로 한 장씩 넘깁니다 */
+    document.querySelectorAll('.pwrap').forEach(function (wrap) {
+      var rail = wrap.querySelector('.proof');
+      var prev = wrap.querySelector('.parrow.prev');
+      var next = wrap.querySelector('.parrow.next');
+      if (!rail || !prev || !next) return;
+      var items = Array.prototype.slice.call(rail.children);
+      function step() { return items.length > 1 ? (items[1].offsetLeft - items[0].offsetLeft) : rail.clientWidth; }
+      function sync() {
+        var max = rail.scrollWidth - rail.clientWidth - 2;
+        prev.disabled = rail.scrollLeft <= 2;
+        next.disabled = rail.scrollLeft >= max;
+      }
+      prev.addEventListener('click', function () { rail.scrollBy({ left: -step(), behavior: 'smooth' }); });
+      next.addEventListener('click', function () { rail.scrollBy({ left:  step(), behavior: 'smooth' }); });
+      rail.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync);
+      sync();
+    });
+
+
+    /* 증명 사진 : 누르면 크게 보고, 그 아이디어 안에서만 좌우로 넘깁니다.
+       인스타 임베드는 손대지 않고 제자리에서 재생됩니다. */
+    var imModal = document.getElementById('img-modal');
+    var imSrc   = document.getElementById('im-src');
+    var imCap   = document.getElementById('im-cap');
+    var imCount = document.getElementById('im-count');
+    var imGroup = [], imIdx = 0;
+
+    function showItem(i) {
+      if (!imGroup.length) return;
+      imIdx = (i % imGroup.length + imGroup.length) % imGroup.length;
+      var img = imGroup[imIdx];
+      imSrc.src = img.getAttribute('src');
+      imSrc.alt = img.getAttribute('alt') || '';
+      var fig = img.closest('figure');
+      var fc  = fig && fig.querySelector('figcaption');
+      imCap.textContent = fc ? fc.textContent.trim() : '';
+      imCount.textContent = (imIdx + 1) + ' / ' + imGroup.length;
+      document.querySelectorAll('.im-nav').forEach(function (b) {
+        b.style.display = imGroup.length > 1 ? '' : 'none';
+      });
+    }
+    window.stepImg  = function (d) { showItem(imIdx + d); };
+    window.closeImg = function () {
+      imModal.classList.remove('open');
+      imSrc.removeAttribute('src');
+      document.body.style.overflow = '';
+    };
+    document.querySelectorAll('.proof').forEach(function (rail) {
+      var imgs = Array.prototype.slice.call(rail.querySelectorAll('figure.shot img'));
+      imgs.forEach(function (img, i) {
+        img.addEventListener('click', function () {
+          imGroup = imgs;
+          showItem(i);
+          imModal.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!imModal.classList.contains('open')) return;
+      if (e.key === 'Escape')     closeImg();
+      if (e.key === 'ArrowLeft')  stepImg(-1);
+      if (e.key === 'ArrowRight') stepImg(1);
+    });
+    (function () {
+      var x0 = null;
+      imModal.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      imModal.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        var dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 45) stepImg(dx < 0 ? 1 : -1);
+        x0 = null;
+      }, { passive: true });
+    })();
+
+    /* 릴스를 누르면 팝업으로 크게 */
+    var modal = document.getElementById('reel-modal');
+    var frame = document.getElementById('rm-frame');
+    window.openReel = function (code) {
+      frame.src = 'https://www.instagram.com/reel/' + code + '/embed/';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    window.closeReel = function () {
+      modal.classList.remove('open');
+      frame.src = '';
+      document.body.style.overflow = '';
+    };
+    /* 웹에서는 새 창으로 바로, 모바일에서는 팝업으로 */
+    document.querySelectorAll('.reel-btn[data-reel]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var code = b.dataset.reel;
+        if (window.matchMedia('(min-width: 761px)').matches) {
+          window.open('https://www.instagram.com/reel/' + code + '/', '_blank', 'noopener');
+        } else {
+          openReel(code);
+        }
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && modal.classList.contains('open')) closeReel();
+    });
+  })();
+
   /* 후기 카드 높이 통일 (복제본 포함) */
   function equalizeReviewCards() {
     const cards = document.querySelectorAll('#reviews-carousel .rs-card');
@@ -792,83 +1418,5 @@
 </script>
 <script async src="https://www.instagram.com/embed.js"></script>
 
-<!-- ══ 학습 유형 퀴즈 토스트 팝업 ══ -->
-<div id="quiz-toast" style="display:none" role="complementary" aria-label="학습 유형 테스트">
-  <div class="qt-body">
-    <div class="qt-icon">🇫🇷</div>
-    <div class="qt-text">
-      <p class="qt-title">나에게 맞는 프랑스어<br>학습법을 찾고 싶다면?</p>
-      <p class="qt-sub">8문항, 2분, 6가지 유형</p>
-    </div>
-    <button class="qt-close" onclick="qtDismiss(event)" aria-label="닫기">✕</button>
-  </div>
-  <div class="qt-footer">
-    <a href="service-finder.html" class="qt-btn">유형 테스트 하기 →</a>
-    <span class="qt-countdown" id="qt-cd">10초 후 닫힘</span>
-  </div>
-  <div class="qt-bar">
-    <div class="qt-bar-fill" id="qt-fill"></div>
-  </div>
-</div>
-
-<script>
-(function () {
-  var DELAY    = 3000;   // 페이지 로드 후 등장까지 대기 (ms)
-  var DURATION = 10;     // 자동 소멸 카운트다운 (초)
-
-  var el   = document.getElementById('quiz-toast');
-  var fill = document.getElementById('qt-fill');
-  var cd   = document.getElementById('qt-cd');
-  var tick = null;
-  var left = DURATION;
-
-  /* 이미 이번 세션에 닫은 적 있으면 다시 안 띄움 */
-  if (sessionStorage.getItem('qt-dismissed')) return;
-
-  setTimeout(show, DELAY);
-
-  function show() {
-    el.style.display = 'block';
-    startCountdown();
-
-    /* 마우스 올리면 카운트다운 일시 정지 */
-    el.addEventListener('mouseenter', pause);
-    el.addEventListener('mouseleave', resume);
-  }
-
-  function startCountdown() {
-    /* 진행 바 애니메이션 시작 */
-    fill.style.transition = 'none';
-    fill.style.width = '100%';
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      fill.style.transition = `width ${left}s linear`;
-      fill.style.width = '0%';
-    }));
-    clearInterval(tick);
-    tick = setInterval(() => {
-      left--;
-      cd.textContent = `${left}초 후 닫힘`;
-      if (left <= 0) { clearInterval(tick); qtDismiss(); }
-    }, 1000);
-  }
-
-  function pause() {
-    clearInterval(tick);
-    fill.style.transitionDuration = '0s';
-  }
-
-  function resume() {
-    left = DURATION;
-    startCountdown();
-  }
-
-  window.qtDismiss = function (e) {
-    if (e) e.stopPropagation();
-    clearInterval(tick);
-    sessionStorage.setItem('qt-dismissed', '1');
-    el.style.display = 'none';
-  };
-})();
-</script>
 </body>
 </html>
