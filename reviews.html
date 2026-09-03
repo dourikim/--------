@@ -672,6 +672,25 @@
 
       <div class="rv-list">
 
+        <!-- 김OO, 통번역대학원 -->
+        <article class="rv-card">
+          <div class="rv-head">
+            <div class="rv-who"><p class="rv-name">김○○님</p><p class="rv-role">통번역대학원, 10회 수강</p></div>
+            <span class="rv-tag">+10회 수업</span>
+          </div>
+          <p class="rv-lead">"프랑스어식 사고를 이해하고 비슷하게 흉내낼 수 있게 된 것이 가장 큰 발전이었던 것 같습니다."</p>
+          <div class="ba">
+            <div class="ba-col ba-before"><p class="ba-lb">수업 전</p><p class="ba-tx">문법과 어휘는 알지만, 한국어를 직역한 것 같은 표현을 쓴다는 지적을 자주 받음</p></div>
+            <div class="ba-arrow" aria-hidden="true"></div>
+            <div class="ba-col ba-after"><p class="ba-lb">10회 뒤</p><p class="ba-tx">불어스럽게 말하고 쓰는 감각이 잡혀, 그다음부터는 스스로 적용할 수 있게 됨</p></div>
+          </div>
+          <div class="rv-body">
+            <p>프랑스어 학습 기간이 길어지다보니 기본적인 문법이나 기본적인 수준의 어휘는 알고 있던 상태였습니다. 하지만 자연스러운 방식으로 말하는데 여전히 어려움이 많았습니다. 특히 한국어를 직역한 것 같은 표현을 사용한다는 지적을 받은 적이 많았습니다.</p>
+            <p>특히 초반에 제가 작성한 글에서 번역투의 문장들을 좀 더 불어스럽게 고쳐주셨던 적이 있었는데, 그 시간이 도움이 많이 됐습니다. 불어스럽게 말하고 쓰려면 어떻게 해야하는지 그 느낌이 이해가 되니까 그 다음에 제 스스로 적용해 볼 수 있었습니다. 보고서에 작성해주신 것처럼 수업을 하다가 어느 시점에 약간 뚫리는 것 같은 기분을 느꼈어요. 또 수업 중에 부족한 부분이 발견되면 바로 그 다음 수업때 관련 주제를 준비해주셔서 부족한 부분을 채우는데 도움이 됐습니다!</p>
+            <p>특정 개념에 대한 학습을 원하는게 아니라 내게 부족한 부분을 채우길 원하시는 분들이 수강하면 큰 도움이 될 것 같습니다. 편안한 분위기에서 충분히 말하고 표현 할 수 있도록 기다려주시기 때문에 내향적인 분들도 부담감 없이 수강하실 수 있을 것 같습니다!</p>
+          </div>
+        </article>
+
         <!-- 한OO -->
         <article class="rv-card">
           <div class="rv-head">
@@ -692,24 +711,6 @@
           </div>
         </article>
 
-        <!-- 김OO, 통번역대학원 -->
-        <article class="rv-card">
-          <div class="rv-head">
-            <div class="rv-who"><p class="rv-name">김○○님</p><p class="rv-role">통번역대학원, 10회 수강</p></div>
-            <span class="rv-tag">+10회 수업</span>
-          </div>
-          <p class="rv-lead">"보고서에 작성해주신 것처럼, 수업을 하다가 어느 시점에 약간 뚫리는 것 같은 기분을 느꼈어요."</p>
-          <div class="ba">
-            <div class="ba-col ba-before"><p class="ba-lb">수업 전</p><p class="ba-tx">어색한 표현들 때문에 늘 고민이 많았음</p></div>
-            <div class="ba-arrow" aria-hidden="true"></div>
-            <div class="ba-col ba-after"><p class="ba-lb">한 달, 10회 뒤</p><p class="ba-tx">어느 시점에 뚫리는 감각을 느끼고, 다음 학기에 다시 찾을 계획</p></div>
-          </div>
-          <div class="rv-body">
-            <p>한달동안 정말 감사했습니다. 항상 어색한 표현들 때문에 고민이 많았는데요.</p>
-            <p>부족한 부분이 발견되면 그 부분 채울 수 있게 바로 다음 수업때 준비해주셨던 것도 정말 좋았습니다.</p>
-            <p>너무 만족스러웠던 수업이라 아마 이번 학기 끝나면 다시 선생님을 찾게 되지 않을까 싶어요.</p>
-          </div>
-        </article>
 
         <!-- Antonio -->
         <article class="rv-card has-shot">
@@ -1070,12 +1071,12 @@ if (typeof initComponents === 'function') initComponents();
     t.addEventListener('click', function (e) { e.preventDefault(); show(t.dataset.cat, true, true); });
   });
 
-  /* 주소에 카테고리가 있으면 그것으로, 없으면 첫 수업으로 */
+  /* 주소에 카테고리가 있으면 그것으로, 없으면 '안 고쳐지던 것들'로 */
   var start = (location.hash || '').replace('#', '');
   /* 주소에 해시가 있으면 그 카테고리를, 없으면 기본 카테고리를 해시 없이 엽니다.
      최초 로드에서 해시를 남기지 않아야 다시 방문했을 때 상단부터 보입니다. */
   if (!start || !show(start, false, false)) {
-    show('t1', false, false);
+    show('t3', false, false);
     window.scrollTo(0, 0);
   }
 
