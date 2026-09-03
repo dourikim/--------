@@ -247,7 +247,7 @@
     br.pc { display: none; }
     @media (min-width: 761px) { br.pc { display: inline; } }
 
-    .intro { padding: 56px 0 60px; }
+    .intro { padding: 56px 0 24px; }
     .intro-hello {
       font-family: var(--font-heading); font-weight: 700;
       font-size: clamp(0.95rem, 3.4vw, 1.08rem); line-height: 1.7;
@@ -264,6 +264,27 @@
       margin: 22px auto 0; max-width: 30em;
       font-size: 0.92rem; line-height: 2; color: var(--muted); word-break: keep-all;
     }
+
+    /* 블록 끝에서 읽는 사람 쪽으로 돌아오는 한 줄 */
+    /* 블록 끝에서 읽는 사람 쪽으로 돌아오는 한 줄.
+       제목과 같은 고운바탕으로 잡아, 앞의 설명에 답하는 문장처럼 보이게 합니다. */
+    .sb-so {
+      position: relative;
+      margin: 26px auto 0; max-width: 26em;
+      padding: 20px 24px 20px 46px;
+      background: var(--surface); border-radius: 14px;
+      border-left: 3px solid var(--brick);
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: clamp(1rem, 3.8vw, 1.14rem); line-height: 1.7;
+      letter-spacing: -0.02em; color: var(--dark);
+      word-break: keep-all; text-align: left;
+    }
+    .sb-so::before {
+      content: '→'; position: absolute; left: 20px; top: 20px;
+      font-family: var(--font-body); font-size: 0.95rem; font-weight: 700;
+      color: var(--brick); line-height: 1.85;
+    }
+    @media (min-width: 761px) { .sb-so { margin-left: 0; max-width: 30em; } }
 
     .outro { padding: 60px 0 64px; border-top: 1px solid var(--border); }
     .outro-h {
@@ -317,6 +338,37 @@
       display: block; width: 100%; height: auto;
       border-radius: 14px; border: 1px solid var(--border); background: var(--white);
     }
+    /* ── 액자 규격 ────────────────────────────────
+       한 블록 안에서는 같은 액자를 씁니다. 아랫선이 맞아야 정돈돼 보입니다.
+       object-fit 은 contain 이라 사진은 한 장도 잘리지 않습니다.
+       비율이 다른 사진은 잘리는 대신 위아래나 좌우에 여백이 생깁니다.
+       비율은 블록마다 다릅니다. 그 블록에 담긴 자료의 모양을 따릅니다. */
+    .proof--32 { --frame: 3 / 2; }
+    .proof--45 { --frame: 4 / 5; }
+    .proof--43 { --frame: 4 / 3; }
+    .proof--34 { --frame: 3 / 4; }
+    .proof[class*="proof--"] .shot img,
+    .proof[class*="proof--"] .shot video {
+      aspect-ratio: var(--frame);
+      object-fit: contain;
+      background: var(--surface);
+    }
+    /* 설명이 한 줄이든 두 줄이든 카드 높이가 같도록 */
+    .proof[class*="proof--"] .shot figcaption { min-height: 2.6em; }
+    /* ── 세로 자료 줄 : 릴스와 세로 영상 ──────────
+       인스타 임베드는 우리가 크기를 정할 수 없어 액자에 못 넣습니다.
+       그래서 가로 자료와 같은 줄에 두지 않고, 아래에 따로 모읍니다. */
+    .proof.vert {
+      display: flex; justify-content: center; gap: 14px;
+      grid-auto-flow: unset; margin-top: 14px;
+    }
+    .proof.vert > * { flex: 0 0 300px; max-width: 300px; }
+    /* 세로 영상은 릴스와 높이가 비슷해지도록 3:4 로 잡습니다.
+       9:16 원본을 위아래로 조금 잘라 옆의 릴스와 아랫선을 맞춥니다. */
+    .proof.vert .shot video {
+      aspect-ratio: 3 / 4; object-fit: cover; background: var(--dark);
+    }
+    .shot video { cursor: default; }
     .shot figcaption {
       margin-top: 9px; font-size: 0.74rem; line-height: 1.6;
       color: var(--muted); word-break: keep-all;
@@ -336,6 +388,8 @@
 
       .proof.one { padding: 0; }
       .proof.one > * { flex: 0 0 100%; }
+      .proof.vert { padding: 0 14%; }
+      .proof.vert > * { flex: 0 0 78%; max-width: none; }
       .pwrap { position: relative; }
       .parrow {
         position: absolute; top: 38%; transform: translateY(-50%);
@@ -411,9 +465,63 @@
 
 
     /* 인트로 인물 사진 */
-    .intro-face { max-width: 380px; margin: 30px auto 0; }
-    .intro-face img { display: block; width: 100%; height: auto; border-radius: 14px; }
-    @media (min-width: 761px) { .intro-face { margin-left: 0; } }
+    /* 인트로 사진 : 인물 사진과 아뜰리에 현장 사진.
+       두 장 모두 840x1120(0.75)이라 나란히 두면 아랫선이 정확히 맞습니다. */
+    /* 인트로 사진 두 장 : 글 전체 아래에 나란히.
+       두 장 모두 880x1100(4:5)이라 폭도 아랫선도 정확히 맞습니다.
+       모바일에서는 핵심 아이디어의 증명 자료처럼 좌우로 넘깁니다. */
+    .intro-shots { max-width: 760px; margin: 34px auto 0; }
+
+    /* 세 분야를 잇는 한 줄과 숫자 */
+    .intro-link {
+      margin: 26px auto 0; max-width: 30em;
+      font-family: var(--font-heading); font-weight: 700;
+      font-size: clamp(1rem, 3.6vw, 1.12rem); line-height: 1.7;
+      color: var(--dark); letter-spacing: -0.02em; word-break: keep-all;
+    }
+    .intro-link em { font-style: normal; color: var(--brick); }
+    /* 숫자 세 개 : 후기 페이지의 숫자 스트립과 같은 형식으로 맞췄습니다 */
+    .intro-stats {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      margin: 28px 0 0; padding: 22px 0;
+      border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+    }
+    .intro-stats div { text-align: center; position: relative; padding: 0 6px; }
+    .intro-stats div + div::before {
+      content: ''; position: absolute; left: 0; top: 4px; bottom: 4px;
+      width: 1px; background: var(--border);
+    }
+    .intro-stats b {
+      display: block; font-family: var(--font-heading); font-weight: 700;
+      font-size: clamp(1.55rem, 6vw, 2rem); line-height: 1.15;
+      color: var(--brick); letter-spacing: -0.03em;
+    }
+    .intro-stats b small {
+      font-size: 0.52em; color: var(--muted); font-weight: 700; margin-left: 2px;
+      letter-spacing: 0;
+    }
+    .intro-stats span {
+      display: block; margin-top: 8px; font-size: 0.75rem;
+      color: var(--muted); line-height: 1.55; word-break: keep-all;
+    }
+
+    /* 수강생 소속 기업 : 1:1 수업 페이지와 같은 자료 */
+    .main-logos {
+      max-width: 720px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 18px 14px; align-items: center;
+      padding: 22px 14px; background: var(--surface); border-radius: 12px;
+    }
+    @media (max-width: 520px) { .main-logos { grid-template-columns: repeat(2, 1fr); } }
+    .main-logos img {
+      max-width: 100%; max-height: 38px; width: auto; height: auto; display: block; margin: 0 auto;
+      opacity: .55; mix-blend-mode: multiply; filter: grayscale(100%) contrast(1.05);
+    }
+    .logo-note {
+      max-width: 720px; margin: 10px auto 46px;
+      font-size: 0.78rem; color: var(--muted); line-height: 1.75; word-break: keep-all;
+    }
+    @media (max-width: 640px) { .logo-note { margin-bottom: 34px; } }
 
 
     /* 이미지 확대 : 증명 자료를 누르면 크게 봅니다 */
@@ -541,44 +649,10 @@
       font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center;
     }
     .im-close:hover { background: var(--brick); color: #fff; }
-    /* 인스타그램 임베드 : 좁은 칸에서도 칸 폭에 맞게 */
-    .igrow {
-      max-width: 720px; margin: 16px auto 0;
-      display: grid; gap: 14px; grid-auto-flow: column; grid-auto-columns: 1fr;
-    }
-    @media (min-width: 761px) { .igrow { margin-left: 0; } }
-    @media (max-width: 760px) {
-      .igrow {
-        display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
-        padding: 0 12%; -webkit-overflow-scrolling: touch; scrollbar-width: none;
-      }
-      .igrow::-webkit-scrollbar { display: none; }
-      .igrow > * { flex: 0 0 76%; scroll-snap-align: center; }
-    }
-    .ig { min-width: 0; }
-    .ig .instagram-media {
-      min-width: 0 !important; width: 100% !important;
-      max-width: 100% !important; margin: 0 !important;
-      border-radius: 12px !important;
-    }
-    .igrow {
-      max-width: 720px; margin: 16px auto 0;
-      display: grid; gap: 14px; grid-auto-flow: column; grid-auto-columns: 1fr;
-    }
-    @media (min-width: 761px) { .igrow { margin-left: 0; } }
-    @media (max-width: 760px) {
-      .igrow {
-        display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory;
-        padding: 0 12%; -webkit-overflow-scrolling: touch; scrollbar-width: none;
-      }
-      .igrow::-webkit-scrollbar { display: none; }
-      .igrow > * { flex: 0 0 76%; scroll-snap-align: center; }
-    }
-    .ig .instagram-media {
-      min-width: 0 !important; width: 100% !important;
-      max-width: 100% !important; margin: 0 !important;
-      border-radius: 12px !important;
-    }
+    /* .igrow 는 예전 배치의 잔재였습니다. 지금은 쓰는 요소가 없는데도
+       뒤에 남아 있던 .ig .instagram-media { margin: 0 !important } 가
+       위에서 정한 릴스 여백 가리기(--ig-top / --ig-bottom)를 덮어써서
+       프로필 줄과 좋아요 줄이 그대로 보이고 있었습니다. 통째로 지웁니다. */
 
     /* 원어민 블록 밑에 붙는 후기 캐러셀 */
     .rev-slot { margin: 4px 0 0; }
@@ -590,6 +664,9 @@
       background: var(--dark); border-radius: 16px;
       padding: 46px 30px; margin: 8px 0 0; text-align: left;
     }
+    /* 요약 블록과 푸터가 붙지 않도록 아래 여백을 둡니다 */
+    .content-wrap { padding-bottom: 72px; }
+    @media (max-width: 640px) { .content-wrap { padding-bottom: 48px; } }
     @media (max-width: 640px) { .rv-sum { padding: 36px 22px; border-radius: 14px; } }
     .rv-sum-t {
       font-family: var(--font-heading); font-size: clamp(1.2rem, 4.4vw, 1.5rem);
@@ -611,12 +688,13 @@
     @media (min-width: 761px) {
       .sw { max-width: 860px; text-align: left; }
       .intro-h, .sb-h, .outro-h { max-width: 24em; }
-      /* 인트로는 글이 왼쪽, 사진이 오른쪽 */
-      .intro { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 44px; align-items: center; }
-      .intro-face { margin: 0; max-width: 100%; }
+      /* 인트로는 글이 한 단, 사진 두 장은 그 아래 나란히 */
       .intro-h { max-width: 100%; }
       .intro-p { max-width: 100%; }
       .intro-p, .sb-p, .outro-p { margin-left: 0; margin-right: 0; max-width: 34em; }
+      /* 인트로는 글이 한 단이라 조금 더 넓게 씁니다 */
+      .intro-p { max-width: 44em; }
+      .intro-link { margin-left: 0; max-width: 44em; }
       .proof, .reels { margin-left: 0; margin-right: 0; }
       .outro-tri { justify-content: flex-start; }
       br.mo { display: none; }
@@ -856,13 +934,40 @@
       <div class="intro">
         <div class="intro-text">
         <h2 class="intro-hello">안녕하세요, 프랑스어 전문가 김두우리입니다.</h2>
-        <h1 class="intro-h">프랑스어를 하는 것과 설명할 수 있는 것은 다른 일이었습니다.<br> 그 차이를 혼자 파고들었고, <em>현장에서 검증해왔습니다.</em></h1>
-        <p class="intro-p">수업에서는 학습자가 막히는 지점을, 통번역에서는 언어 사이에서 사라지는 의미를,<br class="pc"> 기업 프로젝트에서는 반복되는 오류를 봤습니다.<br> 세 곳 모두 같은 질문에서 시작했어요. 이 말이 이 사람에게, 이 상황에서, 정확하게 전달되는가.</p>
+        <h1 class="intro-h">프랑스어를 하는 것과 <em>설명할 수 있는 것은</em> 다른 일이었습니다.</h1>
+        <p class="intro-p">오래 살다 온 사람과, 그 언어로 일하는 사람은 다릅니다. 저는 프랑스어를 가르치고, 프랑스어로 일해왔습니다.<br> 수업에서는 학습자가 막히는 지점을, 통번역에서는 언어 사이에서 사라지는 의미를,<br class="pc"> 기업 프로젝트에서는 반복되는 오류를 봤습니다. 세 곳 모두 같은 질문에서 시작했어요. 이 말이 이 사람에게, 이 상황에서, 정확하게 전달되는가.</p>
+        <p class="intro-link">가르치고, 뾰족한 단어로 옮기고, <em>데이터를 학습시킵니다.</em></p>
+        <div class="intro-stats">
+          <div><b>20<small>년</small></b><span>한국어와 프랑스어 사이</span></div>
+          <div><b>9<small>개국</small></b><span>수강생이 있는 나라</span></div>
+          <div><b>4<small>개 언어</small></b><span>일하는 언어</span></div>
         </div>
-        <figure class="intro-face">
-          <img src="img/douri_portrait.jpg" alt="프랑스어 전문가 김두우리" loading="eager">
-        </figure>
+        </div>
+
+        <!-- 사진 두 장 : 웹은 나란히, 모바일은 좌우로 넘김 -->
+        <div class="pwrap intro-shots">
+          <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
+          <div class="proof proof--45">
+            <figure class="shot">
+              <img src="img/douri_portrait_45.jpg" alt="프랑스어 전문가 김두우리" loading="eager">
+            </figure>
+            <figure class="shot">
+              <img src="img/atelier_class.jpg" alt="오프라인 발음 아뜰리에 현장, 프랑스어 발음 실험실" loading="lazy">
+              <figcaption>발음 아뜰리에, 오프라인 소규모 워크숍</figcaption>
+            </figure>
+          </div>
+          <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
+        </div>
       </div>
+
+      <!-- 수강생 소속 기업 : 1:1 수업 페이지에만 있던 자료를 메인으로 올립니다 -->
+      <div class="main-logos">
+        <img src="img/logos/lvmh.png" alt="LVMH" loading="lazy">
+        <img src="img/logos/sanofi.png" alt="Sanofi" loading="lazy">
+        <img src="img/logos/credit-agricole.png" alt="Crédit Agricole" loading="lazy">
+        <img src="img/logos/edenred.png" alt="Edenred" loading="lazy">
+      </div>
+      <p class="logo-note">회사가 보내준 교육이 아닙니다. 업무에서 프랑스어를 쓰는 분들이 스스로 필요를 느껴 직접 찾아오셨습니다.</p>
 
       <!-- ▼ 히어로 특징 : 도착하는 대로 이어 붙입니다 ▼ -->
 
@@ -871,7 +976,7 @@
         <p class="sb-p">"왜 이렇게 말하지?"까지 그냥 넘기지 않습니다.<br class="pc"> 자연스럽게 쓰이는 표현도 이유 없이 외우지 않도록, 두 언어의 차이와 구조를 정확히 설명합니다.</p>
         <div class="pwrap">
           <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
-          <div class="proof">
+          <div class="proof proof--32">
             <figure class="shot">
               <img src="img/p4_voices.jpg" alt="한국어로 질문할 수 있는 한국인 선생님을 찾고 있었다는 문의와, 한국 문법 용어보다 원어로 푸는 쪽이 쉬웠다는 후기" loading="lazy">
               <figcaption>실제 문의와 후기</figcaption>
@@ -880,10 +985,21 @@
               <img src="img/p4_challenge.jpg" alt="한국인들에게 힘든 발음을 훑는 챌린지 수업 자료" loading="lazy">
               <figcaption>한국인이 막히는 지점부터 짠 수업</figcaption>
             </figure>
+          </div>
+          <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
+        </div>
+        <div class="pwrap">
+          <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
+          <div class="proof vert">
+            <figure class="shot">
+              <video src="img/atelier.mp4" poster="img/atelier_poster.jpg" controls playsinline preload="none"></video>
+              <figcaption>발음 아뜰리에 현장</figcaption>
+            </figure>
             <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DW-MazrihWn/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,.18),0 2px 12px 0 rgba(0,0,0,.12);margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
           </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
+        <p class="sb-so">그래서 "왜"를 묻는 학습자가 여기서 답을 얻습니다.</p>
       </div>
 
       <div class="rev-slot">
@@ -1017,39 +1133,46 @@
         <p class="sb-p">그때 익힌 사고방식을 한국인이 따라올 수 있는 순서로 다시 짜서, <b>프랑스식 사고방식을 키우는 심층 인강</b>을 기획까지 했습니다.</p>
         <div class="pwrap">
           <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
-          <div class="proof">
+          <div class="proof proof--43">
             <figure class="shot">
               <img src="img/bac_diploma.jpg" alt="프랑스 바칼로레아 일반계 경제사회 계열 디플롬" loading="lazy">
-              <figcaption>Baccalauréat Général, Série Économique et Sociale</figcaption>
+              <figcaption>바칼로레아, 프랑스 고등 교육 과정 이수 및 대학 입학 자격 국가 시험 및 학위</figcaption>
             </figure>
             <figure class="shot">
               <img src="img/course_compare.jpg" alt="일반 강의와 문법책으로 사고방식을 기르는 강의의 차이" loading="lazy">
               <figcaption>사고방식을 기르는 강의로 재해석</figcaption>
             </figure>
+          </div>
+          <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
+        </div>
+        <div class="pwrap">
+          <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
+          <div class="proof vert">
             <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVtU7lwidvs/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,.18),0 2px 12px 0 rgba(0,0,0,.12);margin:0 auto;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
           </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
+        <p class="sb-so">제가 1년을 더 써서 겪은 순서를, 수업에서는 건너뛰게 해드립니다.</p>
       </div>
 
       <div class="sb">
         <h2 class="sb-h">통역도 번역도,<br> <em>결국 현장에서 판단하는 일</em>입니다.</h2>
-        <p class="sb-p">영화 시나리오와 자막, 기업 문서와 기술 번역, 그리고 행사 현장의 순차통역까지 해왔습니다. 문장을 옮기는 일보다, 이 자리에서 무엇이 생략됐고 듣는 쪽 언어에서는 그걸 어디에 넣어야 하는지를 판단하는 일이 더 큽니다.</p>
-        <p class="sb-p">도구도 마찬가지예요. CAT 툴이 필수인지 묻는 자리에서, 툴을 가졌는지가 아니라 그 툴이 어떤 프로세스에서 왜 필요한지를 설명할 수 있는지가 실력이라고 답했습니다.</p>
+        <p class="sb-p">영화 시나리오와 자막, 기업 문서와 기술 번역, 그리고 행사 현장의 순차통역까지 해왔습니다. 어려운 건 옮기는 일이 아닙니다. 원문이 생략한 것을 찾아내고, 듣는 쪽 언어에서는 그걸 어디에 넣어야 하는지 정하는 일입니다.</p>
+        <p class="sb-p">도구도 마찬가지예요. CAT 툴이 필수냐는 질문을 받은 적이 있습니다. 툴을 가졌는지는 실력이 아닙니다. 그 툴이 어느 단계에서 왜 필요한지 설명할 수 있는지가 실력입니다.</p>
         <div class="pwrap">
           <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
-          <div class="proof">
+          <div class="proof proof--32">
             <figure class="shot">
               <img src="img/p5_scenario.jpg" alt="한국 영화 시나리오를 한국어에서 프랑스어로 번역해달라는 프랑스 제작사의 의뢰 메일" loading="lazy">
               <figcaption>시나리오 번역 의뢰, 파리 제작사</figcaption>
             </figure>
             <figure class="shot">
-              <img src="img/p5_interpret.jpg" alt="영화 감독 대담 현장 순차통역" loading="lazy">
-              <figcaption>영화 감독 대담 순차통역</figcaption>
+              <img src="img/p5_interpret.jpg" alt="마르세이유 영화제 홍상수 감독 회고전 순차통역 현장" loading="lazy">
+              <figcaption>마르세이유 영화제, 홍상수 영화 감독 회고전 담당 통역</figcaption>
             </figure>
             <figure class="shot">
-              <img src="img/p5_field.jpg" alt="프랑스어 현장에서 만난 사람들" loading="lazy">
-              <figcaption>현장에서</figcaption>
+              <img src="img/p5_field.jpg" alt="2026 서울국제도서전 프랑스 주빈관 통역 현장" loading="lazy">
+              <figcaption>2026 국제도서전, 프랑스 주빈관 통역</figcaption>
             </figure>
             <figure class="shot">
               <img src="img/p5_cat.jpg" alt="CAT 툴이 필수인지 묻는 질문에 남긴 답변" loading="lazy">
@@ -1058,6 +1181,7 @@
           </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
+        <p class="sb-so">현장에서 판단해본 사람만이 왜 그렇게 말하는지를 설명할 수 있습니다.</p>
       </div>
 
       <div class="sb">
@@ -1065,7 +1189,7 @@
         <p class="sb-p">한 사람의 프랑스어를 점검하는 일과, 기업의 음성 데이터를 대량으로 검수하는 일은 방식이 같습니다. 어디서 왜 틀렸는지 유형으로 나누고, 고칠 순서를 정하는 거예요.</p>
         <div class="pwrap">
           <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
-          <div class="proof">
+          <div class="proof proof--34">
             <figure class="shot">
               <img src="img/report_sample.jpg" alt="수강생 결과 보고서 1쪽" loading="lazy">
               <figcaption>결과 보고서, 목표와 피드백</figcaption>
@@ -1080,26 +1204,28 @@
             </figure>          </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
+        <p class="sb-so">한 사람의 프랑스어에도 같은 방식이 그대로 들어갑니다.</p>
       </div>
 
       <div class="sb">
         <h2 class="sb-h">자료도 AI도 넘칩니다.<br> 남는 건 <em>고르는 기준</em>이에요.</h2>
-        <p class="sb-p">AI 툴이 언어 교사와 통번역사를 위협한다고들 하죠. 저는 그 도구를 어떻게 쓰는지까지 함께 봅니다. 지금 본인에게 맞는 학습 방법과 자료를 고르고, 나중에는 혼자서도 이어갈 수 있는 자립성을 만드는 게 목표예요.</p>
+        <p class="sb-p">AI 툴이 언어 교사와 통번역사를 위협한다고들 하죠. 저는 수업에서 그 도구를 어떻게 쓰는지까지 같이 정합니다. 지금 본인에게 맞는 학습 방법과 자료를 고르고, 나중에는 혼자서도 이어갈 수 있는 자립성을 만드는 게 목표예요.</p>
         <div class="pwrap">
           <button class="parrow prev" type="button" aria-label="이전">&#8249;</button>
-          <div class="proof">
+          <div class="proof vert">
             <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DblcaNGlOQN/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
             <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DXZab31CqVX/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
           </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
+        <p class="sb-so">혼자 남았을 때 무엇을 고를지 아는 상태로 끝나는 게 목표입니다.</p>
       </div>
 
       <!-- ▲ 히어로 특징 끝 ▲ -->
 
       <!-- 아웃트로 -->
       <div class="outro">
-        <h2 class="outro-h">가르치고, 옮기고, 검수합니다.<br class="mo"> <em>전부 한 사람이.</em></h2>
+        <h2 class="outro-h">가르치고, 뾰족한 단어로 옮기고,<br> 데이터를 학습시킵니다.<br class="mo"> <em>전부 한 사람이.</em></h2>
         <div class="outro-tri">
           <span>1:1 프랑스어 수업</span>
           <span>한불 통번역</span>
