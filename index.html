@@ -269,22 +269,18 @@
     /* 블록 끝에서 읽는 사람 쪽으로 돌아오는 한 줄.
        제목과 같은 고운바탕으로 잡아, 앞의 설명에 답하는 문장처럼 보이게 합니다. */
     .sb-so {
-      position: relative;
-      margin: 26px auto 0; max-width: 26em;
-      padding: 20px 24px 20px 46px;
-      background: var(--surface); border-radius: 14px;
-      border-left: 3px solid var(--brick);
+      margin: 26px auto 0; max-width: 28em;
       font-family: var(--font-heading); font-weight: 700;
-      font-size: clamp(1rem, 3.8vw, 1.14rem); line-height: 1.7;
+      font-size: clamp(1rem, 3.8vw, 1.14rem); line-height: 1.9;
       letter-spacing: -0.02em; color: var(--dark);
       word-break: keep-all; text-align: left;
     }
-    .sb-so::before {
-      content: '→'; position: absolute; left: 20px; top: 20px;
-      font-family: var(--font-body); font-size: 0.95rem; font-weight: 700;
-      color: var(--brick); line-height: 1.85;
+    /* 핵심 구절에 브릭 형광펜 */
+    .sb-so mark {
+      background: linear-gradient(to top, rgba(194,74,53,0.34) 0 50%, transparent 50%);
+      color: inherit; padding: 0 2px;
     }
-    @media (min-width: 761px) { .sb-so { margin-left: 0; max-width: 30em; } }
+    @media (min-width: 761px) { .sb-so { margin-left: 0; max-width: 32em; } }
 
     .outro { padding: 60px 0 64px; border-top: 1px solid var(--border); }
     .outro-h {
@@ -366,7 +362,7 @@
     /* 세로 영상은 릴스와 높이가 비슷해지도록 3:4 로 잡습니다.
        9:16 원본을 위아래로 조금 잘라 옆의 릴스와 아랫선을 맞춥니다. */
     .proof.vert .shot video {
-      aspect-ratio: 3 / 4; object-fit: cover; background: var(--dark);
+      aspect-ratio: 2 / 3; object-fit: cover; background: var(--dark);
     }
     .shot video { cursor: default; }
     .shot figcaption {
@@ -588,7 +584,9 @@
        위로 --ig-top, 아래로 --ig-bottom 만큼 끌어당겨 가립니다.
        재생 영역은 그대로라 그 자리에서 눌러서 재생됩니다. */
     .ig {
-      --ig-top: 54px;
+      /* 위쪽 계정 줄(@douri.french)은 그대로 둡니다. 내 계정이라는 게 보여야 합니다.
+         아래 좋아요, 댓글 줄만 가립니다. */
+      --ig-top: 0px;
       --ig-bottom: 122px;
       min-width: 0; overflow: hidden;
       border: 1px solid var(--border); border-radius: 14px;
@@ -601,7 +599,7 @@
       border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
     }
     @media (max-width: 760px) {
-      .ig { --ig-top: 48px; --ig-bottom: 112px; }
+      .ig { --ig-top: 0px; --ig-bottom: 112px; }
     }
 
     /* 이미지 확대 : 증명 자료를 누르면 크게 봅니다 */
@@ -999,7 +997,7 @@
           </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
-        <p class="sb-so">그래서 "왜"를 묻는 학습자가 여기서 답을 얻습니다.</p>
+        <p class="sb-so">그래서 "왜"를 묻는 학습자가 <mark>여기서 답을 얻습니다.</mark></p>
       </div>
 
       <div class="rev-slot">
@@ -1152,7 +1150,7 @@
           </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
-        <p class="sb-so">제가 1년을 더 써서 겪은 순서를, 수업에서는 건너뛰게 해드립니다.</p>
+        <p class="sb-so">제가 1년을 더 써서 겪은 순서를, 수업에서는 <mark>건너뛰게 해드립니다.</mark></p>
       </div>
 
       <div class="sb">
@@ -1181,7 +1179,7 @@
           </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
-        <p class="sb-so">현장에서 판단해본 사람만이 왜 그렇게 말하는지를 설명할 수 있습니다.</p>
+        <p class="sb-so">판단해본 사람만이 <mark>왜 그렇게 말하는지를 설명할 수 있습니다.</mark></p>
       </div>
 
       <div class="sb">
@@ -1204,7 +1202,7 @@
             </figure>          </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
-        <p class="sb-so">한 사람의 프랑스어에도 같은 방식이 그대로 들어갑니다.</p>
+        <p class="sb-so">한 사람의 프랑스어에도 <mark>같은 방식이 그대로</mark> 들어갑니다.</p>
       </div>
 
       <div class="sb">
@@ -1218,7 +1216,7 @@
           </div>
           <button class="parrow next" type="button" aria-label="다음">&#8250;</button>
         </div>
-        <p class="sb-so">혼자 남았을 때 무엇을 고를지 아는 상태로 끝나는 게 목표입니다.</p>
+        <p class="sb-so">혼자 남았을 때 <mark>무엇을 고를지 아는 상태</mark>로 끝나는 게 목표입니다.</p>
       </div>
 
       <!-- ▲ 히어로 특징 끝 ▲ -->
