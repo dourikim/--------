@@ -105,7 +105,7 @@
     .pkg-compare-wrap { overflow-x: auto; }
     .pkg-compare-table {
       width: 100%; border-collapse: collapse;
-      min-width: 280px;
+      min-width: 720px;
     }
     .pkg-compare-table th, .pkg-compare-table td {
       padding: 13px 10px;
@@ -120,12 +120,12 @@
       font-size: 0.85rem; font-weight: 700;
       color: var(--dark);
       background: var(--surface);
-      width: 28%; text-align: left;
+      width: 19%; text-align: left;
     }
     /* 두 상품 열 */
     .col-a, .col-b {
       text-align: center;
-      width: 36%;
+      width: 25.5%;
       color: var(--dark);
     }
     /* 헤더 행 */
@@ -145,7 +145,7 @@
       font-family: var(--font-heading);
       font-size: 0.95rem; font-weight: 700;
       padding: 16px 10px !important;
-      border-radius: 0 var(--radius) 0 0;
+      border-radius: 0;
       border: none !important;
     }
     /* 혜택 강조 행 */
@@ -433,7 +433,10 @@
       border-radius: var(--radius);
       background: var(--dark);
       aspect-ratio: 16 / 9;
+      width: 100%; margin: 0 auto;
     }
+    /* 웹에서는 본문 사진(.ci-img)과 같은 폭으로 맞춥니다 */
+    @media (min-width: 600px) { .ci-video { max-width: min(680px, 100%); } }
     .ci-video-thumb {
       position: absolute; inset: 0; display: block;
       width: 100%; height: 100%; object-fit: cover;
@@ -520,6 +523,124 @@
       font-size: 0.85rem; color: var(--muted); line-height: 1.85;
     }
   
+
+    /* ── PDF 링크 버튼 ─────────────────────── */
+    .pdf-link {
+      display: inline-block; margin-left: 10px; padding: 5px 13px;
+      font-family: var(--font-body); font-size: 0.78rem; font-weight: 700;
+      color: var(--brick); background: rgba(194,74,53,.1);
+      border: 1px solid rgba(194,74,53,.25); border-radius: 100px;
+      cursor: pointer; vertical-align: middle; letter-spacing: -0.01em;
+      transition: background .16s, color .16s;
+    }
+    .pdf-link:hover { background: var(--brick); color: #fff; border-color: var(--brick); }
+    .pdf-link.big {
+      margin: 0 0 8px; padding: 11px 22px; font-size: 0.92rem;
+      background: var(--brick); color: #fff; border-color: var(--brick);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .pdf-link.big::before {
+      content: '\2193'; font-weight: 900; font-size: 1rem; line-height: 1;
+    }
+    .pdf-link.big:hover { background: #A33B28; }
+
+    .ci-sheet {
+      margin-top: var(--sp-24); text-align: center;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .ci-sheet > span {
+      font-size: 0.84rem; line-height: 1.8; color: var(--muted);
+      word-break: keep-all; max-width: 34em;
+    }
+
+    /* ── PDF 팝업 ──────────────────────────── */
+    .pv-bg {
+      display: none; position: fixed; inset: 0; z-index: 11500;
+      background: rgba(46,14,12,.6); align-items: center; justify-content: center; padding: 24px;
+    }
+    .pv-bg.open { display: flex; }
+    @media (max-width: 760px) { .pv-bg { padding: 0; } }
+    .pv-sheet {
+      background: var(--white); border-radius: 16px; width: 100%; max-width: 900px;
+      height: 92vh; display: flex; flex-direction: column; overflow: hidden;
+      box-shadow: 0 24px 70px rgba(46,14,12,.3);
+    }
+    @media (max-width: 760px) { .pv-sheet { border-radius: 0; height: 100dvh; max-width: none; } }
+    .pv-head {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 15px 18px; border-bottom: 1px solid var(--border);
+      background: var(--surface); flex-shrink: 0;
+    }
+    .pv-title {
+      font-family: var(--font-heading); font-size: 0.98rem; font-weight: 700;
+      color: var(--dark); line-height: 1.45; word-break: keep-all;
+    }
+    .pv-acts { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .pv-dl {
+      padding: 9px 16px; font-size: 0.82rem; font-weight: 700; text-decoration: none;
+      color: #fff; background: var(--brick); border-radius: 100px;
+      display: inline-flex; align-items: center; gap: 6px; white-space: nowrap;
+    }
+    .pv-dl:hover { background: #A33B28; }
+    .pv-close {
+      width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--border);
+      background: var(--white); cursor: pointer; font-size: 15px; color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .pv-close:hover { background: var(--brick); color: #fff; border-color: var(--brick); }
+    .pv-frame { flex: 1; width: 100%; border: 0; background: var(--surface); }
+
+    /* ── 가격표 세 번째 열 ─────────────────── */
+    .pkg-compare-table th.head-c {
+      background: var(--dark); color: var(--white);
+      font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;
+      padding: 16px 10px !important; width: 30%;
+      border-radius: 0 var(--radius) 0 0; border: none !important;
+      word-break: keep-all;
+    }
+    .pkg-compare-table th.head-c small {
+      display: block; margin-top: 4px; font-size: 0.78rem;
+      font-weight: 600; opacity: .92; color: var(--surface); letter-spacing: 0;
+    }
+    .pkg-compare-table td.col-c {
+      background: #fff9f8; text-align: center; vertical-align: middle;
+      border-left: 1px solid var(--border);
+    }
+    .pkg-wait {
+      display: inline-block; padding: 12px 20px; cursor: pointer; white-space: nowrap;
+      font-family: var(--font-body); font-size: 1.03rem; font-weight: 700;
+      color: #fff; background: var(--brick); border: 0; border-radius: 100px;
+      transition: background .16s, transform .16s;
+    }
+    .pkg-wait:hover { background: #A33B28; transform: translateY(-2px); }
+    .pkg-wait-note {
+      display: block; margin-top: 11px; font-size: 0.89rem; white-space: normal;
+      line-height: 1.65; color: var(--muted); word-break: keep-all;
+    }
+
+    /* ── 모바일 : 가로 스크롤 없이 한 화면 안에 ───────────── */
+    @media (max-width: 620px) {
+      .pkg-compare-table { min-width: 0; }
+      .pkg-compare-table th, .pkg-compare-table td {
+        padding: 9px 4px; font-size: 0.66rem; line-height: 1.5; word-break: keep-all;
+      }
+      .col-label { font-size: 0.68rem; width: 19%; padding-left: 6px !important; }
+      .col-a, .col-b { width: 25%; }
+      .pkg-compare-table th.head-a, .pkg-compare-table th.head-b {
+        font-size: 0.72rem; padding: 12px 4px !important;
+      }
+      .pkg-compare-table th.head-c {
+        font-size: 0.72rem; padding: 12px 4px !important; width: 31%;
+      }
+      .pkg-compare-table th.head-c small { font-size: 0.62rem; margin-top: 3px; }
+      .pkg-wait {
+        font-size: 0.8rem; padding: 10px 8px; white-space: normal;
+        width: 100%; max-width: 108px; border-radius: 100px;
+      }
+      .pkg-wait-note { font-size: 0.68rem; margin-top: 8px; line-height: 1.55; }
+      .pkg-check { font-size: 0.7rem; }
+    }
+
     /* ══ 1:1 특강 문의 오버레이 ══════════════════
        course.html#course-apply 로 들어와도 열린 채로 보입니다. */
     .am-bg { display:none; position:fixed; inset:0; z-index:11000; background:rgba(46,14,12,.55); align-items:center; justify-content:center; padding:24px; }
@@ -624,7 +745,7 @@
 
   <!-- ④ 커리큘럼 ────────────────────────────── -->
   <div class="ci-section">
-    <h2 class="ci-heading">40챕터 <span>3개월 여정</span></h2>
+    <h2 class="ci-heading">40챕터 <span>3개월 여정</span><button type="button" class="pdf-link" data-pdf="files/curriculum.pdf" data-pdf-title="3개월 만에 프랑스 사고방식 키우기, 상세 커리큘럼">상세 커리큘럼 보기</button></h2>
 
     <div class="stat-row">
       <div class="stat-card s-brick">
@@ -1071,6 +1192,12 @@
         <span class="ci-video-label">미리보기 영상 재생</span>
       </button>
     </div>
+
+    <p class="ci-sheet">
+      <button type="button" class="pdf-link big" data-pdf="files/worksheet-gerondif.pdf"
+              data-pdf-title="문법책 재해석하기 인강, 20일차 제롱디프 학습지">학습지 다운받기</button>
+      <span>개념 정리, 뉴스와 공지문 예시, 회화체와 문어체 비교, 연습 문제, 심화 작문, 정답과 해설이 담겨져 있습니다.</span>
+    </p>
   </div>
 
   <!-- ⑥ 수강권 비교 ────────────────────────── -->
@@ -1084,6 +1211,7 @@
             <th class="head-empty"></th>
             <th class="head-a">5개월 수강</th>
             <th class="head-b">평생 소장</th>
+            <th class="head-c">챌린지 프로그램<br class="mo"><small>곧 오픈</small></th>
           </tr>
         </thead>
         <tbody>
@@ -1091,6 +1219,10 @@
             <td class="col-label">40 챕터</td>
             <td class="col-a">5개월 무제한 시청</td>
             <td class="col-b">평생 무제한 시청</td>
+            <td class="col-c" rowspan="4">
+              <button type="button" class="pkg-wait js-open-challenge">대기 신청하기</button>
+              <span class="pkg-wait-note">얼리버드 혜택을<br>놓치지 마세요!</span>
+            </td>
           </tr>
           <tr>
             <td class="col-label">강의 자료 PDF</td>
@@ -1208,6 +1340,42 @@
   </div>
 </div>
 
+
+<!-- ── PDF 미리보기 팝업 ─────────────────────── -->
+<div class="pv-bg" id="pdf-bg" role="dialog" aria-modal="true" aria-labelledby="pv-title"
+     onclick="if(event.target===this)closePdf()">
+  <div class="pv-sheet">
+    <div class="pv-head">
+      <p class="pv-title" id="pv-title"></p>
+      <div class="pv-acts">
+        <a class="pv-dl" id="pv-dl" href="" download>다운받기</a>
+        <button class="pv-close" type="button" onclick="closePdf()" aria-label="닫기">&#10005;</button>
+      </div>
+    </div>
+    <iframe class="pv-frame" id="pv-frame" src="" title="PDF 미리보기"></iframe>
+  </div>
+</div>
+
+<!-- ── 챌린지 대기 신청 팝업 ─────────────────── -->
+<div class="am-bg" id="challenge-bg" onclick="if(event.target===this)closeChallenge()">
+  <div class="am-sheet" role="dialog" aria-modal="true" aria-labelledby="cw-title">
+    <div class="am-head">
+      <div>
+        <p class="am-chip">챌린지 프로그램</p>
+        <p class="am-title" id="cw-title">대기 신청하기</p>
+        <p class="am-sub">얼리버드 혜택을 놓치지 마세요. 오픈하면 가장 먼저 알려드립니다.</p>
+      </div>
+      <button class="am-close" onclick="closeChallenge()" aria-label="닫기">&#10005;</button>
+    </div>
+    <div class="am-body">
+      <iframe id="cw-form" class="am-frame" src="" title="챌린지 대기 신청" loading="lazy"></iframe>
+      <p class="am-fallback">폼이 안 보이시나요?
+        <a href="https://tally.so/r/rjWPoo" target="_blank" rel="noopener">새 창에서 열기</a>
+      </p>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer" id="site-footer"></footer>
 </div>
 
@@ -1218,11 +1386,7 @@
 <script>
   initComponents();
 
-  /* ── 미리보기 영상 : 썸네일을 누르면 페이지 안에서 바로 재생 ──
-     파일을 브라우저로 직접 열면(file:// 주소) 유튜브가 페이지 주소를
-     확인할 수 없어 재생을 거부합니다. 그때는 유튜브 창으로 열어줍니다. */
-  var CI_LOCAL_FILE = (location.protocol === 'file:');
-
+  /* ── 미리보기 영상 : 어디서 열든 페이지 안에서, 항상 처음부터 재생 ── */
   document.addEventListener('click', function (e) {
     var btn = e.target.closest ? e.target.closest('.ci-video-btn') : null;
     if (!btn) return;
@@ -1231,38 +1395,28 @@
     var id = box.getAttribute('data-yt');
     if (!id) return;
 
-    if (CI_LOCAL_FILE) {
+    /* 로컬 파일로 열어본 경우에는 구글이 임베드를 거부합니다(오류 153).
+       사이트에 올라간 주소에서는 아래 iframe 그대로 페이지 안에서 재생됩니다. */
+    if (location.protocol === 'file:') {
       window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener');
       return;
     }
 
     var f = document.createElement('iframe');
-    f.src = 'https://www.youtube.com/embed/' + id +
-            '?autoplay=1&rel=0&modestbranding=1&playsinline=1' +
-            '&origin=' + encodeURIComponent(location.origin);
+    /* nocookie 도메인이라 지난번에 멈춘 지점을 기억하지 않습니다.
+       start=0 을 함께 주어 언제나 처음부터 시작합니다. */
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id +
+            '?autoplay=1&start=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3';
     f.title = box.getAttribute('data-title') || '';
     f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
     f.setAttribute('allowfullscreen', '');
     box.classList.add('playing');
     box.appendChild(f);
   });
-
-  if (CI_LOCAL_FILE) {
-    var ciMarkLocal = function () {
-      document.querySelectorAll('.ci-video-label').forEach(function (el) {
-        if (el.dataset.localMarked) return;
-        el.dataset.localMarked = '1';
-        el.textContent = el.textContent + ' (로컬은 새 창)';
-      });
-    };
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', ciMarkLocal);
-    } else { ciMarkLocal(); }
-  }
 </script>
 
 <script>
-/* 1:1 특강 문의 오버레이 — 인강 페이지 위에 팝업으로 열립니다 */
+/* 1:1 특강 문의 오버레이 : 인강 페이지 위에 팝업으로 열립니다 */
 (function () {
   var FORM = 'https://docs.google.com/forms/d/e/1FAIpQLScqV02uLKFl1CU54QRMTMK2wzuF1BeckVrBG3T8uKjF5Q286g/viewform?embedded=true';
   var loaded = false;
@@ -1289,6 +1443,64 @@
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && document.getElementById('course-apply-bg').classList.contains('open')) closeCourseApply();
+  });
+})();
+</script>
+
+<script>
+/* PDF 미리보기 팝업 : 상세 커리큘럼과 학습지 */
+(function () {
+  var bg = document.getElementById('pdf-bg');
+  var fr = document.getElementById('pv-frame');
+  var dl = document.getElementById('pv-dl');
+  var ti = document.getElementById('pv-title');
+
+  window.closePdf = function () {
+    bg.classList.remove('open'); fr.src = ''; document.body.style.overflow = '';
+  };
+  document.querySelectorAll('.pdf-link[data-pdf]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var src = b.dataset.pdf;
+      ti.textContent = b.dataset.pdfTitle || '';
+      dl.href = src;
+      dl.setAttribute('download', src.split('/').pop());
+      fr.src = src + '#view=FitH';
+      bg.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && bg.classList.contains('open')) closePdf();
+  });
+})();
+
+/* 챌린지 대기 신청 팝업 */
+(function () {
+  var FORM = 'https://tally.so/embed/rjWPoo?alignLeft=1&hideTitle=1&transparentBackground=1';
+  var bg = document.getElementById('challenge-bg');
+  var fr = document.getElementById('cw-form');
+  var loaded = false;
+
+  window.openChallenge = function (push) {
+    if (!loaded) { loaded = true; fr.src = FORM; }
+    bg.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if (push !== false && location.hash !== '#challenge' && history.pushState) history.pushState(null,'','#challenge');
+  };
+  window.closeChallenge = function () {
+    bg.classList.remove('open');
+    document.body.style.overflow = '';
+    if (location.hash === '#challenge' && history.pushState) history.pushState(null,'',location.pathname+location.search);
+  };
+  document.querySelectorAll('.js-open-challenge, a[href="#challenge"]').forEach(function (el) {
+    el.addEventListener('click', function (e) { e.preventDefault(); openChallenge(); });
+  });
+  if (location.hash === '#challenge') openChallenge(false);
+  window.addEventListener('popstate', function () {
+    if (location.hash === '#challenge') openChallenge(false); else closeChallenge();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && bg.classList.contains('open')) closeChallenge();
   });
 })();
 </script>

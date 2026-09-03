@@ -184,8 +184,14 @@ function renderAdminBar() {
   document.body.style.paddingBottom = '44px';
 }
 
-/* ── 수정 모드 자동 로드 ─────────────────────────────────── */
+/* ── 수정 모드 자동 로드 ───────────────────────────────────
+   내 컴퓨터에서 파일을 열었을 때만 켜집니다.
+   dourikim.com 처럼 배포된 주소에서는 절대 나타나지 않습니다. */
 function loadEditMode() {
+  var host = location.hostname;
+  var isLocal = location.protocol === 'file:' ||
+                host === 'localhost' || host === '127.0.0.1' || host === '';
+  if (!isLocal) return;
   if (document.getElementById('edit-mode-script')) return;
   const s = document.createElement('script');
   s.id  = 'edit-mode-script';
