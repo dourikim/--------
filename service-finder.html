@@ -11,7 +11,9 @@
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>나의 프랑스어 학습 유형은? | 두우리</title>
+  <title>프랑스어 학습 유형 테스트 | 나에게 맞는 공부법 찾기</title>
+  <meta name="description" content="지금 나에게 맞는 프랑스어 공부법은 무엇일까요. 몇 가지 질문으로 학습 유형을 진단하고 다음 단계를 찾아보세요."/>
+  <link rel="canonical" href="https://www.dourikim.com/service-finder.html"/>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -366,7 +368,7 @@
       padding-left: 10px;
       position: relative;
     }
-    .sf-list li::before { content:'·'; position:absolute; left:0; }
+    .sf-list li::before { content:'-'; position:absolute; left:0; }
 
     /* Tips */
     .tips { display: flex; flex-direction: column; gap: 14px; }
@@ -617,7 +619,7 @@
       <span class="land-stat">🎯 6가지 유형</span>
     </div>
     <button class="land-cta" onclick="startQuiz()">테스트 시작하기 →</button>
-    <p class="land-foot" style="margin-top:52px">🐼 Made by <strong>김두우리</strong> · 프랑스어 튜터</p>
+    <p class="land-foot" style="margin-top:52px">🐼 Made by <strong>김두우리</strong>, 프랑스어 튜터</p>
   </div>
 </div>
 
@@ -661,7 +663,7 @@
 
 <script>
 /* ═══════════════════════════════════════════
-   DATA — 8 QUESTIONS
+   DATA : 8 QUESTIONS
 ═══════════════════════════════════════════ */
 const QS = [
   {
@@ -669,7 +671,7 @@ const QS = [
     sub: '가장 솔직하게 느껴지는 것을 골라주세요.',
     opts: [
       { e:'🌱', l:'Bonjour도 낯설어요', h:'완전 처음 시작', sc:{youtube:2, self_paced:2, threads:1} },
-      { e:'🌿', l:'발음·기초 인사말 정도는 알아요', h:'아직 초반', sc:{self_paced:2, threads:1, youtube:1} },
+      { e:'🌿', l:'발음, 기초 인사말 정도는 알아요', h:'아직 초반', sc:{self_paced:2, threads:1, youtube:1} },
       { e:'🌳', l:'간단한 문장은 읽고 쓸 수 있어요', h:'A2 수준', sc:{self_paced:2, intensive:1, one_on_one:1} },
       { e:'🍀', l:'일상 대화는 어느 정도 돼요', h:'B1, 더 자연스럽게 다듬고 싶다', sc:{one_on_one:2, special:1, intensive:1} },
       { e:'🎬', l:'두우리 인강 수강 중이에요!', h:'이미 커리큘럼을 듣고 있어요', sc:{special:5, one_on_one:1} },
@@ -690,10 +692,10 @@ const QS = [
     q: '프랑스어, 왜 배우세요?',
     sub: '가장 솔직한 이유를 하나 골라주세요.',
     opts: [
-      { e:'✈️', l:'여행·파리에서 대화하고 싶어요', h:'실용 회화 목표', sc:{self_paced:1, youtube:1, threads:1} },
-      { e:'🎬', l:'프랑스 영화·음악·문화가 너무 좋아요', h:'문화와 언어를 함께', sc:{self_paced:2, youtube:2, threads:2} },
-      { e:'💼', l:'유학·취업·실무에 필요해요', h:'', sc:{one_on_one:3, intensive:2} },
-      { e:'🎓', l:'시험·자격증 목표가 있어요 (DELF 등)', h:'', sc:{one_on_one:3, intensive:3} },
+      { e:'✈️', l:'여행, 파리에서 대화하고 싶어요', h:'실용 회화 목표', sc:{self_paced:1, youtube:1, threads:1} },
+      { e:'🎬', l:'프랑스 영화, 음악, 문화가 너무 좋아요', h:'문화와 언어를 함께', sc:{self_paced:2, youtube:2, threads:2} },
+      { e:'💼', l:'유학, 취업, 실무에 필요해요', h:'', sc:{one_on_one:3, intensive:2} },
+      { e:'🎓', l:'시험, 자격증 목표가 있어요 (DELF 등)', h:'', sc:{one_on_one:3, intensive:3} },
       { e:'💜', l:'그냥 좋아서요, 취미로', h:'강요 없이 내 속도로', sc:{self_paced:2, youtube:1, threads:1} },
     ]
   },
@@ -701,7 +703,7 @@ const QS = [
     q: '파리 카페에서 주문을 잘못 받았어요. 당신은?',
     sub: '직감적으로 더 가까운 쪽을 고르세요.',
     opts: [
-      { e:'😅', l:'일단 몸짓·표정으로 어떻게든 해봐요', h:'상황에 유연하게 대응', sc:{self_paced:1, youtube:1, threads:1} },
+      { e:'😅', l:'일단 몸짓, 표정으로 어떻게든 해봐요', h:'상황에 유연하게 대응', sc:{self_paced:1, youtube:1, threads:1} },
       { e:'🤓', l:'이런 상황 대비해서 표현을 미리 외워뒀어요', h:'준비하는 스타일', sc:{one_on_one:2, intensive:2} },
     ]
   },
@@ -712,7 +714,7 @@ const QS = [
       { e:'📝', l:'일단 메모해두고 나중에 찾아봐요', h:'', sc:{self_paced:1, threads:1} },
       { e:'🔍', l:'바로 검색하는데 원하는 답이 잘 없어요', h:'', sc:{self_paced:1, one_on_one:1} },
       { e:'💬', l:'선생님한테 바로 물어보고 싶어요', h:'해결 안 되면 답답함', sc:{one_on_one:3, special:2} },
-      { e:'🤷', l:'일단 넘겨요 — 나중에 자연스럽게 알겠지', h:'', sc:{youtube:1, self_paced:1} },
+      { e:'🤷', l:'일단 넘겨요, 나중에 자연스럽게 알겠지', h:'', sc:{youtube:1, self_paced:1} },
     ]
   },
   {
@@ -720,7 +722,7 @@ const QS = [
     sub: '자기 자신한테 솔직하게.',
     opts: [
       { e:'📅', l:'주차별 목표가 있고 지키려고 해요', h:'계획형, 체계가 있어야 잘 됨', sc:{intensive:3, one_on_one:1} },
-      { e:'🌊', l:'그날그날 달라요 — 계획표는 3일도 못 가요', h:'자유형, 루틴보다 감각', sc:{self_paced:2, youtube:1, threads:1} },
+      { e:'🌊', l:'그날그날 달라요, 계획표는 3일도 못 가요', h:'자유형, 루틴보다 감각', sc:{self_paced:2, youtube:1, threads:1} },
     ]
   },
   {
@@ -728,7 +730,7 @@ const QS = [
     sub: '현실적으로 가장 공부할 것 같은 시간대로.',
     opts: [
       { e:'🌅', l:'아침 루틴으로 30분', h:'', sc:{intensive:2, self_paced:1} },
-      { e:'🚌', l:'출퇴근·이동 틈틈이', h:'', sc:{threads:2, youtube:1, self_paced:1} },
+      { e:'🚌', l:'출퇴근, 이동 틈틈이', h:'', sc:{threads:2, youtube:1, self_paced:1} },
       { e:'☀️', l:'점심 짬짬이', h:'', sc:{threads:2, youtube:1} },
       { e:'🌙', l:'밤에 몰아서 1~2시간', h:'', sc:{self_paced:1, intensive:1, one_on_one:1} },
       { e:'📚', l:'주말에 카페에서 길게', h:'', sc:{self_paced:2, one_on_one:1} },
@@ -739,7 +741,7 @@ const QS = [
     sub: '가장 공감 가는 것 하나를 고르세요.',
     opts: [
       { e:'🔥', l:'작심삼일... 꾸준히가 안 돼요', h:'', sc:{one_on_one:3, intensive:2} },
-      { e:'🤯', l:'문법이 너무 복잡해요 (성별·시제·활용)', h:'', sc:{one_on_one:2, special:2} },
+      { e:'🤯', l:'문법이 너무 복잡해요 (성별, 시제, 활용)', h:'', sc:{one_on_one:2, special:2} },
       { e:'👄', l:'읽고 이해는 되는데 말이 안 나와요', h:'', sc:{one_on_one:2, special:1} },
       { e:'❓', l:'뭘 어떤 순서로 해야 할지 모르겠어요', h:'', sc:{one_on_one:3, intensive:1} },
       { e:'🧩', l:'공부는 하는데 실력이 느는 느낌이 없어요', h:'', sc:{one_on_one:2, special:2, intensive:1} },
@@ -759,7 +761,7 @@ const TYPES = {
     strengths: ['집중력이 높음', '피드백에 빠르게 반응', '목표 의식 강함'],
     cautions:  ['혼자 하면 방향 잃기 쉬움', '완벽주의로 막힐 때 있음'],
     tips: [
-      { t:'처음부터 1:1로 커리큘럼 설계', s:'내 수준·목표·속도에 맞게 맞춤 설계. 방향을 잡는 것부터 시작해요.' },
+      { t:'처음부터 1:1로 커리큘럼 설계', s:'내 수준, 목표, 속도에 맞게 맞춤 설계. 방향을 잡는 것부터 시작해요.' },
       { t:'매 수업 끝에 다음 목표 설정', s:'선생님과 함께 다음 수업 목표를 잡으면 방향을 잃지 않아요.' },
       { t:'모르는 건 그 자리에서 해결', s:'질문을 쌓아두지 말고 바로바로 해결하는 게 핵심이에요.' },
     ],
@@ -809,7 +811,7 @@ const TYPES = {
       { label:'평일', text:'챕터 1개 완강 + 미션 작성 (30~45분)' },
       { label:'주말', text:'이번 주 복습 + 다음 주 목표 설정' },
     ],
-    warning: '"지금 상황이 완벽하지 않으면 시작 못 해요"는 금물이에요. 완벽한 타이밍은 없어요 — 지금이 가장 빠른 날이에요.',
+    warning: '"지금 상황이 완벽하지 않으면 시작 못 해요"는 금물이에요. 완벽한 타이밍은 없어요, 지금이 가장 빠른 날이에요.',
     service:  '프랑스어 인강 5개월 패키지',
     cta:      '5개월 패키지 보러 가기 →',
     link:     '#lectures',
@@ -831,7 +833,7 @@ const TYPES = {
       { label:'주말', text:'지난 챕터 복습 + 새 챕터 예습' },
     ],
     warning: '루틴이 한 번 깨지면 다시 켜기가 어려워져요. "오늘 하나만이라도" 원칙을 꼭 지켜보세요.',
-    service:  '프랑스어 인강 — 평생소장',
+    service:  '프랑스어 인강, 평생소장',
     cta:      '평생소장 인강 보러 가기 →',
     link:     '#lectures',
   },
@@ -843,8 +845,8 @@ const TYPES = {
     strengths: ['흥미 지속력 높음', '자연스러운 흡수', '문화 이해도 높음'],
     cautions:  ['체계적 공부가 부족할 수 있음', '기초 문법이 약해질 수 있음'],
     tips: [
-      { t:'유튜브 채널 구독부터', s:'독해, 회화 표현, 프랑스 문화 해설 — 부담 없이 시작할 수 있어요.' },
-      { t:'관심 있는 주제부터', s:'여행, 음식, 드라마 — 내가 좋아하는 것과 연결하면 지속돼요.' },
+      { t:'유튜브 채널 구독부터', s:'독해, 회화 표현, 프랑스 문화 해설로 부담 없이 시작할 수 있어요.' },
+      { t:'관심 있는 주제부터', s:'여행, 음식, 드라마처럼 내가 좋아하는 것과 연결하면 지속돼요.' },
       { t:'보다가 욕심 나면 인강으로', s:'자연스럽게 체계를 잡고 싶을 때, 인강이 기다리고 있어요.' },
     ],
     routine: [
@@ -866,7 +868,7 @@ const TYPES = {
     tips: [
       { t:'스레드 팔로우부터', s:'실용 표현, 뉘앙스, 문화 이야기를 짧은 텍스트로 만나보세요.' },
       { t:'스크랩 습관 만들기', s:'눈에 들어오는 표현은 바로 저장. 나중에 복습할 때 금맥이 돼요.' },
-      { t:'표현 하나씩 직접 써보기', s:'오늘 읽은 표현으로 짧은 문장 하나 만들어보기 — 보는 것과 다른 차원이에요.' },
+      { t:'표현 하나씩 직접 써보기', s:'오늘 읽은 표현으로 짧은 문장 하나 만들어보기, 보는 것과 다른 차원이에요.' },
     ],
     routine: [
       { label:'평일', text:'스레드 읽기 5분 + 표현 1개 저장' },

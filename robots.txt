@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /learn.html
+Disallow: /admin.html
+
+Sitemap: https://www.dourikim.com/sitemap.xml
