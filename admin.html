@@ -435,6 +435,10 @@
               <div id="chart-source"></div>
             </div>
             <div class="dash-section">
+              <div class="dash-section-title">어느 서비스에서 왔는지 (세부 출처)</div>
+              <div id="chart-src2"></div>
+            </div>
+            <div class="dash-section">
               <div class="dash-section-title">어느 페이지를 봤는지</div>
               <div id="chart-pages"></div>
             </div>
@@ -893,9 +897,11 @@ async function ga4LoadAll() {
   const end = new Date().toISOString().slice(0,10);
   const start = new Date(Date.now() - _days * 864e5).toISOString().slice(0,10);
   try {
-    const [kpi, src, pg, dev] = await Promise.all([
+    const [kpi, src, src2, pg, dev] = await Promise.all([
       _ga4Req(['activeUsers','sessions','screenPageViews','averageSessionDuration'], [], start, end, 1),
       _ga4Req(['sessions'], ['sessionDefaultChannelGroup'], start, end, 8),
+      /* 인스타그램, 스레드, 네이버처럼 서비스 이름까지 나눠서 봅니다 */
+      _ga4Req(['sessions'], ['sessionSourceMedium'], start, end, 8),
       _ga4Req(['screenPageViews'], ['pagePath'], start, end, 8),
       _ga4Req(['sessions'], ['deviceCategory'], start, end, 6),
     ]);
@@ -906,6 +912,7 @@ async function ga4LoadAll() {
     const dur = Math.round(parseFloat(v[3]?.value || 0));
     document.getElementById('kpi-duration').textContent = dur ? `${Math.floor(dur/60)}분 ${dur%60}초` : '—';
     _renderBars('chart-source', src.rows);
+    _renderBars('chart-src2', src2.rows);
     _renderBars('chart-pages', pg.rows);
     _renderBars('chart-device', dev.rows);
 
