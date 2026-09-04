@@ -403,6 +403,8 @@
 
           <!-- 상태 D: 데이터 표시 -->
           <div id="state-data" style="display:none">
+            <!-- 무슨 일이 있었는지 알려주는 줄. 조용히 빈 화면만 두지 않습니다 -->
+            <div id="ga4-note" style="display:none;margin:0 0 14px;padding:11px 14px;border-radius:8px;font-size:0.82rem;line-height:1.7;word-break:keep-all"></div>
             <div class="kpi-grid">
               <div class="kpi-card">
                 <div class="kpi-label">방문자</div>
@@ -821,6 +823,18 @@ function setPeriod(days, btn) {
   ga4LoadAll();
 }
 
+/* 대시보드 상태 한 줄. 오류든 데이터 없음이든 이유를 보여줍니다. */
+function ga4Note(msg, isError) {
+  const el = document.getElementById('ga4-note');
+  if (!el) return;
+  if (!msg) { el.style.display = 'none'; el.textContent = ''; return; }
+  el.style.display = 'block';
+  el.textContent = msg;
+  el.style.background = isError ? '#FBEEEA' : '#F4F1EF';
+  el.style.color = isError ? '#A33B28' : '#7A5550';
+  el.style.border = '1px solid ' + (isError ? '#F0D3CC' : '#E5DEDA');
+}
+
 async function ga4LoadAll() {
   if (!_token) return;
   document.getElementById('state-loading').style.display = 'block';
@@ -843,11 +857,22 @@ async function ga4LoadAll() {
     _renderBars('chart-source', src.rows);
     _renderBars('chart-pages', pg.rows);
     _renderBars('chart-device', dev.rows);
+
+    if (!kpi.rows || !kpi.rows.length) {
+      ga4Note('연결은 됐는데 ' + start + ' 부터 ' + end + ' 사이에 집계된 데이터가 없습니다. '
+            + 'GA4 속성 번호 ' + GA4_PROPERTY + ' 를 조회했습니다. '
+            + '방문 기록이 보고서에 들어오기까지 보통 하루 정도 걸립니다. '
+            + '하루가 지났는데도 계속 비어 있으면 속성 번호가 다른 것일 수 있습니다.', false);
+    } else {
+      ga4Note('', false);
+    }
     showDataState();
   } catch(e) {
     if (e.status === 401) { _token = null; sessionStorage.removeItem('ga4-token'); showConnectState(); return; }
     document.getElementById('state-loading').style.display = 'none';
     document.getElementById('state-data').style.display = 'block';
+    const msg = (e && e.error && e.error.message) || e.message || '';
+    ga4Note('데이터를 불러오지 못했습니다. (HTTP ' + (e.status || '?') + ') ' + msg, true);
   }
 }
 
