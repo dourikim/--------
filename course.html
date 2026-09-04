@@ -28,9 +28,10 @@
 
     /* ══ 공통 레이아웃 ══════════════════════ */
     .ci-section {
-      padding: var(--sp-32) var(--sp-24);
+      padding: 44px var(--sp-24);
       border-bottom: 1px solid var(--border);
     }
+    @media (max-width: 640px) { .ci-section { padding: 36px var(--sp-24); } }
     .ci-section:last-child { border-bottom: none; }
 
     .ci-heading {

@@ -70,6 +70,20 @@ function initCarousel(wrapperSelector, opts = {}) {
 /* ══════════════════════════════════════════════════════════
    탭 (통번역 페이지)
    ══════════════════════════════════════════════════════════ */
+/* 섹션 상단으로 이동
+   탭 바가 화면에 붙어 다니는(sticky) 구조라, 스크롤된 상태에서는
+   탭 바의 화면상 위치가 항상 고정값이 됩니다. 그걸 기준으로 계산하면
+   결과가 지금 위치와 같아져서 화면이 움직이지 않습니다.
+   그래서 문서 안에서 위치가 변하지 않는 '탭 바 다음 요소'를 기준으로 잡고,
+   상단 메뉴와 탭 바 높이만큼 빼서 섹션 첫 줄이 탭 바 바로 밑에 오게 합니다. */
+function scrollToPanelTop(bar, panelWrap) {
+  if (!bar || !panelWrap) return;
+  const stick = parseInt(getComputedStyle(bar).top) || 60;
+  const y = panelWrap.getBoundingClientRect().top + window.scrollY
+            - stick - bar.offsetHeight - 8;
+  window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+}
+
 function initTabs(barSelector) {
   const bar = document.querySelector(barSelector);
   if (!bar) return;
@@ -84,7 +98,11 @@ function initTabs(barSelector) {
   }
 
   bar.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => activateTab(btn.dataset.tab));
+    btn.addEventListener('click', () => {
+      activateTab(btn.dataset.tab);
+      /* 누른 탭의 첫 줄부터 보이게 합니다 */
+      scrollToPanelTop(bar, bar.nextElementSibling);
+    });
   });
 
   /* 탭 전환 시 lang-panel도 함께 업데이트 */

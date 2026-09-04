@@ -405,7 +405,8 @@ img { max-width: 100%; display: block; }
 /* ══════════════════════════════════════════════════════
    REVIEWS (메인 페이지)
    ══════════════════════════════════════════════════════ */
-.reviews-section { padding: var(--sp-32) 0; }
+.reviews-section { padding: 44px 0; }
+@media (max-width: 640px) { .reviews-section { padding: 36px 0; } }
 
 .section-label {
   font-size: 0.95rem; font-weight: 700;
@@ -450,7 +451,8 @@ img { max-width: 100%; display: block; }
 /* ══════════════════════════════════════════════════════
    PAGE HERO (내부 페이지)
    ══════════════════════════════════════════════════════ */
-.page-hero { padding: var(--sp-64) var(--sp-24) var(--sp-32); border-bottom: 1px solid var(--border); }
+.page-hero { padding: var(--sp-64) var(--sp-24) 44px; border-bottom: 1px solid var(--border); }
+@media (max-width: 640px) { .page-hero { padding-bottom: 36px; } }
 .page-hero.ph-dark  { background: var(--dark); border-bottom: none; }
 .page-hero.ph-light { background: var(--surface); }
 
@@ -476,11 +478,14 @@ img { max-width: 100%; display: block; }
 /* ══════════════════════════════════════════════════════
    CONTENT BLOCKS (공통)
    ══════════════════════════════════════════════════════ */
+/* 섹션 위아래 여백. 맥락이 바뀌는 자리라 한 숨 쉬어갈 공간을 둡니다.
+   위아래 44px 이면 블록 사이가 88px 이 됩니다. */
 .section-block {
-  padding: var(--sp-32) var(--sp-24);
+  padding: 44px var(--sp-24);
   border-bottom: 1.5px solid var(--border);
   background: var(--surface);
 }
+@media (max-width: 640px) { .section-block { padding: 36px var(--sp-24); } }
 .section-block:nth-child(even) { background: var(--white); }
 .section-block:last-child { border-bottom: none; }
 

@@ -95,7 +95,7 @@
       max-width: 792px; margin: 0 auto;
       background: var(--white, #FFFFFF);
       border-bottom: 1px solid var(--border, #EDE5E3);
-      padding: 0 var(--sp-16, 16px) var(--sp-24, 24px);
+      padding: 26px var(--sp-16, 16px) 30px;
     }
     .rv-note-in { background: #fff9f8; border: 1px solid #F5DFDA; border-radius: var(--radius, 10px); padding: 14px 16px; }
     .rv-note p { font-size: 0.78rem; color: var(--muted, #7A5550); line-height: 1.85; word-break: keep-all; }
@@ -1073,9 +1073,16 @@ if (typeof initComponents === 'function') initComponents();
     tabs.forEach(function (t) { t.classList.toggle('on', t.dataset.cat === cat); });
     if (writeHash && history.replaceState) history.replaceState(null, '', '#' + cat);
     if (scroll) {
+      /* 탭 바가 sticky 라서, 스크롤된 상태에서는 탭 바의 화면 위치가
+         항상 고정값이 됩니다. 그걸 기준으로 삼으면 계산 결과가
+         지금 위치와 같아져 화면이 움직이지 않습니다.
+         그래서 문서 안에서 위치가 변하지 않는 패널 컨테이너를 기준으로 잡고,
+         그 위에 얹히는 상단 메뉴와 탭 바 높이만큼 빼서 섹션 첫 줄이
+         탭 바 바로 밑에 오게 합니다. */
       var nav = document.querySelector('.rv-nav');
-      var y = nav.getBoundingClientRect().top + window.scrollY - (parseInt(getComputedStyle(nav).top) || 60);
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      var stick = parseInt(getComputedStyle(nav).top) || 60;
+      var y = wrap.getBoundingClientRect().top + window.scrollY - stick - nav.offsetHeight - 8;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
     }
     return true;
   }

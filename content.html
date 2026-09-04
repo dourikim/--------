@@ -187,9 +187,11 @@
 
     renderPagination(page, totalPages);
 
-    /* 카드 상단으로 스크롤, 최초 로드에서는 히어로부터 보이도록 건너뜁니다 */
+    /* 목록 첫 줄부터 보이게 합니다. 최초 로드에서는 히어로부터 보이도록 건너뜁니다.
+       태그 바가 sticky 라서 그 자체를 기준으로 삼으면 화면이 안 움직입니다. */
     if (!isFirstRender) {
-      document.getElementById('tag-filter').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToPanelTop(document.getElementById('tag-filter'),
+                       document.getElementById('cards-list'));
     }
     isFirstRender = false;
   }

@@ -28,11 +28,13 @@
   /* ═══ 포트폴리오 전용 스타일 ═══════════════════════════════ */
 
   /* 카드 기본 */
+  /* 카드 사이 여백. 카드마다 다른 프로젝트라 한 숨 필요합니다 */
+  @media (max-width: 640px) { .pf-card { margin-bottom: 26px !important; } }
   .pf-card {
     border: 1px solid var(--border);
     border-radius: var(--radius);
     overflow: hidden;
-    margin-bottom: 20px;
+    margin-bottom: 34px;
     background: var(--white);
     transition: box-shadow 0.22s, transform 0.22s;
   }
