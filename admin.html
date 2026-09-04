@@ -383,6 +383,13 @@
             </div>
           </div>
 
+          <!-- 어떤 상태에서도 원인을 확인할 수 있는 진단 도구 -->
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 14px">
+            <button class="btn-sm" onclick="ga4Diag()">진단하기</button>
+            <span style="font-size:0.74rem;color:var(--muted)">빌드 2026-09-04b</span>
+          </div>
+          <pre id="ga4-diag" style="display:none;white-space:pre-wrap;word-break:break-all;background:#F4F1EF;border:1px solid #E5DEDA;border-radius:8px;padding:12px 14px;font-size:0.74rem;line-height:1.7;color:#4A3A36;margin:0 0 16px;max-height:320px;overflow:auto"></pre>
+
           <!-- 연결 필요 상태 -->
           <div id="state-connect">
             <div class="connect-state">
@@ -823,6 +830,46 @@ function setPeriod(days, btn) {
   ga4LoadAll();
 }
 
+/* 진단. 왜 비어 있는지를 화면에 그대로 찍습니다. */
+async function ga4Diag() {
+  const box = document.getElementById('ga4-diag');
+  box.style.display = 'block';
+  const end = new Date().toISOString().slice(0,10);
+  const start = new Date(Date.now() - 7 * 864e5).toISOString().slice(0,10);
+  const lines = [];
+  lines.push('주소       : ' + location.href);
+  lines.push('속성 번호  : ' + GA4_PROPERTY);
+  lines.push('측정 ID    : G-K5BW3YMBH6');
+  lines.push('조회 기간  : ' + start + ' ~ ' + end);
+  lines.push('저장된 토큰: ' + (sessionStorage.getItem('ga4-token') ? '있음' : '없음'));
+  lines.push('메모리 토큰: ' + (_token ? '있음' : '없음'));
+  box.textContent = lines.join('\n') + '\n\n요청 보내는 중...';
+
+  if (!_token) {
+    box.textContent = lines.join('\n') + '\n\n구글 계정 연결이 없습니다. 위의 Google 계정으로 연결 버튼을 눌러 주세요.';
+    return;
+  }
+  try {
+    const r = await fetch('https://analyticsdata.googleapis.com/v1beta/properties/' + GA4_PROPERTY + ':runReport', {
+      method: 'POST',
+      headers: { 'Authorization': 'Bearer ' + _token.access_token, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        dateRanges: [{ startDate: start, endDate: end }],
+        metrics: [{ name: 'activeUsers' }, { name: 'sessions' }, { name: 'screenPageViews' }],
+      }),
+    });
+    const txt = await r.text();
+    lines.push('');
+    lines.push('HTTP ' + r.status + ' ' + r.statusText);
+    lines.push(txt.slice(0, 1500));
+    box.textContent = lines.join('\n');
+  } catch (err) {
+    lines.push('');
+    lines.push('요청 자체가 실패했습니다: ' + (err && err.message ? err.message : String(err)));
+    box.textContent = lines.join('\n');
+  }
+}
+
 /* 대시보드 상태 한 줄. 오류든 데이터 없음이든 이유를 보여줍니다. */
 function ga4Note(msg, isError) {
   const el = document.getElementById('ga4-note');
@@ -836,7 +883,11 @@ function ga4Note(msg, isError) {
 }
 
 async function ga4LoadAll() {
-  if (!_token) return;
+  if (!_token) {
+    ga4Note('구글 계정 연결이 풀렸습니다. 다시 연결해 주세요.', true);
+    showConnectState();
+    return;
+  }
   document.getElementById('state-loading').style.display = 'block';
   document.getElementById('state-data').style.display = 'none';
   const end = new Date().toISOString().slice(0,10);
