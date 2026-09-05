@@ -419,8 +419,21 @@
       transition: transform 0.16s;
     }
     .ch-reel[open] .reel-toggle .tri { transform: rotate(90deg); }
-    .ch-reel-panel { margin: 10px 0 14px; }
-    .ch-reel-panel .instagram-media { margin: 0 !important; }
+    .ch-reel-panel { margin: 10px 0 14px; max-width: 300px; }
+    /* 인스타 임베드 : 계정 줄은 남기고 아래 좋아요, 댓글 줄만 가립니다 */
+    .ig {
+      --ig-top: 0px;
+      --ig-bottom: 122px;
+      min-width: 0; overflow: hidden;
+      border: 1px solid var(--border); border-radius: 14px;
+      background: var(--white);
+    }
+    .ig .instagram-media {
+      min-width: 0 !important; width: 100% !important; max-width: 100% !important;
+      margin: calc(var(--ig-top) * -1) 0 calc(var(--ig-bottom) * -1) 0 !important;
+      border: 0 !important; border-radius: 0 !important; box-shadow: none !important;
+    }
+    @media (max-width: 760px) { .ig { --ig-bottom: 112px; } }
 
     /* ══ 미리보기 ══════════════════════════ */
     .ci-preview-list {
@@ -816,11 +829,7 @@
               </div>
             </summary>
             <div class="ch-reel-panel">
-              <blockquote class="instagram-media"
-                              data-instgrm-permalink="https://www.instagram.com/p/DbQv5LbqN2E/?utm_source=ig_embed"
-                              data-instgrm-version="14"
-                              style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,0.18),0 2px 12px 0 rgba(0,0,0,0.12);margin:0;max-width:300px;min-width:240px;padding:0;width:100%;">
-                            </blockquote>
+              <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DbQv5LbqN2E/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
             </div>
           </details>
           <div class="curri-ch">
@@ -878,11 +887,7 @@
               </div>
             </summary>
             <div class="ch-reel-panel">
-              <blockquote class="instagram-media"
-                              data-instgrm-permalink="https://www.instagram.com/reel/DYConX1qvwB/?utm_source=ig_embed"
-                              data-instgrm-version="14"
-                              style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,0.18),0 2px 12px 0 rgba(0,0,0,0.12);margin:0;max-width:300px;min-width:240px;padding:0;width:100%;">
-                            </blockquote>
+              <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYConX1qvwB/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
             </div>
           </details>
           <div class="curri-ch">
@@ -985,11 +990,7 @@
               </div>
             </summary>
             <div class="ch-reel-panel">
-              <blockquote class="instagram-media"
-                              data-instgrm-permalink="https://www.instagram.com/reel/DZ0FhnmqpaV/?utm_source=ig_embed"
-                              data-instgrm-version="14"
-                              style="background:#FFF;border:0;border-radius:12px;box-shadow:0 0 1px 0 rgba(0,0,0,0.18),0 2px 12px 0 rgba(0,0,0,0.12);margin:0;max-width:300px;min-width:240px;padding:0;width:100%;">
-                            </blockquote>
+              <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DZ0FhnmqpaV/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
             </div>
           </details>
           <div class="curri-ch">
