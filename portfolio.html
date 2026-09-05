@@ -62,24 +62,38 @@
   /* 카드 바디 */
   .pf-card-body { padding: 18px 20px 20px; }
 
-  /* 데스크톱: 가로 배치 */
+  /* 데스크톱 : 연도와 제목은 카드 폭을 다 쓰고, 그 아래에서 사진이
+     한쪽으로 비켜서고 본문이 옆에 붙습니다. 수치와 클라이언트는
+     사진 아래로 내려와 다시 카드 폭을 다 씁니다. */
   @media (min-width: 769px) {
-    .pf-card.pf-h {
-      display: flex;
-      flex-direction: row;
-    }
-    .pf-card.pf-h .pf-thumb {
-      width: 40%;
-      aspect-ratio: auto;
-      min-height: 210px;
-    }
-    .pf-card.pf-h .pf-card-body {
-      flex: 1;
+    .pf-card.pf-h,
+    .pf-card.kpop-card { display: block; }
+    .pf-card.pf-h .pf-card-body,
+    .pf-card.kpop-card .pf-card-body {
+      display: flow-root;      /* 안쪽 플로트를 카드가 감싸도록 */
       padding: 22px 24px;
-      align-content: center;
     }
-    /* 이미지 오른쪽 */
-    .pf-card.pf-h.pf-reverse { flex-direction: row-reverse; }
+    .pf-card.pf-h .pf-card-body > .pf-thumb,
+    .pf-card.kpop-card .pf-card-body > .pf-thumb {
+      float: left; width: 37%;
+      aspect-ratio: 16 / 9;
+      margin: 4px 36px 18px 0;
+      border-radius: 10px;
+    }
+    .pf-card.pf-h.pf-reverse .pf-card-body > .pf-thumb {
+      float: right; margin: 4px 0 18px 36px;
+    }
+    /* 플로트 옆에 나란히 서도록 자체 서식 문맥을 만듭니다 */
+    .pf-card.pf-h .pf-list,
+    .pf-card.pf-h .pf-highlight,
+    .pf-card.pf-h .pf-subshot,
+    .pf-card.kpop-card .pf-list,
+    .pf-card.kpop-card .pf-highlight { display: flow-root; }
+    /* 아래 정보는 사진 밑으로 내려 카드 폭을 다 씁니다 */
+    .pf-card.pf-h .pf-nums,
+    .pf-card.pf-h .pf-facts,
+    .pf-card.pf-h .pf-clients,
+    .pf-card.kpop-card .pf-clients { clear: both; }
   }
 
   /* 비디오 embed */
@@ -226,32 +240,48 @@
   .pf-facts b i { font-style: normal; font-size: 0.8rem; font-weight: 400; color: var(--muted); }
   .pf-facts span { display: block; font-size: 0.68rem; color: var(--muted); margin-top: 5px; line-height: 1.5; }
 
-  /* ── 연도 축 : 카드 왼쪽에 고운바탕으로 세웁니다 ── */
-  .pf-card-body {
-    display: grid; grid-template-columns: 78px 1fr;
-    column-gap: 16px; row-gap: 0;   /* row-gap 0 : 연도가 세로로 걸치는 빈 행이 높이를 만들지 않도록 */
-    align-items: start;
-  }
-  .pf-card-body > * { grid-column: 2; }
+  /* ── 연도 : 제목 위에 한 줄로. 카드 안의 모든 줄이 같은 왼쪽 선에서
+     시작하도록, 예전의 왼쪽 연도 칸은 없앴습니다. ── */
+  .pf-card-body { display: block; }
   .pf-year {
-    grid-column: 1; grid-row: 1 / span 99;
+    display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 9px;
     font-family: var(--font-heading); font-size: 1.02rem; font-weight: 700;
-    color: var(--brick); line-height: 1.15; text-align: right;
-    letter-spacing: -0.02em; text-transform: none; margin: 0; padding-top: 2px;
-    white-space: nowrap;   /* 2023~2024 같은 범위가 제목 쪽으로 밀리지 않도록 */
+    color: var(--brick); line-height: 1.2; text-align: left;
+    letter-spacing: -0.02em; text-transform: none; margin: 0 0 5px;
   }
   .pf-year small {
-    display: block; font-family: var(--font-body); font-size: 0.61rem;
+    font-family: var(--font-body); font-size: 0.63rem;
     font-weight: 700; letter-spacing: 0.05em; color: var(--muted);
-    margin-top: 5px; line-height: 1.4; word-break: keep-all;
-    white-space: normal;   /* 연도의 nowrap 을 물려받아 옆 칸을 침범하지 않도록 */
+    line-height: 1.4; word-break: keep-all; margin: 0;
   }
   .pf-title { margin-bottom: 3px; }
   .pf-place { margin-bottom: 9px; }
   @media (max-width: 430px) {
-    .pf-card-body { grid-template-columns: 66px 1fr; column-gap: 10px; }
-    .pf-year { font-size: 0.88rem; }
-    .pf-year small { font-size: 0.58rem; }
+    .pf-year { font-size: 0.92rem; }
+    .pf-year small { font-size: 0.6rem; }
+  }
+
+  /* ══ 모바일 : 연도와 제목이 먼저, 그다음 사진이나 영상 ═══════════════
+     예전에는 사진이 카드 맨 위에 붙어 있어서, 무슨 일인지 읽기도 전에
+     사진부터 보였습니다. 카드 전체를 하나의 격자로 만들고
+     (본문은 display:contents 로 격자에 그대로 합류시킵니다)
+     order 로 연도, 제목, 장소, 사진, 나머지 순서로 세웁니다. */
+  @media (max-width: 768px) {
+    .pf-card-body > .pf-thumb {
+      width: 100%; margin: 13px 0 15px;
+      border-radius: 10px; overflow: hidden;
+    }
+    /* 영상이 카드 맨 위에 붙는 강조 카드만 제목 아래로 내립니다 */
+    .pf-card.pf-feature { display: flex; flex-direction: column; padding: 18px 20px 20px; }
+    .pf-card.pf-feature .pf-card-body { display: contents; }
+    .pf-card.pf-feature .pf-card-body > * { order: 5; }
+    .pf-card.pf-feature .pf-year  { order: 1; }
+    .pf-card.pf-feature .pf-title { order: 2; }
+    .pf-card.pf-feature .pf-place { order: 3; }
+    .pf-card.pf-feature > .pf-embed {
+      order: 4; margin: 13px 0 15px;
+      border-radius: 10px; overflow: hidden;
+    }
   }
 
   /* ── 클라이언트 : 테두리 상자 대신 옅은 한 줄 ── */
@@ -361,11 +391,137 @@
   /* ══ 이미지 파일이 아직 없는 카드는 썸네일 칸을 접습니다 ═════════════ */
   .pf-card.no-thumb .pf-thumb { display: none; }
 
+  /* ══ 현장 영상 : 원본 그대로 3:4 로 담습니다 ══════════════════════ */
+  .pf-thumb.pf-thumb-reel {
+    aspect-ratio: 3 / 4;
+    background: var(--dark);
+    max-width: 330px;
+  }
+  .pf-thumb-reel video { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 768px) {
+    .pf-card-body > .pf-thumb.pf-thumb-reel { width: 100%; max-width: 330px; }
+  }
+  @media (min-width: 769px) {
+    .pf-card.pf-h .pf-card-body > .pf-thumb.pf-thumb-reel {
+      width: 32%; max-width: 300px; aspect-ratio: 3 / 4;
+    }
+  }
+
+  /* ══ 사진 비율 그대로 담는 썸네일 (잘리지 않게) ═══════════════════ */
+  .pf-thumb.pf-thumb-43 { aspect-ratio: 4 / 3; }
+  @media (min-width: 769px) {
+    .pf-card.pf-h .pf-card-body > .pf-thumb.pf-thumb-43 { aspect-ratio: 4 / 3; }
+  }
+  /* 모바일에서는 사진이 화면을 다 먹어서, 예전 크기의 60% 로 둡니다 */
+  @media (max-width: 768px) {
+    .pf-card-body > .pf-thumb.pf-thumb-43 { max-width: 60%; }
+  }
+
+  /* ══ 증명 자료 크게 보기 ════════════════════════════════════════
+     메인 홈의 증명 자료처럼 좌우 화살표로 넘깁니다. */
+  .pf-zoom { cursor: zoom-in; }
+  .lb-bg {
+    display: none; position: fixed; inset: 0; z-index: 12000;
+    background: rgba(46,14,12,.78);
+    align-items: center; justify-content: center;
+    padding: 62px 78px;
+  }
+  .lb-bg.open { display: flex; }
+  .lb-box { position: relative; max-width: 1000px; width: 100%; }
+  .lb-img {
+    display: block; width: 100%; max-height: calc(100dvh - 190px);
+    object-fit: contain; border-radius: 10px; background: var(--white);
+    box-shadow: 0 24px 70px rgba(46,14,12,.35);
+  }
+  .lb-cap {
+    margin-top: 10px; text-align: center; color: #fff;
+    font-size: 0.8rem; font-weight: 600; line-height: 1.6; word-break: keep-all;
+  }
+  .lb-close {
+    position: absolute; top: -46px; right: 0; z-index: 3;
+    width: 38px; height: 38px; border-radius: 50%; border: 0;
+    background: rgba(255,255,255,.92); color: var(--dark);
+    font-size: 16px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lb-close:hover { background: var(--brick); color: #fff; }
+  .lb-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    width: 44px; height: 44px; border-radius: 50%; border: 0;
+    background: rgba(255,255,255,.92); color: var(--dark);
+    font-size: 20px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 2px 12px rgba(46,14,12,.18);
+  }
+  .lb-arrow:hover { background: var(--brick); color: #fff; }
+  .lb-arrow[disabled] { opacity: .35; cursor: default; }
+  .lb-prev { left: -58px; }
+  .lb-next { right: -58px; }
+  @media (max-width: 760px) {
+    .lb-bg { padding: 58px 14px 82px; }
+    .lb-img { max-height: calc(100dvh - 210px); }
+    .lb-close { top: -44px; }
+    .lb-arrow { top: auto; bottom: -62px; transform: none; }
+    .lb-prev { left: 0; }
+    .lb-next { right: 0; }
+  }
+
+  /* ══ 증명 자료 네 칸 ════════════════════════════════════════════ */
+  /* 카드 본문이 넓지 않아 네 칸을 한 줄에 두면 화면이 너무 작아집니다.
+     두 줄로 나눠 자료가 읽히는 크기를 지킵니다. */
+  .pf-quad {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 12px; margin-top: 14px; max-width: 470px;
+  }
+  /* 웹에서는 사진 아래로 내려와 카드 폭을 다 쓰는 한 줄이 됩니다 */
+  @media (min-width: 769px) {
+    .pf-card.pf-h .pf-quad {
+      clear: both; max-width: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px; margin-top: 20px;
+    }
+  }
+  /* 모바일에서는 칸이 좁아 화면이 안 보입니다. 좌우로 넘겨서 봅니다. */
+  @media (max-width: 640px) {
+    .pf-quad {
+      display: flex; max-width: none; gap: 12px;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory; padding-bottom: 4px;
+    }
+    .pf-quad-item { flex: 0 0 76%; scroll-snap-align: start; }
+  }
+  .pf-quad-item { margin: 0; min-width: 0; }
+  .pf-quad-item img {
+    display: block; width: 100%; aspect-ratio: 16 / 9;
+    object-fit: cover; border-radius: 8px; border: 1px solid var(--border);
+  }
+  .pf-quad-item .pf-video-sm img { border: 0; border-radius: 0; }
+  .pf-quad-item figcaption {
+    margin-top: 6px; font-size: 0.72rem; font-weight: 700;
+    color: var(--dark); text-align: center; word-break: keep-all;
+  }
+
+  /* ══ 본문 안에 곁들이는 작은 사진 ═══════════════════════════════ */
+  .pf-subshot { margin: 12px 0 0; }
+  /* 웹에서는 블록 폭을 다 쓰되, 너무 키가 크지 않도록 3:2 로 담습니다 */
+  @media (min-width: 769px) {
+    .pf-subshot img { aspect-ratio: 3 / 2; object-fit: cover; }
+  }
+  @media (max-width: 768px) { .pf-subshot { max-width: 340px; } }
+  .pf-subshot img {
+    display: block; width: 100%; height: auto;
+    border-radius: 8px; border: 1px solid var(--border);
+  }
+  .pf-subshot figcaption {
+    margin-top: 6px; font-size: 0.74rem; color: var(--muted);
+    word-break: keep-all;
+  }
+
   /* ══ 세로로 긴 이미지(앱 스크린샷 등)는 칸 높이를 고정해 카드 안에 담습니다 ══ */
   .pf-thumb.pf-thumb-fit { aspect-ratio: 4 / 3; background: #F2EFEE; }
   .pf-thumb.pf-thumb-fit img { object-fit: contain; padding: 12px; }
   @media (min-width: 769px) {
-    .pf-card.pf-h .pf-thumb.pf-thumb-fit { aspect-ratio: 4 / 3; min-height: 0; }
+    .pf-card.pf-h .pf-card-body > .pf-thumb.pf-thumb-fit { aspect-ratio: 4 / 3; }
   }
 
   /* ══ 이력 블록: 모바일에서 좌우 여백을 줄여 더 넓게 ═════════════ */
@@ -375,20 +531,8 @@
 
   /* ══ 카드 비율 조정 ══════════════════════ */
   @media (min-width: 769px) {
-    .pf-card.pf-h .pf-thumb  { width: 38%; }
-    .pf-card.pf-h.pf-reverse .pf-thumb { width: 38%; }
 
     /* K-POP 카드 가로 레이아웃 */
-    .pf-card.kpop-card {
-      display: flex;
-      flex-direction: row;
-    }
-    .pf-card.kpop-card .pf-thumb {
-      width: 38%;
-      aspect-ratio: auto;
-      min-height: 240px;
-      flex-shrink: 0;
-    }
     .pf-card.kpop-card .pf-card-body {
       flex: 1;
       padding: 22px 24px;
@@ -446,6 +590,8 @@
     word-break: keep-all;
   }
   .pf-highlight strong { color: var(--dark); font-weight: 700; }
+  /* 사진으로 끝나는 강조 블록은 아래 분홍 여백을 줄입니다 */
+  .pf-highlight > .pf-subshot--tight { margin-bottom: -5px; }
   .pf-card.pf-feature .pf-highlight {
     background: rgba(232,137,111,0.15); border-left-color: #E8896F;
     color: rgba(255,255,255,0.8);
@@ -591,22 +737,28 @@
 
       <!-- 2026 서울국제도서전 프랑스 주빈국 -->
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/SIBF.jpg"
-               alt="2026 서울국제도서전 프랑스관 작가 대담 현장" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2026<small>국제 도서전, 주빈국</small></p>
           <p class="pf-title">2026 서울국제도서전 프랑스 주빈국: 작가 대담 순차통역, 프랑스관 운영</p>
           <p class="pf-place">코엑스 A, B1홀 | 6월 24~28일 | 프랑스관 A601, 한불 수교 140주년</p>
-          <div class="pf-highlight">
-            <strong>마리 오드 뮈라이유 작가와의 만남</strong>: 도서전 수행 통역과 별개로, 출판사 바람의 아이들이 문학 대담 순차통역을 따로 위촉했습니다. 작품 세계와 번역본을 함께 읽고 들어가야 하는 자리였습니다.
+          <div class="pf-thumb pf-thumb-reel">
+            <video src="img/통번역, 로컬화/sibf_reel.mp4"
+                   poster="img/통번역, 로컬화/sibf_reel_poster.jpg"
+                   controls playsinline preload="none"
+                   title="2026 서울국제도서전 프랑스관 현장"></video>
           </div>
           <ul class="pf-list">
             <li>작가 사인회, 낭독, 대담 현장의 한국어 ↔ 프랑스어 순차통역</li>
             <li>도서전 외부 연계 행사 작가 동행 및 통역</li>
             <li>프랑스관 설치와 해체, 프로그램 운영, 방문객 안내</li>
           </ul>
+          <div class="pf-highlight">
+            <strong>마리 오드 뮈라이유 작가와의 만남</strong>: 출판사 바람의 아이들의 행사 순차 통역
+            <figure class="pf-subshot pf-subshot--tight">
+              <img src="img/통번역, 로컬화/SIBF.jpg"
+                   alt="2026 서울국제도서전 프랑스관 작가 대담 순차통역 현장" loading="lazy">
+            </figure>
+          </div>
           <div class="pf-nums">
             <div><b>18개국, 530여 곳</b>도서전 참가국, 출판사</div>
             <div><b>작가 13인, 출판사 21곳</b>프랑스 대표단</div>
@@ -624,14 +776,14 @@
 
       <!-- LG VIP -->
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/lg_trip.jpg"
-               alt="LG전자 프랑스 VIP 트립" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2025<small>기업 VIP 행사</small></p>
           <p class="pf-title">LG전자 트립 행사: 프랑스 VIP 현장 순차통역</p>
           <p class="pf-place">서울, 부산, 마곡, 하남 | 5박 6일</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/lg_trip.jpg"
+                 alt="LG전자 프랑스 VIP 트립" loading="lazy">
+          </div>
           <ul class="pf-list">
             <li>LG 평택 칠러 공장 쇼룸과 라인 투어, 창원 공장 제조 라인 투어</li>
             <li>하남 스타필드 레퍼런스 사이트 방문, 마곡 사이언스파크 시설 투어</li>
@@ -668,19 +820,18 @@
 
       <!-- 한-불 영상 번역 -->
       <div class="pf-card pf-h pf-reverse">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/subtitle.jpg"
-               alt="한-불 영상 자막 번역" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2011~<small>문화, 엔터테인먼트</small></p>
           <p class="pf-title">한불 영상, 문화 콘텐츠 번역: PPM, 자막, 시나리오</p>
           <p class="pf-place">파리 &amp; 서울 | 프리랜서</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/subtitle.jpg"
+                 alt="한-불 영상 자막 번역" loading="lazy">
+          </div>
           <ul class="pf-list">
             <li>PPM 문서, 웹사이트, 자막, 시나리오/스크립트 한-불 번역</li>
             <li>아티스트 인터뷰, 문화 행사 평론, 아티스트 프레스킷</li>
           </ul>
-          <a href="https://vimeo.com/163267082" target="_blank" rel="noopener" class="pf-link">번역 레퍼런스 (Vimeo)</a>
           <div class="pf-clients">
             <span class="pf-client">자라섬 Jazz Festival</span>
             <span class="pf-client">The French Connection</span>
@@ -693,15 +844,15 @@
 
       <!-- Santo André -->
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/santo andre.jpeg"
-               alt="Santo André 시청" loading="lazy"
-               onerror="this.closest('.pf-card').classList.add('no-thumb')">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2021<small>공공 기관 회의</small></p>
           <p class="pf-title">Santo André 시청: 지속가능 도시 모빌리티 PT, FR</p>
           <p class="pf-place">Santo André, São Paulo</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/santo andre.jpeg"
+                 alt="Santo André 시청" loading="lazy"
+                 onerror="this.closest('.pf-card').classList.add('no-thumb')">
+          </div>
           <ul class="pf-list">
             <li>상파울루 주 산투안드레 시청 지속가능 프로젝트 통역 참여</li>
             <li>프랑스 리옹대학교 전문가 2인 대상 포르투갈어,  프랑스어 순차통역</li>
@@ -715,14 +866,14 @@
 
       <!-- FID Marseille -->
       <div class="pf-card pf-h pf-reverse">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/fid.jpg"
-               alt="FID Marseille 홍상수" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2016<small>영화제</small></p>
           <p class="pf-title">FID Marseille: 홍상수 감독 회고전 통역</p>
           <p class="pf-place">Festival International de Documentaire, Marseille</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/fid.jpg"
+                 alt="FID Marseille 홍상수" loading="lazy">
+          </div>
           <ul class="pf-list">
             <li>마르세유 국제영화제 FID Marseille에서 홍상수 감독 회고전 통역</li>
             <li>한국어,  프랑스어 순차통역</li>
@@ -733,14 +884,14 @@
 
       <!-- K-POP -->
       <div class="pf-card kpop-card">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/kpop_cannes.jpg"
-               alt="2NE1 Cannes Lions 2012" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2011~2012<small>K-POP 아티스트</small></p>
           <p class="pf-title">2NE1, PSY, SM Town: 아티스트 투어 동행</p>
           <p class="pf-place">Cannes, Paris</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/kpop_cannes.jpg"
+                 alt="2NE1 Cannes Lions 2012" loading="lazy">
+          </div>
           <ul class="pf-list">
             <li><strong>2NE1</strong>: Cannes Lions 컨퍼런스 동행, 패션 매거진 W 화보 촬영 (2012)</li>
             <li><strong>PSY</strong>: 강남스타일 월드투어 파리 홍보 코디, Universal Music France (2012)</li>
@@ -791,14 +942,14 @@
 
       <!-- 나윤선 -->
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/nayounson.jpg"
-               alt="나윤선 다큐멘터리" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2011<small>다큐멘터리</small></p>
           <p class="pf-title">재즈 아티스트 나윤선: 스위스, 한국 공동제작 다큐 번역 코디</p>
           <p class="pf-place">6개국 로케이션 (프/벨/독/스위스/스웨덴/한국)</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/nayounson.jpg"
+                 alt="나윤선 다큐멘터리" loading="lazy">
+          </div>
           <ul class="pf-list">
             <li>한국어 / 영어 / 프랑스어 인터뷰 번역, 리뷰, 로케이션 관리</li>
             <li>컨셉 기획 참여, 6개국 스카우팅 및 물류 총괄</li>
@@ -808,14 +959,14 @@
 
       <!-- 자라섬 -->
       <div class="pf-card pf-h pf-reverse">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/jarasum.jpg"
-               alt="자라섬 국제 재즈 페스티벌" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2009<small>페스티벌 어시스턴트</small></p>
           <p class="pf-title">자라섬 국제 재즈 페스티벌: 아트 디렉터 어시스턴트</p>
           <p class="pf-place">가평 제6회 | 3일간 15만 관객, 5개 무대, 50개 공연</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/jarasum.jpg"
+                 alt="자라섬 국제 재즈 페스티벌" loading="lazy">
+          </div>
           <ul class="pf-list">
             <li>라인업 기획 참여, 테크니컬 라이더, 머천다이징 관리</li>
             <li>아티스트 페이지 번역 (한-불)</li>
@@ -878,30 +1029,6 @@
         </div>
       </div>
 
-      <!-- 미들폼 발행 -->
-      <div class="pf-sec">
-        <span class="pf-sec-rule"></span>
-        <p class="pf-sec-kr">로컬라이제이션 미들폼 발행</p>
-      </div>
-      <div class="pf-card pf-h">
-        <a class="pf-thumb" href="https://eopla.net/magazines/24251" target="_blank" rel="noopener"
-           aria-label="EO PLANET에서 글 읽기">
-          <img src="img/통번역, 로컬화/eoplanet.png"
-               alt="EO PLANET에 발행한 언어 교육, 로컬라이제이션 아티클" loading="lazy"
-               onerror="this.closest('.pf-card').classList.add('no-thumb')">
-        </a>
-        <div class="pf-card-body">
-          <p class="pf-year">2024~<small>미들폼 발행</small></p>
-          <p class="pf-title">언어 산업, 로컬라이제이션 미들폼 발행</p>
-          <p class="pf-place">직접 기획하고 발행하는 장문 아티클</p>
-          <ul class="pf-list">
-            <li>언어 학습 서비스와 로컬라이제이션 전략을 실무자 시선으로 분석</li>
-            <li>발행 예시: EO PLANET 「언어학자들도 놀란 듀오링고의 혁신, 게임으로 재탄생한 언어 교육의 미래」 (2024.12)</li>
-          </ul>
-          <a href="https://eopla.net/magazines/24251" target="_blank" rel="noopener" class="pf-link">EO PLANET에서 읽기</a>
-        </div>
-      </div>
-
       <div class="pf-sec">
         <span class="pf-sec-rule"></span>
         <p class="pf-sec-kr">주요 프로젝트</p>
@@ -909,21 +1036,51 @@
 
       <!-- Criminal IP -->
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/criminal_ip.jpg"
-               alt="Criminal IP on Bleeping Computer" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2023~2024<small>사이버 보안 검색 엔진</small></p>
           <p class="pf-title">AI Spera: Criminal IP 글로벌 로컬화 총괄</p>
-          <p class="pf-place">한 / 영 / 불 / 일 / 아랍어, 5개 언어</p>
+          <p class="pf-place">시니어 크리에이티브 마케팅 매니저 | 서울, 정규직 | 한 / 영 / 불 / 일 / 아랍어, 5개 언어</p>
+          <div class="pf-thumb pf-thumb-43">
+            <img src="img/통번역, 로컬화/aispera_booth.jpg"
+                 alt="AI Spera 부스에서 방문객에게 Criminal IP를 안내하는 모습" loading="lazy">
+          </div>
           <ul class="pf-list">
+            <li>1만+ 명 방문자/일 서비스의 주기별 마케팅 로드맵과 KPI 수립, 해외 신규 채널 발굴 및 제휴</li>
             <li>격주 패치 UI → 5개 언어 로컬화 → 최종 QA, Glossary, CAT Tool</li>
+            <li>유료 구독자 증가를 위한 서비스 고도화 기획 (UX/UI 개선, QA), 데이터 인사이트 추출</li>
             <li>라이온브릿지 벤더 협업, GitHub 리드미 6개, API 연동 사례 11개</li>
-            <li>Bleeping Computer 독점 아티클 9건, Udemy 강좌 1,600+ 수강생</li>
+            <li>기술 블로그, 웨비나 등 브랜디드 콘텐츠 확장, Bleeping Computer 독점 아티클 9건</li>
             <li>글로벌, 국내 행사 기획 (미국 RSAC, 국내 보안 컨퍼런스 등)</li>
           </ul>
-          <div class="pf-clients">
+          <div class="pf-quad">
+            <figure class="pf-quad-item">
+              <img src="img/통번역, 로컬화/criminal_ip.jpg" alt="Bleeping Computer 독점 아티클" loading="lazy"
+                   class="pf-zoom" tabindex="0" role="button" aria-label="크게 보기">
+              <figcaption>Bleeping Computer 기사 배포 계약 성사 (시밀러웹 : 2M+ 월방문)</figcaption>
+            </figure>
+            <figure class="pf-quad-item">
+              <img src="img/통번역, 로컬화/udemy_criminalip.jpg" alt="Udemy Criminal IP 입문 강좌" loading="lazy"
+                   class="pf-zoom" tabindex="0" role="button" aria-label="크게 보기">
+              <figcaption>Udemy 강좌 기획 완료, Tryhackme 프로그램 기획</figcaption>
+            </figure>
+            <figure class="pf-quad-item">
+              <img src="img/통번역, 로컬화/github_criminalip.jpg" alt="Criminal IP GitHub 리드미" loading="lazy"
+                   class="pf-zoom" tabindex="0" role="button" aria-label="크게 보기">
+              <figcaption>GitHub 리드미 한-영 번역, API 연동 한-영-불 번역</figcaption>
+            </figure>
+            <figure class="pf-quad-item">
+              <div class="pf-video pf-video-sm" data-yt="rJVyePmyoHY" data-title="Criminal IP 소개 영상">
+                <img class="pf-video-thumb" loading="lazy" alt="Criminal IP 소개 영상"
+                     src="https://i.ytimg.com/vi/rJVyePmyoHY/hqdefault.jpg"
+                     onerror="if (this.dataset.fb) { this.style.display='none'; } else { this.dataset.fb=1; this.src='https://i.ytimg.com/vi/rJVyePmyoHY/mqdefault.jpg'; }">
+                <button type="button" class="pf-video-btn" aria-label="Criminal IP 소개 영상, 영상 재생">
+                  <span class="pf-video-play" aria-hidden="true"></span>
+                </button>
+              </div>
+              <figcaption>사이버보안 인플루언서 협업 (영상 및 블로그)</figcaption>
+            </figure>
+          </div>
+          <div class="pf-clients" style="margin-top:12px;">
             <span class="pf-client">AI Spera</span>
             <span class="pf-client">Lionbridge</span>
             <span class="pf-client">Bleeping Computer</span>
@@ -933,15 +1090,15 @@
 
       <!-- Ultra Interactive -->
       <div class="pf-card pf-h pf-reverse">
-        <div class="pf-thumb pf-thumb-fit">
-          <img src="img/통번역, 로컬화/ultra interactive.png"
-               alt="Ultra Interactive 앱" loading="lazy"
-               onerror="this.closest('.pf-card').classList.add('no-thumb')">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2013~2014<small>모바일 앱 로컬화</small></p>
           <p class="pf-title">Ultra Interactive: 프랑스어 로컬화 코디네이터</p>
           <p class="pf-place">한→불 | 서울 &amp; 파리</p>
+          <div class="pf-thumb pf-thumb-fit">
+            <img src="img/통번역, 로컬화/ultra interactive.png"
+                 alt="Ultra Interactive 앱" loading="lazy"
+                 onerror="this.closest('.pf-card').classList.add('no-thumb')">
+          </div>
           <ul class="pf-list">
             <li>한국 개발 소셜 앱 3개 전 단계 로컬화 총괄, 60만+ 유저 달성</li>
             <li>벤치마킹 → 한-불 번역 → UX/UI QA → GTM 전략 수립</li>
@@ -1145,48 +1302,47 @@
         <p class="pf-skills-foot">Working languages &nbsp;Korean, French, English, Portuguese</p>
       </div>
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/lg_trip.jpg" alt="LG Electronics VIP Trip" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2025<small>Corporate VIP</small></p>
           <p class="pf-title">LG Electronics Trip: On-site Consecutive Interpretation for French VIPs</p>
           <p class="pf-place">Seoul, Busan, Magok, Hanam | 5 nights / 6 days</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/lg_trip.jpg" alt="LG Electronics VIP Trip" loading="lazy">
+          </div>
           <ul class="pf-list"><li>Factory tours (Pyeongtaek Chiller, Changwon), Starfield &amp; Science Park site visits</li></ul>
           <div class="pf-clients"><span class="pf-client">LG Electronics</span></div>
         </div>
       </div>
       <div class="pf-card pf-h pf-reverse">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/subtitle.jpg" alt="KO-FR film subtitle translation" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2011~<small>Entertainment</small></p>
           <p class="pf-title">KO, FR Film &amp; Cultural Content: PPM, Subtitles, Scripts</p>
           <p class="pf-place">Paris &amp; Seoul | Freelance</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/subtitle.jpg" alt="KO-FR film subtitle translation" loading="lazy">
+          </div>
           <ul class="pf-list"><li>PPM documents, subtitles, scripts, artist press kits, cultural event commentary</li></ul>
-          <a href="https://vimeo.com/163267082" target="_blank" rel="noopener" class="pf-link">Translation reference (Vimeo)</a>
           <div class="pf-clients"><span class="pf-client">Jarasum Jazz Festival</span><span class="pf-client">The French Connection</span><span class="pf-client">Renault-Samsung</span></div>
         </div>
       </div>
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/fid.jpg" alt="FID Marseille Hong Sang-soo" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2016<small>Film Festival</small></p>
           <p class="pf-title">FID Marseille: Hong Sang-soo Retrospective Interpreter</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/fid.jpg" alt="FID Marseille Hong Sang-soo" loading="lazy">
+          </div>
           <div class="pf-clients"><span class="pf-client">FID Marseille</span></div>
         </div>
       </div>
       <div class="pf-card kpop-card">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/kpop_cannes.jpg" alt="2NE1 Cannes Lions 2012" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2011~2012<small>K-POP</small></p>
           <p class="pf-title">2NE1, PSY, SM Town: Artist Tour Liaison</p>
           <p class="pf-place">Cannes, Paris</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/kpop_cannes.jpg" alt="2NE1 Cannes Lions 2012" loading="lazy">
+          </div>
           <ul class="pf-list">
             <li>2NE1: Cannes Lions 2012 | PSY: Gangnam Style world tour promo | SM Town: Zénith Paris</li>
           </ul>
@@ -1252,13 +1408,13 @@
         <p class="pf-skills-foot">Working languages &nbsp;KO, EN, FR, JA, AR</p>
       </div>
       <div class="pf-card">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/criminal_ip.jpg" alt="Criminal IP" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2023~2024<small>Cybersecurity</small></p>
           <p class="pf-title">AI Spera, Criminal IP Global Localization Lead</p>
           <p class="pf-place">KO / EN / FR / JA / AR, 5 languages</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/criminal_ip.jpg" alt="Criminal IP" loading="lazy">
+          </div>
           <ul class="pf-list">
             <li>Bi-weekly patch UI → 5-language localization → QA, Glossary, CAT Tool</li>
             <li>Lionbridge vendor collaboration, 6 GitHub READMEs, 11 API integration cases</li>
@@ -1273,12 +1429,12 @@
         </div>
       </div>
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/ultra interactive.png" alt="Ultra Interactive" loading="lazy" style="object-fit:contain; background:#f5f5f5;" onerror="this.closest('.pf-card').classList.add('no-thumb')">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2013~2014<small>Mobile App</small></p>
           <p class="pf-title">Ultra Interactive: French Localization Coordinator</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/ultra interactive.png" alt="Ultra Interactive" loading="lazy" style="object-fit:contain; background:#f5f5f5;" onerror="this.closest('.pf-card').classList.add('no-thumb')">
+          </div>
           <ul class="pf-list"><li>3 Korean social apps: full localization, 600K+ users, benchmarking → translation → UX QA → GTM</li></ul>
           <div class="pf-clients"><span class="pf-client">Ultra Interactive</span></div>
         </div>
@@ -1380,46 +1536,45 @@
         <p class="pf-skills-foot">Langues de travail &nbsp;coréen, français, anglais, portugais</p>
       </div>
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/lg_trip.jpg" alt="LG Electronics VIP Trip" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2025<small>VIP Entreprise</small></p>
           <p class="pf-title">LG Electronics : Interprétation consécutive pour VIP français</p>
           <p class="pf-place">Séoul, Busan, Magok, Hanam | 5 nuits / 6 jours</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/lg_trip.jpg" alt="LG Electronics VIP Trip" loading="lazy">
+          </div>
           <div class="pf-clients"><span class="pf-client">LG Electronics</span></div>
         </div>
       </div>
       <div class="pf-card pf-h pf-reverse">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/subtitle.jpg" alt="Traduction KO-FR" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2011~<small>Divertissement</small></p>
           <p class="pf-title">Traduction culturelle KO, FR : PPM, Sous-titres, Scénarios</p>
           <p class="pf-place">Paris &amp; Séoul | Freelance</p>
-          <a href="https://vimeo.com/163267082" target="_blank" rel="noopener" class="pf-link">Référence traduction (Vimeo)</a>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/subtitle.jpg" alt="Traduction KO-FR" loading="lazy">
+          </div>
           <div class="pf-clients"><span class="pf-client">Jarasum Jazz Festival</span><span class="pf-client">The French Connection</span><span class="pf-client">Renault-Samsung</span></div>
         </div>
       </div>
       <div class="pf-card pf-h">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/fid.jpg" alt="FID Marseille" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2016<small>Festival</small></p>
           <p class="pf-title">FID Marseille, Rétrospective Hong Sang-soo Interprète</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/fid.jpg" alt="FID Marseille" loading="lazy">
+          </div>
           <div class="pf-clients"><span class="pf-client">FID Marseille</span></div>
         </div>
       </div>
       <div class="pf-card kpop-card">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/kpop_cannes.jpg" alt="2NE1 Cannes Lions" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2011~2012<small>K-POP</small></p>
           <p class="pf-title">2NE1, PSY, SM Town : Liaison artiste en tournée</p>
           <p class="pf-place">Cannes, Paris</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/kpop_cannes.jpg" alt="2NE1 Cannes Lions" loading="lazy">
+          </div>
           <div class="pf-trio">
             <div class="pf-trio-item">
               <div class="pf-video pf-video-sm" data-yt="6hH62hc9O-k" data-title="2NE1 Cannes">
@@ -1480,13 +1635,13 @@
         <p class="pf-skills-foot">Langues &nbsp;KO, EN, FR, JA, AR</p>
       </div>
       <div class="pf-card">
-        <div class="pf-thumb">
-          <img src="img/통번역, 로컬화/criminal_ip.jpg" alt="Criminal IP" loading="lazy">
-        </div>
         <div class="pf-card-body">
           <p class="pf-year">2023~2024<small>Cybersécurité</small></p>
           <p class="pf-title">AI Spera, Criminal IP Responsable localisation globale</p>
           <p class="pf-place">KO / EN / FR / JA / AR, 5 langues</p>
+          <div class="pf-thumb">
+            <img src="img/통번역, 로컬화/criminal_ip.jpg" alt="Criminal IP" loading="lazy">
+          </div>
           <ul class="pf-list">
             <li>Interface bi-hebdomadaire → localisation 5 langues → QA final, Glossaire, Outil CAT</li>
             <li>Collaboration Lionbridge, 6 README GitHub, 11 cas d'intégration API, 9 articles Bleeping Computer</li>
@@ -1577,6 +1732,17 @@
 <footer class="site-footer" id="site-footer"></footer>
 </div><!-- /page-body -->
 
+<!-- 증명 자료 크게 보기 -->
+<div class="lb-bg" id="lb-bg" role="dialog" aria-modal="true" aria-label="증명 자료 크게 보기">
+  <div class="lb-box">
+    <button class="lb-close" type="button" onclick="lbClose()" aria-label="닫기">&#10005;</button>
+    <img class="lb-img" id="lb-img" src="" alt="">
+    <p class="lb-cap" id="lb-cap"></p>
+    <button class="lb-arrow lb-prev" type="button" onclick="lbMove(-1)" aria-label="이전 자료">&#8249;</button>
+    <button class="lb-arrow lb-next" type="button" onclick="lbMove(1)" aria-label="다음 자료">&#8250;</button>
+  </div>
+</div>
+
 <div class="kakao-float" id="kakao-float"></div>
 <script src="js/components.js"></script>
 <script src="js/main.js"></script>
@@ -1663,6 +1829,70 @@ if (PF_LOCAL_FILE) {
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && document.getElementById('inquiry-bg').classList.contains('open')) closeInquiry();
+  });
+})();
+
+/* ══ 증명 자료 크게 보기 ═══════════════════════════════════════════
+   같은 줄에 있는 자료들끼리 좌우로 넘깁니다. */
+(function () {
+  var _list = [];
+  var _i = -1;
+
+  function capOf(img) {
+    var fig = img.closest('figure');
+    var cap = fig ? fig.querySelector('figcaption') : null;
+    return cap ? cap.textContent.trim() : (img.getAttribute('alt') || '');
+  }
+
+  function show(i) {
+    var img = _list[i];
+    if (!img) return;
+    _i = i;
+    document.getElementById('lb-img').src = img.currentSrc || img.src;
+    document.getElementById('lb-img').alt = img.getAttribute('alt') || '';
+    document.getElementById('lb-cap').textContent = capOf(img);
+    document.querySelector('.lb-prev').disabled = (i === 0);
+    document.querySelector('.lb-next').disabled = (i === _list.length - 1);
+    document.querySelector('.lb-prev').style.display = _list.length > 1 ? '' : 'none';
+    document.querySelector('.lb-next').style.display = _list.length > 1 ? '' : 'none';
+    document.getElementById('lb-bg').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  window.lbMove = function (step) {
+    var n = _i + step;
+    if (n < 0 || n >= _list.length) return;
+    show(n);
+  };
+  window.lbClose = function () {
+    document.getElementById('lb-bg').classList.remove('open');
+    document.getElementById('lb-img').src = '';
+    document.body.style.overflow = '';
+    _i = -1;
+  };
+
+  document.addEventListener('click', function (e) {
+    var img = e.target.closest ? e.target.closest('.pf-zoom') : null;
+    if (!img) return;
+    var group = img.closest('.pf-quad') || img.closest('.pf-card') || document;
+    _list = [].slice.call(group.querySelectorAll('.pf-zoom'));
+    show(_list.indexOf(img));
+  });
+
+  document.addEventListener('keydown', function (e) {
+    var img = document.activeElement;
+    if (e.key === 'Enter' && img && img.classList && img.classList.contains('pf-zoom')) {
+      img.click();
+      return;
+    }
+    if (!document.getElementById('lb-bg').classList.contains('open')) return;
+    if (e.key === 'Escape')     lbClose();
+    if (e.key === 'ArrowLeft')  lbMove(-1);
+    if (e.key === 'ArrowRight') lbMove(1);
+  });
+
+  document.getElementById('lb-bg').addEventListener('click', function (e) {
+    if (e.target === this || e.target.classList.contains('lb-box')) lbClose();
   });
 })();
 </script>
