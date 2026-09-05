@@ -100,6 +100,71 @@
       padding: 0 4px;
       line-height: 36px;
     }
+
+    /* ══ 글 팝업 ═══════════════════════════════════════════
+       스레드로 나가지 않고 이 자리에서 읽습니다.
+       다른 페이지 팝업(수업 학습지, 릴스)과 같은 방식입니다.
+       z-index 를 가장 높게 두어 상단 메뉴와 카테고리 줄을 덮습니다. */
+    .th-bg {
+      display: none; position: fixed; inset: 0; z-index: 12000;
+      background: rgba(46,14,12,.72);
+      align-items: center; justify-content: center;
+      padding: 62px 78px;            /* 닫기 단추와 화살표가 놓일 자리 */
+    }
+    .th-bg.open { display: flex; }
+
+    .th-box {
+      position: relative;
+      width: 100%; max-width: 560px;
+      height: min(660px, 100%);
+    }
+    /* 스레드 글을 그대로 보여줍니다 */
+    .th-frame {
+      width: 100%; height: 100%; border: 0; display: block;
+      border-radius: 14px; background: var(--white);
+      box-shadow: 0 24px 70px rgba(46,14,12,.3);
+    }
+
+    .th-close {
+      position: absolute; top: -46px; right: 0; z-index: 3;
+      width: 38px; height: 38px; border-radius: 50%; border: 0;
+      background: rgba(255,255,255,.92); color: var(--dark);
+      font-size: 16px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .th-close:hover { background: var(--brick); color: #fff; }
+
+    /* 좌우 이동. 웹은 글 양옆, 모바일은 글 아래쪽 */
+    .th-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 44px; height: 44px; border-radius: 50%; border: 0;
+      background: rgba(255,255,255,.92); color: var(--dark);
+      font-size: 20px; line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 12px rgba(46,14,12,.18);
+    }
+    .th-arrow:hover { background: var(--brick); color: #fff; }
+    .th-arrow[disabled] { opacity: .35; cursor: default; }
+    .th-prev { left: -58px; }
+    .th-next { right: -58px; }
+
+    .th-count {
+      position: absolute; left: 50%; transform: translateX(-50%); bottom: -40px;
+      font-size: 0.78rem; color: #fff; font-weight: 600;
+      background: rgba(46,14,12,.55); border-radius: 100px; padding: 6px 14px;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 760px) {
+      .th-bg { padding: 58px 14px 78px; }
+      .th-box { height: 100%; }
+      .th-close { top: -44px; right: 0; }
+      .th-arrow { top: auto; bottom: -60px; transform: none; }
+      .th-prev { left: 0; }
+      .th-next { right: 0; }
+      .th-count { bottom: -48px; }
+    }
+
   </style>
 </head>
 <body>
@@ -142,6 +207,18 @@
 <footer class="site-footer" id="site-footer"></footer>
 </div>
 
+<!-- 글 팝업 -->
+<div class="th-bg" id="th-bg" role="dialog" aria-modal="true" aria-label="스레드 글">
+  <div class="th-box">
+    <button class="th-close" type="button" onclick="thClose()" aria-label="닫기">&#10005;</button>
+    <iframe class="th-frame" id="th-frame" src="" title="스레드 글" loading="lazy"
+            allowtransparency="true" allow="clipboard-write"></iframe>
+    <button class="th-arrow th-prev" type="button" onclick="thMove(-1)" aria-label="이전 글">&#8249;</button>
+    <button class="th-arrow th-next" type="button" onclick="thMove(1)" aria-label="다음 글">&#8250;</button>
+    <span class="th-count" id="th-count"></span>
+  </div>
+</div>
+
 <div class="kakao-float" id="kakao-float"></div>
 
 <script src="js/components.js"></script>
@@ -152,8 +229,13 @@
   let currentData = [];
   let currentPage = 1;
 
+  /* 스레드 글 주소 뒤에 /embed 를 붙이면 그 글 하나만 그대로 불러옵니다 */
+  function embedSrc(href) {
+    return href.replace(/\/+$/, '') + '/embed';
+  }
+
   /* ── 카드 한 장 HTML ───────────────────────────── */
-  function cardHTML(item) {
+  function cardHTML(item, idx) {
     const levelTag   = item.tags.find(t => LEVEL_TAGS.includes(t));
     const levelLabel = levelTag ? TAG_LABELS[levelTag] : '';
     const topicTag   = item.tags.find(t => !LEVEL_TAGS.includes(t));
@@ -161,7 +243,7 @@
     const dataTags   = item.tags.join(',');
     return `
       <a href="${item.href}" target="_blank" rel="noopener"
-         class="content-card" data-tags="${dataTags}">
+         class="content-card" data-tags="${dataTags}" data-idx="${idx}">
         <div class="card-body">
           <div class="card-chips">
             ${levelLabel ? `<span class="card-chip chip-level">${levelLabel}</span>` : ''}
@@ -182,7 +264,7 @@
     const start      = (page - 1) * PAGE_SIZE;
     const slice      = currentData.slice(start, start + PAGE_SIZE);
 
-    document.getElementById('cards-list').innerHTML = slice.map(cardHTML).join('');
+    document.getElementById('cards-list').innerHTML = slice.map((it, i) => cardHTML(it, start + i)).join('');
     document.getElementById('cards-count').textContent = `총 ${total}개의 컨텐츠`;
 
     renderPagination(page, totalPages);
@@ -244,6 +326,64 @@
       });
     });
   }
+
+  /* ══ 글 팝업 ═══════════════════════════════════════
+     스레드로 나가지 않고 이 자리에서 읽고, 좌우로 넘깁니다.
+     넘기는 범위는 지금 선택한 태그로 걸러진 목록 전체입니다.
+     (화면에 보이는 6개가 아니라 그 태그의 전체 글) */
+  let _thIdx = -1;
+
+  function thOpen(idx) {
+    const item = currentData[idx];
+    if (!item) return;
+    _thIdx = idx;
+    const bg = document.getElementById('th-bg');
+    document.getElementById('th-frame').src = embedSrc(item.href);
+    document.getElementById('th-count').textContent = (idx + 1) + ' / ' + currentData.length;
+    document.querySelector('.th-prev').disabled = idx === 0;
+    document.querySelector('.th-next').disabled = idx === currentData.length - 1;
+    bg.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function thMove(step) {
+    const next = _thIdx + step;
+    if (next < 0 || next >= currentData.length) return;
+    thOpen(next);
+  }
+
+  function thClose() {
+    document.getElementById('th-bg').classList.remove('open');
+    document.getElementById('th-frame').src = '';   /* 닫으면 불러오기도 멈춥니다 */
+    document.body.style.overflow = '';
+    _thIdx = -1;
+  }
+  window.thMove = thMove;
+  window.thClose = thClose;
+
+  /* 카드를 누르면 스레드로 나가지 않고 팝업으로 엽니다.
+     새 탭으로 열기(가운데 클릭, Ctrl 클릭)는 그대로 둡니다. */
+  document.getElementById('cards-list').addEventListener('click', function (e) {
+    const a = e.target.closest('.content-card');
+    if (!a) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
+    e.preventDefault();
+    thOpen(parseInt(a.dataset.idx, 10));
+  });
+
+  document.getElementById('th-bg').addEventListener('click', function (e) {
+    if (e.target === this) thClose();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (!document.getElementById('th-bg').classList.contains('open')) return;
+    if (e.key === 'Escape')     thClose();
+    if (e.key === 'ArrowLeft')  thMove(-1);
+    if (e.key === 'ArrowRight') thMove(1);
+  });
+  /* 태그를 바꾸면 목록이 달라지므로 팝업은 닫습니다 */
+  document.getElementById('tag-filter').addEventListener('click', function () {
+    if (_thIdx >= 0) thClose();
+  });
 
   /* ── 초기화 ────────────────────────────────────── */
   initComponents();
