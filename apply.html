@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- ══ 내 방문 집계 제외 ══
+       이 기기에서 한 번만 https://www.dourikim.com/?noga=1 을 열면
+       그 브라우저에는 표시가 저장되고, 이후 이 사이트의 모든 페이지에서
+       구글 애널리틱스가 아예 켜지지 않습니다.
+       휴대폰을 LTE로 써도, 공유기 IP가 바뀌어도 그대로 유지됩니다.
+       해제할 때는 주소 뒤에 ?noga=0 을 붙여서 여세요.
+       이 블록은 반드시 아래 gtag 스크립트보다 먼저 있어야 합니다. -->
+<script>
+(function () {
+  var KEY = 'noga', ID = 'G-K5BW3YMBH6';
+  var on = false;
+  try {
+    var q = new URLSearchParams(location.search).get('noga');
+    if (q === '1') localStorage.setItem(KEY, '1');
+    else if (q === '0') localStorage.removeItem(KEY);
+    on = localStorage.getItem(KEY) === '1';
+  } catch (e) { return; }
+  if (!on) return;
+  window['ga-disable-' + ID] = true;
+  /* 켜져 있다는 것을 눈으로 확인할 수 있게 왼쪽 아래에 작은 표시를 답니다.
+     오른쪽 아래는 카카오 버튼 자리라 피합니다. 누르면 그 탭에서만 사라집니다. */
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = '집계 제외 중';
+    b.title = '이 기기는 방문자 수에 포함되지 않습니다. 해제하려면 주소 뒤에 ?noga=0 을 붙여 여세요.';
+    /* 수정 모드 버튼(#em-wrap)도 왼쪽 아래에 뜨는데, 그건 로컬에서만 로드됩니다.
+       로컬일 때만 그 위로 올려서 겹치지 않게 합니다. */
+    var local = location.protocol === 'file:'
+      || /^(localhost|127\.|\[::1\])/.test(location.hostname);
+    var bottom = local ? '72px' : '14px';
+    b.style.cssText = 'position:fixed;left:20px;bottom:' + bottom + ';z-index:99999;'
+      + 'border:0;border-radius:999px;padding:7px 12px;cursor:pointer;'
+      + 'background:rgba(46,14,12,.82);color:#fff;font:600 11px/1 sans-serif;'
+      + 'font-family:Pretendard,sans-serif;letter-spacing:.02em;';
+    b.onclick = function () { b.remove(); };
+    document.body.appendChild(b);
+  });
+})();
+</script>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K5BW3YMBH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-K5BW3YMBH6");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>문의하기 | 김두우리</title>
+  <meta name="description" content="1:1 프랑스어 수업, 통번역과 로컬화, 인강 문의를 한 곳에서. 가능한 시간대를 보면서 바로 신청하세요."/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ══════════════════════════════════════════════════════
+       문의 페이지 공통 레이아웃
+       모든 문의는 이 한 페이지를 씁니다. 주소 뒤 ?f= 값으로 구분합니다.
+         apply.html            → 1:1 수업 (기본, 시간표 함께 표시)
+         apply.html?f=portfolio → 통번역, 로컬화
+         apply.html?f=course  → 인강
+       폼과 시간표 모두 원본을 그대로 불러오므로,
+       구글폼 문항이나 TidyCal 빈 시간을 바꾸면 이 페이지에 바로 반영됩니다.
+       ══════════════════════════════════════════════════════ */
+
+    .ap-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
+    @media (min-width: 900px) {
+      .ap-grid.has-cal { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); align-items: start; }
+    }
+
+    .ap-panel {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .ap-panel-head {
+      display: flex; align-items: baseline; gap: 9px; flex-wrap: wrap;
+      padding: 15px 18px; border-bottom: 1px solid var(--border); background: var(--surface);
+    }
+    .ap-step {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 21px; height: 21px; border-radius: 50%;
+      background: var(--brick); color: #fff; font-size: 0.68rem; font-weight: 800;
+      flex-shrink: 0; align-self: center;
+    }
+    .ap-panel-t { font-family: var(--font-heading); font-size: 0.98rem; font-weight: 700; color: var(--dark); }
+    .ap-panel-d { font-size: 0.76rem; color: var(--muted); line-height: 1.6; flex: 1 1 100%; margin-top: 2px; }
+
+    .ap-frame { display: block; width: 100%; border: 0; background: var(--white); }
+    .ap-cal-body { padding: 6px 10px 10px; min-height: 620px; }
+    .tidycal-embed { min-height: 600px; }
+
+    /* 불러오기 실패 대비 — 원본 링크는 항상 남깁니다 */
+    .ap-fallback {
+      padding: 16px 18px; font-size: 0.82rem; color: var(--muted); line-height: 1.8;
+      border-top: 1px solid var(--border); background: var(--surface);
+    }
+    .ap-fallback a { color: var(--brick); font-weight: 700; }
+
+    /* 진행 안내 */
+    .ap-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+    @media (max-width: 760px) { .ap-flow { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 380px) { .ap-flow { grid-template-columns: 1fr; } }
+    .ap-flow-c { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 13px 14px; }
+    .ap-flow-c .n {
+      display: flex; align-items: center; justify-content: center;
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--brick); color: #fff; font-size: 0.66rem; font-weight: 800; margin-bottom: 8px;
+    }
+    .ap-flow-c .t { font-size: 0.8rem; font-weight: 700; color: var(--dark); line-height: 1.45; margin-bottom: 4px; }
+    .ap-flow-c .d { font-size: 0.73rem; color: var(--muted); line-height: 1.6; }
+    .ap-note {
+      margin-top: 14px; padding: 13px 16px; background: #fff9f8;
+      border-left: 3px solid var(--brick); border-radius: 0 8px 8px 0;
+      font-size: 0.82rem; color: var(--dark); line-height: 1.8;
+    }
+    .ap-note b { color: var(--brick); font-weight: 700; }
+
+    /* 다른 문의로 이동 */
+    .ap-others { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .ap-others a {
+      font-size: 0.79rem; font-weight: 600; text-decoration: none;
+      color: var(--muted); background: var(--surface);
+      border: 1px solid var(--border); padding: 9px 15px; border-radius: 100px;
+      transition: color .15s, border-color .15s, background .15s;
+    }
+    .ap-others a:hover { color: var(--brick); border-color: rgba(194,74,53,.4); background: #fff9f8; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu" id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <div class="page-hero ph-dark">
+    <p class="page-hero-chip" id="ap-chip">📅 1:1 프랑스어 수업</p>
+    <h1 class="page-hero-title" id="ap-title">문의하기</h1>
+    <p class="page-hero-desc" id="ap-desc"></p>
+  </div>
+
+  <!-- 폼 + 시간표 -->
+  <div class="section-block">
+    <div class="ap-grid" id="ap-grid">
+
+      <div class="ap-panel">
+        <div class="ap-panel-head">
+          <span class="ap-step">1</span>
+          <span class="ap-panel-t" id="ap-form-t">문의서 작성</span>
+          <span class="ap-panel-d" id="ap-form-d">학습 이력과 목표를 알려주세요. 이 내용을 읽고 준비합니다.</span>
+        </div>
+        <iframe id="ap-form" class="ap-frame" src="" height="1100"
+                title="문의서" loading="lazy">불러오는 중…</iframe>
+        <p class="ap-fallback">화면에 폼이 안 보이시나요?
+          <a id="ap-form-link" href="#" target="_blank" rel="noopener">새 창에서 문의서 열기 →</a>
+        </p>
+      </div>
+
+      <div class="ap-panel" id="ap-cal" hidden>
+        <div class="ap-panel-head">
+          <span class="ap-step">2</span>
+          <span class="ap-panel-t">가능한 시간대 보기</span>
+          <span class="ap-panel-d">지금 열려 있는 시간입니다. 원하시는 시간을 문의서에 함께 적어주세요.</span>
+        </div>
+        <div class="ap-cal-body">
+          <div class="tidycal-embed" data-path="dourikim/dispo"></div>
+        </div>
+        <p class="ap-fallback">시간표가 안 보이시나요?
+          <a href="https://tidycal.com/dourikim/dispo" target="_blank" rel="noopener">새 창에서 시간표 열기 →</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 진행 안내 -->
+  <div class="section-block">
+    <h2 class="block-title">보내주시면 이렇게 진행됩니다</h2>
+    <div class="ap-flow">
+      <div class="ap-flow-c">
+        <div class="n">1</div>
+        <p class="t">문의서 작성</p>
+        <p class="d">학습 이력과 목표를 먼저 받습니다. 이걸 읽고 준비합니다</p>
+      </div>
+      <div class="ap-flow-c">
+        <div class="n">2</div>
+        <p class="t">48시간 이내 회신</p>
+        <p class="d">가능한 시간대와 원하시는 방향을 맞춰봅니다</p>
+      </div>
+      <div class="ap-flow-c">
+        <div class="n">3</div>
+        <p class="t">학습 진단 세션 60분</p>
+        <p class="d">실제 수업 밀도로 진행합니다. 형식적인 상담이 아닙니다</p>
+      </div>
+      <div class="ap-flow-c">
+        <div class="n">4</div>
+        <p class="t">최종 견적서</p>
+        <p class="d">회차와 강도를 반영한 견적을 드립니다</p>
+      </div>
+    </div>
+    <p class="ap-note" id="ap-note">
+      바로 시작하지 않습니다. 문의부터 첫 정기 수업까지 보통 <b>1~2주</b> 걸리니 여유 있게 남겨주세요.
+      견적서를 받으신 뒤 <b>72시간 안에</b> 알려주시면, 그동안 그 시간대는 다른 분께 열지 않고 잡아둡니다.
+    </p>
+  </div>
+
+  <!-- 다른 문의 -->
+  <div class="section-block">
+    <h2 class="block-title">다른 문의</h2>
+    <div class="ap-others" id="ap-others"></div>
+  </div>
+
+</div><!-- /content-wrap -->
+<footer class="site-footer" id="site-footer"></footer>
+</div><!-- /page-body -->
+
+<div id="kakao-float"></div>
+
+<script src="js/components.js"></script>
+<script src="js/main.js"></script>
+<script>initComponents({ current: 'lesson' });</script>
+
+<!-- TidyCal 임베드 (빈 시간이 바뀌면 자동 반영됩니다) -->
+<script src="https://tidycal.com/js/embed.js" async></script>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   문의 종류는 여기 한 곳만 고치면 됩니다.
+   form  : 구글폼 주소. 끝에 ?embedded=true 를 붙여야 화면에 잘 들어갑니다
+   cal   : true 면 TidyCal 시간표를 함께 보여줍니다
+   ══════════════════════════════════════════════════════════════ */
+var APPLY_FORMS = {
+  lesson: {
+    chip:  '📅 1:1 프랑스어 수업',
+    title: '1:1 수업 신청하기',
+    desc:  '가능한 시간대를 보면서 바로 신청하실 수 있어요.',
+    formT: '문의서 작성',
+    formD: '학습 이력과 목표를 알려주세요. 이 내용을 읽고 준비합니다.',
+    form:  'https://docs.google.com/forms/d/e/1FAIpQLScUzGDy_m8lEHpTKIbJEwN2l82OEB6JCyVBwXl5xCWEMEulcw/viewform?embedded=true',
+    cal:   true,
+    height: 1100
+  },
+  portfolio: {
+    chip:  '📑 통번역, 로컬화',
+    title: '통번역, 로컬화 문의',
+    desc:  '프로젝트 성격과 일정을 알려주시면 검토 후 회신드립니다.',
+    formT: '프로젝트 문의서',
+    formD: '분야, 분량, 일정, 예산 범위를 적어주시면 빠르게 답변드릴 수 있습니다.',
+    form:  'https://docs.google.com/forms/d/1nzl9pqzN5dSdSRzJuBssOm3-e_6dsXgNA0J259rik7M/viewform?embedded=true',
+    cal:   false,
+    height: 1000
+  },
+  course: {
+    chip:  '📘 바이블 문법책 재해석 인강',
+    title: '인강 문의',
+    desc:  '수강 방법이나 커리큘럼에 대해 궁금한 점을 남겨주세요.',
+    formT: '인강 문의서',
+    formD: '어떤 점이 궁금하신지 적어주시면 확인 후 회신드립니다.',
+    form:  'https://docs.google.com/forms/d/e/1FAIpQLScqV02uLKFl1CU54QRMTMK2wzuF1BeckVrBG3T8uKjF5Q286g/viewform?embedded=true',
+    cal:   false,
+    height: 1000
+  }
+};
+
+(function () {
+  var key = (new URLSearchParams(location.search).get('f') || 'lesson');
+  var cfg = APPLY_FORMS[key] || APPLY_FORMS.lesson;
+
+  document.getElementById('ap-chip').textContent  = cfg.chip;
+  document.getElementById('ap-title').textContent = cfg.title;
+  document.getElementById('ap-desc').textContent  = cfg.desc;
+  document.getElementById('ap-form-t').textContent = cfg.formT;
+  document.getElementById('ap-form-d').textContent = cfg.formD;
+  document.title = cfg.title + ' | 김두우리';
+
+  var frame = document.getElementById('ap-form');
+  frame.src = cfg.form;
+  frame.height = cfg.height;
+  document.getElementById('ap-form-link').href = cfg.form.replace('?embedded=true', '');
+
+  if (cfg.cal) {
+    document.getElementById('ap-cal').hidden = false;
+    document.getElementById('ap-grid').classList.add('has-cal');
+  } else {
+    /* 시간표가 없는 문의는 안내 문구도 수업 기준 표현을 뺍니다 */
+    document.getElementById('ap-note').innerHTML =
+      '보내주시면 <b>48시간 이내</b>에 회신드립니다. 내용에 따라 확인이 더 필요한 경우 먼저 연락드릴게요.';
+    document.querySelector('.ap-panel-head .ap-step').textContent = '·';
+  }
+
+  /* 다른 문의로 가는 링크 */
+  var others = Object.keys(APPLY_FORMS).filter(function (k) { return k !== key; });
+  document.getElementById('ap-others').innerHTML = others.map(function (k) {
+    return '<a href="apply.html?f=' + k + '">' + APPLY_FORMS[k].title + ' →</a>';
+  }).join('') + '<a href="mailto:douri.kim@gmail.com">메일로 문의하기 →</a>';
+})();
+</script>
+</body>
+</html>
