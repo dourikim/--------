@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- /delf 처럼 슬래시 없는 주소로 열려도 data/*.js 를 제대로 찾도록 (file:// 로 열 때는 적용하지 않음) -->
+<script>if(location.protocol!=='file:'&&location.pathname.indexOf('/delf')===0)document.write('<base href="/delf/">')</script>
 <title>DELF B2 · DALF C1 준비 프로그램</title>
 <meta name="robots" content="noindex, nofollow">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
