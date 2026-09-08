@@ -538,8 +538,8 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
    같은 PC에서 여러 학생이 써도 서로 섞이지 않습니다.
    ?preview=CODE 는 선생님 미리보기 (관리자 코드를 통과한 브라우저에서만, 학생 칸과 완전히 분리) */
 const QS=new URLSearchParams(location.search);
-const TEACHER=(()=>{try{const t=((window.CONFIG||{}).teacherCode||'').trim();
-  return !!t&&localStorage.getItem('delf_teacher')===t}catch(e){return false}})();
+const TOK=()=>{try{return localStorage.getItem('delf_tok')||''}catch(e){return ''}};
+const TEACHER=(()=>{try{return !!localStorage.getItem('delf_admin_tok')}catch(e){return false}})();
 const PREVIEW=TEACHER?(QS.get('preview')||'').trim().toUpperCase():'';
 const BASE='delf_prep_v2';
 function sidNow(){if(PREVIEW)return 'preview::'+PREVIEW;try{return localStorage.getItem('delf_sid')||''}catch(e){return ''}}
@@ -1172,9 +1172,9 @@ function syncPush(now){
   if(!syncOn())return;
   clearTimeout(syncT);
   const run=()=>{
-    const body=JSON.stringify({code:SLOT,data:progressObj()});
+    const body=JSON.stringify({code:SLOT,data:progressObj(),token:TOK()});
     setSync('saving');
-    fetch(SYNC_URL,{method:'POST',headers:{'Content-Type':'application/json'},body})
+    fetch(SYNC_URL,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+TOK()},body})
       .then(r=>r.ok?r.json():Promise.reject(r.status))
       .then(j=>{S.savedAt=j.at||Date.now();try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}setSync('ok')})
       .catch(()=>setSync('err'));
@@ -1183,7 +1183,8 @@ function syncPush(now){
 }
 function syncPull(){
   if(!syncOn())return Promise.resolve(null);
-  return fetch(SYNC_URL+'?code='+encodeURIComponent(SLOT),{cache:'no-store'})
+  return fetch(SYNC_URL+'?code='+encodeURIComponent(SLOT),
+      {cache:'no-store',headers:{'Authorization':'Bearer '+TOK()}})
     .then(r=>r.ok?r.json():null).catch(()=>null);
 }
 /* 서버 기록이 이 기기보다 새로우면 그대로 덮어씁니다 (기기 변경·기록 삭제 후 복구) */
@@ -1203,7 +1204,7 @@ function applyObj(o){
 addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden')syncPush(true)});
 addEventListener('beforeunload',()=>{
   if(!syncOn())return;
-  try{navigator.sendBeacon(SYNC_URL,new Blob([JSON.stringify({code:SLOT,data:progressObj()})],{type:'application/json'}))}catch(e){}
+  try{navigator.sendBeacon(SYNC_URL,new Blob([JSON.stringify({code:SLOT,data:progressObj(),token:TOK()})],{type:'application/json'}))}catch(e){}
 });
 $('#shareBtn').onclick=()=>{const c=progressCode();
   navigator.clipboard?.writeText(c).then(()=>toast('진도 코드를 복사했습니다'),()=>{
@@ -1490,14 +1491,12 @@ function renderAll(){$$('.lvl button').forEach(b=>b.classList.toggle('on',b.data
   renderDash();renderThemes();renderVocabSel();renderVocab();renderSim();renderPlan();renderFreq()}
 /* ============ 접속 → 프로필 → 시작 ============ */
 (function(){
-  const C=window.CONFIG||{};const code=(C.accessCode||'').trim();
+  const C=window.CONFIG||{};const AUTH_URL=(C.authUrl||'/api/auth');
   const g=$('#gate');
-  const STUD=window.STUDENTS||[];
-  const findStudent=v=>STUD.find(s=>(s.code||'').trim().toUpperCase()===v.trim().toUpperCase());
   /* 주소 뒤에 ?reset 을 붙여 열면 이 기기의 기록을 지웁니다 (테스트·기기 양도용) */
   if(QS.has('reset')){
     if(confirm('이 기기에 저장된 기록(이름·진도·공부 시간)을 모두 지울까요?')){
-      try{localStorage.removeItem(KEY);localStorage.removeItem('delf_access');
+      try{localStorage.removeItem(KEY);localStorage.removeItem('delf_access');localStorage.removeItem('delf_tok');
         localStorage.removeItem('delf_sid');localStorage.removeItem('delf_prep_v1')}catch(e){}
       location.replace(location.pathname);return;
     }
@@ -1557,50 +1556,56 @@ function renderAll(){$$('.lvl button').forEach(b=>b.classList.toggle('on',b.data
 
   /* 선생님 미리보기 — 학생이 보는 화면 그대로, 기록은 미리보기 칸에만 남습니다 */
   if(PREVIEW){
-    const s=findStudent(PREVIEW);
-    if(!S.profile.name)Object.assign(S.profile,{name:(s&&s.name)||PREVIEW,city:(s&&s.city)||'서울',
-      tz:(s&&s.tz)||'Asia/Seoul',cert:(s&&s.cert)||'',certDate:(s&&s.certDate)||''});
+    if(!S.profile.name)Object.assign(S.profile,{name:PREVIEW,city:'서울',tz:'Asia/Seoul',cert:'',certDate:''});
     save();
     const bar=document.createElement('div');bar.className='pvbar';
     bar.innerHTML=`<b>미리보기</b><span>${esc(PREVIEW)} 학생이 보는 화면 · 여기서 누른 기록은 학생에게 저장되지 않습니다</span>
-      <a href="admin.html">관리자로 →</a>`;
+      <a href="admin.html">선생님 화면으로 →</a>`;
     document.body.appendChild(bar);
     g.style.display='none';enter();return;
   }
 
-  let passed=!code||!!SLOT;
-  try{ if(localStorage.getItem('delf_access')===code) passed=true }catch(e){}
-  if(passed&&S.profile.name){
+  /* 토큰이 이미 있으면 코드를 다시 묻지 않습니다 (코드는 브라우저에 저장되지 않습니다) */
+  const hasTok=!!TOK();
+  if(hasTok&&S.profile.name){
     g.style.display='none';enter();
     /* 다른 기기에서 더 최근에 공부했으면 그것으로 맞춰준다 */
     syncPull().then(j=>{if(adoptServer(j)){renderAll();setSync('pulled');
       setTimeout(()=>setSync(syncOn()?'ok':'off'),3000)}});
     return}
-  if(passed){g.style.display='flex';askProfile();return}
+  if(hasTok){g.style.display='flex';askProfile();return}
 
   g.style.display='flex';
-  const go=()=>{const v=$('#gateCode').value.trim();
-    const s=findStudent(v);
-    if(s){                                   /* 학생 개인 코드 — 그 학생 칸으로 */
-      useSlot((s.code||'').trim().toUpperCase());
-      $('#gateErr').textContent='';
-      const after=()=>{
-        if(!S.profile.name&&s.name)Object.assign(S.profile,{name:s.name,city:s.city||'',
-          tz:s.tz||'Asia/Seoul',cert:s.cert||'',certDate:s.certDate||''});
-        save();
-        if(S.profile.name)enter();else askProfile();
-      };
-      if(syncOn()){                          /* 서버에 저장된 기록을 먼저 내려받는다 */
-        $('#gateErr').textContent='기록을 불러오는 중…';
-        syncPull().then(j=>{if(j&&j.data){S.savedAt=0;adoptServer(j)}
-          $('#gateErr').textContent='';after()});
-      } else after();
-      return}
-    if(v===code){                            /* 공용 코드 */
-      try{localStorage.setItem('delf_access',code)}catch(e){}
-      $('#gateErr').textContent='';
-      if(S.profile.name)enter();else askProfile();}
-    else{$('#gateErr').textContent='코드가 맞지 않습니다.';$('#gateCode').select()}};
+  const go=()=>{
+    const v=$('#gateCode').value.trim();
+    if(!v){$('#gateErr').textContent='코드를 입력해 주세요.';return}
+    $('#gateErr').textContent='확인 중…';$('#gateGo').disabled=true;
+    fetch(AUTH_URL,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({code:v})})
+      .then(r=>r.json().then(j=>({ok:r.ok,st:r.status,j})))
+      .then(({ok,st,j})=>{
+        $('#gateGo').disabled=false;
+        if(!ok){$('#gateErr').textContent=st===503?'서버 설정이 끝나지 않았습니다.':'코드가 맞지 않습니다.';
+          $('#gateCode').select();return}
+        try{localStorage.setItem('delf_tok',j.token)}catch(e){}
+        $('#gateCode').value='';
+        if(j.role==='student'){
+          useSlot(String(j.sid).toUpperCase());
+          const after=()=>{
+            if(!S.profile.name&&j.profile&&j.profile.name)Object.assign(S.profile,j.profile);
+            save();$('#gateErr').textContent='';
+            if(S.profile.name)enter();else askProfile();
+          };
+          $('#gateErr').textContent='기록을 불러오는 중…';
+          syncPull().then(x=>{if(x&&x.data){S.savedAt=0;adoptServer(x)}after()});
+        } else {                              /* 공용 코드 — 이름을 직접 입력 */
+          $('#gateErr').textContent='';
+          if(S.profile.name)enter();else askProfile();
+        }
+      })
+      .catch(()=>{$('#gateGo').disabled=false;
+        $('#gateErr').textContent='서버에 연결할 수 없습니다. 인터넷 연결을 확인해 주세요.'});
+  };
   $('#gateGo').onclick=go;
   $('#gateCode').onkeydown=e=>{if(e.key==='Enter')go()};
   $('#gateCode').focus();

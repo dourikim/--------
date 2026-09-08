@@ -1,29 +1,14 @@
-/* config.js — 배포 설정
-   accessCode  : 공용 접속 코드 (학생 코드가 없는 사람용)
-   teacherCode : 선생님 전용 코드 (admin.html) — 학생에게는 절대 노출되지 않습니다
-   ⚠ 브라우저에서 보이는 값이므로 진짜 보안이 아닙니다. 검색 노출 차단 + 우연한 접속 차단용입니다.
+/* config.js — 공개 설정
+   ⚠ 접속 코드는 여기에 두지 않습니다. 브라우저에서 그대로 읽히기 때문입니다.
+      학생 코드·선생님 코드·학생 명단은 서버 환경변수(DELF_STUDENTS 등)에만 있고,
+      /api/auth 가 확인한 뒤 토큰만 브라우저에 내려줍니다.
 */
 window.CONFIG = {
-  accessCode: "douri-delf",
-  teacherCode: "DK26",
   siteName: "김두우리 프랑스어",
   contact: "문의: @douri.french",
-  /* 진도 자동 저장 서버. 비워두면 예전처럼 브라우저에만 저장됩니다.
-     학생 코드(SY26)가 곧 서버 키입니다. */
-  syncUrl: "/api/progress"
+  authUrl: "/api/auth",      /* 접속 코드 확인 */
+  syncUrl: "/api/progress"   /* 진도 자동 저장 */
 };
-
-/* 학생별 접속 코드.
-   학생마다 한 줄씩 추가하세요. 학생은 자기 코드만 입력하면 이름·거주지를 다시 쓰지 않고 바로 들어갑니다.
-   - code      : 그 학생만 쓰는 코드 (대소문자 구분 없음)
-   - name      : 비워두면 첫 접속 때 학생이 직접 입력합니다
-   - tz / city : 거주지. 인사말과 «공부 N일차»가 이 시간대로 계산됩니다
-   - cert      : 마지막 취득 자격증 (없으면 빈칸)
-   진도는 이 코드를 키로 서버에 자동 저장됩니다 (syncUrl). 기기를 바꾸거나 브라우저 기록을 지워도
-   같은 코드로 들어오면 그대로 이어집니다. 서버를 끄면(syncUrl 빈칸) 그 브라우저에만 저장됩니다. */
-window.STUDENTS = [
-  {code:"SY26", name:"서윤", city:"제네바", tz:"Europe/Zurich", cert:"", certDate:""}
-];
 
 /* 거주지 → 시간대. 학생의 현지 시각으로 인사말과 «공부 N일차»를 계산합니다. */
 window.CITIES = [

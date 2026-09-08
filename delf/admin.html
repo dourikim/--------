@@ -82,6 +82,8 @@ td{padding:10px 12px;border-bottom:1px solid #F4EFEE;vertical-align:middle}
     <button data-v="students">학생 현황</button>
     <button data-v="content">콘텐츠 현황</button>
   </nav>
+  <a class="btn a sm" id="toStudent" href="index.html?preview=DEMO" target="_blank" rel="noopener"
+     style="margin-left:auto">학생 화면으로 ↗</a>
 </div></header>
 
 <main>
@@ -260,12 +262,14 @@ function ago(ts){if(!ts)return '';const m=(Date.now()-ts)/6e4;
   const h=m/60;return h<24?`${Math.round(h)}시간 전`:`${Math.floor(h/24)}일 전`}
 /* ========== 서버에서 학생 진도 자동 불러오기 ========== */
 const SYNC_URL=((window.CONFIG||{}).syncUrl||'').trim();
+const ATOK=()=>{try{return localStorage.getItem('delf_admin_tok')||''}catch(e){return ''}};
 function pullAll(loud){
   const msg=$('#pullMsg');
-  const list=(window.STUDENTS||[]);
-  if(!SYNC_URL||!list.length){if(msg)msg.textContent='자동 저장 서버가 설정되어 있지 않습니다 (data/config.js 의 syncUrl).';return Promise.resolve()}
+  const list=(window.ROSTER||[]);
+  if(!SYNC_URL||!list.length){if(msg)msg.textContent='학생 명단을 불러오는 중입니다…';return Promise.resolve()}
   if(msg)msg.textContent='불러오는 중…';
-  return Promise.all(list.map(st=>fetch(SYNC_URL+'?code='+encodeURIComponent(st.code),{cache:'no-store'})
+  return Promise.all(list.map(st=>fetch(SYNC_URL+'?code='+encodeURIComponent(st.code),
+      {cache:'no-store',headers:{'Authorization':'Bearer '+ATOK()}})
       .then(r=>r.ok?r.json():null).catch(()=>null).then(j=>({st,j}))))
     .then(rs=>{
       let n=0,none=[];
@@ -282,12 +286,12 @@ function pullAll(loud){
 }
 function renderPreview(){
   const el=$('#pvList');if(!el)return;
-  const list=(window.STUDENTS||[]);
+  const list=(window.ROSTER||[]);
   el.innerHTML=`<div style="display:flex;gap:8px;flex-wrap:wrap">
     ${list.map(s=>{const c=(s.code||'').trim().toUpperCase();
       return `<a class="btn a sm" target="_blank" rel="noopener" href="index.html?preview=${encodeURIComponent(c)}">${esc(c)}${s.name?` · ${esc(s.name)}`:''} 화면 보기 ↗</a>`}).join('')}
     <a class="btn g sm" target="_blank" rel="noopener" href="index.html?preview=DEMO">빈 화면(신규 학생) 보기 ↗</a></div>
-    ${list.length?'':'<p class="sub" style="margin:10px 0 0">data/config.js 의 <b>window.STUDENTS</b> 에 학생 코드를 추가하면 여기에 나타납니다.</p>'}`;
+    ${list.length?'':'<p class="sub" style="margin:10px 0 0">학생 명단은 서버 환경변수 <b>DELF_STUDENTS</b> 에 있습니다.</p>'}`;
 }
 function renderStudents(){
   renderPreview();
@@ -451,17 +455,35 @@ $('#copyTodo').onclick=()=>{
 
 /* ========== 게이트 ========== */
 (function(){
-  const code=((window.CONFIG||{}).teacherCode||'').trim();const g=$('#gate');
-  let ok=!code;try{if(localStorage.getItem('delf_admin_access')===code)ok=true}catch(e){}
-  /* 학생 화면 미리보기 권한 — 이 브라우저에서만 유효합니다 */
-  const mark=()=>{try{localStorage.setItem('delf_teacher',code)}catch(e){}};
-  const start=()=>{mark();g.style.display='none';renderHome();renderPreview();
-    pullAll(false).then(()=>{const b=$('#pullBtn');if(b)b.onclick=()=>pullAll(true)});
-    setInterval(()=>pullAll(false),120000)};
-  if(ok){start();return}
+  const AUTH_URL=((window.CONFIG||{}).authUrl||'/api/auth');const g=$('#gate');
+  const start=()=>{
+    g.style.display='none';renderHome();
+    /* 학생 명단은 서버에서 받아옵니다 (브라우저에 코드가 저장되지 않습니다) */
+    fetch(AUTH_URL+'?roster=1',{cache:'no-store',headers:{'Authorization':'Bearer '+ATOK()}})
+      .then(r=>r.ok?r.json():{students:[]}).catch(()=>({students:[]}))
+      .then(j=>{window.ROSTER=j.students||[];renderPreview();
+        pullAll(false).then(()=>{const b=$('#pullBtn');if(b)b.onclick=()=>pullAll(true)});
+        setInterval(()=>pullAll(false),120000)});
+  };
+  let has=false;try{has=!!localStorage.getItem('delf_admin_tok')}catch(e){}
+  if(has){start();return}
   g.style.display='flex';
-  const go=()=>{if($('#gc').value.trim()===code){try{localStorage.setItem('delf_admin_access',code)}catch(e){}start()}
-    else{$('#ge').textContent='코드가 맞지 않습니다.';$('#gc').select()}};
+  const go=()=>{
+    const v=$('#gc').value.trim();
+    if(!v){$('#ge').textContent='코드를 입력해 주세요.';return}
+    $('#ge').textContent='확인 중…';$('#gb').disabled=true;
+    fetch(AUTH_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:v})})
+      .then(r=>r.json().then(j=>({ok:r.ok,st:r.status,j})))
+      .then(({ok,st,j})=>{
+        $('#gb').disabled=false;
+        if(!ok||j.role!=='teacher'){
+          $('#ge').textContent=st===503?'서버 설정이 끝나지 않았습니다.':'관리자 코드가 아닙니다.';
+          $('#gc').select();return}
+        try{localStorage.setItem('delf_admin_tok',j.token);localStorage.setItem('delf_teacher','1')}catch(e){}
+        $('#gc').value='';$('#ge').textContent='';start();
+      })
+      .catch(()=>{$('#gb').disabled=false;$('#ge').textContent='서버에 연결할 수 없습니다.'});
+  };
   $('#gb').onclick=go;$('#gc').onkeydown=e=>{if(e.key==='Enter')go()};$('#gc').focus();
 })();
 </script>

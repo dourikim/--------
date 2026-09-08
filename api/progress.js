@@ -1,15 +1,17 @@
 /* /api/progress — 학생 진도 자동 저장 (dourikim.com/api/progress)
  *
- *   GET  /api/progress?code=SY26   → {at, data}   저장된 진도 (없으면 404)
- *   POST /api/progress  {code, data} → {ok, at}   진도 저장
+ *   GET  /api/progress?code=SY26   → {at, data}   (헤더 Authorization: Bearer <token> 필요)
+ *   POST /api/progress  {code, data, token}       → {ok, at}
  *
- * 저장소: Upstash Redis (Vercel → Storage 에서 연결하면 환경변수가 자동으로 들어옵니다)
- *   KV_REST_API_URL / KV_REST_API_TOKEN  또는  UPSTASH_REDIS_REST_URL / UPSTASH_REDIS_REST_TOKEN
- * 허용 코드: 환경변수 DELF_CODES ("SY26,MJ26" 처럼 쉼표로) — 없으면 아래 기본값
+ * 접근 제어: /api/auth 가 발급한 토큰만 받습니다.
+ *   · 학생 토큰 → 자기 코드의 기록만 읽고 쓸 수 있습니다.
+ *   · 선생님 토큰 → 모든 학생의 기록을 읽을 수 있습니다 (쓰기는 불가).
+ * 코드 목록은 DELF_STUDENTS 환경변수에만 있고 브라우저에는 없습니다.
  *
- * 환경변수가 없으면 503을 돌려주고, 학습 페이지는 예전처럼 브라우저 저장으로만 동작합니다.
+ * 저장소: Upstash Redis — Vercel → Storage 에서 연결하면 환경변수가 자동으로 들어옵니다.
  */
-/* 통합(마켓플레이스)마다 변수 이름이 조금씩 다르므로 널리 쓰이는 이름을 모두 받아들입니다 */
+const AUTH = require('./auth.js');
+
 function pick(re, ...names) {
   const e = process.env;
   for (const n of names) if (e[n]) return e[n];
@@ -18,22 +20,31 @@ function pick(re, ...names) {
 }
 const URL_  = pick(/REST_(API_)?URL$/,   'KV_REST_API_URL',   'UPSTASH_REDIS_REST_URL');
 const TOKEN = pick(/REST_(API_)?TOKEN$/, 'KV_REST_API_TOKEN', 'UPSTASH_REDIS_REST_TOKEN');
-const CODES = (process.env.DELF_CODES || 'SY26').split(',').map(s => s.trim().toUpperCase()).filter(Boolean);
 const MAX = 900000; /* 약 900KB */
 
-const ok = c => CODES.includes(String(c || '').trim().toUpperCase());
-const key = c => 'delf:' + String(c).trim().toUpperCase();
+const known = c => AUTH.students().some(s => String(s.code || '').toUpperCase() === String(c || '').trim().toUpperCase());
+const key   = c => 'delf:' + String(c).trim().toUpperCase();
+
+function bearer(req, body) {
+  const h = req.headers && (req.headers.authorization || req.headers.Authorization);
+  if (h && /^Bearer /i.test(h)) return AUTH.verify(h.slice(7).trim());
+  if (body && body.token) return AUTH.verify(String(body.token));
+  return null;
+}
 
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
-  /* 설정 점검용 — 값은 노출하지 않고 «있다/없다»만 알려줍니다 */
-  if (req.query && req.query.diag) return res.status(200).json({ store: !!(URL_ && TOKEN), codes: CODES });
+  if (req.query && req.query.diag) return res.status(200).json({ store: !!(URL_ && TOKEN) });
   if (!URL_ || !TOKEN) return res.status(503).json({ error: 'store not configured' });
 
   try {
     if (req.method === 'GET') {
-      const code = (req.query && req.query.code) || '';
-      if (!ok(code)) return res.status(404).json({ error: 'unknown code' });
+      const code = String((req.query && req.query.code) || '').trim().toUpperCase();
+      const t = bearer(req, null);
+      if (!t) return res.status(401).json({ error: 'no token' });
+      if (t.r === 's' && t.sid !== code) return res.status(403).json({ error: 'forbidden' });
+      if (t.r !== 's' && t.r !== 't') return res.status(403).json({ error: 'forbidden' });
+      if (!known(code)) return res.status(404).json({ error: 'unknown code' });
       const r = await fetch(`${URL_}/get/${encodeURIComponent(key(code))}`,
         { headers: { Authorization: `Bearer ${TOKEN}` } });
       const j = await r.json();
@@ -44,17 +55,22 @@ module.exports = async (req, res) => {
     if (req.method === 'POST') {
       let body = req.body;
       if (typeof body === 'string') { try { body = JSON.parse(body) } catch (e) { body = null } }
-      if (!body) {                                   /* sendBeacon 등 파싱 전 원문 */
+      if (!body) {
         body = await new Promise(resolve => {
           let d = ''; req.on('data', c => d += c);
           req.on('end', () => { try { resolve(JSON.parse(d)) } catch (e) { resolve(null) } });
         });
       }
-      if (!body || !ok(body.code)) return res.status(404).json({ error: 'unknown code' });
+      if (!body) return res.status(400).json({ error: 'no body' });
+      const code = String(body.code || '').trim().toUpperCase();
+      const t = bearer(req, body);
+      if (!t) return res.status(401).json({ error: 'no token' });
+      if (t.r !== 's' || t.sid !== code) return res.status(403).json({ error: 'forbidden' });
+      if (!known(code)) return res.status(404).json({ error: 'unknown code' });
       const at = Date.now();
       const payload = JSON.stringify({ at, data: body.data || {} });
       if (payload.length > MAX) return res.status(413).json({ error: 'too large' });
-      const r = await fetch(`${URL_}/set/${encodeURIComponent(key(body.code))}`,
+      const r = await fetch(`${URL_}/set/${encodeURIComponent(key(code))}`,
         { method: 'POST', headers: { Authorization: `Bearer ${TOKEN}` }, body: payload });
       if (!r.ok) return res.status(502).json({ error: 'store write failed' });
       return res.status(200).json({ ok: true, at });

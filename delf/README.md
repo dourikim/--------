@@ -72,12 +72,16 @@ admin.html 탭: **대시보드**(선생님 홈 — 오늘 공부한 학생, 합�
 진도 전달: 학생 대시보드 하단 «진도 코드 복사» → 카톡 등으로 전송 → admin.html «학생 현황»에 붙여넣기.
 (서버가 없어서 학생 데이터가 학생 브라우저에만 있기 때문입니다. 자동 동기화는 로그인·서버 도입 시점에.)
 
-### 접속 코드 — 공용 코드 / 학생 개인 코드
-- `data/config.js` 의 `accessCode` = 공용 코드. `window.STUDENTS` 에 학생마다 한 줄을 추가하면
-  그 학생만의 코드가 생깁니다. 예) `{code:"SY26", name:"수영", city:"서울", tz:"Asia/Seoul"}`
-- 학생 코드로 들어오면 이름·거주지를 다시 묻지 않고 바로 대시보드로 들어갑니다.
-  같은 PC에서 학생이 여러 명이어도 저장 칸(`delf_prep_v2::SY26`)이 코드별로 나뉩니다.
-- 코드는 **누구의 화면인가를 가르는 이름표**이지 계정이 아닙니다. 진도는 여전히 그 브라우저 안에 있습니다.
+### 접속 코드 — 서버에만 있습니다
+- 코드는 **`data/config.js` 에 없습니다.** 브라우저에서 그대로 읽히기 때문입니다.
+  Vercel 환경변수에만 있습니다: `DELF_SECRET` · `DELF_TEACHER_CODE` · `DELF_STUDENTS`(학생 명단 JSON) · `DELF_ACCESS_CODE`(선택).
+- 학생이 코드를 넣으면 `/api/auth` 가 확인하고 **서명된 토큰**만 브라우저로 내려옵니다.
+  브라우저에는 코드가 저장되지 않습니다(토큰과 학생 id만).
+- 진도 API(`/api/progress`)는 토큰이 있어야 동작합니다.
+  학생 토큰은 **자기 기록만** 읽고 쓸 수 있고, 선생님 토큰은 **모든 학생을 읽기만** 할 수 있습니다.
+- 학생 추가: Vercel → Settings → Environment Variables → `DELF_STUDENTS` 수정 후 Redeploy.
+  `[{"code":"SY26","name":"서윤","city":"제네바","tz":"Europe/Zurich","cert":"","certDate":""}]`
+- 점검: `dourikim.com/api/auth?diag=1` → `{"configured":true,...}` (코드는 노출되지 않습니다)
 
 ### 학생 화면 미리보기 (선생님)
 admin.html → «학생 현황» → **학생 화면으로 보기**. `index.html?preview=SY26` 이 새 탭에서 열리고,
