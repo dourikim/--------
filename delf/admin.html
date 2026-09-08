@@ -168,6 +168,41 @@ td{padding:10px 12px;border-bottom:1px solid #F4EFEE;vertical-align:middle}
 <script src="data/medias-sub-c1.js"></script>
 <script src="data/medias-sub-fill.js"></script>
 <script src="data/medias-sujets.js"></script>
+<script src="data/etudes-vocab.js"></script>
+<script src="data/etudes-dossiers-a.js"></script>
+<script src="data/etudes-dossiers-b.js"></script>
+<script src="data/etudes-dossiers-c.js"></script>
+<script src="data/etudes-sub-1.js"></script>
+<script src="data/etudes-sub-2.js"></script>
+<script src="data/etudes-sub-3.js"></script>
+<script src="data/etudes-sub-4.js"></script>
+<script src="data/etudes-sub-fill.js"></script>
+<script src="data/etudes-sub-5.js"></script>
+<script src="data/etudes-sub-6.js"></script>
+<script src="data/etudes-sub-7.js"></script>
+<script src="data/travail-dossiers-b2a.js"></script>
+<script src="data/travail-dossiers-b2b.js"></script>
+<script src="data/travail-dossiers-c1.js"></script>
+<script src="data/famille-dossiers-b2.js"></script>
+<script src="data/famille-dossiers-c1.js"></script>
+<script src="data/tourisme-dossiers.js"></script>
+<script src="data/famille-sub-b2.js"></script>
+<script src="data/famille-sub-c1.js"></script>
+<script src="data/tourisme-sub.js"></script>
+<script src="data/travail-sub-b2a.js"></script>
+<script src="data/travail-sub-b2b.js"></script>
+<script src="data/travail-sub-b2c.js"></script>
+<script src="data/travail-sub-c1a.js"></script>
+<script src="data/travail-sub-c1b.js"></script>
+<script src="data/etudes-sujets.js"></script>
+<script src="data/travail-sujets.js"></script>
+<script src="data/famille-sujets.js"></script>
+<script src="data/tourisme-sujets.js"></script>
+<script src="data/po-etudes.js"></script>
+<script src="data/po-travail.js"></script>
+<script src="data/po-sante-medias.js"></script>
+<script src="data/po-famille-tourisme.js"></script>
+<script src="data/vocab-ex-2.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
 const KEY='delf_admin_v1';
@@ -219,8 +254,10 @@ function streakOf(o){const a=Object.keys(o.log||{});if(!a.length)return 0;
   return n}
 function fmt(ts){if(!ts)return '—';const d=new Date(ts);
   return `${d.getFullYear()%100}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`}
-function ago(ts){if(!ts)return '';const h=(Date.now()-ts)/36e5;
-  return h<24?`${Math.max(1,Math.round(h))}시간 전`:`${Math.floor(h/24)}일 전`}
+function ago(ts){if(!ts)return '';const m=(Date.now()-ts)/6e4;
+  if(m<2)return '방금 전';
+  if(m<60)return `${Math.round(m)}분 전`;
+  const h=m/60;return h<24?`${Math.round(h)}시간 전`:`${Math.floor(h/24)}일 전`}
 /* ========== 서버에서 학생 진도 자동 불러오기 ========== */
 const SYNC_URL=((window.CONFIG||{}).syncUrl||'').trim();
 function pullAll(loud){

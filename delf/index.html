@@ -228,6 +228,23 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
   border-radius:99px;padding:4px 10px;white-space:nowrap}
 .sync.ok{color:#BFE7C8}
 .sync.err{background:var(--brick);color:#fff}
+.rec{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.recdot{width:13px;height:13px;border-radius:50%;background:#C8B7B4}
+.recdot.on{background:var(--brick);animation:pulse 1.1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+.bigclock{font-family:var(--font-heading);font-size:40px;font-weight:700;letter-spacing:1px}
+.bigclock.over{color:var(--brick)}
+.mstat{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-top:14px}
+.mstat .m{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
+.mstat .m b{display:block;font-family:var(--font-heading);font-size:24px;line-height:1.2}
+.mstat .m span{font-size:12px;color:var(--muted)}
+.trs{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;
+  font-size:15px;line-height:1.9;min-height:90px;white-space:pre-wrap}
+.trs .int{color:var(--muted)}
+.postep{display:flex;align-items:center;gap:8px;margin:0 0 12px;font-size:12.5px;color:var(--muted)}
+.postep i{display:inline-block;width:22px;height:22px;line-height:22px;text-align:center;border-radius:50%;
+  background:#EFE7E5;color:var(--muted);font-style:normal;font-weight:800;font-size:11.5px}
+.postep i.on{background:var(--brick);color:#fff}
 .pvbar{position:fixed;left:0;right:0;bottom:0;z-index:400;background:var(--dark);color:#fff;
   display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 16px;font-size:12.5px}
 .pvbar b{background:var(--brick);border-radius:6px;padding:2px 8px;font-size:11.5px;font-weight:800}
@@ -480,6 +497,41 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
 <script src="data/medias-sub-c1.js"></script>
 <script src="data/medias-sub-fill.js"></script>
 <script src="data/medias-sujets.js"></script>
+<script src="data/etudes-vocab.js"></script>
+<script src="data/etudes-dossiers-a.js"></script>
+<script src="data/etudes-dossiers-b.js"></script>
+<script src="data/etudes-dossiers-c.js"></script>
+<script src="data/etudes-sub-1.js"></script>
+<script src="data/etudes-sub-2.js"></script>
+<script src="data/etudes-sub-3.js"></script>
+<script src="data/etudes-sub-4.js"></script>
+<script src="data/etudes-sub-fill.js"></script>
+<script src="data/etudes-sub-5.js"></script>
+<script src="data/etudes-sub-6.js"></script>
+<script src="data/etudes-sub-7.js"></script>
+<script src="data/travail-dossiers-b2a.js"></script>
+<script src="data/travail-dossiers-b2b.js"></script>
+<script src="data/travail-dossiers-c1.js"></script>
+<script src="data/famille-dossiers-b2.js"></script>
+<script src="data/famille-dossiers-c1.js"></script>
+<script src="data/tourisme-dossiers.js"></script>
+<script src="data/famille-sub-b2.js"></script>
+<script src="data/famille-sub-c1.js"></script>
+<script src="data/tourisme-sub.js"></script>
+<script src="data/travail-sub-b2a.js"></script>
+<script src="data/travail-sub-b2b.js"></script>
+<script src="data/travail-sub-b2c.js"></script>
+<script src="data/travail-sub-c1a.js"></script>
+<script src="data/travail-sub-c1b.js"></script>
+<script src="data/etudes-sujets.js"></script>
+<script src="data/travail-sujets.js"></script>
+<script src="data/famille-sujets.js"></script>
+<script src="data/tourisme-sujets.js"></script>
+<script src="data/po-etudes.js"></script>
+<script src="data/po-travail.js"></script>
+<script src="data/po-sante-medias.js"></script>
+<script src="data/po-famille-tourisme.js"></script>
+<script src="data/vocab-ex-2.js"></script>
 <script>
 /* ============ STORE (로그인 붙일 때 이 블록만 교체) ============ */
 /* 저장 슬롯 — 학생 코드(예: SY26)로 들어오면 그 학생 전용 칸에 저장됩니다.
@@ -938,6 +990,14 @@ function startSim(idx,keepSujet,fromHash){
   const pool=sujetsFor(L,e.id,th);
   if(!keepSujet)curSujet=pool.length?pool[Math.floor(Math.random()*pool.length)]:null;
   const S_=curSujet;
+  /* Production orale — 녹음·전사·시험관 토론이 있는 전용 화면으로 */
+  if(e.id==='po'&&S_){
+    PO_CTX={id:th==='ALL'?S_.theme:th,lvl:L,sub:S_.sub,sujet:S_};
+    PO.phase='idle';PO.pool=pool.length;
+    $('#simHome').style.display='none';$('#simRun').style.display='';
+    $('#simRun').innerHTML='<div id="poBody"></div>';
+    renderPo('idle');return;
+  }
   const phases=e.prep?[{n:'PRÉPARATION',s:e.prep*60},{n:'PASSATION',s:e.min*60}]:[{n:e.nom.toUpperCase(),s:e.min*60}];
   let p=0,left=phases[0].s,running=false,elapsed=0;
   const R=$('#simRun');$('#simHome').style.display='none';R.style.display='';
@@ -1149,6 +1209,280 @@ $('#shareBtn').onclick=()=>{const c=progressCode();
   navigator.clipboard?.writeText(c).then(()=>toast('진도 코드를 복사했습니다'),()=>{
     const t=document.createElement('textarea');t.value=c;document.body.appendChild(t);t.select();
     document.execCommand('copy');t.remove();toast('진도 코드를 복사했습니다')})};
+
+/* ============ PRODUCTION ORALE (구술 연습) ============ */
+/* 흐름: 준비 타이머 → 발표 녹음 → 전사·지표 → 시험관 프롬프트 → 피드백 기록
+   녹음과 전사는 전부 브라우저 안에서 일어납니다. 오디오는 서버로 가지 않습니다. */
+const PO = {
+  rec:null, chunks:[], stream:null, sr:null, timer:null,
+  t0:0, elapsed:0, pauses:0, longest:0, lastVoice:0, url:null,
+  final:'', interim:'', phase:'idle', prep:0
+};
+let PO_CTX={id:'',lvl:'B2',sub:'',sujet:null};
+function poKey(){return PO_CTX}
+function poDossier(){return window.DOSSIERS[skey(PO_CTX.id,PO_CTX.sub)]||null}
+function poSpec(){ /* 레벨별 공식 시간 */
+  const{lvl}=poKey();
+  return lvl==='C1'?{prep:60,min:8,max:10,debat:'15~20분',docs:'문서 2개(dossier)'}
+                   :{prep:30,min:5,max:7,debat:'10~13분',docs:'문서 1개'};
+}
+function renderPo(step){
+  PO.phase=step||PO.phase||'idle';
+  const k=poKey(),d=poDossier(),sp=poSpec(),w=$('#poBody');
+  if(!w)return;
+  if(!d){w.innerHTML='<div class="card empty">이 소주제의 자료집이 아직 없습니다. 자료집이 있는 소주제를 선택하세요.</div>';return}
+  const steps=['준비','발표','전사','토론','기록'];
+  const idx={idle:0,prep:0,rec:1,done:2}[PO.phase]||0;
+  const bar=`<div class="postep">${steps.map((s,i)=>`<i class="${i<=idx?'on':''}">${i+1}</i><span>${s}</span>${i<4?'<span style="opacity:.4">›</span>':''}`).join('')}</div>`;
+
+  if(PO.phase==='idle'){
+    const S_=PO_CTX.sujet;
+    w.innerHTML=bar+`<div class="card">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+        <span class="b navy" style="font-size:10.5px;font-weight:800;border-radius:5px;padding:2px 7px">${esc(k.lvl)} · Production orale</span>
+        <b style="flex:1">${esc(k.sub)}</b>
+        ${PO.pool>1?'<button class="btn g sm" id="poReroll">다른 문항</button>':''}
+        <button class="btn g sm" id="poBack">돌아가기</button></div>
+      ${S_&&S_.support?`<div class="box" style="margin-top:14px;white-space:pre-wrap;line-height:1.8">${esc(S_.support)}</div>`:''}
+      <div class="pb" style="margin-top:14px;white-space:pre-wrap"><b>Consigne</b><br>${esc(S_?S_.consigne:d.problematique)}</div>
+      <p style="font-size:13.5px;color:var(--muted);margin:14px 0 0">
+        준비 <b>${sp.prep}분</b> · 발표 <b>${sp.min}~${sp.max}분</b> · 토론 ${sp.debat}<br>
+        발표 중에는 화면이 아무 말도 하지 않습니다. 끝나면 전사와 말하기 지표를 보여줍니다.</p>
+      <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn a" id="poPrep">준비 시간 시작 (${sp.prep}분)</button>
+        <button class="btn g" id="poSkip">준비 없이 바로 발표</button>
+        <button class="btn g" id="poCopyDoc">자료집 보기</button></div></div>
+      <div id="poDoc"></div>`;
+    $('#poBack').onclick=()=>history.back();
+    if($('#poReroll'))$('#poReroll').onclick=()=>{const i=window.EXAMS[k.lvl].epreuves.findIndex(x=>x.id==='po');startSim(i,false,true)};
+    $('#poPrep').onclick=()=>{PO.prep=sp.prep*60;renderPo('prep')};
+    $('#poSkip').onclick=()=>renderPo('rec');
+    $('#poCopyDoc').onclick=()=>{const e=$('#poDoc');
+      e.innerHTML=e.innerHTML?'':`<div class="card"><b style="font-size:13.5px">POUR</b>
+        <ul style="margin:8px 0 14px;padding-left:19px;line-height:1.8">${d.pour.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+        <b style="font-size:13.5px">CONTRE</b>
+        <ul style="margin:8px 0 14px;padding-left:19px;line-height:1.8">${d.contre.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+        <b style="font-size:13.5px">Lexique attendu</b><div style="margin-top:8px">${d.lexique.map(x=>`<span class="tag">${esc(x)}</span>`).join('')}</div></div>`};
+    return;
+  }
+
+  if(PO.phase==='prep'){
+    w.innerHTML=bar+`<div class="card" style="text-align:center">
+      <div class="phase">PRÉPARATION</div>
+      <div class="bigclock" id="poClock">${pad(Math.floor(PO.prep/60))}:${pad(PO.prep%60)}</div>
+      <p style="color:var(--muted);font-size:13.5px;margin:12px 0 0">${esc(k.sub)} — 자료집을 보며 발표를 준비하세요.</p>
+      <div style="margin-top:16px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+        <button class="btn a" id="poReady">준비 끝 — 발표 시작</button>
+        <button class="btn g" id="poCancel">그만두기</button></div></div>`;
+    clearInterval(PO.timer);
+    PO.timer=setInterval(()=>{PO.prep--;const c=$('#poClock');if(!c){clearInterval(PO.timer);return}
+      c.textContent=`${pad(Math.floor(Math.max(0,PO.prep)/60))}:${pad(Math.max(0,PO.prep)%60)}`;
+      if(PO.prep<=0){clearInterval(PO.timer);beep(2);renderPo('rec')}},1000);
+    $('#poReady').onclick=()=>{clearInterval(PO.timer);renderPo('rec')};
+    $('#poCancel').onclick=()=>{clearInterval(PO.timer);renderPo('idle')};
+    return;
+  }
+
+  if(PO.phase==='rec'){
+    w.innerHTML=bar+`<div class="card">
+      <div class="rec"><span class="recdot" id="poDot"></span>
+        <span class="bigclock" id="poClock">00:00</span>
+        <span style="font-size:13px;color:var(--muted)">목표 ${sp.min}~${sp.max}분</span>
+        <span style="margin-left:auto"><button class="btn a" id="poGo">녹음 시작</button>
+        <button class="btn g" id="poStop" disabled>발표 끝</button></span></div>
+      <p style="font-size:12.5px;color:var(--muted);margin:12px 0 0" id="poHint">
+        마이크 사용을 허용해 주세요. 녹음과 전사는 이 브라우저 안에서만 일어나고, 음성은 우리 서버로 보내지 않습니다.</p>
+      </div>
+      <div class="card"><h4 style="margin:0 0 10px;font-size:13px;color:var(--muted)">실시간 전사</h4>
+        <div class="trs" id="poTrs"><span class="int">발표를 시작하면 여기에 나타납니다.</span></div></div>`;
+    $('#poGo').onclick=poStart; $('#poStop').onclick=poStopRec;
+    return;
+  }
+
+  if(PO.phase==='done'){
+    const secs=PO.elapsed||1, words=PO.final.trim()?PO.final.trim().split(/\s+/).length:0;
+    const wpm=Math.round(words/(secs/60));
+    const fil=(PO.final.match(/\b(euh|heu|ben|bah|hein|voil[àa]|enfin)\b/gi)||[]).length;
+    const ok=secs>=sp.min*60&&secs<=sp.max*60;
+    w.innerHTML=bar+`<div class="card">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <b style="font-size:15px">${esc(k.sub)}</b>
+        <span class="b ${ok?'ok':'warn'}" style="font-size:11px;font-weight:800;border-radius:5px;padding:2px 8px">
+          ${Math.floor(secs/60)}분 ${secs%60}초 ${ok?'· 시간 적정':'· 목표 '+sp.min+'~'+sp.max+'분'}</span>
+        <span style="margin-left:auto"><button class="btn g sm" id="poAgain">다시 발표</button></span></div>
+      ${PO.url?`<audio controls src="${PO.url}" style="width:100%;margin-top:14px"></audio>`:''}
+      <div class="mstat">
+        <div class="m"><b>${wpm}</b><span>분당 단어 (mots/min)</span></div>
+        <div class="m"><b>${PO.pauses}</b><span>1초 이상 멈춤</span></div>
+        <div class="m"><b>${PO.longest.toFixed(1)}초</b><span>가장 긴 멈춤</span></div>
+        <div class="m"><b>${fil}</b><span>euh · ben · voilà</span></div>
+        <div class="m"><b>${words}</b><span>전사된 단어 수</span></div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin:14px 0 0">
+        기준: 프랑스어 발표는 대체로 130~160 mots/min. 전사는 브라우저 음성 인식 결과라
+        <b>학생의 오류를 고쳐서 받아쓰는 경향</b>이 있습니다. 문법 교정의 근거로 삼지 말고, 속도·멈춤·주저의 지표로 보세요.</p></div>
+
+      <div class="card"><h4 style="margin:0 0 10px;font-size:13px;color:var(--muted)">전사문</h4>
+        <div class="trs" id="poTrs">${esc(PO.final)||'<span class="int">인식된 내용이 없습니다.</span>'}</div></div>
+
+      <div class="card">
+        <h4 style="margin:0 0 4px;font-size:13px;color:var(--muted)">시험관과 토론하기</h4>
+        <p class="vs" style="margin:0 0 12px">아래 버튼을 누르면 <b>이 소주제의 자료집이 들어간 시험관 프롬프트</b>가 복사됩니다.
+          ChatGPT를 열어 붙여넣고 <b>음성 모드</b>로 « Commençons »이라고 말하면, 방금 한 발표를 놓고 ${sp.debat} 토론이 시작됩니다.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="btn a" id="poPrompt">시험관 프롬프트 복사</button>
+          <a class="btn g" href="https://chatgpt.com/" target="_blank" rel="noopener">ChatGPT 열기 ↗</a></div>
+      </div>
+
+      <div class="card">
+        <h4 style="margin:0 0 4px;font-size:13px;color:var(--muted)">시험관 피드백 붙여넣기</h4>
+        <p class="vs" style="margin:0 0 10px">토론이 끝나면 받은 채점·교정을 여기에 붙여넣으세요. 선생님이 보는 기록에 남습니다.</p>
+        <textarea id="poFb" rows="7" placeholder="ChatGPT가 준 채점표와 교정을 붙여넣으세요">${esc(S.notes[skey(k.id,k.sub)+'::po']||'')}</textarea>
+        <div style="margin-top:10px"><button class="btn" id="poSave">기록 저장</button></div>
+      </div>`;
+    $('#poAgain').onclick=()=>renderPo('rec');
+    $('#poPrompt').onclick=poCopyPrompt;
+    $('#poSave').onclick=()=>{
+      const key=skey(k.id,k.sub)+'::po';
+      S.notes[key]=$('#poFb').value;
+      S.sims.push({date:new Date().toLocaleString('ko-KR',{dateStyle:'short',timeStyle:'short'}),
+        level:k.lvl,nom:'Production orale',sujet:k.sub,used:secs,words});
+      save();toast('기록했습니다');renderDash()};
+    return;
+  }
+}
+/* ---- 녹음 + 전사 ---- */
+function poStart(){
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia){
+    $('#poHint').innerHTML='<b style="color:var(--brick)">이 브라우저에서는 마이크를 쓸 수 없습니다.</b> 주소가 https 인지 확인하세요 (로컬 파일 file:// 에서는 마이크가 차단됩니다).';return}
+  navigator.mediaDevices.getUserMedia({audio:true}).then(st=>{
+    PO.stream=st;PO.chunks=[];PO.final='';PO.interim='';PO.pauses=0;PO.longest=0;PO.elapsed=0;
+    let mime='';['audio/webm;codecs=opus','audio/webm','audio/mp4'].forEach(m=>{if(!mime&&window.MediaRecorder&&MediaRecorder.isTypeSupported(m))mime=m});
+    PO.rec=mime?new MediaRecorder(st,{mimeType:mime}):new MediaRecorder(st);
+    PO.rec.ondataavailable=e=>{if(e.data.size)PO.chunks.push(e.data)};
+    PO.rec.onstop=()=>{try{PO.url=URL.createObjectURL(new Blob(PO.chunks,{type:PO.chunks[0]?PO.chunks[0].type:'audio/webm'}))}catch(e){PO.url=null}
+      renderPo('done')};
+    PO.rec.start(1000);
+    /* 침묵 감지 — 음향만 보므로 음성 인식과 무관하게 정확합니다 */
+    const ac=new (window.AudioContext||window.webkitAudioContext)();
+    const src=ac.createMediaStreamSource(st),an=ac.createAnalyser();an.fftSize=2048;src.connect(an);
+    const buf=new Uint8Array(an.fftSize);PO.lastVoice=Date.now();PO.ac=ac;
+    PO.silTimer=setInterval(()=>{
+      an.getByteTimeDomainData(buf);let peak=0;
+      for(let i=0;i<buf.length;i++){const v=Math.abs(buf[i]-128);if(v>peak)peak=v}
+      const now=Date.now();
+      if(peak>6){ const gap=(now-PO.lastVoice)/1000;
+        if(gap>=1){PO.pauses++;if(gap>PO.longest)PO.longest=gap}
+        PO.lastVoice=now; }
+    },120);
+    /* 브라우저 음성 인식 (크롬) */
+    const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+    if(SR){ const r=new SR();PO.sr=r;r.lang='fr-FR';r.continuous=true;r.interimResults=true;
+      r.onresult=ev=>{let itm='';
+        for(let i=ev.resultIndex;i<ev.results.length;i++){
+          const t=ev.results[i][0].transcript;
+          if(ev.results[i].isFinal)PO.final+=(PO.final?' ':'')+t.trim(); else itm+=t}
+        PO.interim=itm;const el=$('#poTrs');
+        if(el)el.innerHTML=esc(PO.final)+(itm?` <span class="int">${esc(itm)}</span>`:'')};
+      r.onend=()=>{if(PO.phase==='rec'){try{r.start()}catch(e){}}};
+      r.onerror=ev=>{if(ev.error==='not-allowed'&&$('#poHint'))$('#poHint').textContent='음성 인식이 차단되었습니다. 녹음은 계속됩니다.'};
+      try{r.start()}catch(e){}
+    } else { const el=$('#poTrs');if(el)el.innerHTML='<span class="int">이 브라우저는 실시간 전사를 지원하지 않습니다 (크롬 권장). 녹음은 정상 동작합니다.</span>' }
+    PO.t0=Date.now();
+    $('#poDot').classList.add('on');$('#poGo').disabled=true;$('#poStop').disabled=false;
+    $('#poHint').textContent='발표 중입니다. 끝나면 «발표 끝»을 누르세요.';
+    clearInterval(PO.timer);
+    PO.timer=setInterval(()=>{PO.elapsed=Math.round((Date.now()-PO.t0)/1000);
+      const c=$('#poClock');if(!c){clearInterval(PO.timer);return}
+      c.textContent=`${pad(Math.floor(PO.elapsed/60))}:${pad(PO.elapsed%60)}`;
+      const sp=poSpec();c.classList.toggle('over',PO.elapsed>sp.max*60);
+      if(PO.elapsed===sp.min*60)beep(1); if(PO.elapsed===sp.max*60)beep(2);
+    },500);
+  }).catch(()=>{ $('#poHint').innerHTML='<b style="color:var(--brick)">마이크를 사용할 수 없습니다.</b> 브라우저 주소창의 마이크 권한을 확인해 주세요.' });
+}
+function poStopRec(){
+  PO.phase='done';
+  clearInterval(PO.timer);clearInterval(PO.silTimer);
+  try{PO.sr&&PO.sr.stop()}catch(e){}
+  try{PO.ac&&PO.ac.close()}catch(e){}
+  if(PO.rec&&PO.rec.state!=='inactive')PO.rec.stop(); else renderPo('done');
+  if(PO.stream)PO.stream.getTracks().forEach(t=>t.stop());
+}
+/* ---- 시험관 프롬프트 생성 (자료집 주입) ---- */
+function poCopyPrompt(){
+  const k=poKey(),d=poDossier(),sp=poSpec();
+  if(!d)return;
+  const C1=k.lvl==='C1';
+  const p=
+`너는 ${C1?'« Madame Rossi », DALF C1':'« Monsieur Legrand », DELF B2'} 구술 시험관이다.
+친절한 대화 상대가 아니라 시험관이다. 칭찬으로 시간을 채우지 않는다.
+
+[기본 규칙]
+1. STEP 1~5를 순서대로만 진행한다. 단계를 합치거나 건너뛰지 않는다.
+2. STEP 1~3은 프랑스어로만 말한다. STEP 4(피드백)부터는 한국어로 설명하되 예문·수정문은 프랑스어로 쓴다.
+3. 시험 중에는 절대 교정하지 않는다. 학생이 틀려도 지적하지 않고 시험관으로서 반응만 한다.
+4. 학생의 말이 끝날 때까지 기다린다. 문장 중간에 끼어들지 않는다.
+5. 존재하지 않는 기사·통계·법률을 지어내지 않는다.
+
+[오늘의 주제 — 아래 자료 밖으로 나가지 않는다]
+Sujet : ${k.sub}
+Problématique : ${d.problematique}
+Contexte : ${(d.contexte||[]).join(' / ')}
+Arguments POUR : ${d.pour.join(' / ')}
+Arguments CONTRE : ${d.contre.join(' / ')}
+Contexte français : ${(d.fr_kr&&d.fr_kr.fr)||''}
+Lexique attendu : ${(d.lexique||[]).join(', ')}
+
+[학생이 받은 시험 지시문]
+${(PO_CTX.sujet&&PO_CTX.sujet.consigne)||''}
+${(PO_CTX.sujet&&PO_CTX.sujet.support)?'\n[학생이 읽은 자료]\n'+PO_CTX.sujet.support:''}
+
+[STEP 1 · 발표 확인]
+« Vous avez préparé un exposé sur : ${k.sub}. Je vous écoute. » 라고만 말하고 기다린다.
+학생이 발표하는 동안 **한 마디도 하지 않는다.** 맞장구도 치지 않는다.
+학생이 끝냈다고 하면 « Merci. » 라고만 답한다.
+${C1?`
+[STEP 1.5 · 내부 분석 — 학생에게 보여주지 않는다]
+발표에서 아래를 스스로 정리한다.
+{ "thesis": "...", "claims": [...], "arguments_ignores": [POUR/CONTRE 중 학생이 다루지 않은 것],
+  "assumptions": [...], "contradictions": [...] }
+arguments_ignores 가 비어 있지 않으면 그것을 첫 질문으로 삼는다.
+`:''}
+[STEP 2 · Débat — 질문 ${C1?'10~14':'6~8'}개, ${sp.debat}]
+질문은 한 번에 하나만 던진다. 학생의 답을 듣고 그 답에 근거해 다음 질문 유형을 고른다.
+  · 답이 짧고 추상적       → « Que voulez-vous dire exactement par là ? »
+  · 근거가 없음           → « Pourquoi pensez-vous que cette mesure serait efficace ? »
+  · 예시가 없음           → « Pourriez-vous donner un exemple concret ? »
+  · 일방적 주장           → « Mais ne risque-t-il pas également de… ? »
+  · 앞 답변과 모순        → « Vous évoquez à la fois X et Y. N'y a-t-il pas là une contradiction ? »
+  · 충분히 논증함         → « Ne faudrait-il pas distinguer A de B ? »${C1?`
+  · 한쪽 논거만 사용      → « Comment intégreriez-vous l'objection selon laquelle… ? »`:''}
+질문에는 반드시 **학생이 방금 쓴 표현을 그대로 인용**한다. 미리 준비한 목록을 순서대로 읽지 않는다.
+
+[STEP 3 · 종료]
+« Merci, l'épreuve est terminée. » 후 한국어로 « 피드백을 받으시겠어요? » 라고 묻는다.
+
+[STEP 4 · 채점과 교정]
+${C1?`DALF C1 grille (각 /5, 총 25점): 문제 제기와 구성 / 논점 방어와 반응 / 어휘의 폭과 정확성 / 형태통사(subjonctif·고급 구문) / 발음과 유창성`
+    :`DELF B2 grille (총 25점): 주제 파악과 관점 제시 /4 · 논증과 반론 대응 /4 · 어휘 /4 · 형태통사 /5 · 발음과 유창성 /3 · 사회언어적 적절성 /5`}
+그다음 순서대로:
+  A. 학생이 제시한 핵심 주장
+  B. 시험관이 발견한 논리적 빈틈 — 각 질문이 무엇을 확인하려던 것이었는지 함께
+  C. 실제로 쓴 좋은 표현 (표현 / 왜 좋은지 / 다시 쓸 상황)
+  D. 고쳐야 할 것 — 문법(수정 전 → 수정 후 + 이유), 어휘(더 정확한 대체 표현), 연결(끊긴 부분을 잇는 법)
+  E. **같은 내용을 한 단계 위로 올린 답변 예시** — 학생 답변 하나를 골라 ${C1?'C1 상위':'C1'} 수준으로 다시 쓰고, 무엇이 달라졌는지 한 줄로 설명한다.${C1?'':`
+  F. B2에서는 충분하지만 C1에서는 부족한 부분`}
+
+[STEP 5 · Shadowing]
+E의 문장 3개를 한 문장씩 말한다. 학생이 따라 하면 짧게 확인하고 다음으로 간다. 끝나면 종료한다.
+
+준비되면 « Commençons »이라고 말할 때까지 기다린다.`;
+  const done=()=>toast('프롬프트를 복사했습니다 — ChatGPT에 붙여넣으세요');
+  if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(p).then(done,()=>fb());
+  else fb();
+  function fb(){const t=document.createElement('textarea');t.value=p;document.body.appendChild(t);t.select();
+    try{document.execCommand('copy');done()}catch(e){toast('복사 실패 — 브라우저 권한을 확인하세요')}t.remove()}
+}
 
 /* ============ BOOT ============ */
 function render(v){({dash:renderDash,explore:renderThemes,vocab:()=>{renderVocabSel();renderVocab()},sim:renderSim,plan:renderPlan,freq:renderFreq}[v]||(()=>{}))()}
