@@ -456,6 +456,8 @@
       font-size: 0.81rem; color: var(--dark); line-height: 1.8;
     }
     .diag-foot b { color: var(--brick); font-weight: 700; }
+    .pkg-cta { text-align: center; margin-top: 26px; }
+    .pkg-cta-s { font-size: 0.78rem; color: var(--muted); margin-top: 10px; line-height: 1.7; word-break: keep-all; }
     .pkg-notes { margin-top: 16px; display: flex; flex-direction: column; gap: 7px; }
     .pkg-notes .n1 { font-size: 0.78rem; color: var(--muted); line-height: 1.7; padding-left: 15px; position: relative; }
     .pkg-notes .n1::before { content: ''; position: absolute; left: 0; top: 0.6em; width: 4px; height: 4px; border-radius: 50%; background: var(--brick); opacity: .5; }
@@ -935,7 +937,7 @@
     <p class="cta-lead">지금 바로 시작하고 싶다면, 먼저 시간대를 잡을 수 있어요.</p>
     <a href="#apply"
        target="_blank" rel="noopener"
-       class="cta-btn cta-brick">📅 두우리 선생님과 시간대 얼른 잡기</a>
+       class="cta-btn cta-brick" data-cta="lesson_top">지금 어디서 막혔는지, 60분으로 짚어보기</a>
   </div>
 
   <!-- 왜 두우리 선생님인가 -->
@@ -1360,6 +1362,12 @@
     <div class="pkg-notes">
       <p class="n1">세션당 시간(60분 또는 90분)과 주당 횟수에 따라 최종 견적이 달라집니다.</p>
     </div>
+
+    <!-- 가격을 보고 마음먹은 분이 그 자리에서 누를 수 있도록, 표 바로 밑에 둡니다 -->
+    <div class="pkg-cta">
+      <a href="#apply" class="cta-btn cta-brick" data-cta="lesson_price">이 패키지로 시작하기</a>
+      <p class="pkg-cta-s">신청하시면 먼저 설문과 60분 진단부터 진행합니다. 결제는 그다음입니다.</p>
+    </div>
   </div>
 
   <!-- FAQ -->
@@ -1408,11 +1416,11 @@
   <div class="section-block">
     <div class="cta-box">
       <p class="cta-box-desc" style="font-size:0.92rem; line-height:1.75; color:rgba(255,255,255,0.9); margin-bottom:20px;">
-        바로 시작하지 않습니다!<br>공식 수업 시간까지 시간이 걸리니, 1:1 수업 신청하시고 함께 얘기 나눠요.
+        바로 시작하지 않습니다. 공식 수업 시작까지 시간이 걸리니,<br>먼저 신청하시고 함께 이야기 나눠요.
       </p>
-      <a href="#apply"
+      <a href="#apply" data-cta="lesson_bottom"
          class="cta-btn" style="background:var(--white);color:var(--brick);border:none;font-weight:800;font-size:0.95rem;">
-        📅 가능한 시간대 얼른 확보하기
+        아직 망설여진다면, 진단 60분부터
       </a>
     </div>
   </div>
@@ -1481,8 +1489,8 @@
       <strong>왜 그렇게 쓰는지</strong>를 짚어줄 사람이 없었을 뿐입니다.
     </p>
     <div class="cm-btns">
-      <a href="#apply" class="cm-btn-left" onclick="closeCheckModal()">
-        📅 가능한 시간대<br>얼른 확보하기
+      <a href="#apply" class="cm-btn-left" data-cta="lesson_modal" onclick="closeCheckModal()">
+        내 경우가 맞는지<br>먼저 물어보기
       </a>
       <button class="cm-btn-right" onclick="scrollToWhy()">
         커리큘럼 좀 더 보기 →

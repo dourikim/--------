@@ -4,5 +4,7 @@ Disallow: /learn
 Disallow: /learn.html
 Disallow: /admin
 Disallow: /admin.html
+Disallow: /service-finder
+Disallow: /service-finder.html
 
 Sitemap: https://www.dourikim.com/sitemap.xml

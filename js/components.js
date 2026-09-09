@@ -13,7 +13,8 @@ const NAV_ITEMS = [
   { id: 'course',         label: '바이블 문법책 재해석 인강',   icon: '📘', href: '/course' },
   { id: 'content',        label: '학습 콘텐츠',                icon: '📒', href: '/content' },
   { id: 'portfolio',      label: '통번역, 로컬화',            icon: '📑', href: '/portfolio' },
-  { id: 'service-finder', label: '학습 유형 테스트'   ,         icon: '🎯', href: '/service-finder', sub: true },
+  /* 학습 유형 테스트는 대기 상태입니다. 다시 열 때 아래 줄의 주석을 풀면 됩니다.
+  { id: 'service-finder', label: '학습 유형 테스트'   ,         icon: '🎯', href: '/service-finder', sub: true }, */
 ];
 
 /* ── 카카오 오픈채팅 URL ─────────────────────────────────
