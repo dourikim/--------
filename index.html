@@ -1460,6 +1460,7 @@
   clone.removeAttribute('id');
   clone.querySelectorAll('[data-cta]').forEach(function (a) {
     a.setAttribute('data-cta', a.getAttribute('data-cta') + '_bar');
+    a.setAttribute('data-cta-pos', '띠');
   });
   pan.appendChild(clone);
 

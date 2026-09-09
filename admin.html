@@ -303,6 +303,33 @@
       background: var(--surface); border: 1px solid var(--border);
       border-radius: 4px; padding: 1px 5px; font-size: 0.76rem; color: var(--dark);
     }
+    /* 버튼 클릭 표 */
+    /* 좁은 화면에서는 표를 줄이지 않고 가로로 밀어서 봅니다.
+       줄이면 버튼 이름이 한 글자씩 쪼개집니다. */
+    .cta-tb { width: 100%; min-width: 430px; border-collapse: collapse; font-size: 0.78rem; }
+    .cta-tb th {
+      text-align: left; font-size: 0.66rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .05em;
+      padding: 0 8px 7px 0; border-bottom: 1px solid var(--border); white-space: nowrap;
+    }
+    .cta-tb td { padding: 9px 8px 9px 0; border-bottom: 1px solid #F4EFED; vertical-align: middle; }
+    .cta-tb tr:last-child td { border-bottom: 0; }
+    .cta-id { font-weight: 700; color: var(--dark); white-space: nowrap; }
+    .cta-pg { font-size: 0.7rem; color: var(--muted); }
+    .cta-pos {
+      display: inline-block; font-size: 0.66rem; font-weight: 700; white-space: nowrap;
+      border-radius: 100px; padding: 3px 9px; background: #F4F1EF; color: var(--muted);
+    }
+    .cta-pos.top  { background: #FBF0ED; color: var(--brick); }
+    .cta-pos.bot  { background: #EAF2EC; color: #2D7A50; }
+    .cta-n { text-align: right; font-weight: 800; color: var(--dark); white-space: nowrap; }
+    /* 읽은 정도 막대. 낮으면 바로 눌렀고, 높으면 읽고 눌렀다는 뜻입니다 */
+    .cta-dep { display: flex; align-items: center; gap: 7px; min-width: 108px; }
+    .cta-dep-t { flex: 1; height: 6px; border-radius: 3px; background: var(--border); overflow: hidden; }
+    .cta-dep-f { height: 100%; border-radius: 3px; background: var(--brick); }
+    .cta-dep-v { font-size: 0.72rem; font-weight: 700; color: var(--muted); width: 32px; text-align: right; }
+    @media (max-width: 600px) { .cta-tb { min-width: 380px; } }
+
     .dash-footer { margin-top: 18px; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .dash-footer a { text-decoration: none; }
 
@@ -467,7 +494,7 @@
           <!-- 어떤 상태에서도 원인을 확인할 수 있는 진단 도구 -->
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 14px">
             <button class="btn-sm" onclick="ga4Diag()">진단하기</button>
-            <span style="font-size:0.74rem;color:var(--muted)">빌드 2026-09-07b</span>
+            <span style="font-size:0.74rem;color:var(--muted)">빌드 2026-09-09a</span>
           </div>
           <pre id="ga4-diag" style="display:none;white-space:pre-wrap;word-break:break-all;background:#F4F1EF;border:1px solid #E5DEDA;border-radius:8px;padding:12px 14px;font-size:0.74rem;line-height:1.7;color:#4A3A36;margin:0 0 16px;max-height:320px;overflow:auto"></pre>
 
@@ -541,6 +568,15 @@
               <div class="dash-section-title">어떤 기기로 왔는지</div>
               <div id="chart-device"></div>
             </div>
+            <div class="dash-section">
+              <div class="dash-section-title" style="display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap">
+                <span>어느 버튼을 눌렀는지</span>
+                <span id="cta-sum" style="font-size:0.72rem;font-weight:600;color:var(--muted);text-transform:none;letter-spacing:0"></span>
+              </div>
+              <div id="chart-cta"></div>
+              <p id="cta-note" style="font-size:0.7rem;color:var(--muted);line-height:1.7;margin:10px 0 0;word-break:keep-all"></p>
+            </div>
+
             <div class="dash-footer">
               <button class="btn-sm" onclick="ga4SignOut()">연결 해제</button>
               <button class="btn-sm primary" onclick="ga4LoadAll()">새로고침</button>
@@ -1106,7 +1142,7 @@ async function ga4LoadAll() {
   const rg = _range();
   const start = rg.start, end = rg.end;
   try {
-    const [kpi, src, src2, pg, dev, daily] = await Promise.all([
+    const [kpi, src, src2, pg, dev, daily, cta] = await Promise.all([
       _ga4Req(['activeUsers','sessions','screenPageViews','averageSessionDuration'], [], start, end, 1),
       _ga4Req(['sessions'], ['sessionDefaultChannelGroup'], start, end, 8),
       /* 인스타그램, 스레드, 네이버처럼 서비스 이름까지 나눠서 봅니다 */
@@ -1117,6 +1153,14 @@ async function ga4LoadAll() {
          소셜에 글을 올린 직후 반응을 보는 것이 목적이라 오늘까지 포함합니다. */
       _ga4Req(['sessions'], ['date'], '13daysAgo', 'today', 20,
               [{ dimension: { dimensionName: 'date' } }]),
+      /* 버튼 클릭. cta_click 이벤트만 골라, 버튼 이름과 위치별로 묶습니다.
+         읽은 정도는 합계로 오므로 클릭 수로 나눠 평균을 냅니다. */
+      _ga4Req(['eventCount', 'customEvent:cta_depth'],
+              ['customEvent:cta_id', 'customEvent:cta_pos', 'pagePath'],
+              start, end, 40, null,
+              { filter: { fieldName: 'eventName',
+                          stringFilter: { matchType: 'EXACT', value: 'cta_click' } } })
+        .catch(function (e) { return { _err: e }; }),
     ]);
     const v = kpi.rows?.[0]?.metricValues || [];
     document.getElementById('kpi-users').textContent = _fmt(v[0]?.value);
@@ -1129,6 +1173,7 @@ async function ga4LoadAll() {
     _renderBars('chart-pages', pg.rows);
     _renderBars('chart-device', dev.rows);
     _renderDaily(daily.rows);
+    _renderCta(cta);
 
     if (!kpi.rows || !kpi.rows.length) {
       ga4Note('연결은 됐는데 ' + _rangeLabel() + ' 사이에 집계된 데이터가 없습니다. '
@@ -1155,12 +1200,13 @@ async function ga4LoadAll() {
   }
 }
 
-async function _ga4Req(metrics, dims, start, end, limit, orderBys) {
+async function _ga4Req(metrics, dims, start, end, limit, orderBys, dimensionFilter) {
   const body = {
     dateRanges: [{ startDate: start, endDate: end }],
     metrics: metrics.map(n => ({ name: n })),
     limit,
   };
+  if (dimensionFilter) body.dimensionFilter = dimensionFilter;
   if (dims.length) {
     body.dimensions = dims.map(n => ({ name: n }));
     /* 날짜별처럼 정렬 기준을 따로 넘길 때는 그것을 씁니다.
@@ -1304,6 +1350,81 @@ window.addEventListener('resize', function () {
   clearTimeout(_dailyTimer);
   _dailyTimer = setTimeout(function () { if (_dailyRows) _renderDaily(null); }, 200);
 });
+
+/* 버튼 클릭 표.
+   같은 버튼이라도 어디서 눌렸는지, 그리고 누른 순간 얼마나 읽었는지를 같이 봅니다.
+   읽은 정도가 낮으면 들어오자마자 누른 것이고, 높으면 읽다가 설득된 것입니다. */
+function _renderCta(res) {
+  const el = document.getElementById('chart-cta');
+  const sumEl = document.getElementById('cta-sum');
+  const noteEl = document.getElementById('cta-note');
+  if (!el) return;
+
+  const PAGE = {
+    '/': '메인', '/index.html': '메인',
+    '/lesson': '1:1 수업', '/lesson.html': '1:1 수업',
+    '/course': '인강', '/course.html': '인강',
+    '/reviews': '후기', '/reviews.html': '후기',
+    '/portfolio': '통번역', '/portfolio.html': '통번역',
+    '/content': '학습 콘텐츠', '/apply': '문의', '/learn': '수강생',
+  };
+
+  if (res && res._err) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:.82rem;padding:8px 0;line-height:1.7">'
+      + '아직 볼 수 없습니다. GA4에 맞춤 정의를 등록한 다음 날부터 쌓입니다.<br>'
+      + '(오류 ' + (res._err.status || '?') + ')</p>';
+    if (sumEl) sumEl.textContent = '';
+    if (noteEl) noteEl.textContent = '';
+    return;
+  }
+
+  const rows = (res && res.rows) || [];
+  if (!rows.length) {
+    el.innerHTML = '<p style="color:var(--muted);font-size:.82rem;padding:8px 0;line-height:1.7">'
+      + '이 기간에 눌린 버튼이 없습니다. 맞춤 정의를 등록한 다음 날부터 쌓이니, '
+      + '방금 켰다면 하루 뒤에 다시 보세요.</p>';
+    if (sumEl) sumEl.textContent = '';
+    if (noteEl) noteEl.textContent = '';
+    return;
+  }
+
+  const list = rows.map(r => {
+    const n = parseInt(r.metricValues[0].value) || 0;
+    const sum = parseFloat(r.metricValues[1] ? r.metricValues[1].value : 0) || 0;
+    const path = r.dimensionValues[2].value;
+    return {
+      id: r.dimensionValues[0].value,
+      pos: r.dimensionValues[1].value || '',
+      page: PAGE[path] || path,
+      n: n,
+      depth: n ? Math.round(sum / n) : 0,
+    };
+  }).sort((a, b) => b.n - a.n);
+
+  const total = list.reduce((a, r) => a + r.n, 0);
+
+  el.innerHTML = '<div style="overflow-x:auto"><table class="cta-tb">'
+    + '<thead><tr><th>버튼</th><th class="hide-s">위치</th>'
+    + '<th style="text-align:right">클릭</th><th>누른 순간 읽은 정도</th></tr></thead><tbody>'
+    + list.map(r => {
+        const cls = r.pos === '상단' ? ' top' : (r.pos === '하단' ? ' bot' : '');
+        return '<tr>'
+          + '<td><div class="cta-id">' + r.id + '</div><div class="cta-pg">' + r.page + '</div></td>'
+          + '<td class="hide-s"><span class="cta-pos' + cls + '">' + (r.pos || '알 수 없음') + '</span></td>'
+          + '<td class="cta-n">' + r.n + '</td>'
+          + '<td><div class="cta-dep"><div class="cta-dep-t"><div class="cta-dep-f" style="width:'
+          + r.depth + '%"></div></div><span class="cta-dep-v">' + r.depth + '%</span></div></td>'
+          + '</tr>';
+      }).join('')
+    + '</tbody></table></div>';
+
+  if (sumEl) sumEl.textContent = '클릭 ' + total + '회, 버튼 ' + list.length + '종';
+  if (noteEl) {
+    noteEl.textContent = '읽은 정도는 그 버튼을 누른 사람들이 평균 몇 퍼센트까지 읽고 눌렀는지입니다. '
+      + '낮으면 들어오자마자 누른 것이라 이미 마음먹고 온 사람이고, 높으면 읽다가 설득된 것입니다. '
+      + '이름 끝에 _bar 가 붙은 것은 메인 상단을 따라다니는 안내 띠에서 눌린 것입니다.';
+  }
+}
 
 function _renderBars(id, rows) {
   const el = document.getElementById(id);

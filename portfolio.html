@@ -587,7 +587,7 @@
     overflow-x: auto; -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory; padding-bottom: 4px;
   }
-  .pf-igrow > .ig { flex: 0 0 286px; scroll-snap-align: start; }
+  .pf-igrow > .ig { flex: 0 0 200px; scroll-snap-align: start; }
   .pf-igwrap { position: relative; }
   .pf-igarrow {
     position: absolute; top: 46%; transform: translateY(-50%);
@@ -602,7 +602,7 @@
   .pf-igarrow[disabled] { opacity: .3; }
   @media (max-width: 760px) {
     .ig { --ig-bottom: 112px; }
-    .pf-igrow > .ig { flex: 0 0 80%; }
+    .pf-igrow > .ig { flex: 0 0 56%; }
     .pf-igarrow { display: flex; }
   }
 
@@ -784,6 +784,7 @@
     padding: 16px 18px; margin-top: 18px;
   }
   .pf-lede-body p { font-size: 0.855rem; color: var(--muted); line-height: 1.95; word-break: keep-all; }
+  .pf-lede-body p + p { margin-top: 14px; }
   .pf-lede-body strong { color: var(--dark); font-weight: 700; }
   /* 설명 글 끝에 같은 크기로 이어 붙는 문의 링크 */
   .pf-lede-btn {
@@ -791,6 +792,7 @@
     text-underline-offset: 3px; white-space: nowrap;
   }
   .pf-lede-btn:hover { color: #A33B28; }
+
   @media (min-width: 769px) {
     .pf-lede { margin-bottom: 40px; }
     .pf-lede-body { padding: 20px 24px; }
@@ -1009,8 +1011,9 @@
             <h3 class="pf-gtitle">LG전자 트립 행사: 프랑스 VIP 현장 순차통역</h3>
             <p class="pf-gplace">서울, 부산, 마곡, 하남 | 5박 6일</p>
             <ul class="pf-glist">
-              <li>LG 평택 칠러 공장 쇼룸과 라인 투어, 창원 공장 제조 라인 투어</li>
-              <li>하남 스타필드 레퍼런스 사이트 방문, 마곡 사이언스파크 시설 투어</li>
+              <li>LG전자의 생산시설과 기술 역량을 소개하는 프랑스 VIP 방문 프로그램에서 <b>현장 순차통역</b> 담당</li>
+              <li>생산 공장, 사이언스파크 및 솔루션 적용 현장 견학에 동행하며 <b>기술 설명과 질의응답 통역</b></li>
+              <li>프로그램 담당 에이전시와 일정 조율 및 프랑스 고객의 편의 요청에 따른 현장 안내</li>
             </ul>
             <p class="pf-gfoot">LG Electronics</p>
           </div>
@@ -1022,11 +1025,11 @@
           </div>
           <div class="pf-gbody">
             <p class="pf-gyear">2021<span>공공 기관 회의</span></p>
-            <h3 class="pf-gtitle">Santo André 시청: 지속가능 도시 모빌리티 PT, FR</h3>
-            <p class="pf-gplace">Santo André, São Paulo, 브라질</p>
+            <h3 class="pf-gtitle">산토 안드레 시청, 프랑스 리옹대 연구진 회의</h3>
+            <p class="pf-gplace">포르투갈어, 프랑스어 순차통역 | Santo André, São Paulo, 브라질</p>
             <ul class="pf-glist">
-              <li>상파울루 주 산투안드레 시청 지속가능 프로젝트 통역 참여</li>
-              <li>프랑스 리옹대학교 전문가 2인 대상 포르투갈어, 프랑스어 순차통역</li>
+              <li>인구 약 75만 명 규모의 산토 안드레시와 프랑스 리옹대 연구진 간 <b>도시교통 현황 및 정책 공유 회의</b>에서 포르투갈어, 프랑스어 순차통역 담당</li>
+              <li>지속가능 도시교통계획(PlanMob) 소개와 양국의 교통 인프라, 도심 혼잡 및 사회문화적 차이에 관한 <b>질의응답 통역</b></li>
             </ul>
             <p class="pf-gfoot">Prefeitura de Santo André, Université de Lyon</p>
           </div>
@@ -1038,10 +1041,10 @@
           <div class="pf-gbody">
             <p class="pf-gyear">2016<span>영화제</span></p>
             <h3 class="pf-gtitle">FID Marseille: 홍상수 감독 회고전 통역</h3>
-            <p class="pf-gplace">Festival International de Documentaire, Marseille</p>
+            <p class="pf-gplace">Festival International de Cinéma de Marseille, 제27회</p>
             <ul class="pf-glist">
-              <li>마르세유 국제영화제 FID Marseille에서 홍상수 감독 회고전 통역</li>
-              <li>한국어, 프랑스어 순차통역</li>
+              <li>제27회 FID Marseille의 <b>홍상수 감독 회고전</b>에서 작품 소개 및 상영 후 관객 질의응답 한불 순차통역 담당 (장편 17편 상영 / 영화제 전체 8개 장소 중 상영관 4곳)</li>
+              <li>영화제 기간 중 <b>언론 인터뷰 동행 통역</b> 및 일정 조율</li>
             </ul>
             <p class="pf-gfoot">FID Marseille</p>
           </div>
@@ -1085,7 +1088,8 @@
             <span class="pf-client">더라인 영상번역 아카데미</span>
           </div>
         </div>
-      </div>            
+      </div>
+
 
     </div><!-- /pf-wrap interp ko -->
     </div>
@@ -1260,27 +1264,23 @@
         <h2 class="pf-lede-h">복잡한 협업일수록 필요한 사람은<br>통역사가 아니라, <em>같은 기준을 보게 만드는 사람</em>입니다.</h2>
         <div class="pf-lede-body">
           <p>국제 프로젝트가 무너지는 지점은 언어가 아니라 <strong>전제</strong>입니다. 각 팀이 자기 언어로 서로 다른 그림을 그리고 있는데, 문장만 옮기면 아무것도 정리되지 않습니다. <strong>언어와 제작을 한 사람이 쥐고 있을 때 조율 비용이 사라집니다.</strong> <a href="#inquiry" class="pf-lede-btn" data-cta="pf_pm">프로젝트 전체를 맡기실 건가요?</a></p>
+          <p><b>영상 제작 MBA 석사 (2012)</b>: 논문 「디지털 전환이 영화 배급업에 가져오는 변화」</p>
         </div>
-      </div>
-
-      <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:14px 18px; margin-bottom:20px;">
-        <p style="font-size:0.85rem; font-weight:700; color:var(--dark);">MBA in Audiovisual Production</p>
-        <p style="font-size:0.78rem; color:var(--muted); margin-top:2px;">ESG 그랑제꼴, 파리 (2012), 논문: <em>What digital is going to change for film distributors?</em></p>
       </div>
 
       <div class="pf-skills">
         <dl class="pf-skill-grid">
           <div>
             <dt>촬영</dt>
-            <dd>3D4K, VR<br>360도 촬영<br>콘티 번역</dd>
+            <dd>3D4K<br>360도 촬영<br>클라이언트 &amp; 프로듀서 입장<br>콘티 번역</dd>
           </div>
           <div>
             <dt>운영</dt>
-            <dd>크루 50명 이상<br>프랑스 노동법 행정<br>기술 조율</dd>
+            <dd>크루 50명 이상, 캐스팅<br>프랑스 노동법, 앵테르미탕<br>기술 조율</dd>
           </div>
           <div>
             <dt>유통</dt>
-            <dd>예산, 보조금 관리<br>DVD 출시<br>극장 상영</dd>
+            <dd>예산, 보조금 관리<br>저작권 관리<br>DVD 출시, 극장 상영</dd>
           </div>
         </dl>
       </div>
@@ -1926,8 +1926,8 @@
   <!-- 문의 섹션 -->
   <div class="pf-cta-simple">
     <div>
-      <p class="cta-lead">진행 중인 프로젝트가 있다면, 먼저 범위와 견적을 확인해 보세요.</p>
-      <a href="#inquiry" class="cta-btn cta-brick" data-cta="pf_bottom">📄 통번역, 로컬화 프로젝트 문의하기</a>
+      <p class="cta-lead" id="pf-cta-lead">일정과 언어 조합, 현장 조건만 알려주시면 가능 여부를 먼저 확인해 드립니다.</p>
+      <a href="#inquiry" class="cta-btn cta-brick" id="pf-cta-btn" data-cta="pf_bottom_interp">📄 통역, 번역 일정 문의하기</a>
     </div>
   </div>
 
@@ -1972,6 +1972,46 @@
 <script>
   initComponents({ showLang: false });
   initTabs('#tabs-bar');
+
+/* ── 탭마다 하단 문의 문구를 바꿉니다 (링크는 동일) ────────────── */
+(function () {
+  var CTA = {
+    interp: {
+      lead: '일정과 언어 조합, 현장 조건만 알려주시면 가능 여부를 먼저 확인해 드립니다.',
+      btn:  '\uD83D\uDCC4 통역, 번역 일정 문의하기',
+      id:   'pf_bottom_interp'
+    },
+    tech: {
+      lead: '분량과 제품 단계를 알려주시면, 무엇부터 기준을 잡아야 할지 정리해 드립니다.',
+      btn:  '\uD83D\uDCC4 로컬화, 언어 품질 문의하기',
+      id:   'pf_bottom_tech'
+    },
+    prod: {
+      lead: '촬영 규모와 국가, 일정을 알려주시면 진행 방식과 예산 구조를 먼저 잡아 드립니다.',
+      btn:  '\uD83D\uDCC4 프로덕션 코디네이션 문의하기',
+      id:   'pf_bottom_prod'
+    }
+  };
+  var lead = document.getElementById('pf-cta-lead');
+  var btn  = document.getElementById('pf-cta-btn');
+  if (!lead || !btn) return;
+  function sync(tab) {
+    var c = CTA[tab];
+    if (!c) return;
+    lead.textContent = c.lead;
+    btn.textContent = c.btn;
+    btn.setAttribute('data-cta', c.id);
+  }
+  var bar = document.getElementById('tabs-bar');
+  if (bar) {
+    bar.addEventListener('click', function (e) {
+      var b = e.target.closest ? e.target.closest('.tab-btn') : null;
+      if (b) sync(b.getAttribute('data-tab'));
+    });
+    var on = bar.querySelector('.tab-btn.active');
+    if (on) sync(on.getAttribute('data-tab'));
+  }
+})();
 
 /* ── 영상: 썸네일을 누르면 페이지 안에서 바로 재생 ──────────────────
    참고: 파일을 브라우저로 직접 열면(file:// 주소) 유튜브가 페이지 주소를

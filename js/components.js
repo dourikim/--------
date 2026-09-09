@@ -249,3 +249,55 @@ function loadEditMode() {
   s.src = 'js/edit-mode.js';
   document.body.appendChild(s);
 }
+
+
+/* ══════════════════════════════════════════════════════
+   CTA 클릭 추적
+   data-cta 이름표가 붙은 버튼과 링크를 누르면 GA4로 보냅니다.
+   보내는 값
+     cta_id     어느 버튼인지        (예: reviews_t3)
+     cta_pos    버튼이 어디에 있는지  (상단 / 중간 / 하단 / 띠 / 팝업)
+     cta_depth  누른 순간 몇 퍼센트까지 읽었는지 (0 ~ 100)
+   depth 가 핵심입니다. 상단 버튼을 눌렀어도 depth 가 낮으면
+   들어오자마자 누른 것이고, 하단에서 depth 가 높으면 읽고 설득된 것입니다.
+   ══════════════════════════════════════════════════════ */
+(function () {
+  function docHeight() {
+    var b = document.body, d = document.documentElement;
+    return Math.max(b.scrollHeight, b.offsetHeight, d.scrollHeight, d.offsetHeight);
+  }
+  /* 누른 순간의 읽은 정도 */
+  function readDepth() {
+    var room = docHeight() - window.innerHeight;
+    if (room <= 0) return 100;
+    var v = Math.round(window.pageYOffset / room * 100);
+    return Math.min(100, Math.max(0, v));
+  }
+  /* 버튼이 문서의 어디쯤에 있는지. 화면에 붙어 다니는 것은 따로 표시합니다 */
+  function position(el) {
+    var given = el.getAttribute('data-cta-pos');
+    if (given) return given;
+    for (var a = el; a && a !== document.body; a = a.parentElement) {
+      if (getComputedStyle(a).position === 'fixed') return '팝업';
+    }
+    var h = docHeight();
+    if (!h) return '중간';
+    var top = el.getBoundingClientRect().top + window.pageYOffset;
+    var r = top / h;
+    return r < 0.33 ? '상단' : (r < 0.7 ? '중간' : '하단');
+  }
+
+  document.addEventListener('click', function (e) {
+    var el = e.target && e.target.closest ? e.target.closest('[data-cta]') : null;
+    if (!el) return;
+    if (typeof gtag !== 'function') return;
+    if (window['ga-disable-G-K5BW3YMBH6']) return;   /* 내 방문은 세지 않습니다 */
+    try {
+      gtag('event', 'cta_click', {
+        cta_id: el.getAttribute('data-cta'),
+        cta_pos: position(el),
+        cta_depth: readDepth()
+      });
+    } catch (err) {}
+  }, true);
+})();
