@@ -407,7 +407,7 @@
 <!-- ═══════════ 로그인 화면 ═══════════ -->
 <div id="login-screen">
   <div class="login-box">
-    <p class="login-logo">Admin · 김두우리</p>
+    <p class="login-logo">Admin, 김두우리</p>
     <h1 class="login-title">관리자 로그인</h1>
     <label class="login-label" for="pw-input">비밀번호</label>
     <input type="password" id="pw-input" class="login-input" placeholder="••••••••"
@@ -446,7 +446,7 @@
         <span class="si-icon">📄</span> 페이지 관리
       </button>
       <button class="sidebar-item" onclick="showPanel('analytics',this)">
-        <span class="si-icon">📊</span> 분석 · UTM
+        <span class="si-icon">📊</span> 분석, UTM
       </button>
       <button class="sidebar-item" onclick="showPanel('deploy',this)">
         <span class="si-icon">🚀</span> Vercel 배포
@@ -474,9 +474,9 @@
         </p>
       </div>
 
-      <!-- ── 패널: 분석 · UTM ── -->
+      <!-- ── 패널: 분석, UTM ── -->
       <div id="panel-analytics" class="panel">
-        <h2 class="panel-title">분석 · UTM 링크</h2>
+        <h2 class="panel-title">분석, UTM 링크</h2>
         <p class="panel-sub">실제 유입 데이터를 확인하고, UTM 링크로 채널별 성과를 추적하세요.</p>
 
         <!-- ① 데이터 대시보드 -->
@@ -494,16 +494,18 @@
           <!-- 어떤 상태에서도 원인을 확인할 수 있는 진단 도구 -->
           <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:0 0 14px">
             <button class="btn-sm" onclick="ga4Diag()">진단하기</button>
-            <span style="font-size:0.74rem;color:var(--muted)">빌드 2026-09-09a</span>
+            <span style="font-size:0.74rem;color:var(--muted)">빌드 2026-09-11a</span>
           </div>
           <pre id="ga4-diag" style="display:none;white-space:pre-wrap;word-break:break-all;background:#F4F1EF;border:1px solid #E5DEDA;border-radius:8px;padding:12px 14px;font-size:0.74rem;line-height:1.7;color:#4A3A36;margin:0 0 16px;max-height:320px;overflow:auto"></pre>
 
           <!-- 연결 필요 상태 -->
+          <!-- 안내 문구는 연결 화면에서도 보여야 하므로 state-data 밖에 둡니다 -->
+          <div id="ga4-note" style="display:none;margin:0 0 14px;padding:11px 14px;border-radius:8px;font-size:0.82rem;line-height:1.7;word-break:keep-all"></div>
           <div id="state-connect">
             <div class="connect-state">
               <div style="font-size:2.4rem;margin-bottom:12px">📊</div>
               <div style="font-size:0.95rem;font-weight:700;margin-bottom:6px">유입 데이터 확인하기</div>
-              <div style="font-size:0.82rem;color:var(--muted);margin-bottom:20px">Google 계정 연결 후 방문자 · 채널 · 페이지 데이터가 바로 보여요</div>
+              <div style="font-size:0.82rem;color:var(--muted);margin-bottom:20px">Google 계정 연결 후 방문자, 채널, 페이지 데이터가 바로 보여요</div>
               <button class="btn-google" onclick="ga4SignIn()">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.716v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/><path d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
                 Google 계정으로 연결
@@ -519,7 +521,6 @@
           <!-- 상태 D: 데이터 표시 -->
           <div id="state-data" style="display:none">
             <!-- 무슨 일이 있었는지 알려주는 줄. 조용히 빈 화면만 두지 않습니다 -->
-            <div id="ga4-note" style="display:none;margin:0 0 14px;padding:11px 14px;border-radius:8px;font-size:0.82rem;line-height:1.7;word-break:keep-all"></div>
             <!-- 최근 7일 하루별. 기간 버튼과 무관하게 항상 최근 7일입니다 -->
             <div class="daily-wrap">
               <div class="daily-head">
@@ -592,11 +593,13 @@
             <div class="form-group">
               <label>대상 페이지</label>
               <select id="utm-page" oninput="buildUTM()">
-                <option value="https://doouri.com/">홈페이지 (홈)</option>
-                <option value="https://doouri.com/lesson.html">1:1 프랑스어 수업</option>
-                <option value="https://doouri.com/class101.html">문법책 재해석 인강</option>
-                <option value="https://doouri.com/service-finder.html">학습 유형 테스트</option>
-                <option value="https://doouri.com/content.html">학습 콘텐츠</option>
+                <option value="https://www.dourikim.com/">홈페이지 (홈)</option>
+                <option value="https://www.dourikim.com/lesson">1:1 프랑스어 수업</option>
+                <option value="https://www.dourikim.com/course">문법책 재해석 인강</option>
+                <option value="https://www.dourikim.com/reviews">수업 후기</option>
+                <option value="https://www.dourikim.com/content">학습 콘텐츠</option>
+                <option value="https://www.dourikim.com/portfolio">통번역, 로컬화 이력</option>
+                <option value="https://www.dourikim.com/apply">문의하기</option>
                 <option value="custom">직접 입력</option>
               </select>
             </div>
@@ -628,7 +631,7 @@
               </select>
             </div>
             <div class="form-group" style="grid-column:1/-1">
-              <label>캠페인명 (utm_campaign) — 선택</label>
+              <label>캠페인명 (utm_campaign) : 선택</label>
               <input type="text" id="utm-campaign" placeholder="예: 2026여름_입문자" oninput="buildUTM()">
             </div>
           </div>
@@ -791,7 +794,7 @@ const PAGES = [
   { id: 'reviews',        icon: '💬', name: '수업 후기',               file: 'reviews.html',        defaultStatus: 'live' },
   { id: 'class101',       icon: '📘', name: '문법책 재해석 인강',       file: 'class101.html',       defaultStatus: 'live' },
   { id: 'content',        icon: '📒', name: '학습 콘텐츠',             file: 'content.html',        defaultStatus: 'live' },
-  { id: 'portfolio',      icon: '📑', name: '통번역 · 로컬화 이력',    file: 'portfolio.html',      defaultStatus: 'live' },
+  { id: 'portfolio',      icon: '📑', name: '통번역, 로컬화 이력',    file: 'portfolio.html',      defaultStatus: 'live' },
   { id: 'service-finder', icon: '🎯', name: '학습 유형 테스트',        file: 'service-finder.html', defaultStatus: 'live' },
   { id: 'learn',          icon: '🎓', name: '강의 수강 플랫폼',         file: 'learn.html',          defaultStatus: 'draft' },
 ];
@@ -905,7 +908,8 @@ function copyUTM() {
 const GA4_PROPERTY = '544506676';
 const OAUTH_CLIENT_ID = '715189050110-8l2r6f9jem1dvor5tvhc07e02nomlsii.apps.googleusercontent.com';
 const GA4_SCOPE = 'https://www.googleapis.com/auth/analytics.readonly';
-let _tokenClient, _token, _days = 7, _silentTried = false;
+let _tokenClient, _token, _days = 7, _gisLoading = false;
+const _gisWaiting = [];
 
 /* 토큰 보관
    예전에는 sessionStorage 를 썼습니다. 그건 탭 하나에만 남아서,
@@ -943,23 +947,48 @@ function _clearToken() {
 function initGA4() {
   const saved = _loadToken();
   if (saved) { _token = saved; showDataState(); ga4LoadAll(); return; }
-  if (!window.google?.accounts?.oauth2) {
-    const s = document.createElement('script');
-    s.src = 'https://accounts.google.com/gsi/client';
-    s.onload = () => { _setupClient(); _silentConnect(); };
-    document.head.appendChild(s);
-  } else { _setupClient(); _silentConnect(); }
+  /* 저장된 토큰이 없거나 만료됐습니다.
+     예전에는 여기서 몰래 재연결을 시도했지만, 크롬은 사용자가 직접 누르지 않은
+     팝업을 무조건 막습니다(popup_failed_to_open). 그래서 그 시도는 100% 실패했고
+     "왜 안 되지" 만 남았습니다. 이제는 구글 스크립트만 미리 실어두고,
+     연결은 사용자가 버튼을 누를 때만 합니다. */
+  showConnectState();
+  if (saved === null && _hadToken()) {
+    ga4Note('구글 연결은 1시간이 지나면 자동으로 풀립니다. 고장이 아닙니다. '
+          + '아래 연결 버튼을 한 번 눌러주세요.', false);
+  }
+  _loadGis();
 }
 
-/* 조용한 재연결
-   한 번 허락해둔 계정이면 창을 띄우지 않고 토큰만 새로 받아옵니다.
-   실패하면 그때만 연결 버튼을 보여줍니다. */
-function _silentConnect() {
-  if (_silentTried || !_tokenClient) { return; }
-  _silentTried = true;
-  try { _tokenClient.requestAccessToken({ prompt: '' }); }
-  catch (e) { showConnectState(); }
+/* 만료된 토큰이라도 남아 있으면, 전에 한 번 연결했던 사람이라는 뜻입니다 */
+function _hadToken() {
+  try { return !!localStorage.getItem(TOKEN_KEY); } catch (e) { return false; }
 }
+
+/* 구글 스크립트를 미리 실어둡니다. 버튼을 누른 순간 바로 팝업이 열려야 하기 때문입니다. */
+function _loadGis(cb) {
+  if (window.google?.accounts?.oauth2) { if (!_tokenClient) _setupClient(); if (cb) cb(); return; }
+  if (_gisLoading) { if (cb) _gisWaiting.push(cb); return; }
+  _gisLoading = true;
+  const s = document.createElement('script');
+  s.src = 'https://accounts.google.com/gsi/client';
+  s.onload = () => {
+    _gisLoading = false; _setupClient();
+    if (cb) cb();
+    _gisWaiting.splice(0).forEach(f => f());
+  };
+  s.onerror = () => {
+    _gisLoading = false;
+    ga4Note('구글 로그인 스크립트를 불러오지 못했습니다. 네트워크나 광고 차단 확장 프로그램을 확인해 주세요.', true);
+  };
+  document.head.appendChild(s);
+  if (cb) _gisWaiting.push(cb);
+}
+
+/* 예전의 "조용한 재연결" 은 삭제했습니다.
+   구글 토큰 방식은 무조건 팝업을 열어야 하는데, 크롬은 사용자가 직접 누르지 않은
+   팝업을 언제나 차단합니다. 즉 이 기능은 구조적으로 성공할 수 없었습니다.
+   로그인 없이 쓰고 싶다면 서버(예: /api/ga4)에 갱신 토큰을 두는 방식으로 바꿔야 합니다. */
 
 function _setupClient() {
   _tokenClient = google.accounts.oauth2.initTokenClient({
@@ -1010,9 +1039,19 @@ function _originHint() {
 
 function ga4SignIn() {
   if (location.protocol === 'file:') { _fileModeSwap(); return; }
-  _silentTried = true;   /* 직접 누른 경우에는 창을 띄웁니다 */
-  if (!window.google?.accounts?.oauth2) { initGA4(); setTimeout(() => _tokenClient?.requestAccessToken(), 2000); }
-  else { if (!_tokenClient) _setupClient(); _tokenClient.requestAccessToken(); }
+  /* 반드시 이 클릭 안에서 곧바로 팝업을 열어야 합니다.
+     예전에는 구글 스크립트가 늦게 실리면 setTimeout 으로 2초 뒤에 열었는데,
+     그때는 이미 클릭에서 벗어나 있어서 크롬이 팝업을 막았습니다. */
+  if (window.google?.accounts?.oauth2) {
+    if (!_tokenClient) _setupClient();
+    ga4Note('', false);
+    _tokenClient.requestAccessToken();
+    return;
+  }
+  ga4Note('구글 로그인 준비 중입니다. 잠시 뒤 연결 버튼을 한 번 더 눌러주세요.', false);
+  _loadGis(function () {
+    ga4Note('준비됐습니다. 연결 버튼을 눌러주세요.', false);
+  });
 }
 
 function ga4SignOut() {
@@ -1186,11 +1225,21 @@ async function ga4LoadAll() {
     showDataState();
   } catch(e) {
     if (e.status === 401) {
-      /* 토큰이 만료된 경우입니다. 창을 띄우지 않고 한 번 다시 받아봅니다. */
+      /* 토큰 만료입니다. 자동 재발급은 팝업 차단 때문에 불가능하므로
+         이유를 적고 연결 버튼을 보여줍니다. */
       _clearToken();
-      _silentTried = false;
-      if (window.google?.accounts?.oauth2) { if (!_tokenClient) _setupClient(); _silentConnect(); }
-      else { showConnectState(); }
+      showConnectState();
+      ga4Note('구글 연결이 1시간이 지나 풀렸습니다. 고장이 아닙니다. '
+            + '연결 버튼을 한 번 눌러주세요.', false);
+      _loadGis();
+      return;
+    }
+    if (e.status === 403) {
+      const m = (e && e.error && e.error.message) || '';
+      showConnectState();
+      ga4Note('연결은 됐지만 이 구글 계정에는 GA4 속성 ' + GA4_PROPERTY + ' 를 볼 권한이 없습니다. '
+            + '계정이 여러 개라면 다른 계정을 골라 다시 연결해 주세요. ' + m, true);
+      _loadGis();
       return;
     }
     document.getElementById('state-loading').style.display = 'none';
