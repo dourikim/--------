@@ -69,6 +69,11 @@ td{padding:10px 12px;border-bottom:1px solid #F4EFEE;vertical-align:middle}
 .gate h1{font-family:var(--font-heading);font-size:23px;margin:0 0 18px}
 .gate input{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r);font-family:inherit;font-size:15px;text-align:center;margin-bottom:10px}
 .gate .err{color:var(--brick);font-size:13px;min-height:20px}
+.pvbar{position:fixed;left:0;right:0;bottom:0;z-index:400;background:var(--dark);color:#fff;
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:9px 16px;font-size:12.5px}
+.pvbar b{background:var(--brick);border-radius:6px;padding:2px 8px;font-size:11.5px;font-weight:800}
+.pvbar span{opacity:.85}
+.pvbar a{margin-left:auto;color:#fff;font-weight:700}
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--dark);color:#fff;
   padding:11px 20px;border-radius:99px;font-size:13.5px;font-weight:600;opacity:0;transition:.25s;z-index:600}
 .toast.on{opacity:1;transform:translateX(-50%)}
@@ -204,6 +209,101 @@ td{padding:10px 12px;border-bottom:1px solid #F4EFEE;vertical-align:middle}
 <script src="data/po-travail.js"></script>
 <script src="data/po-sante-medias.js"></script>
 <script src="data/po-famille-tourisme.js"></script>
+<script src="data/langues-dossiers.js"></script>
+<script src="data/langues-sub-a.js"></script>
+<script src="data/langues-sub-b.js"></script>
+<script src="data/langues-sujets.js"></script>
+<script src="data/consommation-dossiers.js"></script>
+<script src="data/consommation-sub-a.js"></script>
+<script src="data/consommation-sub-b.js"></script>
+<script src="data/consommation-sujets.js"></script>
+<script src="data/francophonie-dossiers.js"></script>
+<script src="data/francophonie-sub-a.js"></script>
+<script src="data/francophonie-sub-b.js"></script>
+<script src="data/francophonie-sujets.js"></script>
+<script src="data/social-dossiers.js"></script>
+<script src="data/social-sub-a.js"></script>
+<script src="data/social-sub-b.js"></script>
+<script src="data/social-sujets.js"></script>
+<script src="data/egalite-dossiers.js"></script>
+<script src="data/egalite-sub-a.js"></script>
+<script src="data/egalite-sub-b.js"></script>
+<script src="data/egalite-sujets.js"></script>
+<script src="data/conso-b2-dossiers-a.js"></script>
+<script src="data/conso-b2-dossiers-b.js"></script>
+<script src="data/conso-b2-sub-a.js"></script>
+<script src="data/conso-b2-sub-b.js"></script>
+<script src="data/conso-b2-sub-c.js"></script>
+<script src="data/conso-b2-sujets.js"></script>
+<script src="data/alimentation-dossiers.js"></script>
+<script src="data/alimentation-sub-a.js"></script>
+<script src="data/alimentation-sub-b.js"></script>
+<script src="data/alimentation-sujets.js"></script>
+<script src="data/numerique-dossiers.js"></script>
+<script src="data/numerique-sub-a.js"></script>
+<script src="data/numerique-sub-b.js"></script>
+<script src="data/numerique-sujets.js"></script>
+<script src="data/espace-dossiers.js"></script>
+<script src="data/espace-sub.js"></script>
+<script src="data/espace-sujets.js"></script>
+<script src="data/science-dossiers.js"></script>
+<script src="data/science-sub-a.js"></script>
+<script src="data/science-sub-b.js"></script>
+<script src="data/science-sujets.js"></script>
+<script src="data/ecole-dossiers-a.js"></script>
+<script src="data/ecole-dossiers-b.js"></script>
+<script src="data/ecole-sub-a.js"></script>
+<script src="data/ecole-sub-b.js"></script>
+<script src="data/ecole-sub-c.js"></script>
+<script src="data/ecole-sujets.js"></script>
+<script src="data/loisirs-dossiers-a.js"></script>
+<script src="data/loisirs-dossiers-b.js"></script>
+<script src="data/loisirs-dossiers-c.js"></script>
+<script src="data/loisirs-sub-a.js"></script>
+<script src="data/loisirs-sub-b.js"></script>
+<script src="data/loisirs-sub-c.js"></script>
+<script src="data/loisirs-sub-d.js"></script>
+<script src="data/loisirs-sujets.js"></script>
+<script src="data/culture-dossiers.js"></script>
+<script src="data/culture-sub-a.js"></script>
+<script src="data/culture-sub-b.js"></script>
+<script src="data/culture-sujets.js"></script>
+<script src="data/env-b2-dossiers-a.js"></script>
+<script src="data/env-b2-dossiers-b.js"></script>
+<script src="data/env-b2-dossiers-c.js"></script>
+<script src="data/env-b2-sub-a.js"></script>
+<script src="data/env-b2-sub-b.js"></script>
+<script src="data/env-b2-sub-c.js"></script>
+<script src="data/env-b2-sub-d.js"></script>
+<script src="data/env-b2-sujets.js"></script>
+<script src="data/env-c1-dossiers.js"></script>
+<script src="data/env-c1-sub-a.js"></script>
+<script src="data/env-c1-sub-b.js"></script>
+<script src="data/env-c1-sujets.js"></script>
+<script src="data/urbanisme-dossiers.js"></script>
+<script src="data/urbanisme-sub-a.js"></script>
+<script src="data/urbanisme-sub-b.js"></script>
+<script src="data/urbanisme-sujets.js"></script>
+<script src="data/alim-c1-dossiers.js"></script>
+<script src="data/alim-c1-sub-a.js"></script>
+<script src="data/alim-c1-sub-b.js"></script>
+<script src="data/alim-c1-sujets.js"></script>
+<script src="data/economie-dossiers.js"></script>
+<script src="data/economie-sub-a.js"></script>
+<script src="data/economie-sub-b.js"></script>
+<script src="data/economie-sujets.js"></script>
+<script src="data/transports-dossiers-a.js"></script>
+<script src="data/transports-dossiers-b.js"></script>
+<script src="data/transports-sub-a.js"></script>
+<script src="data/transports-sub-b.js"></script>
+<script src="data/transports-sub-c.js"></script>
+<script src="data/transports-sujets.js"></script>
+<script src="data/societe-dossiers-a.js"></script>
+<script src="data/societe-dossiers-b.js"></script>
+<script src="data/societe-sub-a.js"></script>
+<script src="data/societe-sub-b.js"></script>
+<script src="data/societe-sub-c.js"></script>
+<script src="data/societe-sujets.js"></script>
 <script src="data/vocab-ex-2.js"></script>
 <script>
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
@@ -465,6 +565,15 @@ $('#copyTodo').onclick=()=>{
         pullAll(false).then(()=>{const b=$('#pullBtn');if(b)b.onclick=()=>pullAll(true)});
         setInterval(()=>pullAll(false),120000)});
   };
+  /* 로컬 파일 — 배포 전 확인용. 코드를 묻지 않습니다 (서버가 없으므로 학생 진도는 못 불러옵니다) */
+  if(location.protocol==='file:'){
+    const bar=document.createElement('div');bar.className='pvbar';
+    bar.innerHTML='<b>로컬</b><span>배포 전 확인용 화면입니다. 서버가 없어 학생 진도는 불러오지 못합니다.</span>';
+    document.body.appendChild(bar);
+    g.style.display='none';renderHome();window.ROSTER=[];renderPreview();
+    const m=$('#pullMsg');if(m)m.textContent='로컬에서는 학생 진도를 불러올 수 없습니다. 배포된 주소에서 확인하세요.';
+    return;
+  }
   let has=false;try{has=!!localStorage.getItem('delf_admin_tok')}catch(e){}
   if(has){start();return}
   g.style.display='flex';
