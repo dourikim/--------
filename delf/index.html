@@ -84,6 +84,55 @@ p.vs{margin:0 0 16px;color:var(--muted);font-size:13.5px}
 .chip.s1 .dot{background:var(--amber);border-color:var(--amber)}
 .chip.s2 .dot{background:var(--ok);border-color:var(--ok)}
 .chip.s2{text-decoration:line-through;opacity:.72}
+/* ── 작문 기술 ── */
+.tchip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-family:inherit;
+  font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;line-height:1.3;text-align:left}
+.tchip:hover{border-color:var(--brick);color:var(--txt)}
+.tchip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.tchip small{display:block;font-size:10.5px;font-weight:500;opacity:.75;letter-spacing:.2px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);
+  padding:20px 22px;margin-bottom:14px}
+.thead{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:16px}
+.thead .tfr{font-family:var(--font-heading);font-size:21px;font-weight:700;color:var(--txt);line-height:1.25}
+.thead .tko{font-size:13px;color:var(--brick);font-weight:700;margin-top:3px}
+.thead .ttag{font-size:11px;color:var(--muted);margin-top:6px;letter-spacing:.2px}
+.tsec{margin-bottom:18px}
+.tsec:last-child{margin-bottom:0}
+.tsec>h4{font-size:11px;font-weight:800;letter-spacing:1.1px;color:var(--brick);margin:0 0 9px;text-transform:uppercase}
+.tsec p{margin:0 0 9px;font-size:14px;line-height:1.72}
+.tsec p:last-child{margin-bottom:0}
+.tsec ul{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:7px}
+.tsec ul li{font-size:13.5px;line-height:1.65;padding-left:15px;position:relative}
+.tsec ul li:before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--line)}
+.tsec b{color:var(--txt);font-weight:700}
+.tex{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);border-radius:8px;
+  overflow:hidden;margin-bottom:10px}
+.tex>div{padding:13px 15px}
+.tex .av{background:#FBF9F9;color:var(--muted);border-right:1px solid var(--line)}
+.tex .ap{background:var(--amber-soft);color:var(--txt);font-weight:600}
+.tex .lbl{display:block;font-size:9.5px;font-weight:800;letter-spacing:1px;margin-bottom:6px;opacity:.7}
+.tex .av .lbl{color:var(--muted)}
+.tex .ap .lbl{color:var(--brick)}
+.tex .fr{font-size:14px;line-height:1.6}
+.tnote{grid-column:1/-1;background:#fff;border-top:1px solid var(--line);font-size:12.5px;
+  line-height:1.7;color:var(--muted);padding:11px 15px}
+.tnote b{color:var(--txt)}
+.tpieges li:before{background:var(--brick)}
+.pxo{display:flex;flex-direction:column;gap:5px;margin:8px 0 4px}
+.pxo>div{display:grid;grid-template-columns:16px minmax(0,1fr);gap:8px;align-items:baseline;
+  font-size:13.5px;line-height:1.55;padding:7px 11px;border-radius:7px}
+.pxo i{font-style:normal;font-weight:800;font-size:11.5px}
+.pxo .px{background:#FBF1EF;color:var(--muted)}
+.pxo .px i{color:var(--brick)}
+.pxo .px span{text-decoration:line-through;text-decoration-color:#E0BDB6;text-decoration-thickness:1px}
+.pxo .po{background:#F3F6F3;color:var(--txt);font-weight:600}
+.pxo .po i{color:#4A7A56}
+.tsous{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:10px}
+.tsous>div{border:1px solid var(--line);border-radius:8px;padding:11px 13px;background:#FDFCFC}
+.tsous .sfr{font-size:13.5px;font-weight:700;color:var(--txt)}
+.tsous .sko{font-size:11.5px;color:var(--brick);font-weight:600;margin:2px 0 5px}
+.tsous .snote{font-size:12px;line-height:1.6;color:var(--muted)}
+@media(max-width:640px){.tex{grid-template-columns:1fr}.tex .av{border-right:0;border-bottom:1px solid var(--line)}}
 .gr{font-size:10px;font-weight:900;border-radius:4px;padding:1px 5px;letter-spacing:.3px}
 .chip.pend{background:#F5F6F8;border-color:#E2E6EE;color:#98A2B3}
 .chip.pend .dot{border-color:#D5DBE4}
@@ -267,6 +316,7 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
       <button data-v="sim">시험 시뮬레이터</button>
       <button data-v="plan">학습 플랜</button>
       <button data-v="freq">기출 문제</button>
+      <button data-v="tech">작문 기술</button>
     </nav>
     <div class="lvl">
       <button data-lvl="B2">B2</button>
@@ -428,6 +478,15 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
       <h4 style="margin:0 0 10px;font-size:13px;color:var(--muted)">후기에는 있는데 우리 표에 없는 주제 — 추가 검토용</h4>
       <div id="orphanList"></div>
     </div>
+  </section>
+
+  <!-- ============ TECH ============ -->
+  <section class="view" id="v-tech">
+    <h2 class="vt">작문 기술 — 같은 뜻, 다른 급</h2>
+    <p class="vs">한국어의 «~이다 / ~가 있다»를 그대로 옮기면 <b>c'est …</b>, <b>il y a …</b> 로 몰립니다. 틀린 문장은 아니지만 거기서 멈추면 점수가 멈춥니다.
+      아래 예시의 «그냥 쓴 문장»은 <b>문법적으로 맞고 뜻도 통합니다</b> — 바뀌는 것은 감각입니다.</p>
+    <div class="tools" id="techChips"></div>
+    <div id="techBody"></div>
   </section>
 </main>
 
@@ -626,6 +685,7 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
 <script src="data/societe-sub-b.js"></script>
 <script src="data/societe-sub-c.js"></script>
 <script src="data/societe-sujets.js"></script>
+<script src="data/techniques.js"></script>
 <script src="data/vocab-ex-2.js"></script>
 <script>
 /* ============ STORE (로그인 붙일 때 이 블록만 교체) ============ */
@@ -1586,9 +1646,62 @@ E의 문장 3개를 한 문장씩 말한다. 학생이 따라 하면 짧게 확�
 }
 
 /* ============ BOOT ============ */
-function render(v){({dash:renderDash,explore:renderThemes,vocab:()=>{renderVocabSel();renderVocab()},sim:renderSim,plan:renderPlan,freq:renderFreq}[v]||(()=>{}))()}
+/* ============ 작문 기술 ============ */
+let techSel=0;
+function tmark(s){ /* **강조** → <b> */
+  return esc(s).replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>');
+}
+function renderTech(){
+  const L=window.TECHNIQUES||[];
+  const chips=$('#techChips'); if(!chips)return;
+  if(!L.length){chips.innerHTML='';$('#techBody').innerHTML='<div class="card">준비 중입니다.</div>';return}
+  if(techSel>=L.length)techSel=0;
+  chips.innerHTML=L.map((t,i)=>
+    `<button class="tchip ${i===techSel?'on':''}" data-i="${i}">${esc(t.ko)}<small>${esc(t.fr)}</small></button>`).join('');
+  $$('#techChips .tchip').forEach(b=>b.onclick=()=>{techSel=+b.dataset.i;renderTech();
+    const y=$('#techBody');if(y)y.scrollIntoView({block:'nearest',behavior:'smooth'})});
+
+  const t=L[techSel];
+  const sec=(title,inner)=>`<div class="tsec"><h4>${title}</h4>${inner}</div>`;
+  const list=a=>`<ul>${(a||[]).map(x=>`<li>${tmark(x)}</li>`).join('')}</ul>`;
+
+  const ex=(t.ex||[]).map(e=>`<div class="tex">
+      <div class="av"><span class="lbl">한국인이 쉽게 만들 문장</span><div class="fr">${esc(e.av)}</div></div>
+      <div class="ap"><span class="lbl">프랑스 감각이 잘 드러나는 문장</span><div class="fr">${esc(e.ap)}</div></div>
+      <div class="tnote">${tmark(e.note)}</div>
+    </div>`).join('');
+
+  const pieges=(t.pieges||[]).map(p=>{
+    const o=(typeof p==='string')?{txt:p}:p;
+    const pair=(o.x||o.o)?`<div class="pxo">
+        ${o.x?`<div class="px"><i>✕</i><span>${esc(o.x)}</span></div>`:''}
+        ${o.o?`<div class="po"><i>○</i><span>${esc(o.o)}</span></div>`:''}
+      </div>`:'';
+    return `<li>${tmark(o.txt)}${pair}</li>`;
+  }).join('');
+
+  const sous=t.sous?sec('한눈에 보기',`<div class="tsous">${t.sous.map(s=>
+      `<div><div class="sfr">${esc(s.fr)}</div><div class="sko">${esc(s.ko)}</div><div class="snote">${esc(s.note)}</div></div>`
+    ).join('')}</div>`):'';
+
+  $('#techBody').innerHTML=`<div class="tcard">
+    <div class="thead">
+      <div class="tfr">${esc(t.fr)}</div>
+      <div class="tko">${esc(t.ko)}</div>
+      <div class="ttag">${esc(t.tag||'')}</div>
+    </div>
+    ${sec('어떤 방법인가',String(t.quoi||'').split(/\n\s*\n/).map(x=>`<p>${tmark(x)}</p>`).join(''))}
+    ${sec('문법',list(t.gram))}
+    ${sec('잘 어울리는 상황',list(t.quand))}
+    ${sec('같은 뜻, 다른 급',ex)}
+    ${sec('함정',`<ul class="tpieges">${pieges}</ul>`)}
+    ${sous}
+  </div>`;
+}
+
+function render(v){({dash:renderDash,explore:renderThemes,vocab:()=>{renderVocabSel();renderVocab()},sim:renderSim,plan:renderPlan,freq:renderFreq,tech:renderTech}[v]||(()=>{}))()}
 function renderAll(){$$('.lvl button').forEach(b=>b.classList.toggle('on',b.dataset.lvl===S.level));
-  renderDash();renderThemes();renderVocabSel();renderVocab();renderSim();renderPlan();renderFreq()}
+  renderDash();renderThemes();renderVocabSel();renderVocab();renderSim();renderPlan();renderFreq();renderTech()}
 /* ============ 접속 → 프로필 → 시작 ============ */
 (function(){
   const C=window.CONFIG||{};const AUTH_URL=(C.authUrl||'/api/auth');
