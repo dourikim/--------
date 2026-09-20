@@ -53,6 +53,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>문의하기 | 김두우리</title>
   <meta name="description" content="1:1 프랑스어 수업, 통번역과 로컬화, 인강 문의를 한 곳에서. 가능한 시간대를 보면서 바로 신청하세요."/>
+  <!-- 이 페이지는 주소 뒤 ?f= 값으로 내용만 갈립니다.
+       캐노니컬이 없으면 구글이 /apply, /apply?f=portfolio, /apply?f=course 를
+       서로 다른 페이지로 보고 중복으로 판정합니다. 지우지 마세요. -->
+  <link rel="canonical" href="https://www.dourikim.com/apply"/>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     /* ══════════════════════════════════════════════════════
@@ -91,7 +95,7 @@
     .ap-cal-body { padding: 6px 10px 10px; min-height: 620px; }
     .tidycal-embed { min-height: 600px; }
 
-    /* 불러오기 실패 대비 — 원본 링크는 항상 남깁니다 */
+    /* 불러오기 실패 대비, 원본 링크는 항상 남깁니다 */
     .ap-fallback {
       padding: 16px 18px; font-size: 0.82rem; color: var(--muted); line-height: 1.8;
       border-top: 1px solid var(--border); background: var(--surface);
@@ -289,7 +293,9 @@ var APPLY_FORMS = {
     /* 시간표가 없는 문의는 안내 문구도 수업 기준 표현을 뺍니다 */
     document.getElementById('ap-note').innerHTML =
       '보내주시면 <b>48시간 이내</b>에 회신드립니다. 내용에 따라 확인이 더 필요한 경우 먼저 연락드릴게요.';
-    document.querySelector('.ap-panel-head .ap-step').textContent = '·';
+    /* 단계가 하나뿐이면 숫자를 지웁니다. 동그라미만 남아 점 역할을 합니다.
+       예전에는 가운뎃점 문자를 넣었는데, 이 사이트는 그 문자를 쓰지 않습니다. */
+    document.querySelector('.ap-panel-head .ap-step').textContent = '';
   }
 
   /* 다른 문의로 가는 링크 */
