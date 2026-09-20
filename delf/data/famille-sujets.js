@@ -5,11 +5,11 @@ window.SUJETS.push(
 
 /* ===================== DELF B2 — PRODUCTION ÉCRITE ===================== */
 {id:"b2f-pe-1", level:"B2", epreuve:"pe", theme:"b2-famille", sub:"les punitions corporelles",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"La loi française affirme désormais que l'autorité parentale s'exerce sans violences physiques ni psychologiques : la fessée, la gifle et la punition humiliante n'ont plus aucune place dans l'éducation. Certains parents y voient une protection indispensable de l'enfant, d'autres une intrusion de l'État dans la vie familiale. Vous exposez votre point de vue dans une tribune destinée au magazine d'une association de parents d'élèves, en tenant compte des arguments contraires et en illustrant votre propos d'exemples précis. (250 mots minimum)"},
 
 {id:"b2f-pe-2", level:"B2", epreuve:"pe", theme:"b2-famille", sub:"la répartition des tâches ménagères",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Un vif débat s'est ouvert sur le forum interne de votre entreprise après la publication d'un dossier consacré au partage du travail domestique dans les couples où les deux conjoints exercent à temps plein. Les uns estiment qu'il s'agit d'un problème strictement privé, que chaque foyer règle comme il l'entend ; les autres considèrent qu'un déséquilibre aussi constant relève d'une question de société et appelle des mesures collectives. Vous rédigez un article argumenté pour le journal interne de l'entreprise. (250 mots minimum)"},
 
 {id:"b2f-pe-3", level:"B2", epreuve:"pe", theme:"b2-famille", sub:"la surveillance des ados sur Internet",
@@ -17,7 +17,7 @@ window.SUJETS.push(
  consigne:"Le collège que fréquente votre enfant propose aux familles une application de contrôle parental qui permet de consulter l'historique de navigation et les messages échangés par les élèves. Certains parents ont accueilli l'initiative avec soulagement, d'autres la jugent contraire au respect de la vie privée des adolescents. Vous écrivez au chef d'établissement pour exposer votre position argumentée et proposer des mesures alternatives précises. (250 mots minimum)"},
 
 {id:"b2f-pe-4", level:"B2", epreuve:"pe", theme:"b2-famille", sub:"les repas en famille",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"« Une famille qui ne mange plus ensemble n'est déjà plus tout à fait une famille. » Cette formule, entendue lors d'une émission consacrée à la vie quotidienne des foyers, a suscité de nombreuses réactions. Entre les horaires décalés, les activités des enfants et les écrans, le repas partagé recule ; faut-il s'en alarmer ou y voir une simple évolution des modes de vie ? Vous discutez cette question dans un essai argumenté et structuré destiné à un magazine consacré à la famille. (250 mots minimum)"},
 
 {id:"b2f-pe-5", level:"B2", epreuve:"pe", theme:"b2-famille", sub:"les animaux domestiques",

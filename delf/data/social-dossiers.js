@@ -43,7 +43,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — la colocation : bail, clause de solidarité, congé",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"Crous / etudiant.gouv.fr — logement étudiant et aides au logement",url:"https://www.etudiant.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « colocation France loyers logement étudiant reportage »",url:"https://www.youtube.com/results?search_query=colocation+France+loyers+logement+%C3%A9tudiant+reportage"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la colocation, présentée comme un mode de vie, progresse surtout là où les loyers explosent → problématique.",
   "I. Ce qu'elle apporte : coût partagé, meilleur emplacement, sortie de l'isolement, apprentissage de la vie collective.",
   "II. Ce qu'elle coûte : responsabilité solidaire, tensions quotidiennes, perte d'intimité, exigences des propriétaires.",
@@ -85,7 +85,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — cohabitation intergénérationnelle solidaire",url:"https://www.service-public.fr/"},
   {type:"référence",titre:"INSEE — vieillissement de la population et projections démographiques",url:"https://www.insee.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « cohabitation intergénérationnelle solidaire étudiant senior reportage »",url:"https://www.youtube.com/results?search_query=cohabitation+interg%C3%A9n%C3%A9rationnelle+solidaire+%C3%A9tudiant+senior+reportage"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : une société qui vieillit encourage l'engagement local tout en se déchirant sur les retraites → problématique.",
   "I. Ce que la solidarité de proximité rend possible : logement partagé, lutte contre l'isolement, échange réciproque, moins de préjugés.",
   "II. Ses limites : dispositifs marginaux, bénévoles qui ne remplacent pas des professionnels, transfert financier au cœur du conflit, attentes des jeunes.",
@@ -212,7 +212,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"France Diplomatie — action humanitaire et aide au développement",url:"https://www.diplomatie.gouv.fr/"},
   {type:"officiel",titre:"Agence française de développement — projets et financements",url:"https://www.afd.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « aide humanitaire ONG localisation de l'aide débat »",url:"https://www.youtube.com/results?search_query=aide+humanitaire+ONG+localisation+de+l%27aide+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : des « French doctors » à la localisation de l'aide, l'humanitaire s'interroge sur lui-même → problématique.",
   "I. Ce que l'humanitaire rend possible : rapidité dans l'urgence, indépendance, formation de personnels locaux, alerte de l'opinion.",
   "II. Ses dérives : crises médiatisées, effets sur l'économie locale, volontariat de courte durée, instrumentalisation diplomatique.",

@@ -51,7 +51,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"cnc.fr — exploitation, salles art et essai et aides aux petites salles",url:"https://www.cnc.fr/"},
   {type:"officiel",titre:"culture.gouv.fr — équipements culturels et politique du cinéma en région",url:"https://www.culture.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « fermeture des cinémas petites villes salle de cinéma menacée »",url:"https://www.youtube.com/results?search_query=fermeture+des+cin%C3%A9mas+petites+villes+salle+de+cin%C3%A9ma+menac%C3%A9e"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un réseau de salles unique en Europe, construit par une politique publique, mais des écrans qui s'éteignent un à un dans les villes moyennes → problématique.",
   "I. Ce que perd une ville qui ferme son cinéma : une expérience d'attention irremplaçable, un centre-ville vivant le soir, le premier maillon du financement, un lieu pour les adolescents, l'accès des scolaires aux films.",
   "II. Ce qui rend la fermeture difficile à éviter : charges fixes et déficit permanent, habitudes de visionnage transformées, programmation limitée face au multiplexe voisin, public jeune sans réflexe de salle, solutions plus légères qui existent.",
@@ -229,7 +229,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"cnc.fr — production et diffusion de la fiction audiovisuelle française",url:"https://www.cnc.fr/"},
   {type:"officiel",titre:"arcom.fr — obligations d'investissement des plateformes dans la création",url:"https://www.arcom.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « écriture des séries scénariste showrunner série française »",url:"https://www.youtube.com/results?search_query=%C3%A9criture+des+s%C3%A9ries+sc%C3%A9nariste+showrunner+s%C3%A9rie+fran%C3%A7aise"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : du roman-feuilleton publié dans les journaux aux séries regardées sur tous les continents, une même forme longue reconnue tardivement → problématique.",
   "I. Pourquoi la série est une forme culturelle à part entière : filiation littéraire, métiers de l'écriture, circulation mondiale des récits non anglophones, milieux enfin représentés, accès à une langue et à ses codes.",
   "II. Ce qui limite cette reconnaissance : contrainte commerciale sur l'écriture, histoires interrompues faute de renouvellement, uniformisation des productions internationales, diversité de façade, abondance vite oubliée.",

@@ -38,7 +38,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — sécurité des écoles, PPMS et lutte contre le harcèlement",url:"https://www.education.gouv.fr/"},
   {type:"article",titre:"Le Monde — sécurité aux abords des établissements scolaires",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « sécurité à l'école portiques débat »",url:"https://www.youtube.com/results?search_query=s%C3%A9curit%C3%A9+%C3%A0+l%27%C3%A9cole+portiques+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : les propositions de portiques et de fouilles après les agressions aux abords → problématique.",
   "I. Ce que la sécurisation apporte : dissuasion, réaction en cas de crise, protection des personnels.",
   "II. Ses limites : coût, atteinte aux libertés, climat de suspicion, causes non traitées.",
@@ -80,7 +80,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — école inclusive, AESH et dispositifs ULIS",url:"https://www.education.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — scolarisation d'un enfant en situation de handicap",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « école inclusive AESH manque d'accompagnants »",url:"https://www.youtube.com/results?search_query=%C3%A9cole+inclusive+AESH+manque+d%27accompagnants"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un droit affirmé depuis 2005, une application encore incomplète → problématique.",
   "I. Les bénéfices de l'inclusion : apprentissages, socialisation, droit commun.",
   "II. Les conditions manquantes : accompagnants trop peu nombreux et précaires, formation insuffisante.",
@@ -164,7 +164,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — usage du téléphone portable à l'école et au collège",url:"https://www.education.gouv.fr/"},
   {type:"article",titre:"Radio France — écrans, sommeil et attention des adolescents",url:"https://www.radiofrance.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « pause numérique collège téléphone portable »",url:"https://www.youtube.com/results?search_query=pause+num%C3%A9rique+coll%C3%A8ge+t%C3%A9l%C3%A9phone+portable"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la généralisation de la pause numérique dans les collèges → problématique.",
   "I. L'argument de la règle collective : moins de distraction, plus d'équité, un cadre pour l'enseignant.",
   "II. Les causes que l'interdiction ne traite pas : sommeil, effectifs, rythmes, troubles de l'attention.",
@@ -206,7 +206,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — convention et gratification de stage",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"education.gouv.fr — stage d'observation de seconde et de troisième",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « stage de troisième inégalités trouver un stage »",url:"https://www.youtube.com/results?search_query=stage+de+troisi%C3%A8me+in%C3%A9galit%C3%A9s+trouver+un+stage"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la généralisation des stages d'observation au collège et au lycée → problématique.",
   "I. La valeur formatrice du stage : découverte des métiers, orientation, insertion.",
   "II. Ses angles morts : accès inégal, absence de rémunération, encadrement défaillant.",
@@ -248,7 +248,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — organisation du temps scolaire et calendrier",url:"https://www.education.gouv.fr/"},
   {type:"article",titre:"Le Monde — le débat sur la semaine de quatre jours à l'école",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « rythmes scolaires semaine de quatre jours débat »",url:"https://www.youtube.com/results?search_query=rythmes+scolaires+semaine+de+quatre+jours+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le retour généralisé à la semaine de quatre jours après 2017 → problématique.",
   "I. Les arguments en faveur d'un étalement : chronobiologie, fatigue, accès aux activités.",
   "II. Les obstacles pratiques : coût pour les communes, organisation des familles, inégalités périscolaires.",
@@ -332,7 +332,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — redoublement et passage dans la classe supérieure",url:"https://www.education.gouv.fr/"},
   {type:"article",titre:"Le Monde — efficacité du redoublement et « choc des savoirs »",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « redoublement efficacité école débat »",url:"https://www.youtube.com/results?search_query=redoublement+efficacit%C3%A9+%C3%A9cole+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : les allers-retours réglementaires, du redoublement exceptionnel à la décision confiée au chef d'établissement → problématique.",
   "I. Les arguments des partisans : consolidation des bases, exigence, jugement des enseignants.",
   "II. Les objections : faible efficacité mesurée, inégalités sociales, risque de décrochage, coût.",

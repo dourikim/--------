@@ -40,7 +40,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — qualité de vie et conditions de travail (QVCT)",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"ameli.fr — risques psychosociaux et santé au travail",url:"https://www.ameli.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « bien-être au travail risques psychosociaux »",url:"https://www.youtube.com/results?search_query=bien-%C3%AAtre+au+travail+risques+psychosociaux"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : du babyfoot au burn-out, deux visages du bien-être au travail → problématique.",
   "I. Une politique qui peut réellement protéger les salariés : prévention, écoute, fidélisation.",
   "II. Un affichage qui peut masquer l'essentiel : charge de travail inchangée, responsabilisation individuelle.",
@@ -82,7 +82,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — télétravail en entreprise",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — télétravail du salarié dans le secteur privé",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « télétravail en France avantages inconvénients »",url:"https://www.youtube.com/results?search_query=t%C3%A9l%C3%A9travail+en+France+avantages+inconv%C3%A9nients"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : du télétravail imposé par la crise sanitaire au retour au bureau réclamé par certains employeurs → problématique.",
   "I. Une organisation qui profite réellement aux salariés : temps, autonomie, conciliation, environnement.",
   "II. Une organisation qui déplace les risques : exclusion des métiers non télétravaillables, isolement, brouillage des frontières.",
@@ -124,7 +124,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — mutations technologiques et emploi",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"insee.fr — emploi industriel et automatisation",url:"https://www.insee.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « robotisation du travail emploi en France »",url:"https://www.youtube.com/results?search_query=robotisation+du+travail+emploi+en+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : des lignes de production automatisées aux logiciels qui remplacent des tâches de bureau → problématique.",
   "I. Ce que la robotisation permet : moins de pénibilité, plus de productivité, de nouveaux métiers.",
   "II. Ce qu'elle fragilise : emplois peu qualifiés, répartition des gains, bassins d'emploi dépendants.",
@@ -166,7 +166,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"cnil.fr — réseaux sociaux et recrutement",url:"https://www.cnil.fr/"},
   {type:"officiel",titre:"service-public.fr — droits et obligations du salarié sur les réseaux sociaux",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « réseaux sociaux et recrutement e-réputation »",url:"https://www.youtube.com/results?search_query=r%C3%A9seaux+sociaux+et+recrutement+e-r%C3%A9putation"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : du CV papier au profil LinkedIn consulté avant l'entretien → problématique.",
   "I. Ce que les réseaux sociaux apportent : réseau, visibilité, veille, marque employeur.",
   "II. Ce qu'ils exposent : vie privée, discrimination, e-réputation, pression permanente.",
@@ -208,7 +208,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — dialogue social et transformations du travail",url:"https://travail-emploi.gouv.fr/"},
   {type:"article",titre:"lemonde.fr — génération Y et rapport au travail",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « génération Y au travail sens rapport hiérarchie »",url:"https://www.youtube.com/results?search_query=g%C3%A9n%C3%A9ration+Y+au+travail+sens+rapport+hi%C3%A9rarchie"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la génération Y, figure récurrente du débat managérial → problématique.",
   "I. Ce que ce discours a permis de faire bouger : autonomie, flexibilité, dialogue.",
   "II. Ce qu'il risque de masquer : généralisation abusive, déni des vraies causes, tensions entre collègues.",
@@ -250,7 +250,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — responsabilité de l'employeur lors des événements d'entreprise",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"travail-emploi.gouv.fr — temps de travail et événements professionnels",url:"https://travail-emploi.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « fêtes d'entreprise cohésion d'équipe débat »",url:"https://www.youtube.com/results?search_query=f%C3%AAtes+d%27entreprise+coh%C3%A9sion+d%27%C3%A9quipe+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le pot de fin d'année, tradition d'entreprise toujours vivace → problématique.",
   "I. Ce que ces moments apportent réellement : cohésion, reconnaissance, intégration.",
   "II. Ce qu'ils peuvent imposer sans le dire : pression sociale, temps non reconnu, exclusion.",
@@ -292,7 +292,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — emploi des séniors",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — réforme des retraites et âge de départ",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « emploi des séniors réforme des retraites France »",url:"https://www.youtube.com/results?search_query=emploi+des+s%C3%A9niors+r%C3%A9forme+des+retraites+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : l'âge de départ recule, mais l'emploi des séniors ne progresse pas au même rythme → problématique.",
   "I. Ce que l'emploi des séniors apporte : transmission, financement des retraites, lien social.",
   "II. Ce qu'il expose : pénibilité, discrimination à l'embauche, chômage de longue durée.",
@@ -334,7 +334,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — droit à la déconnexion",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — droit à la déconnexion du salarié",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « droit à la déconnexion congés messages professionnels »",url:"https://www.youtube.com/results?search_query=droit+%C3%A0+la+d%C3%A9connexion+cong%C3%A9s+messages+professionnels"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un droit à la déconnexion inscrit dans la loi depuis 2017, mais des habitudes qui persistent → problématique.",
   "I. Ce qui peut justifier une disponibilité ponctuelle : urgence réelle, choix assumé, reprise facilitée.",
   "II. Ce que cela fait peser sur le salarié : repos entamé, norme informelle, pression au retour.",
@@ -376,7 +376,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — maîtrise de la langue française et compétences écrites",url:"https://www.education.gouv.fr/"},
   {type:"article",titre:"lemonde.fr — orthographe et recrutement en entreprise",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « orthographe recrutement entreprise débat »",url:"https://www.youtube.com/results?search_query=orthographe+recrutement+entreprise+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : une lettre de motivation écartée pour quelques fautes d'orthographe → problématique.",
   "I. Ce que l'orthographe peut légitimement signaler : rigueur, compétence écrite, image professionnelle.",
   "II. Ce que ce critère peut injustement pénaliser : inégalités scolaires, compétences non liées au poste.",

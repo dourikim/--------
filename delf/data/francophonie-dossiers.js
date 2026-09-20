@@ -42,7 +42,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Organisation internationale de la Francophonie — la langue française dans le monde",url:"https://www.francophonie.org/"},
   {type:"officiel",titre:"France Diplomatie — promotion de la langue française et réseau culturel",url:"https://www.diplomatie.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « place du français dans le monde francophonie Afrique »",url:"https://www.youtube.com/results?search_query=place+du+fran%C3%A7ais+dans+le+monde+francophonie+Afrique"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : trois cents millions de francophones, mais un recul dans les usages internationaux → problématique.",
   "I. Ce qui plaide pour une politique active : utilité d'une langue partagée, réseau éducatif, diversité des langues de travail.",
   "II. Ses limites : apprentissage subi plutôt que choisi, coût des institutions, poids de l'histoire coloniale, isolement scientifique.",
@@ -84,7 +84,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Académie française — questions de langue, féminisation des noms de métiers",url:"https://www.academie-francaise.fr/"},
   {type:"officiel",titre:"service-public.fr — rédaction administrative et désignation des fonctions",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « féminisation des noms de métiers autrice débat »",url:"https://www.youtube.com/results?search_query=f%C3%A9minisation+des+noms+de+m%C3%A9tiers+autrice+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : de « Madame le Ministre » au rapport de l'Académie française en 2019 → problématique.",
   "I. Les arguments en faveur : conformité à la réalité professionnelle, formes féminines anciennes, clarté administrative, effet sur les projections des élèves.",
   "II. Les objections : instabilité des formes, valeur non marquée du masculin, effet symbolique sans effet réel sur les inégalités.",
@@ -126,7 +126,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — enseignement du français et orthographe à l'école",url:"https://www.education.gouv.fr/"},
   {type:"officiel",titre:"Académie française — dire, ne pas dire et rectifications de l'orthographe",url:"https://www.academie-francaise.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « rectifications orthographe 1990 manuels scolaires 2016 »",url:"https://www.youtube.com/results?search_query=rectifications+orthographe+1990+manuels+scolaires+2016"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : ce qui a réellement changé en 1990 et la polémique de 2016 → problématique.",
   "I. Les arguments en faveur de la simplification : temps scolaire, graphies arbitraires, accessibilité pour les apprenants, confiance à l'écrit.",
   "II. Les objections : coexistence de deux graphies, textes déjà publiés, lien entre mots d'une même famille, causes réelles des difficultés.",
@@ -210,7 +210,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — enseignement des langues vivantes et mobilité des élèves",url:"https://www.education.gouv.fr/"},
   {type:"officiel",titre:"Erasmus+ France — mobilité étudiante et apprentissage des langues",url:"https://www.agence-erasmus.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « apprendre une langue étrangère utilité traduction automatique »",url:"https://www.youtube.com/results?search_query=apprendre+une+langue+%C3%A9trang%C3%A8re+utilit%C3%A9+traduction+automatique"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : des traducteurs automatiques efficaces face à des millions d'apprenants → problématique.",
   "I. Ce que l'apprentissage apporte encore : relation directe, accès aux nuances, débouchés professionnels, confiance personnelle.",
   "II. Les objections : coût en temps et en argent, résultats scolaires décevants, bénéfices cognitifs surestimés, suffisance de l'anglais.",
@@ -252,7 +252,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"culture.gouv.fr — FranceTerme et enrichissement de la langue française",url:"https://www.culture.gouv.fr/"},
   {type:"officiel",titre:"legifrance.gouv.fr — loi n°94-665 du 4 août 1994 relative à l'emploi de la langue française",url:"https://www.legifrance.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « anglicismes français entreprise loi Toubon débat »",url:"https://www.youtube.com/results?search_query=anglicismes+fran%C3%A7ais+entreprise+loi+Toubon+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : des équivalents officiels au succès inégal et un anglais omniprésent au travail → problématique.",
   "I. Pourquoi les emprunts ne menacent pas la langue : histoire des emprunts, utilité technique, francisation créative, échec des interdictions.",
   "II. Où le problème commence réellement : exclusion des salariés, opacité du jargon, publicité sélective, concurrence à l'université.",

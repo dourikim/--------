@@ -40,7 +40,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — durée du travail, heures supplémentaires et forfait jours",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — durée légale du travail et RTT",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « temps de travail 35 heures débat »",url:"https://www.youtube.com/results?search_query=temps+de+travail+35+heures+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : les expérimentations de semaine de quatre jours relancent le débat sur la durée du travail → problématique.",
   "I. Ce que le cadre légal protège : limite collective, dialogue social, partage de l'emploi.",
   "II. Ce que la réalité du travail interroge : forfait jours, télétravail, secteurs en tension.",
@@ -82,7 +82,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — discriminations à l'embauche et recours possibles",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"france-travail.fr — égalité et lutte contre les discriminations dans le recrutement",url:"https://www.francetravail.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « discriminations à l'embauche testing »",url:"https://www.youtube.com/results?search_query=discriminations+%C3%A0+l%27embauche+testing"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le testing révèle régulièrement des écarts de traitement selon le nom ou l'adresse → problématique.",
   "I. Un cadre construit : critères légaux, Défenseur des droits, testing comme preuve statistique.",
   "II. Les limites de ce cadre : preuve individuelle difficile, chartes sans effet, tensions autour de la diversité.",
@@ -124,7 +124,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — recrutement et non-discrimination à l'embauche",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"france-travail.fr — égalité des chances dans le recrutement",url:"https://www.francetravail.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « CV anonyme recrutement »",url:"https://www.youtube.com/results?search_query=CV+anonyme+recrutement"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : une obligation légale jamais réellement appliquée relance le débat sur le CV anonyme → problématique.",
   "I. Ce que le CV anonyme promettait : neutraliser le premier tri, objectiver les critères de sélection.",
   "II. Ce que l'expérience a montré : effets mitigés, discrimination reportée sur l'entretien.",
@@ -166,7 +166,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"cnil.fr — surveillance des salariés sur le lieu de travail",url:"https://www.cnil.fr/"},
   {type:"officiel",titre:"service-public.fr — droits des salariés et vie privée au travail",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « surveillance des salariés CNIL »",url:"https://www.youtube.com/results?search_query=surveillance+des+salari%C3%A9s+CNIL"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le télétravail relance la tentation de surveiller l'activité informatique des salariés → problématique.",
   "I. Ce que le cadre légal autorise : contrôle proportionné, information préalable, consultation du CSE.",
   "II. Ce qu'il interdit et ce que la pratique risque de dépasser : surveillance généralisée, atteinte à la vie privée.",
@@ -208,7 +208,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — gratification et statut du stagiaire en entreprise",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"education.gouv.fr — stages étudiants et convention de stage",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « stage non rémunéré gratification »",url:"https://www.youtube.com/results?search_query=stage+non+r%C3%A9mun%C3%A9r%C3%A9+gratification"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : dans certains secteurs, le stage non rémunéré reste une étape presque imposée avant l'emploi → problématique.",
   "I. Ce que le stage apporte : découverte d'un métier, expérience valorisée, cadre légal minimal.",
   "II. Ce qu'il peut devenir : emploi déguisé, précarité prolongée, inégalité d'accès selon les moyens financiers.",
@@ -250,7 +250,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"france-travail.fr — méthode de recrutement par simulation",url:"https://www.francetravail.fr/"},
   {type:"officiel",titre:"cnil.fr — intelligence artificielle et décisions automatisées dans le recrutement",url:"https://www.cnil.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « recrutement par le jeu serious game »",url:"https://www.youtube.com/results?search_query=recrutement+par+le+jeu+serious+game"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : jeux et tests automatisés se multiplient dans les processus de recrutement → problématique.",
   "I. Ce que ces outils promettent : compétences concrètes, standardisation, ouverture à des profils sans diplôme correspondant.",
   "II. Ce qu'ils risquent de reproduire : validité incertaine, opacité algorithmique, nouveaux biais sociaux.",
@@ -292,7 +292,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — qualité de vie et des conditions de travail",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"ameli.fr — sédentarité et activité physique au travail",url:"https://www.ameli.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « sport en entreprise qualité de vie au travail »",url:"https://www.youtube.com/results?search_query=sport+en+entreprise+qualit%C3%A9+de+vie+au+travail"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : de plus en plus d'entreprises proposent des cours de sport à leurs salariés → problématique.",
   "I. Ce que le sport en entreprise apporte : santé, cohésion, réduction de l'absentéisme.",
   "II. Ses limites : inégalité d'accès, risque d'alibi, manque de temps réel pour en profiter.",
@@ -334,7 +334,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — droit à la déconnexion et usages numériques au travail",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — droit à la déconnexion des salariés",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « smartphone productivité au travail déconnexion »",url:"https://www.youtube.com/results?search_query=smartphone+productivit%C3%A9+au+travail+d%C3%A9connexion"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le smartphone professionnel, outil indispensable ou source de distraction permanente ? → problématique.",
   "I. Ce que le smartphone apporte réellement au travail : réactivité, accès aux outils, flexibilité.",
   "II. Ce qu'il coûte en attention et en équilibre de vie : notifications, illusion du multitâche, hyperconnexion.",

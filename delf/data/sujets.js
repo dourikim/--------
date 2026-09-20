@@ -7,7 +7,7 @@ window.SUJETS = [
 
 /* ===================== DELF B2 — PRODUCTION ÉCRITE ===================== */
 {id:"b2-pe-1", level:"B2", epreuve:"pe", theme:"b2-sante", sub:"le mois sans alcool",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Le journal de votre ville publie un dossier sur le « mois sans alcool ». Vous réagissez dans le courrier des lecteurs : vous donnez votre opinion sur l'intérêt de ce type de campagne et vous l'illustrez d'exemples précis. (250 mots minimum)"},
 
 {id:"b2-pe-2", level:"B2", epreuve:"pe", theme:"b2-sante", sub:"l'impact des écrans sur la santé mentale et physique des enfants",
@@ -19,15 +19,15 @@ window.SUJETS = [
  consigne:"Votre entreprise souhaite mettre en place un programme d'activité physique pendant les heures de travail. Vous écrivez à la direction pour soutenir ou contester ce projet, en argumentant et en proposant des aménagements précis. (250 mots minimum)"},
 
 {id:"b2-pe-4", level:"B2", epreuve:"pe", theme:"b2-sante", sub:"la télémédecine",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"« Grâce à la téléconsultation, plus personne ne sera privé de médecin. » Vous discutez cette affirmation dans un article destiné au blog de votre association de quartier, en vous appuyant sur des exemples concrets. (250 mots minimum)"},
 
 {id:"b2-pe-5", level:"B2", epreuve:"pe", theme:"b2-sante", sub:"la cigarette électronique",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Faut-il interdire tous les arômes sucrés dans les cigarettes électroniques ? Vous exposez votre point de vue de manière argumentée dans une tribune destinée à un magazine de santé. (250 mots minimum)"},
 
 {id:"b2-pe-6", level:"B2", epreuve:"pe", theme:"b2-sante", sub:"les régimes détox",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Une influenceuse très suivie vend des « cures détox » à ses abonnés. Vous rédigez un article pour le journal de votre école de langue afin d'alerter les lecteurs, en expliquant pourquoi ces promesses posent problème. (250 mots minimum)"},
 
 {id:"b2-pe-7", level:"B2", epreuve:"pe", theme:"b2-sante", sub:"le sommeil",
@@ -67,28 +67,28 @@ window.SUJETS = [
 
 /* ===================== DALF C1 — PRODUCTION ÉCRITE ===================== */
 {id:"c1-pe-1", level:"C1", epreuve:"pe", theme:"c1-sante", sub:"les médecines alternatives",
- type:"Essai argumenté", mots:250, duree:150,
+ type:"Essai seul · 심화 연습", mots:250, duree:150,
  consigne:"« Le succès des médecines alternatives n'est pas le signe d'un retour de l'irrationnel, mais celui d'un échec de la médecine officielle. » Dans un essai argumenté et structuré, vous discuterez cette affirmation en vous appuyant sur des exemples précis. (250 mots minimum)"},
 
 {id:"c1-pe-2", level:"C1", epreuve:"pe", theme:"c1-sante", sub:"la vaccination obligatoire",
- type:"Essai argumenté", mots:250, duree:150,
+ type:"Essai seul · 심화 연습", mots:250, duree:150,
  consigne:"Une politique de santé publique peut-elle légitimement contraindre l'individu au nom de la protection collective ? Vous répondrez à cette question dans un essai argumenté, en nuançant votre position. (250 mots minimum)"},
 
 {id:"c1-pe-3", level:"C1", epreuve:"pe", theme:"c1-sante", sub:"l'obésité",
- type:"Essai argumenté", mots:250, duree:150,
+ type:"Essai seul · 심화 연습", mots:250, duree:150,
  consigne:"« Traiter l'obésité par le médicament revient à soigner le symptôme d'un problème social. » Vous discuterez cette thèse dans un essai argumenté et structuré. (250 mots minimum)"},
 
 {id:"c1-pe-4", level:"C1", epreuve:"pe", theme:"c1-sante", sub:"la méditation",
- type:"Synthèse de documents + essai", mots:490, duree:150,
+ type:"Synthèse + essai", mots:490, duree:150,
  consigne:"1) Faites la synthèse des deux documents ci-dessous (200 à 240 mots). Vous ne devez pas donner votre opinion dans cette partie et vous ne devez pas reprendre les phrases des documents.\n2) Rédigez ensuite un essai argumenté (250 mots minimum) : la diffusion des pratiques de bien-être en entreprise améliore-t-elle réellement la santé des salariés ?",
  support:"DOCUMENT 1 — Entrée à l'hôpital dans les années 2010, la méditation de pleine conscience y occupe aujourd'hui une place reconnue. Des protocoles standardisés de huit semaines ont montré, dans des essais contrôlés, une efficacité réelle dans la prévention des rechutes dépressives. L'intérêt tient autant au résultat qu'à sa logique : le patient dispose d'un outil qu'il mobilise lui-même, sans effet indésirable médicamenteux et pour un coût dérisoire. Les praticiens rappellent toutefois que ces résultats valent pour des indications précises, dans un cadre encadré par des professionnels formés, et qu'ils ne se transposent pas automatiquement hors de l'hôpital.\n\nDOCUMENT 2 — En quelques années, la pleine conscience a quitté le cabinet pour l'open space. Séances hebdomadaires, applications offertes par l'employeur, ateliers de gestion du stress : le marché du bien-être en entreprise se porte bien. Des voix s'élèvent pourtant pour interroger cette diffusion. Proposer à un salarié de mieux respirer sans toucher à sa charge de travail, c'est lui demander de s'adapter à un environnement qu'on refuse de modifier. La souffrance au travail a des causes organisationnelles ; la traiter comme une affaire individuelle revient à en déplacer la responsabilité sur celui qui la subit."},
 
 {id:"c1-pe-5", level:"C1", epreuve:"pe", theme:"c1-sante", sub:"les addictions",
- type:"Essai argumenté", mots:250, duree:150,
+ type:"Essai seul · 심화 연습", mots:250, duree:150,
  consigne:"Faut-il continuer à répondre aux addictions par l'interdit ? Vous rédigerez un essai argumenté et structuré, en tenant compte des expériences menées à l'étranger. (250 mots minimum)"},
 
 {id:"c1-pe-6", level:"C1", epreuve:"pe", theme:"c1-sante", sub:"l'automédication",
- type:"Essai argumenté", mots:250, duree:150,
+ type:"Essai seul · 심화 연습", mots:250, duree:150,
  consigne:"« L'autonomie du patient n'a de sens que si elle est éclairée. » Vous discuterez cette formule à propos de l'automédication, dans un essai argumenté et nuancé. (250 mots minimum)"},
 
 /* ===================== DALF C1 — PRODUCTION ORALE ===================== */

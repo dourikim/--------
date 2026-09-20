@@ -51,7 +51,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"meteofrance.com — vigilance canicule, évolution des températures et épisodes de chaleur",url:"https://meteofrance.com/"},
   {type:"officiel",titre:"education.gouv.fr — éco-délégués et éducation au développement durable dans les établissements",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « canicule France écoles chaleur gestes quotidien climat »",url:"https://www.youtube.com/results?search_query=canicule+France+%C3%A9coles+chaleur+gestes+quotidien+climat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : des canicules devenues ordinaires, des écoles fermées, des restrictions d'eau, des éco-délégués dans chaque classe → problématique.",
   "I. Ce que l'action individuelle et locale apporte réellement : effet d'entraînement, remède à l'impuissance, résultats rapides à l'échelle d'une cour ou d'un quartier, citoyens mieux informés, mesures simples qui protègent les plus fragiles.",
   "II. Ses limites : responsabilité déplacée vers le particulier, effort impossible à fournir pour qui n'a ni transport ni logement adapté, gestes symboliques, adaptation qui traite les effets, angoisse entretenue chez les jeunes.",
@@ -136,7 +136,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — zones à faibles émissions, vignette Crit'Air et forfait mobilités durables",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"ecologie.gouv.fr — plan vélo, mobilités du quotidien et déplacements domicile-travail",url:"https://www.ecologie.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « dépendance à la voiture périurbain zone à faibles émissions transports »",url:"https://www.youtube.com/results?search_query=d%C3%A9pendance+%C3%A0+la+voiture+p%C3%A9riurbain+zone+%C3%A0+faibles+%C3%A9missions+transports"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un étalement urbain ancien, deux voitures par ménage en périurbain, des zones à faibles émissions dans les métropoles → problématique.",
   "I. Pourquoi il faut réduire cette dépendance : coût pour les ménages, espace public confisqué, air et bruit, sécurité autour des écoles, alternatives déjà efficaces là où elles existent.",
   "II. Pourquoi les restrictions ne suffisent pas : territoires sans desserte, aides inaccessibles aux plus modestes, chaîne de déplacements quotidienne, sentiment d'injustice entre ville et périphérie.",
@@ -262,7 +262,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ofb.gouv.fr — Office français de la biodiversité : espèces, espaces protégés et suivis",url:"https://www.ofb.gouv.fr/"},
   {type:"officiel",titre:"mnhn.fr — Muséum national d'histoire naturelle, programme Vigie-Nature et sciences participatives",url:"https://www.mnhn.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « déclin des insectes oiseaux des champs haies biodiversité France »",url:"https://www.youtube.com/results?search_query=d%C3%A9clin+des+insectes+oiseaux+des+champs+haies+biodiversit%C3%A9+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : des signes ordinaires de disparition, des suivis scientifiques qui les confirment, des outils de protection anciens mais limités → problématique.",
   "I. Pourquoi la protection réglementaire ne suffit pas : le déclin touche les espèces communes, les réserves fonctionnent comme des îles, l'essentiel se joue dans les champs, les jardins et les villes.",
   "II. Ce que suppose un changement des usages : haies et bandes enherbées utiles à l'agriculteur lui-même, gestion des espaces publics sans pesticides, extinction nocturne, sciences participatives — mais aussi compensations, coûts et conflits d'usage réels.",

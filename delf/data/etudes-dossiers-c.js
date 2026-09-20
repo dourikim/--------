@@ -40,7 +40,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Ministère de l'Éducation nationale — la scolarisation des enfants de moins de trois ans",url:"https://www.education.gouv.fr/"},
   {type:"article",titre:"Le Monde — dossier sur l'école maternelle et la scolarisation précoce",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « école dès 2 ans débat »",url:"https://www.youtube.com/results?search_query=%C3%A9cole+d%C3%A8s+2+ans+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : l'obligation d'instruction à trois ans a relancé la question des tout-petits → problématique.",
   "I. Un instrument de justice sociale : langage, gratuité, repérage précoce.",
   "II. Les limites : besoins affectifs, encadrement insuffisant, risque de garderie déguisée.",
@@ -82,7 +82,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Éduscol — accompagnement personnalisé et différenciation pédagogique",url:"https://eduscol.education.fr/"},
   {type:"officiel",titre:"Ministère de l'Éducation nationale — dispositifs de soutien et devoirs faits",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « accompagnement personnalisé collège »",url:"https://www.youtube.com/results?search_query=accompagnement+personnalis%C3%A9+coll%C3%A8ge"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la généralisation du soutien gratuit au collège → problématique.",
   "I. Une réponse publique à une inégalité privée : gratuité, ciblage, autonomie.",
   "II. Les conditions non remplies : effectifs, formation, horaires, risque d'étiquetage.",
@@ -124,7 +124,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Onisep — formations en alternance et poursuite d'études",url:"https://www.onisep.fr/"},
   {type:"référence",titre:"Céreq — enquêtes sur l'insertion professionnelle des diplômés",url:"https://www.cereq.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « professionnalisation université débat »",url:"https://www.youtube.com/results?search_query=professionnalisation+universit%C3%A9+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la place croissante de l'alternance et des stages dans le supérieur → problématique.",
   "I. Les arguments de la professionnalisation : insertion, motivation, autonomie financière.",
   "II. Les risques : obsolescence, hiérarchie des filières, affaiblissement de la recherche.",
@@ -166,7 +166,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Ministère de l'Éducation nationale — expérimentation de la tenue unique",url:"https://www.education.gouv.fr/"},
   {type:"article",titre:"France Info — dossier uniforme et tenue unique à l'école",url:"https://www.francetvinfo.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « uniforme à l'école expérimentation »",url:"https://www.youtube.com/results?search_query=uniforme+%C3%A0+l%27%C3%A9cole+exp%C3%A9rimentation"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le retour de la tenue unique dans des établissements volontaires → problématique.",
   "I. Ce que l'uniforme promet : égalité visible, apaisement, appartenance.",
   "II. Ce qu'il déplace : coût, expression de soi, absence de preuves.",
@@ -250,7 +250,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Éduscol — l'éveil aux langues et les langues vivantes à l'école",url:"https://eduscol.education.fr/"},
   {type:"officiel",titre:"Ministère de l'Éducation nationale — enseignement des langues vivantes",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « anglais dès la maternelle débat »",url:"https://www.youtube.com/results?search_query=anglais+d%C3%A8s+la+maternelle+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : l'avancée progressive des langues vivantes vers la maternelle → problématique.",
   "I. Les atouts de la précocité : oreille, prononciation, ouverture, égalité d'accès.",
   "II. Les conditions manquantes : maîtrise du français, formation, continuité.",
@@ -292,7 +292,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Éduscol — organisation de la classe et pratiques pédagogiques",url:"https://eduscol.education.fr/"},
   {type:"article",titre:"France Info — reportages sur les classes flexibles à l'école primaire",url:"https://www.francetvinfo.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « classe flexible aménagement »",url:"https://www.youtube.com/results?search_query=classe+flexible+am%C3%A9nagement"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la diffusion des classes flexibles par les enseignants eux-mêmes → problématique.",
   "I. Les bénéfices annoncés : attention, coopération, inclusion.",
   "II. Les réserves : coût, évaluation, absence de changement des pratiques.",
@@ -334,7 +334,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Éduscol — ressources numériques pour la classe",url:"https://eduscol.education.fr/"},
   {type:"article",titre:"Le Monde — dossier sur les révisions en ligne et les plateformes éducatives",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « cours en ligne YouTube révisions bac »",url:"https://www.youtube.com/results?search_query=cours+en+ligne+YouTube+r%C3%A9visions+bac"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la place prise par les vidéos de cours depuis la fermeture des établissements → problématique.",
   "I. Une ressource démocratique : gratuité, rythme personnel, curiosité.",
   "II. Ses limites : fiabilité, absence d'évaluation, avantage aux élèves autonomes.",
@@ -376,7 +376,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"CNIL — vidéosurveillance et protection des données dans les établissements scolaires",url:"https://www.cnil.fr/"},
   {type:"officiel",titre:"Ministère de l'Éducation nationale — sécurité et climat scolaire",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « vidéosurveillance lycée débat »",url:"https://www.youtube.com/results?search_query=vid%C3%A9osurveillance+lyc%C3%A9e+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la multiplication des caméras aux abords des établissements → problématique.",
   "I. Les arguments de la sécurité : dissuasion, preuve, apaisement des familles.",
   "II. Les objections : inefficacité préventive, atteinte à la vie privée, coût d'opportunité.",

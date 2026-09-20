@@ -51,7 +51,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"securite-routiere.gouv.fr — limitations de vitesse, permis à points, alcool et conduite distraite",url:"https://www.securite-routiere.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — retrait de points, permis probatoire et stage de récupération",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « sécurité routière 80 km/h zone 30 vitesse piétons cyclistes débat »",url:"https://www.youtube.com/results?search_query=s%C3%A9curit%C3%A9+routi%C3%A8re+80+km%2Fh+zone+30+vitesse+pi%C3%A9tons+cyclistes+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un 80 km/h imposé en 2018 puis assoupli, des villes passées à 30, des victimes désormais plus souvent piétonnes ou cyclistes → problématique.",
   "I. Ce que la contrainte a obtenu et peut encore obtenir : physique du choc, impersonnalité du contrôle, protection des conducteurs débutants, coût faible du ralentissement urbain, consensus autour des écoles.",
   "II. Ses limites : règle uniforme sur des routes inégales, incohérence départementale, contrôle qui vise le mesurable plutôt que le dangereux, sanction socialement inégale, question des conducteurs âgés traitée par le retrait plutôt que par l'accompagnement.",
@@ -220,7 +220,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ecologie.gouv.fr — covoiturage du quotidien, voies réservées et aires de covoiturage",url:"https://www.ecologie.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — forfait mobilités durables et prise en charge des trajets domicile-travail",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « covoiturage domicile travail voie réservée prime autosolisme France »",url:"https://www.youtube.com/results?search_query=covoiturage+domicile+travail+voie+r%C3%A9serv%C3%A9e+prime+autosolisme+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un covoiturage longue distance entré dans les mœurs, un covoiturage quotidien qui reste marginal alors que les voitures circulent presque vides aux heures de pointe → problématique.",
   "I. Pourquoi les pouvoirs publics y croient : capacité gagnée sans construire de route, économie répétée pour les ménages, avantage de temps procuré par les voies réservées, leviers concrets des employeurs, succès démontré du partage entre inconnus sur longue distance.",
   "II. Pourquoi la pratique ne décolle pas : rigidité des horaires et imprévus, liberté perdue mal compensée par quelques euros, primes qui produisent des inscriptions plutôt que des trajets, dispersion des lieux d'emploi, gêne de la dépendance à un autre conducteur.",

@@ -42,7 +42,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"culture.gouv.fr — le livre audio, lecture et accessibilité",url:"https://www.culture.gouv.fr/"},
   {type:"article",titre:"radiofrance.fr — le succès du livre audio et le métier de comédien lecteur",url:"https://www.radiofrance.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « livre audio écouter un livre est-ce le lire »",url:"https://www.youtube.com/results?search_query=livre+audio+%C3%A9couter+un+livre+est-ce+le+lire"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un format né pour les personnes aveugles, devenu un produit d'abonnement écouté dans les transports → problématique.",
   "I. Ce que le livre audio apporte : accessibilité réelle, temps de lecture retrouvé, apport de la voix, retour de lecteurs éloignés du livre.",
   "II. Ce qu'il coûte : attention partagée, interprétation imposée, rémunération à l'écoute, dépendance aux plateformes.",
@@ -84,7 +84,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"culture.gouv.fr — musées de France, fréquentation et publics",url:"https://www.culture.gouv.fr/"},
   {type:"article",titre:"francetvinfo.fr — musées : gratuité, grandes expositions et nouveaux publics",url:"https://www.francetvinfo.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « fréquentation des musées public gratuité expositions »",url:"https://www.youtube.com/results?search_query=fr%C3%A9quentation+des+mus%C3%A9es+public+gratuit%C3%A9+expositions"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : gratuité pour les moins de vingt-six ans, nuits des musées, expositions événementielles → problématique.",
   "I. Ce qui fait entrer du monde : prix levé, grands noms, recettes réinvesties, visites scolaires, offre numérique.",
   "II. Ce que la fréquentation ne dit pas : seuil symbolique, visite pressée, saturation, médiation absente, écran qui remplace l'œuvre.",
@@ -126,7 +126,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"culture.gouv.fr — économie du livre et prix unique du livre numérique",url:"https://www.culture.gouv.fr/"},
   {type:"officiel",titre:"bnf.fr — livre numérique, lecture publique et prêt en bibliothèque",url:"https://www.bnf.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « livre numérique liseuse prix unique du livre »",url:"https://www.youtube.com/results?search_query=livre+num%C3%A9rique+liseuse+prix+unique+du+livre"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la liseuse, le prix unique étendu au numérique en 2011, le prêt en bibliothèque → problématique.",
   "I. Les avantages concrets : portabilité, confort de lecture réglable, disponibilité immédiate, prix, accès pour les lecteurs empêchés.",
   "II. Ce que l'on perd : licence au lieu de propriété, coût de l'appareil, repérage dans le texte, attention fragmentée, budget des bibliothèques.",
@@ -168,7 +168,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"culture.gouv.fr — droits des auteurs et contrat d'édition",url:"https://www.culture.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — droits d'auteur, revenus et statut de l'auteur",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « autoédition publier son livre plateforme »",url:"https://www.youtube.com/results?search_query=auto%C3%A9dition+publier+son+livre+plateforme"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : publier en une journée sans être choisi par personne, impression à la demande, commission de la plateforme → problématique.",
   "I. Ce que l'auteur gagne : accès sans comité de lecture, contrôle du livre, rémunération par exemplaire, lien direct avec les lecteurs, titres de niche.",
   "II. Ce qu'il perd : correction et mise en page, temps d'écriture, visibilité, dépendance à une plateforme, absence hors du circuit numérique.",
@@ -210,7 +210,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"legifrance.gouv.fr — loi du 30 novembre 2021 visant à lutter contre la maltraitance animale",url:"https://www.legifrance.gouv.fr/"},
   {type:"officiel",titre:"agriculture.gouv.fr — bien-être animal et animaux d'espèces non domestiques",url:"https://agriculture.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « cirque sans animaux loi 2021 reconversion »",url:"https://www.youtube.com/results?search_query=cirque+sans+animaux+loi+2021+reconversion"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : arrêtés municipaux contestés, images des associations, loi de 2021 et calendrier progressif → problématique.",
   "I. Pourquoi l'interdiction s'imposait : besoins de l'animal incompatibles avec l'itinérance, argument éducatif dépassé, public qui se détourne, fin de l'insécurité juridique.",
   "II. Ce qu'elle laisse en suspens : avenir des animaux captifs, coût de la reconversion, disparition du spectacle vivant dans les petites communes, cohérence avec les zoos.",

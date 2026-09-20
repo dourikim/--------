@@ -5,7 +5,7 @@ window.SUJETS.push(
 
 /* ===================== DELF B2 — PRODUCTION ÉCRITE ===================== */
 {id:"b2e-pe-1", level:"B2", epreuve:"pe", theme:"b2-etudes", sub:"le redoublement",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"« Faire redoubler un élève en difficulté, c'est lui donner une seconde chance. » Cette idée, longtemps admise, est aujourd'hui contestée par de nombreux chercheurs. Vous exposez votre point de vue dans une tribune destinée au magazine d'un établissement scolaire, en tenant compte des arguments contraires et en illustrant votre propos d'exemples précis. (250 mots minimum)"},
 
 {id:"b2e-pe-2", level:"B2", epreuve:"pe", theme:"b2-etudes", sub:"les devoirs pendant le week-end",
@@ -13,11 +13,11 @@ window.SUJETS.push(
  consigne:"L'établissement que fréquente votre enfant vient d'annoncer qu'aucun devoir ne sera plus donné pour le lundi matin, afin de « préserver le temps familial ». Certains parents s'en réjouissent, d'autres craignent une baisse des exigences. Vous écrivez au chef d'établissement pour exposer votre position argumentée et proposer des aménagements concrets. (250 mots minimum)"},
 
 {id:"b2e-pe-3", level:"B2", epreuve:"pe", theme:"b2-etudes", sub:"la précarité des étudiants",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Dans votre ville universitaire, les files d'attente devant les distributions alimentaires réservées aux étudiants s'allongent chaque année. Un débat oppose ceux qui réclament une allocation d'autonomie versée à tous les étudiants et ceux qui préfèrent des aides ciblées sur les plus modestes. Vous rédigez un article argumenté pour le journal de votre université. (250 mots minimum)"},
 
 {id:"b2e-pe-4", level:"B2", epreuve:"pe", theme:"b2-etudes", sub:"le port de l'uniforme",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Une expérimentation de tenue scolaire commune vient d'être lancée dans plusieurs établissements de votre région. Ses partisans y voient un moyen de réduire les inégalités visibles entre élèves ; ses adversaires, une mesure d'affichage qui ne change rien aux causes réelles. Vous discutez cette question dans un essai argumenté et structuré destiné à un site consacré à l'éducation. (250 mots minimum)"},
 
 {id:"b2e-pe-5", level:"B2", epreuve:"pe", theme:"b2-etudes", sub:"la vidéosurveillance dans les établissements scolaires",
@@ -29,11 +29,11 @@ window.SUJETS.push(
  consigne:"Vous venez d'achever un stage de trois mois au cours duquel vous avez accompli le travail d'un salarié à part entière, sans encadrement réel et pour une gratification symbolique. Vous écrivez au responsable des ressources humaines de l'entreprise pour exposer votre expérience de manière argumentée et proposer des améliorations précises pour les prochains stagiaires. (250 mots minimum)"},
 
 {id:"b2e-pe-7", level:"B2", epreuve:"pe", theme:"b2-etudes", sub:"la suppression des notes",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Plusieurs établissements remplacent la note chiffrée par une évaluation par compétences, décrite en couleurs ou en niveaux de maîtrise. Les uns y voient la fin d'un classement décourageant, les autres une manière de dissimuler les difficultés aux familles. Vous exposez votre point de vue dans un article destiné au blog d'une association de parents d'élèves. (250 mots minimum)"},
 
 {id:"b2e-pe-8", level:"B2", epreuve:"pe", theme:"b2-etudes", sub:"l'école à partir de 2 ans",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"« Plus un enfant entre tôt à l'école, plus il a de chances de réussir. » Cette affirmation revient régulièrement dans le débat sur la scolarisation des tout-petits. Vous la discutez dans une tribune destinée à un magazine consacré à l'éducation, en nuançant votre propos et en donnant des exemples concrets. (250 mots minimum)"},
 
 /* ===================== DELF B2 — PRODUCTION ORALE ===================== */

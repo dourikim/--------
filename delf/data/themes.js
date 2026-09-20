@@ -73,24 +73,26 @@ window.THEMES = {
   ]
 };
 
-/* 시험 형식 — 출처: Manuel du candidat DELF B2 / DALF C1 (France Éducation International 배포본) */
+/* 시험 형식 — 출처 : France Éducation international, pages officielles « DELF tout public – niveau B2 » / « DALF – niveau C1 »
+   + page de garde des sujets de démonstration + grilles d'évaluation PE/PO (consultées le 20/09/2026).
+   note 의 문구는 이 출처의 표현을 그대로 옮긴 것. 숫자를 바꿀 때는 반드시 위 출처를 다시 확인할 것. */
 window.EXAMS = {
   B2: {
     label:"DELF B2", total:"100점 만점 / 합격 50점 / 각 영역 5점 미만 시 과락",
     epreuves:[
-      { id:'co', nom:"Compréhension de l'oral", ko:"듣기", min:30, note:"2~3개 문서, 문항 응답", bareme:"/25" },
-      { id:'ce', nom:"Compréhension des écrits", ko:"읽기", min:60, note:"2~3개 지문", bareme:"/25" },
-      { id:'pe', nom:"Production écrite", ko:"작문", min:60, note:"1개 과제 · 250 mots minimum", bareme:"/25", words:250, wordsLabel:"250단어 이상" },
-      { id:'po', nom:"Production orale", ko:"말하기", min:20, prep:30, note:"준비 30분 → 발표 5~7분 + 심사위원과 토론", bareme:"/25", speak:[5,7] }
+      { id:'co', nom:"Compréhension de l'oral", ko:"듣기", min:30, note:"2 exercices · 긴 문서(2회 청취) + 짧은 문서(1회) · 문서 총 8분 이내", bareme:"/25" },
+      { id:'ce', nom:"Compréhension des écrits", ko:"읽기", min:60, note:"2 exercices · texte informatif + texte argumentatif", bareme:"/25" },
+      { id:'pe', nom:"Production écrite", ko:"작문", min:60, note:"1 exercice · prise de position argumentée · 250 mots minimum", bareme:"/25", words:250, wordsLabel:"250단어 이상" },
+      { id:'po', nom:"Production orale", ko:"말하기", min:20, prep:30, note:"준비 30분 → monologue suivi 5~7분 + exercice en interaction 10~13분", bareme:"/25", speak:[5,7] }
     ]
   },
   C1: {
     label:"DALF C1", total:"100점 만점 / 합격 50점 / 각 영역 5점 미만 시 과락",
     epreuves:[
-      { id:'co', nom:"Compréhension de l'oral", ko:"듣기", min:40, note:"긴 문서 1개(2회 청취) + 짧은 문서 2~3개(1회)", bareme:"/25" },
-      { id:'ce', nom:"Compréhension des écrits", ko:"읽기", min:50, note:"1,500~2,000단어 지문 1개", bareme:"/25" },
-      { id:'pe', nom:"Production écrite", ko:"작문", min:150, note:"Synthèse 200~240 mots + Essai 250 mots minimum", bareme:"/25", words:490, wordsLabel:"synthèse 200~240 + essai 250 이상" },
-      { id:'po', nom:"Production orale", ko:"말하기", min:30, prep:60, note:"준비 60분 → Exposé 8~10분 + 토론", bareme:"/25", speak:[8,10] }
+      { id:'co', nom:"Compréhension de l'oral", ko:"듣기", min:40, note:"2 exercices · 긴 문서 1개(2회 청취) + 짧은 문서 여러 개(1회) · 문서 총 10분 이내", bareme:"/25" },
+      { id:'ce', nom:"Compréhension des écrits", ko:"읽기", min:50, note:"1 exercice · texte d'idées (littéraire ou journalistique) 약 1 000단어", bareme:"/25" },
+      { id:'pe', nom:"Production écrite", ko:"작문", min:150, note:"Synthèse 200~240 mots (sujets officiels ; site FEI 220~240) à partir de plusieurs documents ≈ 1 000 mots + Essai argumenté 250 mots minimum", bareme:"/25", words:450, wordsLabel:"synthèse 200~240 + essai 250 이상" },
+      { id:'po', nom:"Production orale", ko:"말하기", min:30, prep:60, note:"준비 60분 → exposé 8~10분 + entretien 15~20분 (plusieurs documents écrits)", bareme:"/25", speak:[8,10] }
     ]
   }
 };

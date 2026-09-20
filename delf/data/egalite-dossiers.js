@@ -43,7 +43,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — congés liés à la naissance et égalité professionnelle",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"insee.fr — emploi des femmes, temps partiel et effets de la naissance d'un enfant",url:"https://www.insee.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « congé paternité entreprise carrière des femmes »",url:"https://www.youtube.com/results?search_query=cong%C3%A9+paternit%C3%A9+entreprise+carri%C3%A8re+des+femmes"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : vingt-huit jours depuis 2021, dont sept obligatoires, présentés comme une mesure d'égalité professionnelle → problématique.",
   "I. Ce que le congé peut changer au travail : recul de la discrimination à l'embauche, habitudes installées dès la naissance, absence légitimée sans négociation.",
   "II. Ce qui l'empêche d'agir : durée toujours très inférieure au congé maternité, indemnisation plafonnée, pression hiérarchique, situation des indépendants.",
@@ -85,7 +85,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — index de l'égalité professionnelle femmes-hommes",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"insee.fr — écarts de salaires entre les femmes et les hommes",url:"https://www.insee.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « écart de salaire femmes hommes index égalité professionnelle »",url:"https://www.youtube.com/results?search_query=%C3%A9cart+de+salaire+femmes+hommes+index+%C3%A9galit%C3%A9+professionnelle"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un principe légal ancien, un écart persistant, un index créé en 2018 → problématique.",
   "I. Ce que la contrainte apporte : mesure obligatoire, publication, pénalité, transparence dès l'offre d'emploi, protection du retour de congé maternité.",
   "II. Ses limites : indicateurs optimisables, entreprises exclues du dispositif, temps partiel et ségrégation des métiers hors du champ de l'index.",
@@ -127,7 +127,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"legifrance.gouv.fr — loi du 24 décembre 2021 sur l'accélération de l'égalité économique et professionnelle",url:"https://www.legifrance.gouv.fr/"},
   {type:"officiel",titre:"economie.gouv.fr — place des femmes dans les instances dirigeantes des entreprises",url:"https://www.economie.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « plafond de verre quotas femmes dirigeantes loi Rixain »",url:"https://www.youtube.com/results?search_query=plafond+de+verre+quotas+femmes+dirigeantes+loi+Rixain"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : des filles plus diplômées, des directions restées masculines, deux lois à dix ans d'intervalle → problématique.",
   "I. Ce qui plaide pour la contrainte : efficacité constatée depuis 2011, effet sur les modèles, qualité des décisions collectives.",
   "II. Ce qu'elle ne règle pas : soupçon porté sur les nommées, conformité formelle, obstacles situés en amont, sort des salariées à temps partiel.",
@@ -211,7 +211,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"sports.gouv.fr — développement et médiatisation de la pratique sportive féminine",url:"https://www.sports.gouv.fr/"},
   {type:"officiel",titre:"Arcom — représentation des femmes dans les programmes sportifs à la télévision",url:"https://www.arcom.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « médiatisation du sport féminin France audiences débat »",url:"https://www.youtube.com/results?search_query=m%C3%A9diatisation+du+sport+f%C3%A9minin+France+audiences+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : les audiences de 2019, la parité aux Jeux de 2024, une diffusion pourtant toujours minoritaire → problématique.",
   "I. Pourquoi il faut investir : un public qui existe dès qu'on diffuse, un cercle économique à rompre, un effet direct sur la pratique des filles.",
   "II. Les objections : logique d'audience des diffuseurs, faible affluence du championnat, fragilité des financements imposés, obstacles locaux.",
@@ -253,7 +253,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"travail-emploi.gouv.fr — mixité des métiers et égalité professionnelle dans les secteurs peu féminisés",url:"https://travail-emploi.gouv.fr/"},
   {type:"officiel",titre:"Fédération française du bâtiment — emploi, apprentissage et féminisation du secteur",url:"https://www.ffbatiment.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « femmes sur les chantiers bâtiment métiers apprentissage »",url:"https://www.youtube.com/results?search_query=femmes+sur+les+chantiers+b%C3%A2timent+m%C3%A9tiers+apprentissage"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un secteur en pénurie de main-d'œuvre et des chantiers restés presque exclusivement masculins → problématique.",
   "I. Pourquoi il faut ouvrir ces métiers : salaires et débouchés réels, besoin de recrutement, mécanisation du travail, faible coût des aménagements.",
   "II. Ce qui résiste : pénibilité, moyens des entreprises artisanales, isolement des apprenties, orientation scolaire décidée bien en amont.",

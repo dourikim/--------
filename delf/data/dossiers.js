@@ -52,7 +52,7 @@ window.DOSSIERS = {
     { type:"vidéo", titre:"YouTube 검색어: « travail hybride débat France »", url:"https://www.youtube.com/results?search_query=travail+hybride+d%C3%A9bat+France" }
   ],
   plan: {
-    type: "Essai argumenté (문제 제기형)",
+    type: "Rédaction argumentée (문제 제기형)",
     steps: [
       "Introduction : partir d'un fait d'actualité (le retour au bureau imposé par certaines entreprises) → poser la problématique.",
       "I. Les bénéfices reconnus : qualité de vie, autonomie, attractivité de l'entreprise.",
@@ -104,7 +104,7 @@ window.DOSSIERS = {
     { type:"vidéo", titre:"YouTube 검색어: « semaine de 4 jours débat France »", url:"https://www.youtube.com/results?search_query=semaine+de+4+jours+d%C3%A9bat+France" }
   ],
   plan: {
-    type: "Essai argumenté (찬반형)",
+    type: "Rédaction argumentée (찬반형)",
     steps: [
       "Introduction : le fait d'actualité (l'expérimentation française) → problématique.",
       "I. Les arguments des partisans : santé, attractivité, écologie.",

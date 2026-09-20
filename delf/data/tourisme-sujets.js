@@ -5,7 +5,7 @@ window.SUJETS.push(
 
 /* ===================== DELF B2 — PRODUCTION ÉCRITE ===================== */
 {id:"b2to-pe-1", level:"B2", epreuve:"pe", theme:"b2-tourisme", sub:"l'influence d'Instagram",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Un petit village de votre région, jusqu'ici ignoré des voyageurs, voit arriver chaque week-end des centaines de visiteurs venus photographier la même ruelle fleurie repérée sur les réseaux sociaux. Les commerçants s'en félicitent, les habitants ne peuvent plus se garer devant chez eux. Vous rédigez un article argumenté pour le magazine de votre région : les réseaux sociaux rendent-ils service aux territoires qu'ils mettent en lumière ? Vous nuancerez votre propos et l'illustrerez d'exemples précis. (250 mots minimum)"},
 
 {id:"b2to-pe-2", level:"B2", epreuve:"pe", theme:"b2-tourisme", sub:"les nuisances du tourisme",
@@ -13,11 +13,11 @@ window.SUJETS.push(
  consigne:"La municipalité de la ville où vous habitez envisage d'autoriser l'accostage de trois paquebots supplémentaires par semaine dans le port, en promettant des retombées économiques importantes pour les commerces du centre historique. Une partie des habitants s'y oppose, invoquant la pollution de l'air, l'engorgement des rues et le faible bénéfice réel pour la population. Vous écrivez au maire pour exposer votre position de manière argumentée et proposer des mesures concrètes d'encadrement. (250 mots minimum)"},
 
 {id:"b2to-pe-3", level:"B2", epreuve:"pe", theme:"b2-tourisme", sub:"l'écotourisme",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"« Prendre l'avion pendant onze heures pour aller observer des animaux sauvages et se déclarer écotouriste : voilà une contradiction que le mot cache assez mal. » Cette remarque, entendue lors d'un débat sur le voyage responsable, a suscité de vives réactions. Vous la discutez dans un essai argumenté et structuré destiné à un site consacré au voyage, en tenant compte des arguments contraires. (250 mots minimum)"},
 
 {id:"b2to-pe-4", level:"B2", epreuve:"pe", theme:"b2-tourisme", sub:"le tourisme solidaire",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Votre université propose désormais des séjours d'été qui associent découverte d'un pays et participation à un projet local : rénovation d'une école, aide à une coopérative agricole, animation auprès d'enfants. Certains étudiants y voient une manière utile et honnête de voyager ; d'autres estiment qu'on se donne bonne conscience à peu de frais et qu'on prend la place de travailleurs locaux. Vous exposez votre point de vue dans un article argumenté destiné au journal des étudiants. (250 mots minimum)"},
 
 {id:"b2to-pe-5", level:"B2", epreuve:"pe", theme:"b2-tourisme", sub:"la préservation du patrimoine",

@@ -40,7 +40,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — punitions, sanctions et discipline dans les établissements",url:"https://www.education.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — sanctions disciplinaires au collège et au lycée",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « punitions sanctions à l'école débat »",url:"https://www.youtube.com/results?search_query=punitions+sanctions+%C3%A0+l%27%C3%A9cole+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le retour du discours sur l'autorité à l'école → problématique.",
   "I. Ce que la sanction rend possible : lisibilité de la règle, protection des victimes, soutien aux équipes.",
   "II. Ce qu'elle produit malgré elle : décrochage, inégalités de traitement, ressentiment.",
@@ -82,7 +82,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"enseignementsup-recherche.gouv.fr — numérique et pédagogie dans le supérieur",url:"https://www.enseignementsup-recherche.gouv.fr/"},
   {type:"article",titre:"Le Monde — ordinateurs, écrans et prise de notes à l'université",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « ordinateur portable amphi étudiants prise de notes »",url:"https://www.youtube.com/results?search_query=ordinateur+portable+amphi+%C3%A9tudiants+prise+de+notes"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : l'amphi « déconnecté » réclamé par certains enseignants → problématique.",
   "I. Un outil devenu indispensable : rythme, accès aux ressources, accessibilité, réalité professionnelle.",
   "II. Un outil qui déplace le problème : attention, copie littérale, inégalités, examens.",
@@ -124,7 +124,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"FUN-MOOC — la plateforme publique française de cours en ligne",url:"https://www.fun-mooc.fr/"},
   {type:"officiel",titre:"enseignementsup-recherche.gouv.fr — France Université Numérique",url:"https://www.enseignementsup-recherche.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « MOOC formation en ligne débat université »",url:"https://www.youtube.com/results?search_query=MOOC+formation+en+ligne+d%C3%A9bat+universit%C3%A9"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la promesse initiale des MOOC en 2013 face à leur réalité actuelle → problématique.",
   "I. Une ouverture réelle : gratuité, souplesse, distance abolie, reconversion.",
   "II. Une ouverture inégale : abandon, autonomie présupposée, certification payante, équipement.",
@@ -208,7 +208,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — instruction en famille : autorisation et contrôles",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"education.gouv.fr — l'instruction obligatoire et l'instruction en famille",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « instruction en famille école à la maison France »",url:"https://www.youtube.com/results?search_query=instruction+en+famille+%C3%A9cole+%C3%A0+la+maison+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le passage de la déclaration à l'autorisation en 2021 → problématique.",
   "I. Les raisons qui légitiment l'instruction en famille : santé, harcèlement, rythme, liberté parentale.",
   "II. Ce que l'école seule assure : socialisation, socle commun, regard extérieur sur l'enfant.",
@@ -250,7 +250,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"eduscol.education.fr — évaluation des acquis et livret scolaire",url:"https://eduscol.education.fr/"},
   {type:"article",titre:"Le Monde — le débat sur la notation et l'évaluation par compétences",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « classe sans notes évaluation par compétences »",url:"https://www.youtube.com/results?search_query=classe+sans+notes+%C3%A9valuation+par+comp%C3%A9tences"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : les classes sans notes au collège face à la moyenne toujours reine au lycée → problématique.",
   "I. Ce que la note fait mal : classer, décourager, informer trop peu.",
   "II. Ce que sa suppression ne règle pas : lisibilité, sélection, orientation, moyens.",
@@ -292,7 +292,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — éducation artistique et culturelle, chant choral à l'école",url:"https://www.education.gouv.fr/"},
   {type:"officiel",titre:"culture.gouv.fr — enseignement de la musique et conservatoires",url:"https://www.culture.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « orchestre à l'école éducation musicale »",url:"https://www.youtube.com/results?search_query=orchestre+%C3%A0+l%27%C3%A9cole+%C3%A9ducation+musicale"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la musique menacée par la priorité aux fondamentaux → problématique.",
   "I. Ce que la pratique musicale apporte : attention, effort long, réussite alternative, égalité culturelle.",
   "II. Ce qui l'empêche : horaires, moyens matériels, coût des cours, inégalités territoriales.",
@@ -376,7 +376,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"education.gouv.fr — l'interdiction du téléphone portable à l'école et au collège",url:"https://www.education.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — téléphone portable à l'école : ce que dit la règle",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « téléphone portable collège pause numérique »",url:"https://www.youtube.com/results?search_query=t%C3%A9l%C3%A9phone+portable+coll%C3%A8ge+pause+num%C3%A9rique"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : de la loi de 2018 à l'expérimentation de la pause numérique → problématique.",
   "I. Ce que l'interdiction protège : attention, climat scolaire, droit à l'image, sociabilité directe.",
   "II. Ce qu'elle laisse entier : usages hors de l'école, éducation au numérique, contraintes matérielles.",

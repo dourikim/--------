@@ -46,7 +46,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Centre national de la musique — economie de la musique enregistree et remuneration des artistes",url:"https://cnm.fr/"},
   {type:"officiel",titre:"culture.gouv.fr — musique enregistree, droit d'auteur et plateformes",url:"https://www.culture.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « acheter de la musique ou s'abonner remuneration des artistes »",url:"https://www.youtube.com/results?search_query=acheter+de+la+musique+ou+s%27abonner+r%C3%A9mun%C3%A9ration+des+artistes"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : du CD rangé chez soi à l'abonnement qui donne accès sans rien donner à garder → problématique.",
   "I. Ce que l'achat conserve : la propriété durable, une rémunération lisible pour l'artiste, une écoute choisie, un coût maîtrisé sur la durée.",
   "II. Ce que l'abonnement a apporté : un accès large pour un prix modeste, le recul du piratage, la découverte sans risque, la disponibilité sur tous les appareils.",
@@ -90,7 +90,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Arcom — protection des œuvres, reponse graduee et blocage des sites illicites",url:"https://www.arcom.fr/"},
   {type:"officiel",titre:"culture.gouv.fr — lutte contre le piratage et financement de la creation",url:"https://www.culture.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « piratage en ligne Hadopi Arcom offre legale »",url:"https://www.youtube.com/results?search_query=piratage+en+ligne+Hadopi+Arcom+offre+l%C3%A9gale"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : de la Hadopi de 2009 à l'Arcom, une politique qui a beaucoup changé alors que le piratage, lui, s'est déplacé → problématique.",
   "I. Pourquoi la sanction reste défendable : rémunération du travail créatif, protection des petites structures, effet dissuasif du premier avertissement, dangers réels des sites illégaux.",
   "II. Pourquoi elle ne suffit pas : difficulté à identifier le responsable, disproportion, rôle décisif de l'offre légale, retour du piratage quand les catalogues se fragmentent.",
@@ -178,7 +178,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — paiement en especes, plafonds et refus de paiement",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"Banque de France — accessibilite des especes et moyens de paiement",url:"https://www.banque-france.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « disparition de l'argent liquide especes euro numerique »",url:"https://www.youtube.com/results?search_query=disparition+de+l%27argent+liquide+esp%C3%A8ces+euro+num%C3%A9rique"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le sans contact partout, mais un billet toujours obligatoirement accepté et plafonné à mille euros → problématique.",
   "I. Ce que le liquide protège : vie privée, fonctionnement sans réseau, maîtrise du budget, accès pour les plus fragiles, économie de proximité.",
   "II. Ce qui le condamne : coût de gestion, sécurité, lutte contre la fraude, outils de suivi des dépenses, argument de l'accompagnement plutôt que du maintien.",
@@ -222,7 +222,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ademe.fr — reparation, reemploi et pratiques du faire soi-meme",url:"https://www.ademe.fr/"},
   {type:"officiel",titre:"service-public.fr — autoconsommation d'electricite individuelle et collective",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « autoproduction faire soi-meme potager reparation economies »",url:"https://www.youtube.com/results?search_query=autoproduction+faire+soi-m%C3%AAme+potager+r%C3%A9paration+%C3%A9conomies"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : du pain maison au panneau solaire sur le balcon, un retour du « faire soi-même » porté par le prix des choses → problématique.",
   "I. Ce que l'autoproduction apporte : économies régulières, attachement aux objets, savoir-faire retrouvé, lien de voisinage, circuits raccourcis.",
   "II. Ce qui en limite la portée : temps, espace et capital nécessaires, économies souvent surestimées, sécurité, responsabilité déplacée sur l'individu, effet de mode.",

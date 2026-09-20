@@ -44,7 +44,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ademe.fr — gaspillage alimentaire : chiffres, guides et campagnes",url:"https://www.ademe.fr/"},
   {type:"officiel",titre:"service-public.fr — dates de consommation : DLC et DDM",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « gaspillage alimentaire loi Garot invendus dons »",url:"https://www.youtube.com/results?search_query=gaspillage+alimentaire+loi+Garot+invendus+dons"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : une loi pionnière en 2016, une obligation étendue en 2018, un tri des biodéchets généralisé depuis 2024 → problématique.",
   "I. Ce que la contrainte réglementaire permet : détourner les invendus vers l'aide alimentaire, agir sur de grands volumes, clarifier les dates, donner un coût à ce qui n'en avait pas.",
   "II. Ce qu'elle ne règle pas : le gaspillage domestique, les limites logistiques des associations, l'effet des promotions, la perte des savoir-faire de conservation.",
@@ -86,7 +86,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"anses.fr — repères nutritionnels, protéines et régimes d'exclusion",url:"https://www.anses.fr/"},
   {type:"officiel",titre:"mangerbouger.fr — recommandations sur les légumes secs et les viandes",url:"https://www.mangerbouger.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « véganisme élevage débat protéines végétales France »",url:"https://www.youtube.com/results?search_query=v%C3%A9ganisme+%C3%A9levage+d%C3%A9bat+prot%C3%A9ines+v%C3%A9g%C3%A9tales+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : trois notions à distinguer, une offre qui explose, une bataille juridique sur les dénominations → problématique.",
   "I. Ce que le véganisme apporte au débat : cohérence éthique, argument environnemental, relance des légumineuses, visibilité d'une alternative.",
   "II. Ses limites : exigence absolue difficile à généraliser, vigilance nutritionnelle, substituts ultra-transformés, cas de l'élevage extensif, coût réel.",
@@ -213,7 +213,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"santepubliquefrance.fr — Nutri-Score, surpoids et inégalités sociales de santé",url:"https://www.santepubliquefrance.fr/"},
   {type:"officiel",titre:"ameli.fr — alimentation, surpoids et prévention du diabète de type 2",url:"https://www.ameli.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « Nutri-Score malbouffe publicité alimentaire enfants »",url:"https://www.youtube.com/results?search_query=Nutri-Score+malbouffe+publicit%C3%A9+alimentaire+enfants"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un mot né d'une polémique, trois instruments successifs — interdiction scolaire, logo, taxe —, un problème devenu social → problématique.",
   "I. Ce qui justifie l'encadrement : lisibilité immédiate, protection des enfants, coût collectif des maladies, reformulation obtenue par la taxe, obligation du logo.",
   "II. Ce qui lui est opposé : imprécision du terme, limites d'un logo unique, effet régressif des taxes, respect du choix individuel, obstacles matériels.",
@@ -297,7 +297,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"paris.fr — tri des biodéchets des professionnels et alimentation durable à Paris",url:"https://www.paris.fr/"},
   {type:"officiel",titre:"service-public.fr — restaurants : contenants pour emporter les aliments non consommés",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « gaspillage restaurants Paris biodéchets doggy bag anti-gaspi »",url:"https://www.youtube.com/results?search_query=gaspillage+restaurants+Paris+biod%C3%A9chets+doggy+bag+anti-gaspi"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : une obligation de contenants depuis 2021, des cuisines minuscules, un tri des biodéchets désormais imposé aux professionnels → problématique.",
   "I. Ce qui peut réellement réduire les pertes : carte resserrée, vente des invendus du soir, associations de redistribution, pesée des déchets, contenant proposé sans que le client ait à le demander.",
   "II. Les obstacles propres au terrain parisien : impératif de servir jusqu'à la fermeture, responsabilité sanitaire, clientèle de passage, manque de place pour trier, contraintes du don de repas préparés.",

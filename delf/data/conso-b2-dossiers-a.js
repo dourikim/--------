@@ -43,7 +43,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ADEME — allongement de la durée d'usage, réemploi et seconde main",url:"https://www.ademe.fr/"},
   {type:"officiel",titre:"economie.gouv.fr / DGCCRF — vente entre particuliers, abonnements et vrac",url:"https://www.economie.gouv.fr/dgccrf"},
   {type:"vidéo",titre:"YouTube 검색어: « nouvelles tendances de consommation seconde main location vrac »",url:"https://www.youtube.com/results?search_query=nouvelles+tendances+de+consommation+seconde+main+location+vrac"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la seconde main, la location et le vrac se sont banalisés au moment même où la mode à très bas prix explosait → problématique.",
   "I. Ce que ces pratiques apportent vraiment : accès à une meilleure qualité, fabrication évitée, mutualisation des objets rarement utilisés, moins d'emballage, commerces de proximité.",
   "II. Ce qui limite leur portée : effet rebond, colis et transports multipliés, abonnements oubliés, prix et accessibilité inégaux, poids des ventes à bas prix.",
@@ -85,7 +85,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"economie.gouv.fr / DGCCRF — achats sur Internet : rétractation, avis en ligne, litiges",url:"https://www.economie.gouv.fr/dgccrf"},
   {type:"officiel",titre:"service-public.fr — droit de rétractation et garanties après un achat à distance",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « achats en ligne avis clients droit de rétractation commerce de proximité »",url:"https://www.youtube.com/results?search_query=achats+en+ligne+avis+clients+droit+de+r%C3%A9tractation+commerce+de+proximit%C3%A9"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : commander prend quelques secondes, mais la protection, la confiance dans les avis et le sort du commerce de quartier posent question → problématique.",
   "I. Les avantages concrets pour le consommateur : comparaison des prix, accès pour ceux qui se déplacent mal, quatorze jours de rétractation, information par les autres acheteurs, points relais.",
   "II. Les difficultés quotidiennes : achat impulsif organisé, avis peu fiables, retours coûteux, impossibilité d'essayer, boutiques transformées en vitrines.",
@@ -127,7 +127,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ADEME — indice de réparabilité et allongement de la durée de vie des appareils",url:"https://www.ademe.fr/"},
   {type:"officiel",titre:"service-public.fr — garantie légale de conformité et réparation d'un appareil",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « indice de réparabilité garantie légale bonus réparation smartphone »",url:"https://www.youtube.com/results?search_query=indice+de+r%C3%A9parabilit%C3%A9+garantie+l%C3%A9gale+bonus+r%C3%A9paration+smartphone"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un devis de réparation proche du prix du neuf, un indice affiché depuis 2021, une garantie de deux ans souvent ignorée → problématique.",
   "I. Ce que les outils actuels permettent : information sur la réparabilité avant l'achat, prix des pièces pris en compte, garantie prolongée après réparation, aide au devis, réparateurs indépendants.",
   "II. Leurs limites concrètes : note qui ne mesure pas la solidité, calcul déclaré par le fabricant, méconnaissance de la garantie, absence de réparateur de proximité, fin des mises à jour.",

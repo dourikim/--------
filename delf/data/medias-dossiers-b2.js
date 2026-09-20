@@ -35,7 +35,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — démarches en ligne et accompagnement",url:"https://www.service-public.fr/"},
   {type:"institution",titre:"Défenseur des droits — dématérialisation et accès aux services publics",url:"https://www.defenseurdesdroits.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « illectronisme fracture numérique France »",url:"https://www.youtube.com/results?search_query=illectronisme+fracture+num%C3%A9rique+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la dématérialisation des services → problématique.",
   "I. Ce que la déconnexion apporte : temps, attention, écologie.",
   "II. Ce qu'elle coûte : exclusion administrative, isolement, inégalités.",
@@ -75,7 +75,7 @@ Object.assign(window.DOSSIERS, {
  ressources:[
   {type:"officiel",titre:"education.gouv.fr — usage du téléphone portable à l'école et au collège",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « pause numérique collège France reportage »",url:"https://www.youtube.com/results?search_query=pause+num%C3%A9rique+coll%C3%A8ge+France"}],
- plan:{type:"Essai argumenté / lettre au chef d'établissement",steps:[
+ plan:{type:"Rédaction argumentée / lettre au chef d'établissement",steps:[
   "Introduction : l'expérimentation de la pause numérique → problématique.",
   "I. Les bénéfices observés : attention, échanges, sommeil.",
   "II. Les limites : effet ponctuel, usages légitimes, responsabilité des plateformes.",
@@ -117,7 +117,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"eduscol — Éducation aux médias et à l'information",url:"https://eduscol.education.fr/1531/education-aux-medias-et-l-information"},
   {type:"référence",titre:"Réseau Canopé — décrypter l'information",url:"https://www.reseau-canope.fr/actualites/article/education-aux-medias-et-a-linformation-apprendre-a-vos-eleves-a-decrypter-linformation"},
   {type:"vidéo",titre:"YouTube 검색어: « fausses informations désinformation France reportage »",url:"https://www.youtube.com/results?search_query=fausses+informations+d%C3%A9sinformation+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un exemple récent de rumeur virale → problématique.",
   "I. Pourquoi il faut agir : santé publique, élections, modèle économique des plateformes.",
   "II. Pourquoi la régulation est délicate : liberté d'expression, surcensure, efficacité limitée.",
@@ -158,7 +158,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"Arcom — radios associatives et fonds de soutien",url:"https://www.arcom.fr/"},
   {type:"référence",titre:"Réseau Canopé — webradio scolaire",url:"https://www.reseau-canope.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « radio associative webradio scolaire France »",url:"https://www.youtube.com/results?search_query=radio+associative+webradio+scolaire"}],
- plan:{type:"Essai argumenté / lettre de soutien",steps:[
+ plan:{type:"Rédaction argumentée / lettre de soutien",steps:[
   "Introduction : la menace sur les subventions d'une radio locale → problématique.",
   "I. Ce que ces radios apportent : proximité, diversité des voix, pédagogie.",
   "II. Leurs fragilités : audience, moyens, concurrence des plateformes.",
@@ -199,7 +199,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"CLEMI — Semaine de la presse et des médias dans l'école",url:"https://www.clemi.fr/"},
   {type:"officiel",titre:"education.gouv.fr — Éducation aux médias et à l'information",url:"https://www.education.gouv.fr/l-education-aux-medias-et-l-information-emi-327053"},
   {type:"vidéo",titre:"YouTube 검색어: « jeunes information réseaux sociaux presse France »",url:"https://www.youtube.com/results?search_query=jeunes+information+r%C3%A9seaux+sociaux+presse+France"}],
- plan:{type:"Essai argumenté (통념 반박형)",steps:[
+ plan:{type:"Rédaction argumentée (통념 반박형)",steps:[
   "Introduction : le constat de la désaffection → problématique.",
   "I. Ce que révèlent les chiffres : un déplacement plutôt qu'un abandon.",
   "II. Ce que cela coûte : tri algorithmique, format court, confusion des rôles.",
@@ -241,7 +241,7 @@ Object.assign(window.DOSSIERS, {
   {type:"article",titre:"LCP — pourquoi le Conseil constitutionnel a censuré l'interdiction pour les moins de 15 ans",url:"https://lcp.fr/actualites/reseaux-sociaux-pourquoi-le-conseil-constitutionnel-a-censure-l-interdiction-pour-les"},
   {type:"analyse",titre:"The Conversation — où mène la censure du Conseil constitutionnel ?",url:"https://theconversation.com/loi-sur-linterdiction-des-reseaux-sociaux-aux-moins-de-15-ans-ou-mene-la-censure-du-conseil-constitutionnel-290011"},
   {type:"dossier",titre:"Sénat — proposition de loi protégeant les mineurs sur les réseaux sociaux",url:"https://www.senat.fr/travaux-parlementaires/textes-legislatifs/la-loi-en-clair/proposition-de-loi-visant-a-proteger-les-mineurs-des-risques-auxquels-les-expose-lutilisation-des-reseaux-sociaux.html"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la loi votée puis censurée en 2026 → problématique.",
   "I. Les arguments de la protection : attention captée, harcèlement, contenus.",
   "II. Les objections : proportionnalité, vie privée, contournement, sociabilité.",
@@ -282,7 +282,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"CNIL — vos droits et les sanctions prononcées",url:"https://www.cnil.fr/"},
   {type:"officiel",titre:"service-public.fr — protection des données personnelles",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « RGPD données personnelles CNIL explication »",url:"https://www.youtube.com/results?search_query=RGPD+donn%C3%A9es+personnelles+CNIL"}],
- plan:{type:"Essai argumenté (원칙 vs 현실형)",steps:[
+ plan:{type:"Rédaction argumentée (원칙 vs 현실형)",steps:[
   "Introduction : une fuite de données récente → problématique.",
   "I. Ce que le droit garantit : consentement, droits, sanctions.",
   "II. Ce que l'usage contredit : bandeaux, gratuité, extraterritorialité.",
@@ -323,7 +323,7 @@ Object.assign(window.DOSSIERS, {
   {type:"radio",titre:"France Culture — dossiers attention, lecture, numérique",url:"https://www.radiofrance.fr/franceculture"},
   {type:"officiel",titre:"eduscol — usages du numérique et esprit critique",url:"https://eduscol.education.fr/1531/education-aux-medias-et-l-information"},
   {type:"vidéo",titre:"YouTube 검색어: « Internet attention lecture cerveau France Culture »",url:"https://www.youtube.com/results?search_query=internet+attention+lecture+cerveau+France+Culture"}],
- plan:{type:"Essai argumenté (양면형)",steps:[
+ plan:{type:"Rédaction argumentée (양면형)",steps:[
   "Introduction : l'arrivée de l'IA à l'école → problématique.",
   "I. Ce qu'Internet nous donne : accès, collaboration, libération cognitive.",
   "II. Ce qu'il nous retire : attention, profondeur, effort.",
@@ -363,7 +363,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"DGCCRF — influence commerciale et obligations des influenceurs",url:"https://www.economie.gouv.fr/dgccrf"},
   {type:"officiel",titre:"CNIL — publicité ciblée et cookies",url:"https://www.cnil.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « publicité ciblée influenceurs loi France »",url:"https://www.youtube.com/results?search_query=publicit%C3%A9+cibl%C3%A9e+influenceurs+loi+France"}],
- plan:{type:"Essai argumenté / tribune",steps:[
+ plan:{type:"Rédaction argumentée / tribune",steps:[
   "Introduction : l'encadrement des influenceurs → problématique.",
   "I. Ce que la publicité rend possible : gratuité, financement, visibilité.",
   "II. Ce qu'elle coûte : données, confusion, pression à consommer.",
@@ -404,7 +404,7 @@ Object.assign(window.DOSSIERS, {
   {type:"référence",titre:"Insee — économie numérique et commerce en ligne",url:"https://www.insee.fr/"},
   {type:"presse",titre:"Le Monde — rubrique Économie / Pixels",url:"https://www.lemonde.fr/pixels/"},
   {type:"vidéo",titre:"YouTube 검색어: « ubérisation plateformes économie France débat »",url:"https://www.youtube.com/results?search_query=ub%C3%A9risation+plateformes+%C3%A9conomie+France"}],
- plan:{type:"Essai argumenté (평가형)",steps:[
+ plan:{type:"Rédaction argumentée (평가형)",steps:[
   "Introduction : la fermeture de commerces de centre-ville → problématique.",
   "I. La richesse créée : marchés, métiers, accès.",
   "II. La richesse déplacée : emplois, protection, concentration, fiscalité.",
@@ -485,7 +485,7 @@ Object.assign(window.DOSSIERS, {
   {type:"institution",titre:"Académie française — Dire, ne pas dire (usages et néologismes)",url:"https://www.academie-francaise.fr/dire-ne-pas-dire"},
   {type:"radio",titre:"France Culture — émissions sur la langue française",url:"https://www.radiofrance.fr/franceculture"},
   {type:"vidéo",titre:"YouTube 검색어: « langage SMS orthographe jeunes débat »",url:"https://www.youtube.com/results?search_query=langage+SMS+orthographe+jeunes+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (통념 반박형)",steps:[
+ plan:{type:"Rédaction argumentée (통념 반박형)",steps:[
   "Introduction : la plainte récurrente sur l'orthographe des jeunes → problématique.",
   "I. Pourquoi le texto n'est pas une faute : registre, codes, compétence.",
   "II. Ce qui inquiète légitimement : passage au soutenu, correction automatique.",

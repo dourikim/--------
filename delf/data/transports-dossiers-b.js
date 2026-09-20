@@ -56,7 +56,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"securite-routiere.gouv.fr — aides à la conduite et facteurs d'accident",url:"https://www.securite-routiere.gouv.fr/"},
   {type:"article",titre:"Le Monde — voiture autonome : promesses des constructeurs et responsabilité juridique",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « voiture autonome niveaux d'automatisation responsabilité accident »",url:"https://www.youtube.com/results?search_query=voiture+autonome+niveaux+d%27automatisation+responsabilit%C3%A9+accident"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : partir des aides à la conduite déjà présentes dans les voitures ordinaires, rappeler que le niveau 5 n'existe pas encore sur route ouverte → problématique : que gagne-t-on et que confie-t-on en lâchant le volant ?",
   "I. Ce que la conduite automatisée peut apporter : réduction des accidents dus au comportement humain, mobilité des personnes qui ne conduisent plus, temps rendu au voyageur, circulation plus régulière, desserte des trajets non rentables.",
   "II. Ce qu'elle laisse en suspens : la responsabilité et l'assurance, les emplois de la conduite, l'échec face à l'imprévu, le coût et l'écart entre territoires, la perte des réflexes et les données enregistrées.",
@@ -102,7 +102,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"cerema.fr — évaluation des réseaux de transport urbain et du report modal",url:"https://www.cerema.fr/"},
   {type:"article",titre:"Le Monde — bilan de la gratuité des transports à Dunkerque et à Montpellier",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « gratuité des transports Dunkerque Montpellier bilan fréquentation »",url:"https://www.youtube.com/results?search_query=gratuit%C3%A9+des+transports+Dunkerque+Montpellier+bilan+fr%C3%A9quentation"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : présenter les villes qui ont supprimé le ticket, rappeler que la billetterie ne finance qu'une part minoritaire du réseau → problématique : la gratuité est-elle le meilleur usage de cet argent ?",
   "I. Ce que la gratuité a produit là où elle a été mise en œuvre : pouvoir d'achat rendu sans démarche, bus plus rapides sans validation, déplacements courts récupérés, fréquentation le soir et le week-end, contraintes automobiles mieux acceptées.",
   "II. Ce qu'elle ne règle pas : le coût transféré aux employeurs et aux impôts, un report venu surtout de la marche et du vélo, la saturation aux heures de pointe, la fragilité des investissements, l'avantage donné aussi à ceux qui pouvaient payer.",
@@ -148,7 +148,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ademe.fr — enquêtes sur l'autopartage et la possession automobile",url:"https://www.ademe.fr/"},
   {type:"article",titre:"Le Monde — autopartage en ville : modèles économiques et fin d'Autolib'",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « autopartage voiture en libre-service ville stationnement bilan »",url:"https://www.youtube.com/results?search_query=autopartage+voiture+en+libre-service+ville+stationnement+bilan"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : distinguer les trois formules — en boucle, en trace directe, entre particuliers — et rappeler qu'une voiture reste garée l'essentiel du temps → problématique.",
   "I. Ce qui plaide pour le libre-service : coût proportionnel à l'usage, places de stationnement libérées, flottes récentes compatibles avec les ZFE, complémentarité avec le train et le tram, achat de voiture repoussé.",
   "II. Ce qui en limite la portée : disponibilité incertaine, entretien et propreté, absence du service là où la dépendance est la plus forte, coût pour les gros rouleurs, effets discutés sur le trafic et sur la voirie publique.",
@@ -194,7 +194,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"cerema.fr — rues scolaires, apaisement de la circulation et aménagement de voirie",url:"https://www.cerema.fr/"},
   {type:"article",titre:"Le Monde — rues aux écoles : bilan des fermetures à la circulation dans les villes françaises",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « rue scolaire rue aux écoles fermeture circulation enfants »",url:"https://www.youtube.com/results?search_query=rue+scolaire+rue+aux+%C3%A9coles+fermeture+circulation+enfants"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : décrire la scène ordinaire d'une entrée d'école à huit heures et demie, puis présenter le dispositif → problématique : protège-t-on réellement, ou déplace-t-on le problème ?",
   "I. Ce que la rue scolaire apporte : suppression du risque au bon endroit et au bon moment, air moins chargé devant la porte, autonomie des enfants, changement d'habitude des familles, espace rendu au quartier.",
   "II. Ce qu'elle coûte et ce qu'elle déplace : report du trafic sur les rues voisines, familles sans alternative, dispositif suspendu à des bénévoles, riverains et commerçants mal associés, configurations où la mesure est impossible.",
@@ -240,7 +240,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — vignette Crit'Air, restrictions de circulation et amendes",url:"https://www.service-public.fr/"},
   {type:"article",titre:"Le Monde — péage urbain à Londres, Stockholm et New York : ce que paient les automobilistes",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « péage urbain Londres Stockholm tarif exonérations commerçants »",url:"https://www.youtube.com/results?search_query=p%C3%A9age+urbain+Londres+Stockholm+tarif+exon%C3%A9rations+commer%C3%A7ants"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : expliquer concrètement le fonctionnement — une zone, des heures, une somme par jour, des caméras — et rappeler qu'aucune ville française ne l'applique → problématique.",
   "I. Ce que le péage apporte aux villes qui l'ont adopté : baisse rapide du nombre de véhicules, bus plus réguliers, centre plus calme pour ses habitants, recettes affectées aux transports, ville plus sûre à pied.",
   "II. Ce qu'il coûte à ceux qui le paient : dépense mensuelle identique quel que soit le revenu, absence d'alternative pour une partie des salariés, inquiétude des commerçants et des artisans, report du trafic sur la périphérie, coût et erreurs du dispositif.",

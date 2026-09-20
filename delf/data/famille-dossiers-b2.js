@@ -40,7 +40,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — autorité parentale et violences éducatives ordinaires",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"legifrance.gouv.fr — loi n°2019-721 du 10 juillet 2019",url:"https://www.legifrance.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « loi violences éducatives ordinaires France débat »",url:"https://www.youtube.com/results?search_query=loi+violences+%C3%A9ducatives+ordinaires+France+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la loi de 2019 et son caractère symbolique → problématique.",
   "I. Ce que la loi affirme : droits de l'enfant, alignement européen, appui aux professionnels.",
   "II. Ses limites : absence de sanction, difficulté d'application, polarisation du débat.",
@@ -82,7 +82,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — congé de paternité et d'accueil de l'enfant",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"insee.fr — emploi du temps et répartition des tâches domestiques",url:"https://www.insee.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « charge mentale répartition tâches ménagères couple »",url:"https://www.youtube.com/results?search_query=charge+mentale+r%C3%A9partition+t%C3%A2ches+m%C3%A9nag%C3%A8res+couple"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la charge mentale, un débat rendu visible par le confinement → problématique.",
   "I. Une évolution réelle : congé de paternité, discours d'égalité, prise de conscience.",
   "II. Des pratiques qui résistent : habitudes héritées, négociation implicite, indicateurs insuffisants.",
@@ -124,7 +124,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"cnil.fr — enfants et adolescents, protéger leur vie privée en ligne",url:"https://www.cnil.fr/"},
   {type:"officiel",titre:"service-public.fr — contrôle parental et protection des mineurs sur internet",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « contrôle parental adolescents réseaux sociaux débat »",url:"https://www.youtube.com/results?search_query=contr%C3%B4le+parental+adolescents+r%C3%A9seaux+sociaux+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la généralisation des outils de contrôle parental → problématique.",
   "I. Une protection nécessaire : contenus à risque, harcèlement, temps d'écran.",
   "II. Une autonomie à préserver : confiance, dialogue, limites des outils techniques.",
@@ -166,7 +166,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"mangerbouger.fr — repas en famille et équilibre alimentaire",url:"https://www.mangerbouger.fr/"},
   {type:"article",titre:"francetvinfo.fr — repas de famille, écrans et vie quotidienne",url:"https://www.francetvinfo.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « repas en famille écrans à table débat »",url:"https://www.youtube.com/results?search_query=repas+en+famille+%C3%A9crans+%C3%A0+table+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le repas familial concurrencé par les emplois du temps et les écrans → problématique.",
   "I. Ce que le repas partagé apporte : lien, suivi de l'enfant, équilibre alimentaire, transmission.",
   "II. Ce qui le fragilise : horaires décalés, contrainte ressentie, diversité des organisations familiales.",
@@ -208,7 +208,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — détention et protection des animaux de compagnie",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"agriculture.gouv.fr — bien-être et protection animale",url:"https://agriculture.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « abandon animaux de compagnie vacances France »",url:"https://www.youtube.com/results?search_query=abandon+animaux+de+compagnie+vacances+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : l'animal, membre de la famille et pic saisonnier des abandons → problématique.",
   "I. Ce que l'animal apporte : lien affectif, apprentissage de la responsabilité, structure du quotidien.",
   "II. Ce qu'il exige et ce qu'on néglige : coût réel, adoption impulsive, adaptation au mode de vie.",
@@ -250,7 +250,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"pegi.info — classification par âge des jeux vidéo",url:"https://pegi.info/"},
   {type:"article",titre:"francetvinfo.fr — jeux vidéo, écrans et vie de famille",url:"https://www.francetvinfo.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « jeux vidéo en famille écrans enfants débat »",url:"https://www.youtube.com/results?search_query=jeux+vid%C3%A9o+en+famille+%C3%A9crans+enfants+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le jeu vidéo, loisir de masse désormais familial → problématique.",
   "I. Ce que le jeu partagé permet : accès au contenu réel, coopération, transmission de règles.",
   "II. Ce qu'il ne résout pas : cumul du temps d'écran, méconnaissance des parents, dépenses et rencontres en ligne.",
@@ -292,7 +292,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"insee.fr — jeunes adultes et cohabitation avec leurs parents",url:"https://www.insee.fr/"},
   {type:"officiel",titre:"service-public.fr — logement et aides pour les jeunes actifs",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « génération Tanguy jeunes adultes chez leurs parents »",url:"https://www.youtube.com/results?search_query=g%C3%A9n%C3%A9ration+Tanguy+jeunes+adultes+chez+leurs+parents"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : du film « Tanguy » à la génération boomerang → problématique.",
   "I. Une contrainte plus qu'un choix : logement, précarité, transition assumée.",
   "II. Un coût réel : autonomie retardée, charge sur les parents, tensions et stigmate.",

@@ -5,7 +5,7 @@ window.SUJETS.push(
 
 /* ===================== DELF B2 — PRODUCTION ÉCRITE ===================== */
 {id:"b2t-pe-1", level:"B2", epreuve:"pe", theme:"b2-travail", sub:"le bien-être au travail",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"L'entreprise où vous travaillez vient d'installer une salle de sieste, un babyfoot et des cours de méditation, tout en refusant d'embaucher pour alléger la charge de chacun. Les uns saluent une attention nouvelle portée aux salariés, les autres dénoncent une opération de communication. Vous exposez votre point de vue dans un article argumenté destiné au journal interne de l'entreprise, en tenant compte des arguments contraires et en illustrant votre propos d'exemples précis. (250 mots minimum)"},
 
 {id:"b2t-pe-2", level:"B2", epreuve:"pe", theme:"b2-travail", sub:"la messagerie professionnelle pendant les congés",
@@ -17,11 +17,11 @@ window.SUJETS.push(
  consigne:"Une association culturelle de votre ville recrute régulièrement des « bénévoles » pour assurer l'accueil, la billetterie et la communication, c'est-à-dire des tâches qui relèvent d'un véritable emploi. Vous écrivez au président de cette association pour lui faire part de votre position argumentée sur cette pratique et lui suggérer d'autres solutions. (250 mots minimum)"},
 
 {id:"b2t-pe-4", level:"B2", epreuve:"pe", theme:"b2-travail", sub:"la semaine de 4 jours",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"« Travailler quatre jours au lieu de cinq, sans perte de salaire : voilà le progrès social du siècle. » Cette affirmation, reprise par plusieurs entreprises qui expérimentent la formule, ne fait pas l'unanimité. Vous la discutez dans une tribune destinée à un site consacré au monde du travail, en nuançant votre propos et en donnant des exemples concrets. (250 mots minimum)"},
 
 {id:"b2t-pe-5", level:"B2", epreuve:"pe", theme:"b2-travail", sub:"les discriminations à l'embauche",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Une étude menée dans votre région montre qu'à diplôme et expérience identiques, certains candidats sont deux fois moins souvent convoqués en entretien selon leur nom ou leur adresse. Faut-il sanctionner plus durement les entreprises, ou agir d'abord sur les procédures de recrutement ? Vous exposez votre point de vue dans un essai argumenté et structuré destiné au magazine d'une association d'insertion professionnelle. (250 mots minimum)"},
 
 {id:"b2t-pe-6", level:"B2", epreuve:"pe", theme:"b2-travail", sub:"les logiciels pour surveiller les ordinateurs",

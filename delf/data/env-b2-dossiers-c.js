@@ -53,7 +53,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ademe.fr — recyclage, filières REP et matières premières secondaires",url:"https://www.ademe.fr/"},
   {type:"officiel",titre:"ecologie.gouv.fr — loi anti-gaspillage pour une économie circulaire",url:"https://www.ecologie.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « recyclage des plastiques centre de tri filière REP »",url:"https://www.youtube.com/results?search_query=recyclage+des+plastiques+centre+de+tri+fili%C3%A8re+REP"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : partir du geste quotidien du bac jaune, rappeler qu'il existe une industrie derrière ce geste → problématique : le recyclage traite-t-il le problème ou le déplace-t-il ?",
   "I. Ce que le recyclage permet réellement : économie d'énergie et de matière, indépendance industrielle, pollueur-payeur, emplois locaux, alternative à l'enfouissement.",
   "II. Ce qu'il ne peut pas faire : dégradation des plastiques, concurrence de la matière vierge, refus de tri, effet rebond, exportation des déchets.",
@@ -230,7 +230,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — dépôts sauvages, déjections canines et sanctions applicables",url:"https://www.service-public.fr/"},
   {type:"officiel",titre:"ademe.fr — déchets abandonnés, mégots et propreté urbaine",url:"https://www.ademe.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « propreté parcs mégots déchets abandonnés incivilités ville »",url:"https://www.youtube.com/results?search_query=propret%C3%A9+parcs+m%C3%A9gots+d%C3%A9chets+abandonn%C3%A9s+incivilit%C3%A9s+ville"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : décrire un parc au petit matin, après un beau week-end → problématique : sanctionner les usagers ou donner des moyens au lieu ?",
   "I. Les arguments en faveur de la sanction : efficacité dissuasive, équité devant le coût, gravité réelle du mégot, hygiène, effet d'entraînement de la propreté.",
   "II. Les limites de cette approche : surveillance impossible, équipement insuffisant, responsabilité des organisateurs d'événements, efficacité supérieure de la sensibilisation, effectifs d'entretien réduits.",

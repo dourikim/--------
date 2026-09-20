@@ -40,7 +40,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — réglementation d'accès aux sites naturels protégés",url:"https://www.service-public.fr/"},
   {type:"article",titre:"France Info — tourisme et réseaux sociaux, sites saturés",url:"https://www.francetvinfo.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « Instagram tourisme lieux saturés débat »",url:"https://www.youtube.com/results?search_query=Instagram+tourisme+lieux+satur%C3%A9s+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un lieu tranquille devenu site viral en quelques mois → problématique.",
   "I. Ce qu'Instagram rend possible : visibilité, démocratisation, information pratique.",
   "II. Ce qu'il provoque : saturation, dégradation, pression sur les habitants.",
@@ -82,7 +82,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — location meublée touristique, réglementation",url:"https://www.service-public.fr/"},
   {type:"article",titre:"Le Monde — surtourisme et nuisances dans les villes très visitées",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « surtourisme nuisances habitants ville »",url:"https://www.youtube.com/results?search_query=surtourisme+nuisances+habitants+ville"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : des habitants excédés dans les villes les plus visitées → problématique.",
   "I. Ce que le tourisme apporte : emplois, financement du patrimoine, image internationale.",
   "II. Ce qu'il coûte aux habitants : bruit, loyers, disparition des commerces de proximité.",
@@ -124,7 +124,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ademe.fr — impact environnemental du transport touristique",url:"https://www.ademe.fr/"},
   {type:"article",titre:"France Info — écotourisme et empreinte carbone des voyages",url:"https://www.francetvinfo.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « écotourisme voyage responsable avion »",url:"https://www.youtube.com/results?search_query=%C3%A9cotourisme+voyage+responsable+avion"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le mot « écotourisme » de plus en plus présent dans les catalogues de voyage → problématique.",
   "I. Ce que l'écotourisme rend possible : sensibilisation, financement local, pratiques responsables.",
   "II. Ses limites concrètes : coût, écoblanchiment, poids du transport aérien.",
@@ -166,7 +166,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — tourisme responsable, informations pratiques",url:"https://www.service-public.fr/"},
   {type:"article",titre:"Le Monde — tourisme solidaire et équitable, enquêtes",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « tourisme solidaire équitable voyage »",url:"https://www.youtube.com/results?search_query=tourisme+solidaire+%C3%A9quitable+voyage"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : voyager en faisant vivre directement les populations locales → problématique.",
   "I. Ce que le tourisme solidaire permet : revenus locaux, valorisation des savoir-faire, projets concrets.",
   "II. Ses limites : étiquette peu contrôlée, coût, risque de mise en scène de la pauvreté.",
@@ -208,7 +208,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — congés, télétravail et droit du travail",url:"https://www.service-public.fr/"},
   {type:"article",titre:"France Info — retour du train de nuit et nouvelles pratiques de voyage",url:"https://www.francetvinfo.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « slow tourisme train de nuit workation »",url:"https://www.youtube.com/results?search_query=slow+tourisme+train+de+nuit+workation"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : de nouvelles façons de voyager depuis la crise sanitaire → problématique.",
   "I. Ce que ces pratiques apportent : moins d'impact, plus d'immersion, plus de flexibilité.",
   "II. Leurs limites : accès réservé à une minorité, frontière travail-vacances brouillée, offre encore limitée.",
@@ -250,7 +250,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"culture.gouv.fr — patrimoine mondial et politique de préservation",url:"https://www.culture.gouv.fr/"},
   {type:"article",titre:"Le Monde — surtourisme et sites patrimoniaux, régulation des flux",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « UNESCO patrimoine mondial surtourisme »",url:"https://www.youtube.com/results?search_query=UNESCO+patrimoine+mondial+surtourisme"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : l'inscription à l'UNESCO, une bénédiction à double tranchant → problématique.",
   "I. Ce que le tourisme apporte au patrimoine : financement, emplois, sensibilisation.",
   "II. Ce qu'il lui coûte : usure, infrastructures envahissantes, fermetures forcées.",

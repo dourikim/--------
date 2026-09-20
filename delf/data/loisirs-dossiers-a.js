@@ -44,7 +44,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"service-public.fr — contrôle parental et protection des mineurs sur les appareils connectés",url:"https://www.service-public.fr/"},
   {type:"article",titre:"francetvinfo.fr — pratiques de jeu vidéo, temps d'écran et e-sport",url:"https://www.francetvinfo.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « temps de jeu vidéo adolescents parents contrôle parental »",url:"https://www.youtube.com/results?search_query=temps+de+jeu+vid%C3%A9o+adolescents+parents+contr%C3%B4le+parental"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un loisir devenu majoritaire, une signalétique européenne, une loi de 2022 sur le contrôle parental → problématique.",
   "I. Un loisir à part entière : sociabilité en ligne, récits et création, métiers du secteur, discipline de l'e-sport.",
   "II. Ce qui appelle un cadre : temps pris sur le sommeil et le travail scolaire, mécanismes de rétention, achats intégrés, limites d'âge contournées.",
@@ -86,7 +86,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"pass.culture.fr — fonctionnement, éligibilité et offres partenaires",url:"https://pass.culture.fr/"},
   {type:"officiel",titre:"education.gouv.fr — part collective du pass Culture et éducation artistique et culturelle",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « pass Culture jeunes utilisation mangas bilan »",url:"https://www.youtube.com/results?search_query=pass+Culture+jeunes+utilisation+mangas+bilan"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : un crédit culturel généralisé en 2021, une application, une part individuelle et une part collective → problématique.",
   "I. Ce que le dispositif produit réellement : premier budget culturel autonome, découverte des lieux partenaires, classes entières emmenées par la part collective, soutien aux librairies et aux petits cinémas.",
   "II. Ce qu'il ne produit pas : effet de substitution avec la dépense familiale, offre inégale selon les territoires, obstacle du déplacement et de la démarche en ligne, crédits non utilisés.",
@@ -212,7 +212,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"centrenationaldulivre.fr — édition, rentrée littéraire et vie du livre en France",url:"https://centrenationaldulivre.fr/"},
   {type:"article",titre:"lemonde.fr — prix littéraires de l'automne, jurys et effets sur les ventes",url:"https://www.lemonde.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « prix Goncourt jury ventes rentrée littéraire critique »",url:"https://www.youtube.com/results?search_query=prix+Goncourt+jury+ventes+rentr%C3%A9e+litt%C3%A9raire+critique"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : des centaines de romans en septembre, quelques prix en novembre, un bandeau qui décide des ventes → problématique.",
   "I. Ce que les prix apportent : repère dans une production surabondante, carrière d'un auteur lancée, librairies soutenues, livre installé dans la conversation publique.",
   "II. Ce qu'on leur reproche : concentration des ventes, jurys nommés à vie et proches de quelques éditeurs, calendrier qui appauvrit le reste de l'année, lecteur aligné plutôt qu'éclairé.",

@@ -44,7 +44,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ecologie.gouv.fr — interdiction des plastiques à usage unique et loi anti-gaspillage",url:"https://www.ecologie.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — sacs plastiques, emballages et vente en vrac",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « interdiction sacs plastiques emballages vrac supermarché »",url:"https://www.youtube.com/results?search_query=interdiction+sacs+plastiques+emballages+vrac+supermarch%C3%A9"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la disparition du sac de caisse depuis 2016, puis l'extension aux couverts, aux emballages et aux fruits et légumes → problématique.",
   "I. Ce que l'interdiction a réellement obtenu : suppression d'un objet absurde, moins de déchets dispersés dans la nature, habitude du cabas installée, effet d'entraînement sur d'autres jetables.",
   "II. Ses limites : coût de fabrication des sacs réutilisables, report vers les sacs-poubelle et les barquettes, confusion autour du compostable, charge pour les petits commerces.",
@@ -129,7 +129,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ecologie.gouv.fr — rénovation énergétique des logements et diagnostic de performance énergétique",url:"https://www.ecologie.gouv.fr/"},
   {type:"officiel",titre:"service-public.fr — aides à la rénovation, DPE et location des logements énergivores",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « économies d'énergie isolation passoire thermique DPE »",url:"https://www.youtube.com/results?search_query=%C3%A9conomies+d%27%C3%A9nergie+isolation+passoire+thermique+DPE"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la facture qui augmente, les dix-neuf degrés dans les bâtiments publics, le DPE affiché sur les annonces immobilières → problématique.",
   "I. Ce que les gestes permettent : effet immédiat, budget allégé, exemplarité publique, aucune dépense préalable.",
   "II. Pourquoi ils ne suffisent pas : inégalité devant la privation, coût et complexité des travaux, blocage des copropriétés, locataire sans pouvoir de décision, effet de rebond.",
@@ -171,7 +171,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ADEME — consignes de tri, collecte et tarification incitative",url:"https://www.ademe.fr/"},
   {type:"officiel",titre:"service-public.fr — tri des déchets ménagers et tri à la source des biodéchets",url:"https://www.service-public.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « tri sélectif erreurs de tri consignes simplifiées biodéchets »",url:"https://www.youtube.com/results?search_query=tri+s%C3%A9lectif+erreurs+de+tri+consignes+simplifi%C3%A9es+biod%C3%A9chets"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le bac jaune, la simplification des consignes depuis 2023, le tri des biodéchets depuis 2024 → problématique.",
   "I. Pourquoi le tri reste un geste efficace : accessible à tous, condition d'un traitement de qualité, consignes simplifiées, effet de la tarification incitative, transmission par les enfants.",
   "II. Ce qui l'empêche de fonctionner : objets ambigus, anonymat des bacs collectifs, changements de consignes, effets pervers de la facturation, responsabilité reportée sur l'habitant.",
@@ -213,7 +213,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"ecologie.gouv.fr — développement durable et objectifs de développement durable",url:"https://www.ecologie.gouv.fr/"},
   {type:"officiel",titre:"education.gouv.fr — éducation au développement durable et éco-délégués",url:"https://www.education.gouv.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « développement durable trois piliers greenwashing labels »",url:"https://www.youtube.com/results?search_query=d%C3%A9veloppement+durable+trois+piliers+greenwashing+labels"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : la définition de 1987, les dix-sept objectifs de 2015, les éco-délégués au collège, le mot sur tous les emballages → problématique.",
   "I. Ce que la notion apporte : refus de séparer écologie et société, cadre commun d'évaluation, pédagogie par projet, réalisations locales vérifiables, équité entre générations.",
   "II. Ce qu'elle masque : notion trop large, arbitrage réel en faveur de l'économique, greenwashing, prolifération des labels, illusion d'une croissance corrigée.",

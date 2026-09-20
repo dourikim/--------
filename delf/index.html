@@ -133,6 +133,114 @@ p.vs{margin:0 0 16px;color:var(--muted);font-size:13.5px}
 .tsous .sko{font-size:11.5px;color:var(--brick);font-weight:600;margin:2px 0 5px}
 .tsous .snote{font-size:12px;line-height:1.6;color:var(--muted)}
 @media(max-width:640px){.tex{grid-template-columns:1fr}.tex .av{border-right:0;border-bottom:1px solid var(--line)}}
+/* ===== 작문 패턴 ===== */
+.pkey{display:grid;grid-template-columns:repeat(auto-fit,minmax(500px,1fr));gap:12px;margin-bottom:16px}
+.pkey>div{background:#fff;border:1px solid var(--line);border-left-width:3px;border-radius:10px;padding:15px 17px 16px}
+.pkey>div>p{margin:0 0 10px}
+.kx{background:var(--bg);border-radius:8px;padding:10px 12px;display:flex;flex-direction:column;gap:6px}
+.kx-h{font-size:12px;color:var(--muted);border-bottom:1px solid var(--line);padding-bottom:6px;margin-bottom:1px}
+.kx-h i{font-family:Georgia,serif;color:var(--ink)}
+.kx-r{display:grid;grid-template-columns:46px minmax(0,1fr);gap:9px;font-size:12.5px;line-height:1.6}
+.kx-n{font-size:10.5px;letter-spacing:.04em;color:var(--muted);padding-top:3px;white-space:nowrap}
+.kx-do{margin:9px 0 0!important;font-size:12.5px;line-height:1.6;color:var(--muted)}
+.kx-do b{color:var(--ink)}
+.kh{display:flex;align-items:flex-start;gap:10px;margin-bottom:5px}
+.kh h4{flex:1;margin:0!important}
+.kfreq{display:flex;flex-direction:column;align-items:flex-end;gap:2px;white-space:nowrap;padding-top:2px}
+.kfreq i{display:block;height:4px;border-radius:2px;background:currentColor;opacity:.5}
+.kfreq b{font-size:12.5px;line-height:1}
+.kfreq small{font-size:10px;color:var(--muted)}
+.kA .kfreq{color:#b9362a}.kB .kfreq{color:#1f5f6b}.kC .kfreq{color:#8a4b2a}.kD .kfreq{color:#a8890f}
+.kbtn{font:inherit;font-size:11px;border:1px solid var(--line);background:var(--bg);color:var(--ink);
+  border-radius:999px;padding:3px 10px;cursor:pointer;white-space:nowrap}
+.kbtn:hover{border-color:var(--muted)}
+.kbtn.touch{border-color:#c8a91e;color:#8a6f08;background:#fdf9e8;font-weight:700}
+.kbtn.touch:hover{background:#fbf3d2}
+.kbtn.touch.on{background:#c8a91e;border-color:#c8a91e;color:#fff}
+.ktouch{margin-top:10px;padding:12px 14px;border-radius:8px;background:#fdf9e8;border:1px solid #efe2a8;
+  font-size:12.5px;line-height:1.7;color:var(--ink)}
+.ktouch b{color:#7a6208}
+.ktouch i{font-family:Georgia,serif}
+@media (max-width:560px){.kx-r{grid-template-columns:1fr;gap:2px}}
+.pkey .kA{border-left-color:#b9362a}
+.pkey .kB{border-left-color:#1f5f6b}
+.pkey .kC{border-left-color:#8a4b2a}
+.pkey .kD{border-left-color:#c8a91e}
+.pkey h4{margin:0 0 6px;font-family:Georgia,"Times New Roman",serif;font-size:14px;font-weight:700;
+  letter-spacing:0;text-transform:none;color:var(--ink)}
+.pkey p{margin:0;font-size:13px;line-height:1.65}
+.pkey b{color:var(--navy)}
+.pfilters{display:flex;flex-wrap:wrap;gap:7px 16px;align-items:center;margin-bottom:16px;
+  padding:11px 13px;background:#fff;border:1px solid var(--line);border-radius:10px}
+.pfl{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pfg{display:flex;gap:5px;flex-wrap:wrap}
+.pfg button{font:inherit;font-size:12.5px;border:1px solid var(--line);background:var(--bg);color:var(--muted);
+  border-radius:999px;padding:5px 12px;cursor:pointer}
+.pfg button:hover{border-color:var(--muted)}
+.pfg button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.pfg button b{font-weight:700;opacity:.62;margin-left:2px;font-size:11px}
+.pfg button.on b{opacity:.85}
+.pcnt{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+.pgrp{margin-bottom:26px}
+.pgrp-h{display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line);padding-bottom:7px;margin-bottom:13px}
+.pgrp-h b{font-size:16px}
+.pgrp-h .k{font-size:13px;color:var(--brick);font-weight:700}
+.pgrp-h .n{margin-left:auto;font-size:12px;color:var(--muted)}
+.pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:12px}
+.pc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:14px 16px 15px;
+  display:flex;flex-direction:column;gap:8px}
+.pc-top{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.ptag{font-size:10px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:4px;
+  background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.ptag.cA{background:#fbe9e6;color:#b9362a;border-color:#f0cfc9}
+.ptag.cB{background:#e4eff0;color:#1f5f6b;border-color:#cfe2e4}
+.ptag.cC{background:#f5e9e1;color:#8a4b2a;border-color:#e8d3c4}
+.ptag.cD{background:#fdf3c7;color:#6b5a14;border-color:#efe2a8}
+.psuj{margin-left:auto;font-size:11.5px;color:var(--muted);font-style:italic}
+.pc-ex{font-size:15px;line-height:1.62}
+.pc-ex .amo{font-weight:700;color:var(--ink);background:linear-gradient(transparent 62%,#fdf3c7 62%)}
+.pc-ex .rest{color:var(--ink)}
+.pc-ko{font-size:12.5px;line-height:1.65;color:var(--muted);border-top:1px solid var(--line);padding-top:8px}
+.pc-note{font-size:11.5px;line-height:1.55;color:var(--muted);background:var(--bg);border-radius:6px;padding:7px 9px}
+.vtab{width:100%;border-collapse:collapse;font-size:13.5px}
+.vtab th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;padding:9px 12px;border-bottom:1px solid var(--line)}
+.vtab td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+.vtab tr:last-child td{border-bottom:0}
+.vtab .vf{font-weight:700;width:14%}
+.vtab .vr{color:var(--brick);font-size:12px;width:30%}
+.vtab .ve{font-style:italic;color:var(--muted)}
+.vtab .vk{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:4px}
+.grille{width:100%;border-collapse:collapse;font-size:13.5px}
+.grille th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line)}
+.grille td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.55}
+.grille tr:last-child td{border-bottom:0}
+.grille .no{width:26px;color:var(--muted);font-size:12px;padding-top:12px}
+.gin{width:100%;border:1px solid var(--line);border-radius:6px;padding:7px 9px;font:inherit;font-size:13.5px;
+  background:var(--bg);color:inherit}
+.gin:focus{outline:2px solid var(--navy);outline-offset:-1px}
+.rels{display:flex;gap:4px;flex-wrap:wrap}
+.rels button{font:inherit;font-size:11px;letter-spacing:.02em;border:1px solid var(--line);background:var(--bg);
+  color:var(--muted);border-radius:999px;padding:4px 9px;cursor:pointer;white-space:nowrap}
+.rels button:hover{border-color:var(--muted)}
+.rels button.on.cv{background:#e4eff0;border-color:#1f5f6b;color:#1f5f6b}
+.rels button.on.cp{background:#f5e9e1;border-color:#8a4b2a;color:#8a4b2a}
+.rels button.on.dv{background:#fbe9e6;border-color:#b9362a;color:#b9362a}
+.sigline{display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:13px;color:var(--muted);
+  border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+.sigline b{color:inherit}
+.rbadge{display:inline-block;font-size:10.5px;letter-spacing:.04em;padding:2px 7px;border-radius:4px;white-space:nowrap}
+.rbadge.cv{background:#e4eff0;color:#1f5f6b}
+.rbadge.cp{background:#f5e9e1;color:#8a4b2a}
+.rbadge.dv{background:#fbe9e6;color:#b9362a}
+.cfgpick{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.cfgpick button{font:inherit;font-size:12px;border:1px solid var(--line);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:6px 11px;cursor:pointer}
+.cfgpick button.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.verdict2{font-size:13.5px;line-height:1.6;border-top:1px solid var(--line);margin-top:12px;padding-top:12px}
+#gout b,#gout i,#gout .grille b{display:inline;font-size:inherit;color:inherit;margin:0}
+#gout .box>div:first-child b{font-size:14px}
 .gr{font-size:10px;font-weight:900;border-radius:4px;padding:1px 5px;letter-spacing:.3px}
 .chip.pend{background:#F5F6F8;border-color:#E2E6EE;color:#98A2B3}
 .chip.pend .dot{border-color:#D5DBE4}
@@ -317,6 +425,7 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
       <button data-v="plan">학습 플랜</button>
       <button data-v="freq">기출 문제</button>
       <button data-v="tech">작문 기술</button>
+      <button data-v="pat">작문 패턴</button>
     </nav>
     <div class="lvl">
       <button data-lvl="B2">B2</button>
@@ -430,7 +539,7 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
         <span style="font-size:12.5px;color:var(--muted)">영역을 누르면 그 주제의 문항이 무작위로 출제됩니다.</span>
       </div>
       <div class="simgrid" id="simCards"></div>
-      <div class="card" style="margin-top:14px;font-size:13px;color:var(--muted)" id="simInfo"></div></div>
+      <div style="margin-top:14px;font-size:13px;color:var(--muted)" id="simInfo"></div></div>
     <div id="simRun" style="display:none"></div>
   </section>
 
@@ -459,7 +568,8 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
     <div class="card" style="margin-bottom:14px">
       <p style="margin:0 0 10px"><b>DELF/DALF는 공식 기출을 공개하지 않습니다.</b> 시험지는 회수되고, France Éducation International이 배포하는 것은
       « sujets d'exemple »(예시 문제) 몇 종뿐입니다. 전 세계에서 세션이 아무리 많아도 문제지가 공개되지 않기 때문에 '기출 DB'는 존재하지 않습니다.</p>
-      <p style="margin:0">그래서 이 프로그램은 응시자 후기·대비 사이트·공식 예시 문제를 교차시켜 <b>기출 문제</b>를 복원합니다. 아래 등급은 «실제로 출제되었다는 근거가 얼마나 강한가»입니다.</p>
+      <p style="margin:0">그래서 이 프로그램은 응시자 후기·대비 사이트·공식 예시 문제를 교차시켜 <b>기출 주제</b>를 복원합니다. 아래 등급은 «실제로 출제되었다는 근거가 얼마나 강한가»입니다. <b>주제</b>를 복원하는 것이지 <b>문항</b>을 복원하는 것이 아닙니다 — 시뮬레이터의 문항은 전부 연습용입니다.</p>
+      <div id="freqOff"></div>
       <div class="tools" style="margin-top:12px">
         <span><span class="gr A">A</span> 3점 이상 — 서로 다른 자료가 겹침</span>
         <span><span class="gr B">B</span> 2점 — 응시자 후기 1건</span>
@@ -487,6 +597,15 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
       아래 예시의 «그냥 쓴 문장»은 <b>문법적으로 맞고 뜻도 통합니다</b> — 바뀌는 것은 감각입니다.</p>
     <div class="tools" id="techChips"></div>
     <div id="techBody"></div>
+  </section>
+
+  <section class="view" id="v-pat">
+    <h2 class="vt">작문 패턴 — 끝까지 가는 문장</h2>
+    <p class="vs">패턴만 외우면 첫머리에서 멈춥니다. 여기서는 <b>모든 패턴이 실제 시험 주제로 끝까지 완성된 문장</b>과 함께 나옵니다.
+      진한 부분이 패턴이고, 이어지는 부분이 그 패턴을 <b>어떻게 끝맺는가</b>입니다.</p>
+    <div class="pkey" id="patKey"></div>
+    <div class="pfilters" id="patFilters"></div>
+    <div id="patBody"></div>
   </section>
 </main>
 
@@ -686,7 +805,10 @@ textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:11px
 <script src="data/societe-sub-c.js"></script>
 <script src="data/societe-sujets.js"></script>
 <script src="data/techniques.js"></script>
+<script src="data/grilles.js"></script>
+<script src="data/patterns.js"></script>
 <script src="data/vocab-ex-2.js"></script>
+<script src="data/officiel-sujets.js"></script>
 <script>
 /* ============ STORE (로그인 붙일 때 이 블록만 교체) ============ */
 /* 저장 슬롯 — 학생 코드(예: SY26)로 들어오면 그 학생 전용 칸에 저장됩니다.
@@ -1117,26 +1239,57 @@ function sujetsFor(lvl,ep,theme){
 }
 function renderSimSel(){
   const ts=$('#simTheme'),cur=ts.value;
-  ts.innerHTML=themeList().map(t=>{const n=simCount(t.id,t.lvl);
+  const lvls=[...new Set(themeList().map(t=>t.lvl))];
+  const allOpts=lvls.map(l=>{const n=window.SUJETS.filter(x=>x.level===l).length;
+    return `<option value="ALL|${l}">[${l}] 모든 주제 — 문항 ${n}개</option>`}).join('');
+  ts.innerHTML=allOpts+themeList().map(t=>{const n=simCount(t.id,t.lvl);
     return `<option value="${t.id}|${t.lvl}"${n?'':' disabled'}>[${t.lvl}] ${t.fr}${n?` — 문항 ${n}개`:' — 준비 중'}</option>`}).join('');
-  const first=themeList().find(t=>simCount(t.id,t.lvl));
-  ts.value=[...ts.options].some(o=>o.value===cur&&!o.disabled)?cur:(first?first.id+'|'+first.lvl:'');
+  ts.value=[...ts.options].some(o=>o.value===cur&&!o.disabled)?cur:(lvls.length?'ALL|'+lvls[0]:'');
 }
+/* ===== Sujets officiels (FEI) — 실제 시험지는 재배포 금지 : 링크로만 연결 ===== */
+const OFFICIEL={
+  B2:{page:'https://www.france-education-international.fr/diplome/delf-tout-public/niveau-b2/exemples-sujets?langue=fr',
+      docs:[['Exemple 1 · épreuves collectives (CO·CE·PE)','https://www.france-education-international.fr/document/delf-b2-tp-candidat-coll-exemple1'],
+            ['Exemple 2 · épreuves collectives (CO·CE·PE)','https://www.france-education-international.fr/document/delf-b2-tp-candidat-coll-exemple2'],
+            ['Épreuve individuelle (PO)','https://www.france-education-international.fr/document/delf-b2-tp-candidat-ind'],
+            ['Grille PE','https://www.france-education-international.fr/document/grille-pe-b2'],
+            ['Grille PO','https://www.france-education-international.fr/document/grille-po-b2']]},
+  C1:{page:'https://www.france-education-international.fr/diplome/dalf/exemples-sujets?langue=fr',
+      docs:[['Sujet de démonstration · épreuves collectives (CO·CE·PE)','https://www.france-education-international.fr/document/dalf-c1sujet-demo-candidat-coll'],
+            ['Épreuve individuelle (PO)','https://www.france-education-international.fr/document/dalf-c1sujet-demo-candidat-indiv'],
+            ['Grille PE (synthèse + essai)','https://www.france-education-international.fr/document/grille-pe-c1'],
+            ['Grille PO','https://www.france-education-international.fr/document/grille-po-c1']]}
+};
+function officielBloc(L,nb){
+  const lv=L==='ALL'?['B2','C1']:[L];
+  return `<div class="card" style="margin-top:14px" id="offBloc">
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px">
+      <span class="b navy" style="font-size:10.5px;font-weight:800;border-radius:5px;padding:2px 7px">Entraînement</span>
+      <b>연습용 문항 ${nb?`<span style="color:var(--brick)">${nb.ent}개</span>`:''}</b>
+      <span style="color:var(--muted);font-size:13px">— 공식 시험지의 형식·분량·문체에 맞춰 이 프로그램용으로 쓴 글. 실제 시험에 나온 문항이 아닙니다.</span></div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
+      <span class="b" style="font-size:10.5px;font-weight:800;border-radius:5px;padding:2px 7px;background:#1b5e20;color:#fff">Sujet officiel · FEI</span>
+      <b>실제 기출 예시 ${nb?`<span style="color:#1b5e20">${nb.off}개</span>`:''}</b><span style="color:var(--muted);font-size:13px">— France Éducation international 이 공개한 시험지를 그대로 옮긴 문항(CO 음원·CE 지문·PE·PO + corrigé). 시뮬레이터 «출처» 버튼으로 골라 풀 수 있습니다. 원문 PDF :</span></div>
+    ${lv.map(l=>`<div style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px"><span class="lvltag">${l}</span>
+      ${OFFICIEL[l].docs.map(d=>`<a class="btn g sm" href="${d[1]}" target="_blank" rel="noopener">${d[0]}</a>`).join('')}
+      <a class="btn g sm" href="${OFFICIEL[l].page}" target="_blank" rel="noopener" style="opacity:.75">FEI 페이지 ↗</a></div>`).join('')}
+  </div>`}
 function renderSim(){
   renderSimSel();
   const ts=$('#simTheme');ts.onchange=renderSim;
   const sel=simSel(),th=sel.id||'ALL',L=simLevel(),E=window.EXAMS[L];
   const t0=themeList().find(t=>t.id===sel.id&&t.lvl===sel.lvl);
   $('#simSub').innerHTML=`${E.label} — ${E.total}${t0?` · 주제 «${esc(t0.fr)}»`:''}`;
-  $('#simCards').innerHTML=E.epreuves.map((e,i)=>{const n=sujetsFor(L,e.id,th).length;
+  $('#simCards').innerHTML=E.epreuves.map((e,i)=>{const xs=sujetsFor(L,e.id,th),n=xs.length,nO=xs.filter(x=>x.origine==='officiel').length;
     return `<button class="simcard" data-e="${i}">
       <div class="n">${e.nom}</div><div class="k">${e.ko} ${e.bareme}</div>
       <div class="d">${e.prep?`${e.prep}+${e.min}분`:`${e.min}분`}</div>
       <div class="note">${e.note}</div>
       <div style="margin-top:8px;font-size:12px;font-weight:700;color:${n?'var(--ok)':'var(--muted)'}">
-        ${n?`출제 가능한 문항 ${n}개`:'문항 없음 — 타이머만'}</div></button>`}).join('');
-  $('#simInfo').innerHTML=`시간·형식 출처: <b>Manuel du candidat ${E.label}</b> (France Éducation International 배포본).
-    문항은 실제 시험 구조에 맞춰 이 프로그램용으로 작성한 것입니다. 듣기(CO)는 음원이 필요하므로 현재 타이머만 제공합니다.`;
+        ${n?`출제 가능한 문항 ${n}개`:'문항 없음 — 타이머만'}${nO?` <span style="color:#1b5e20">· 공식 ${nO}</span>`:''}</div></button>`}).join('');
+  const allX=E.epreuves.flatMap(e=>sujetsFor(L,e.id,th)),nbAll={off:allX.filter(x=>x.origine==='officiel').length,ent:allX.filter(x=>x.origine!=='officiel').length};
+  $('#simInfo').innerHTML=officielBloc(L,nbAll)+`<p style="margin:12px 0 0">시간·형식·채점표 출처: <b>France Éducation international</b> — pages officielles ${E.label}, sujets de démonstration, grilles d'évaluation (2026-09 확인).
+    듣기(CO)는 음원이 필요하므로 현재 타이머만 제공합니다.</p>`;
   $$('#simCards .simcard').forEach(b=>b.onclick=()=>go('sim',b.dataset.e));
   $('#simHome').style.display='';$('#simRun').style.display='none';
 }
@@ -1144,10 +1297,101 @@ function beep(n){try{const c=new(window.AudioContext||window.webkitAudioContext)
   for(let i=0;i<n;i++){const o=c.createOscillator(),g=c.createGain();o.connect(g);g.connect(c.destination);
     o.frequency.value=880;g.gain.value=.12;o.start(c.currentTime+i*.35);o.stop(c.currentTime+i*.35+.18)}}catch(e){}}
 let curSujet=null;
+let simType='*',simCfg='*',simTh='*',simOrig='*',PO_BARS={html:'',idx:0};
+const origBadge=x=>x&&x.origine==='officiel'
+  ?`<span class="b" title="France Éducation international 이 공개한 공식 시험지 그대로" style="font-size:10.5px;font-weight:800;border-radius:5px;padding:2px 7px;background:#1b5e20;color:#fff">Sujet officiel · FEI</span>`
+  :`<span class="b" title="연습용 문항 — 실제 시험에 나온 문항이 아닙니다" style="font-size:10.5px;font-weight:800;border-radius:5px;padding:2px 7px;background:#eef1f6;color:#3b4a63">Entraînement</span>`;
+const srcLine=x=>x&&x.source?`<div style="margin-top:8px;font-size:12px;color:var(--muted)">Source : <a href="${esc(x.source.url)}" target="_blank" rel="noopener">${esc(x.source.nom)} ↗</a></div>`:'';
+const CFGLAB={A:'A · opposition',B:'B · approfondissement',C:'C · décalage',D:'D · convergence trompeuse'};
+
+/* ===== 시험 형식은 «선언된 표»에서만 옵니다. 데이터의 type 값을 그대로 쓰지 않습니다. =====
+   출처 (형식 현행) : France Éducation international — pages « DELF tout public – niveau B2 » et « DALF – niveau C1 »,
+   sujets de démonstration (page de garde) et grilles d'évaluation PE/PO.
+     B2 PE : « Prise de position personnelle argumentée (contribution à un débat, lettre formelle, article critique…) »
+     B2 PO : « Présentation et défense d'un point de vue à partir d'un court document déclencheur »
+             (2 parties : monologue suivi 5–7 min / exercice en interaction 10–13 min)
+     C1 PE : « synthèse (200 à 240 mots dans les sujets officiels ; page FEI : 220–240) à partir de plusieurs documents écrits d'environ 1 000 mots + essai argumenté (250 mots minimum) »
+     C1 PO : « Exposé à partir de plusieurs documents écrits, suivi d'une discussion avec le jury » (exposé 8–10 min / entretien 15–20 min)
+   BO n°29 (2005) 는 역사적 참고용일 뿐, 현행 형식의 근거로 쓰지 않는다. */
+const FMT={
+  'B2|ce':{off:['Compréhension des écrits']},
+  'B2|pe':{off:['Lettre formelle','Article argumenté','Contribution à un forum','Rédaction argumentée']},
+  'B2|po':{off:['Défense d’un point de vue'],
+           alias:{'Monologue suivi + débat':'Défense d’un point de vue','Exposé + débat':'Défense d’un point de vue'}},
+  'C1|ce':{off:['Compréhension des écrits']},
+  'C1|pe':{off:['Synthèse + essai'],hors:['Essai seul · 심화 연습']},
+  'C1|po':{off:['Exposé + discussion'],
+           alias:{'Exposé + débat':'Exposé + discussion','Exposé à partir d’un dossier + débat':'Exposé + discussion',
+                  "Exposé à partir d'un dossier + débat":'Exposé + discussion','Exposé + entretien':'Exposé + discussion'}}
+};
+function fmtOf(x){const f=FMT[x.level+'|'+x.epreuve];if(!f)return x.type;
+  return (f.alias&&f.alias[x.type])||x.type}
+/* ===== domaines de spécialité : SUPPRIMÉS =====
+   Le choix « lettres et sciences humaines » / « sciences » a existé pour les
+   épreuves de production du DALF C1 du 1er septembre 2005 (arrêté du 7 juillet
+   2005, BO n°29) jusqu'à la réforme de 2020, qui l'a supprimé.
+   Ne pas le réintroduire : il n'existe plus dans l'examen actuel. */
+function thLabel(id,lvl){const t=themeList().find(t=>t.id===id&&t.lvl===lvl);return t?t.fr:id}
 function startSim(idx,keepSujet,fromHash){
   if(!fromHash){go('sim',idx);return}
   const L=simLevel(),e=window.EXAMS[L].epreuves[idx],th=simSel().id||'ALL';
-  const pool=sujetsFor(L,e.id,th);
+  const all=sujetsFor(L,e.id,th);
+  const G=window.GRILLES||{};
+  const withG=all.filter(x=>G[x.id]);
+  /* on propose le tri par configuration dès que la moitié du vivier est analysée */
+  const byCfg=withG.length>=Math.max(6,all.length/2);
+  const types=[...new Set(all.map(fmtOf))];
+  if(simType!=='*'&&!types.includes(simType))simType='*';
+  const cfgs=['A','B','C','D'].filter(c=>withG.some(x=>G[x.id].configuration===c));
+  if(simCfg!=='*'&&!cfgs.includes(simCfg))simCfg='*';
+  const themes=[...new Set(all.map(x=>x.theme))]
+    .map(t=>({t,n:all.filter(x=>x.theme===t).length})).sort((a,b)=>b.n-a.n);
+  if(simTh!=='*'&&!themes.some(x=>x.t===simTh))simTh='*';
+  let pool = byCfg
+    ? (simCfg==='*'?all:withG.filter(x=>G[x.id].configuration===simCfg))
+    : (simType==='*'?all:all.filter(x=>fmtOf(x)===simType));
+  if(th==='ALL'&&simTh!=='*')pool=pool.filter(x=>x.theme===simTh);
+  const nOff=all.filter(x=>x.origine==='officiel').length,nEnt=all.length-nOff;
+  if(simOrig!=='*'&&(simOrig==='officiel'?nOff:nEnt)===0)simOrig='*';
+  if(simOrig!=='*')pool=pool.filter(x=>(x.origine==='officiel')===(simOrig==='officiel'));
+  const nb=n=>`<b>${n}</b>`;
+  const origBar = nOff?`<div class="pfilters" style="margin:0 0 10px">
+      <span class="pfl">출처</span>
+      <div class="pfg" id="oBar">
+        <button data-o="*" class="${simOrig==='*'?'on':''}">랜덤 ${nb(all.length)}</button>
+        <button data-o="officiel" class="${simOrig==='officiel'?'on':''}" style="${simOrig==='officiel'?'':'color:#1b5e20'}">Sujets officiels · FEI ${nb(nOff)}</button>
+        <button data-o="entrainement" class="${simOrig==='entrainement'?'on':''}">Entraînement ${nb(nEnt)}</button>
+      </div>
+      <span class="pcnt">공식 = France Éducation international 공개 시험지 그대로 · 연습용 = 이 프로그램용으로 쓴 문항</span>
+    </div>`:'';
+  const cfgBar = byCfg?`<div class="pfilters" style="margin:0 0 10px">
+      <span class="pfl">배치 유형</span>
+      <div class="pfg" id="cBar">
+        <button data-c="*" class="${simCfg==='*'?'on':''}">랜덤 ${nb(all.length)}</button>
+        ${cfgs.map(c=>{const n=withG.filter(x=>G[x.id].configuration===c).length;
+          return `<button data-c="${c}" class="${simCfg===c?'on':''}">${CFGLAB[c]} ${nb(n)}</button>`}).join('')}
+      </div>
+      <span class="pcnt">분석한 지문 ${withG.length}개에서 <b>연습할 수 있는 사례 수</b>입니다</span>
+    </div>`:'';
+  const fmtBar = (!byCfg&&types.length>1)?`<div class="pfilters" style="margin:0 0 10px">
+      <span class="pfl">과제 형식</span>
+      <div class="pfg" id="tBar">
+        <button data-t="*" class="${simType==='*'?'on':''}">랜덤 ${nb(all.length)}</button>
+        ${types.map(t=>{const n=all.filter(x=>fmtOf(x)===t).length;
+          return `<button data-t="${esc(t)}" class="${simType===t?'on':''}">${esc(t)} ${nb(n)}</button>`}).join('')}
+      </div>
+      <span class="pcnt">공식 형식표 기준 · 약한 형식만 골라 연습</span>
+    </div>`:'';
+  const thBar = (th==='ALL'&&themes.length>1)?`<div class="pfilters" style="margin:0 0 12px">
+      <span class="pfl">주제</span>
+      <div class="pfg" id="thBar">
+        <button data-th="*" class="${simTh==='*'?'on':''}">랜덤 ${nb(all.length)}</button>
+        ${themes.map(x=>`<button data-th="${esc(x.t)}" class="${simTh===x.t?'on':''}">${esc(thLabel(x.t,L))} ${nb(x.n)}</button>`).join('')}
+      </div>
+      <span class="pcnt">숫자는 <b>연습할 수 있는 문항 수</b>입니다 — 출제 빈도가 아닙니다</span>
+    </div>`:'';
+  const typeBar=origBar+cfgBar+fmtBar+thBar;
+  PO_BARS={html:typeBar,idx:idx};
   if(!keepSujet)curSujet=pool.length?pool[Math.floor(Math.random()*pool.length)]:null;
   const S_=curSujet;
   /* Production orale — 녹음·전사·시험관 토론이 있는 전용 화면으로 */
@@ -1155,31 +1399,58 @@ function startSim(idx,keepSujet,fromHash){
     PO_CTX={id:th==='ALL'?S_.theme:th,lvl:L,sub:S_.sub,sujet:S_};
     PO.phase='idle';PO.pool=pool.length;
     $('#simHome').style.display='none';$('#simRun').style.display='';
-    $('#simRun').innerHTML='<div id="poBody"></div>';
-    renderPo('idle');return;
+    $('#simRun').innerHTML='<div id="poBars"></div><div id="poBody"></div>';
+    renderPo('idle');
+    if($('#poBars')){$('#poBars').innerHTML=PO_BARS.html;bindBars(idx)}
+    return;
   }
   const phases=e.prep?[{n:'PRÉPARATION',s:e.prep*60},{n:'PASSATION',s:e.min*60}]:[{n:e.nom.toUpperCase(),s:e.min*60}];
+  function bindBars(i){
+    if($('#tBar'))$$('#tBar button').forEach(b=>b.onclick=()=>{simType=b.dataset.t;clearInterval(timer);startSim(i,false,true)});
+    if($('#cBar'))$$('#cBar button').forEach(b=>b.onclick=()=>{simCfg=b.dataset.c;clearInterval(timer);startSim(i,false,true)});
+    if($('#thBar'))$$('#thBar button').forEach(b=>b.onclick=()=>{simTh=b.dataset.th;clearInterval(timer);startSim(i,false,true)});
+    if($('#oBar'))$$('#oBar button').forEach(b=>b.onclick=()=>{simOrig=b.dataset.o;clearInterval(timer);startSim(i,false,true)});
+  }
   let p=0,left=phases[0].s,running=false,elapsed=0;
   const R=$('#simRun');$('#simHome').style.display='none';R.style.display='';
-  const sujetHtml=S_?`<div class="card" style="margin-top:14px">
+  const sujetHtml=S_?`${typeBar}<div class="card" style="margin-top:0">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
-        <span class="b navy" style="font-size:10.5px;font-weight:800;border-radius:5px;padding:2px 7px">${esc(S_.type)}</span>
+        <span class="b navy" style="font-size:10.5px;font-weight:800;border-radius:5px;padding:2px 7px">${esc(fmtOf(S_))}</span>
+        ${origBadge(S_)}
+        ${G[S_.id]?`<span class="ptag c${G[S_.id].configuration}">${CFGLAB[G[S_.id].configuration]}</span>`:''}
         <b style="flex:1">${esc(S_.sub)}</b>
+        <span style="font-size:12px;color:var(--muted)">${pool.length}개 중 1개</span>
         ${pool.length>1?`<button class="btn g sm" id="reroll">다른 문항</button>`:''}
       </div>
       <div class="pb" style="white-space:pre-wrap">${esc(S_.consigne)}</div>
+      ${S_.audio?`<div class="box" style="margin-top:12px"><b style="display:block;margin-bottom:8px">Documents audio (FEI)</b>${S_.audio.map(a=>`<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:6px 0"><span style="min-width:200px;font-size:13px">${esc(a.label)}</span><audio controls preload="none" src="${esc(a.url)}" style="height:34px;flex:1;min-width:240px"></audio></div>`).join('')}</div>`:''}
       ${S_.support?`<div class="box" style="margin-top:12px;white-space:pre-wrap;line-height:1.75">${esc(S_.support)}</div>`:''}
-      ${S_.questions?`<ol style="margin:12px 0 0;padding-left:19px">${S_.questions.map(q=>`<li style="margin-bottom:7px">${esc(q.replace(/^\d+\.\s*/,''))}</li>`).join('')}</ol>`:''}
+      ${S_.questions?`<ol style="margin:12px 0 0;padding-left:${S_.origine==='officiel'?'0;list-style:none':'19px'}">${S_.questions.map(q=>`<li style="margin-bottom:9px;white-space:pre-wrap">${esc(S_.origine==='officiel'?q:q.replace(/^\d+\.\s*/,''))}</li>`).join('')}</ol>`:''}
+      ${S_.corrige?`<details style="margin-top:12px"><summary style="cursor:pointer;font-weight:700">Corrigé officiel (FEI) — 다 풀고 나서 열기</summary><div class="box" style="margin-top:8px;white-space:pre-wrap;line-height:1.7">${S_.corrige.map(esc).join('\n')}</div></details>`:''}
+      ${S_.transcription?`<details style="margin-top:8px"><summary style="cursor:pointer;font-weight:700">Transcription (document surveillant)</summary><div class="box" style="margin-top:8px;white-space:pre-wrap;line-height:1.7;font-size:13.5px">${esc(S_.transcription)}</div></details>`:''}
+      ${srcLine(S_)}
     </div>`:`<div class="card" style="margin-top:14px;color:var(--muted);font-size:13.5px">이 영역·주제의 문항은 아직 없습니다. 타이머만 사용하세요.</div>`;
+  const c1pe=L==='C1'&&e.id==='pe'&&!(S_&&/Essai seul/.test(S_.type||''));
   R.innerHTML=`<div class="card"><div class="phase" id="ph"></div><div class="clock" id="ck"></div>
       <div style="display:flex;gap:8px;justify-content:center;margin-top:16px;flex-wrap:wrap">
         <button class="btn a" id="go">시작</button><button class="btn g" id="skip">다음 단계</button>
         <button class="btn g" id="stop">종료 · 기록</button><button class="btn g" id="back">돌아가기</button></div>
       <p style="text-align:center;color:var(--muted);font-size:13px;margin:14px 0 0">${e.nom} · ${e.note}</p></div>
     ${sujetHtml}
-    ${(e.words||S_&&S_.questions)?`<div class="card" style="margin-top:14px"><textarea id="pe" rows="18" placeholder="여기에 작성하세요."></textarea>
-      <div class="wc"><span>단어 수 <b id="wn">0</b></span>${e.words?`<span>목표 <b>${e.wordsLabel}</b></span>`:''}<span id="wmsg" style="margin-left:auto"></span></div></div>`:''}
+    ${c1pe?`<div class="card" style="margin-top:14px"><div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap"><b>Synthèse</b><span style="color:var(--muted);font-size:13px">200 à 240 mots (consigne officielle) · site FEI : 220–240</span></div>
+      <textarea id="pe1" rows="12" placeholder="Synthèse — 여기에 작성하세요." style="margin-top:8px"></textarea>
+      <div class="wc"><span>단어 수 <b id="wn1">0</b></span><span>목표 <b>200~240</b></span><span id="wmsg1" style="margin-left:auto"></span></div>
+      <div class="vs" style="margin:8px 0 0;font-size:12.5px;line-height:1.6">Grille officielle (France Éducation international) · <b>99 mots 이하</b> → 전 기준 0점 · <b>300 mots 이상</b> → « réalisation de la tâche » 에서 C1 불가 · 문서 문장을 <b>¾ 이상 그대로 베끼면</b> lexique·morphosyntaxe 0점 · 개인 의견 금지 (règle d'objectivité 1,5점)</div></div>
+      <div class="card" style="margin-top:14px"><div style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap"><b>Essai argumenté</b><span style="color:var(--muted);font-size:13px">250 mots minimum</span></div>
+      <textarea id="pe" rows="14" placeholder="Essai — 여기에 작성하세요." style="margin-top:8px"></textarea>
+      <div class="wc"><span>단어 수 <b id="wn">0</b></span><span>목표 <b>250 이상</b></span><span id="wmsg" style="margin-left:auto"></span></div>
+      <div class="vs" style="margin:8px 0 0;font-size:12.5px;line-height:1.6">Grille officielle · <b>124 mots 이하</b> → 전 기준 0점 · hors-sujet 완전 → réalisation·cohérence·adéquation 0점</div></div>`
+    :(e.words||S_&&S_.questions)?`<div class="card" style="margin-top:14px"><textarea id="pe" rows="18" placeholder="여기에 작성하세요."></textarea>
+      <div class="wc"><span>단어 수 <b id="wn">0</b></span>${e.words?`<span>목표 <b>${e.wordsLabel}</b></span>`:''}<span id="wmsg" style="margin-left:auto"></span></div>
+      ${e.id==='pe'?`<div class="vs" style="margin:8px 0 0;font-size:12.5px;line-height:1.6">Grille officielle (France Éducation international) · <b>124 mots 이하</b> → 전 기준 0점 · hors-sujet 완전 → réalisation·cohérence·adéquation 0점</div>`:''}</div>`:''}
+    ${grilleBloc(S_)}
     ${e.speak?`<div class="card" style="margin-top:14px;font-size:13.5px">발표 권장 시간 <b>${e.speak[0]}~${e.speak[1]}분</b> — 해당 시점에 알림음이 울립니다.</div>`:''}`;
+  mountGrille(S_);
   const ck=$('#ck'),ph=$('#ph');
   const paint=()=>{ph.textContent=phases[p].n+(phases.length>1?`  (${p+1}/${phases.length})`:'');
     ck.textContent=`${pad(Math.floor(left/60))}:${pad(left%60)}`;ck.classList.toggle('red',left<=60)};
@@ -1193,16 +1464,203 @@ function startSim(idx,keepSujet,fromHash){
   $('#skip').onclick=()=>{if(p<phases.length-1){p++;left=phases[p].s;elapsed=0;paint()}};
   $('#back').onclick=()=>{clearInterval(timer);history.back()};
   if($('#reroll'))$('#reroll').onclick=()=>{clearInterval(timer);startSim(idx,false,true)};
+  if($('#tBar'))$$('#tBar button').forEach(b=>b.onclick=()=>{
+    simType=b.dataset.t;clearInterval(timer);startSim(idx,false,true)});
+  if($('#cBar'))$$('#cBar button').forEach(b=>b.onclick=()=>{
+    simCfg=b.dataset.c;clearInterval(timer);startSim(idx,false,true)});
+  if($('#thBar'))$$('#thBar button').forEach(b=>b.onclick=()=>{
+    simTh=b.dataset.th;clearInterval(timer);startSim(idx,false,true)});
+  if($('#oBar'))$$('#oBar button').forEach(b=>b.onclick=()=>{
+    simOrig=b.dataset.o;clearInterval(timer);startSim(idx,false,true)});
   $('#stop').onclick=()=>{clearInterval(timer);
-    const words=$('#pe')?wc($('#pe').value):0;const total=phases.reduce((a,b)=>a+b.s,0);
+    const words=($('#pe')?wc($('#pe').value):0)+($('#pe1')?wc($('#pe1').value):0);const total=phases.reduce((a,b)=>a+b.s,0);
     S.sims.push({date:new Date().toLocaleString('ko-KR',{dateStyle:'short',timeStyle:'short'}),level:L,nom:e.nom,
       sujet:S_?S_.sub:'',used:total-left,words});
     save();toast('기록했습니다');go('sim');renderDash();
-    if($('#pe')&&$('#pe').value.trim()){const b=new Blob([(S_?S_.consigne+'\n\n---\n\n':'')+$('#pe').value],{type:'text/plain'});
+    if($('#pe')&&($('#pe').value.trim()||($('#pe1')&&$('#pe1').value.trim()))){const b=new Blob([(S_?S_.consigne+'\n\n---\n\n':'')+($('#pe1')?'SYNTHÈSE\n\n'+$('#pe1').value+'\n\n---\n\nESSAI\n\n':'')+$('#pe').value],{type:'text/plain'});
       const a=document.createElement('a');a.href=URL.createObjectURL(b);
       a.download=`${L}_${e.id.toUpperCase()}_${new Date().toISOString().slice(0,10)}.txt`;a.click()}};
+  const essaiMsg=(n,min)=>n<=124?'<b style="color:#b3261e">124 이하 — 0점 (manque de matière évaluable)</b>'
+      :n>=min?'<b style="color:var(--brick)">목표 도달</b>':`<span style="color:var(--muted)">${min-n}단어 남음</span>`;
   if($('#pe'))$('#pe').oninput=ev=>{const n=wc(ev.target.value);$('#wn').textContent=n;
-    if(e.words)$('#wmsg').innerHTML=n>=e.words?'<b style="color:var(--brick)">목표 도달</b>':`<span style="color:var(--muted)">${e.words-n}단어 남음</span>`};
+    if(c1pe)$('#wmsg').innerHTML=essaiMsg(n,250);
+    else if(e.words)$('#wmsg').innerHTML=e.id==='pe'?essaiMsg(n,e.words):(n>=e.words?'<b style="color:var(--brick)">목표 도달</b>':`<span style="color:var(--muted)">${e.words-n}단어 남음</span>`)};
+  if($('#pe1'))$('#pe1').oninput=ev=>{const n=wc(ev.target.value);$('#wn1').textContent=n;
+    $('#wmsg1').innerHTML=n<=99?'<b style="color:#b3261e">99 이하 — 0점</b>'
+      :n>=300?'<b style="color:#b3261e">300 이상 — réalisation de la tâche 에서 C1 불가</b>'
+      :n>240?`<b style="color:#b26a00">240 초과 (+${n-240}) — 줄이세요</b>`
+      :n>=200?'<b style="color:var(--brick)">200~240 범위 안</b>':`<span style="color:var(--muted)">200까지 ${200-n}단어 남음</span>`};
+}
+/* ============ 작문 패턴 ============ */
+const PPOS=[['ouverture','Ouverture','도입'],['p1','§1','첫 문단'],['p2','§2','둘째 문단'],
+            ['p3','§3','셋째 문단'],['cloture','Clôture','마무리']];
+const PCFG={tous:'tous',A:'A · opposition',B:'B · approfondissement',C:'C · décalage',D:'D · convergence tr.'};
+let pF={pos:'*',config:'*',registre:'*'};
+function renderPat(){
+  const P=window.PATTERNS||[],V=window.VERBES_RELATION||[];
+  if(!P.length){$('#patBody').innerHTML='<div class="card empty">패턴 데이터가 없습니다.</div>';return}
+  const K=[
+    {c:'A',t:'A · Opposition frontale',n:25,pct:40,d:'같은 질문에 <b>정반대로</b> 답합니다. 대립이 표의 절반을 넘습니다.',
+     suj:'le steak végétal',q:'이름은 무엇을 보증하는가?',
+     rows:[['Doc 1','이름은 내용물을 고정하는 <b>법적 보증</b>이다 — 성분표를 읽지 않아도 된다.'],
+           ['Doc 2','이름이 알려주는 것은 <b>조리법과 식탁에서의 자리</b>이지 성분이 아니다.']],
+     do:'필자별로 나누지 말고, <b>한 문단 안에 두 입장</b>을 함께 넣습니다.'},
+    {c:'B',t:'B · Approfondissement',n:19,pct:31,d:'한 글이 <b>틀을 잡고</b> 다른 글이 <b>현장을 댑니다</b>. 반박이 아니라 한 칸 더.',
+     suj:'les circuits courts',q:'직거래는 농가에 무엇을 돌려주는가?',
+     rows:[['틀','중간 유통을 빼면 잃었던 마진과 <b>가격 결정권</b>이 돌아온다.'],
+           ['현장','마진은 돌아오지만 <b>«장사»가 따라붙는다</b> — 그 시간은 어느 계산에도 잡히지 않는다.']],
+     do:'일반 진단 → 현장이 보여주는 작동 방식 → <b>현장이 드러내는 한계</b>. 3번째가 점수입니다.'},
+    {c:'C',t:'C · Décalage de cadre',n:9,pct:15,d:'사실은 같은데 <b>재는 자</b>가 다릅니다. 대립처럼 보이지만 대립이 아닙니다.',
+     suj:'les jeux d’argent',q:'도박 규제를 무엇으로 평가하는가?',
+     rows:[['Doc 1','규제는 <b>상품에서 무엇을 덜어냈는가</b>로 잰다 — 베팅 한도, 연속 게임 차단.'],
+           ['Doc 2','규제는 <b>잃은 세수</b>로 잰다 — 고용, 판매점, 스포츠 재원.']],
+     do:'«도박 수익은 잃는 사람에게서 나온다»는 <b>둘 다 인정</b>합니다. «틀렸다»가 아니라 <b>«다른 잣대»</b>로 씁니다.'},
+    {c:'D',t:'D · Convergence trompeuse',n:9,pct:15,touch:true,d:'결론은 같은데 <b>이유</b>가 양립하지 않습니다. 가장 드물고 가장 높이 평가됩니다.',
+     suj:'la disparition des langues',q:'소멸하는 언어에 개입해야 하는가?',
+     rows:[['일치','둘 다 — 손실은 실재하고, 결정은 <b>화자 공동체</b>가 해야 한다.'],
+           ['갈림','한쪽은 <b>포기</b>로, 다른 쪽은 학교에서의 모욕 끝에 <b>침묵당한 것</b>으로 봅니다.']],
+     do:'이유가 갈리니 <b>정책도 갈립니다</b> — 사용자를 지킬 것인가, 포기를 합리적으로 만든 조건을 걷어낼 것인가.'}
+  ];
+  $('#patKey').innerHTML=K.map(k=>`<div class="k${k.c}">
+    <div class="kh"><h4>${k.t}</h4>
+      ${k.touch?`<button class="kbtn touch" data-touch="${k.c}">김두우리 터치</button>`:''}
+      <span class="kfreq" title="분석한 C1 지문 62개 중 이 유형의 수"><i style="width:${k.pct*1.6}px"></i><b>${k.n}개</b><small>62개 중</small></span></div>
+    <p>${k.d}</p>
+    <div class="kx">
+      <div class="kx-h">예 · <i>${esc(k.suj)}</i> — 공통 질문 «${k.q}»</div>
+      ${k.rows.map(r=>`<div class="kx-r"><span class="kx-n">${r[0]}</span><span>${r[1]}</span></div>`).join('')}
+    </div>
+    <p class="kx-do">${k.do}</p>
+    ${k.touch?`<div class="ktouch" id="kt-${k.c}" hidden>
+      <b>이건 교재에 없습니다.</b> 프랑스 방법론이 쓰는 <i>convergence · complémentarité · divergence</i> 세 딱지로는
+      이 경우를 <b>이름 붙일 수 없습니다</b>. 셋은 «아이디어»를 분류하는데, 이건 <b>결론은 같고 이유가 갈리는</b> —
+      한 층 위의 관계이기 때문입니다.<br><br>
+      FLE 밖에는 이름이 있습니다 — 법이론의 <i>incompletely theorized agreement</i>(C. Sunstein, 1995).
+      결론에는 합의하지만 근거에는 합의하지 못한 상태이고, <b>«왜»를 묻지 않는 동안만</b> 유지됩니다.<br><br>
+      실측으로 <b>15%</b>, 넷 중 가장 드뭅니다. 그런데 채점자가 가장 높이 평가합니다 —
+      대부분의 응시자가 «둘이 동의한다»로 적고 끝내기 때문입니다.
+      <b>가르칠 때 한 마디</b> : «두 글이 동의하면, 동의를 적지 말고 <b>어느 길로 왔는지</b>를 물어라.»
+    </div>`:''}
+  </div>`).join('');
+  $$('#patKey .kbtn.touch').forEach(b=>b.onclick=()=>{
+    const d=$('#kt-'+b.dataset.touch);if(!d)return;d.hidden=!d.hidden;b.classList.toggle('on',!d.hidden)});
+  const grp=(name,items)=>`<span class="pfl">${name}</span><div class="pfg" data-f="${
+    name==='자리'?'pos':name==='유형'?'config':'registre'}">${items.map(it=>
+    `<button data-v="${it[0]}" class="${pF[name==='자리'?'pos':name==='유형'?'config':'registre']===it[0]?'on':''}">${it[1]}</button>`).join('')}</div>`;
+  $('#patFilters').innerHTML=
+    grp('자리',[['*','전체'],...PPOS.map(x=>[x[0],x[1]])])+
+    grp('유형',[['*','전체'],['tous','tous'],['A','A · opposition'],['B','B · approfondissement'],
+                ['C','C · décalage'],['D','D · convergence trompeuse']])+
+    grp('문체',[['*','전체'],['neutre','neutre'],['relation','relation'],['relief','relief']])+
+    `<span class="pcnt" id="patCnt"></span>`;
+  $$('#patFilters .pfg').forEach(g=>g.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    pF[g.dataset.f]=b.dataset.v;renderPat()}));
+  const ok=p=>(pF.pos==='*'||p.pos===pF.pos)&&(pF.config==='*'||p.config===pF.config)&&(pF.registre==='*'||p.registre===pF.registre);
+  const sel=P.filter(ok);
+  $('#patCnt').textContent=`${sel.length} / ${P.length}`;
+  const split=p=>{const head=p.fr.replace(/…\s*$/,'').split('…')[0].trim();
+    const ex=p.ex||'';return ex.startsWith(head)?[head,ex.slice(head.length)]:['',ex]};
+  const card=p=>{const[a,r]=split(p);
+    return `<article class="pc">
+      <div class="pc-top">
+        <span class="ptag ${p.config==='tous'?'':'c'+p.config}">${PCFG[p.config]}</span>
+        <span class="ptag">${p.registre}</span>
+        <span class="psuj">${esc(p.sujet||'')}</span>
+      </div>
+      <p class="pc-ex">${a?`<span class="amo">${esc(a)}</span><span class="rest">${esc(r)}</span>`:esc(p.ex||p.fr)}</p>
+      <p class="pc-ko">${esc(p.ko)}</p>
+      ${p.note?`<p class="pc-note">${esc(p.note)}</p>`:''}
+    </article>`};
+  const groups=PPOS.map(([k,fr,ko])=>{const l=sel.filter(p=>p.pos===k);if(!l.length)return '';
+    return `<div class="pgrp"><div class="pgrp-h"><b>${fr}</b><span class="k">${ko}</span><span class="n">${l.length}</span></div>
+      <div class="pcards">${l.map(card).join('')}</div></div>`}).join('');
+  $('#patBody').innerHTML=(groups||'<div class="card empty">조건에 맞는 패턴이 없습니다.</div>')+
+    `<div class="pgrp"><div class="pgrp-h"><b>Les verbes de relation</b><span class="k">관계 동사 — 전치사 주의</span><span class="n">${V.length}</span></div>
+      <div class="card" style="padding:0;overflow-x:auto"><table class="vtab">
+        <thead><tr><th>Verbe</th><th>Rection · 지배</th><th>Exemple · 쓰는 자리</th></tr></thead>
+        <tbody>${V.map(v=>`<tr><td class="vf">${esc(v.fr)}</td><td class="vr">${esc(v.rection)}</td>
+          <td class="ve">${esc(v.ex)}<span class="vk">${esc(v.ko)}</span></td></tr>`).join('')}</tbody>
+      </table></div></div>`;
+}
+
+/* ============ GRILLE DE CONFRONTATION ============ */
+const REL={convergence:['cv','convergence'],complementarite:['cp','complémentarité'],divergence:['dv','divergence']};
+function grilleBloc(S_){
+  if(!S_||!window.GRILLES||!window.GRILLES[S_.id])return '';
+  return `<div class="card" style="margin-top:14px">
+    <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px">
+      <b>Ma grille de confrontation</b>
+      <span style="color:var(--muted);font-size:12.5px">대조표 — 쓰기 전에 채우세요</span>
+    </div>
+    <p style="color:var(--muted);font-size:13px;line-height:1.6;margin:0 0 12px">
+      두 문서가 <b>모두</b> 말하는 대상 다섯 개를 찾아 적고, 줄마다 관계를 고르세요.
+      다 채운 뒤에 아래에서 제안과 비교할 수 있습니다.</p>
+    <table class="grille"><thead><tr>
+      <th style="width:26px"></th><th>Axe — 두 문서가 모두 말하는 대상</th><th style="width:230px">Relation</th>
+    </tr></thead><tbody id="gbody"></tbody></table>
+    <div class="sigline" id="gsig"></div>
+    <div style="margin-top:12px">
+      <div style="font-size:12.5px;color:var(--muted)">Ma configuration — 표 전체를 보고 읽히는 무늬</div>
+      <div class="cfgpick" id="gcfg"></div>
+    </div>
+    <div style="margin-top:14px"><button class="btn a" id="gcmp">제안과 비교하기</button></div>
+    <div id="gout"></div>
+  </div>`;
+}
+function mountGrille(S_){
+  if(!S_||!$('#gbody'))return;
+  const G=window.GRILLES[S_.id];
+  S.grilles=S.grilles||{};
+  const mine=S.grilles[S_.id]||{axes:[{},{},{},{},{}],cfg:''};
+  S.grilles[S_.id]=mine;
+  const draw=()=>{
+    $('#gbody').innerHTML=mine.axes.map((a,i)=>`<tr>
+      <td class="no">${i+1}</td>
+      <td><input class="gin" data-i="${i}" value="${esc(a.axe||'')}" placeholder="예 : 비용을 누가 부담하는가"></td>
+      <td><div class="rels">${Object.entries(REL).map(([k,v])=>
+        `<button data-i="${i}" data-r="${k}" class="${v[0]} ${a.rel===k?'on':''}">${v[1]}</button>`).join('')}</div></td>
+    </tr>`).join('');
+    $$('#gbody .gin').forEach(el=>el.oninput=e=>{mine.axes[+e.target.dataset.i].axe=e.target.value;save();sig()});
+    $$('#gbody .rels button').forEach(b=>b.onclick=()=>{
+      const a=mine.axes[+b.dataset.i];a.rel=(a.rel===b.dataset.r)?'':b.dataset.r;save();draw()});
+    $('#gcfg').innerHTML=['A','B','C','D'].map(c=>
+      `<button data-c="${c}" class="${mine.cfg===c?'on':''}">${c} · ${{A:'대립',B:'심화',C:'기준 어긋남',D:'겉보기 일치'}[c]}</button>`).join('');
+    $$('#gcfg button').forEach(b=>b.onclick=()=>{mine.cfg=(mine.cfg===b.dataset.c)?'':b.dataset.c;save();draw()});
+    sig();
+  };
+  const count=axes=>{const c={convergence:0,complementarite:0,divergence:0};
+    axes.forEach(a=>{const k=a.rel||a.relation;if(c[k]!==undefined)c[k]++});return c};
+  const sigTxt=c=>Object.entries(REL).map(([k,v])=>`<span class="rbadge ${v[0]}">${c[k]} ${v[1]}</span>`).join(' ');
+  const sig=()=>{const c=count(mine.axes);const n=mine.axes.filter(a=>a.rel).length;
+    $('#gsig').innerHTML=`<span>Ma signature</span>${sigTxt(c)}<span style="margin-left:auto">${n}/5 줄</span>`};
+  draw();
+  $('#gcmp').onclick=()=>{
+    const c1=count(mine.axes),c2=count(G.axes);
+    const same=mine.cfg&&mine.cfg===G.configuration;
+    $('#gout').innerHTML=`<div class="box" style="margin-top:14px">
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:10px">
+        <b>Une lecture possible</b>
+        <span style="color:var(--muted);font-size:12.5px">정답이 아니라 <b>하나의 읽기</b>입니다 — 축이 달라도 됩니다</span>
+      </div>
+      <table class="grille"><thead><tr>
+        <th style="width:26px"></th><th style="width:22%">Axe</th><th>Document 1</th><th>Document 2</th><th style="width:110px">Relation</th>
+      </tr></thead><tbody>${G.axes.map((a,i)=>`<tr>
+        <td class="no">${i+1}</td><td><b>${esc(a.axe)}</b></td>
+        <td>${esc(a.d1)}</td><td>${esc(a.d2)}</td>
+        <td><span class="rbadge ${REL[a.relation][0]}">${REL[a.relation][1]}</span></td></tr>`).join('')}</tbody></table>
+      <div class="sigline"><span>Signature proposée</span>${sigTxt(c2)}</div>
+      <div class="verdict2">
+        <div><b>Configuration ${G.configuration}</b> — ${esc(G.cle)}</div>
+        <div style="margin-top:10px"><b>Plan ${esc(G.plan.type)}</b>
+          <ol style="margin:6px 0 0;padding-left:19px">${G.plan.parties.map(x=>`<li style="margin-bottom:4px">${esc(x)}</li>`).join('')}</ol></div>
+        <div style="margin-top:10px;color:var(--muted)">Titre proposé — <i>${esc(G.titre)}</i></div>
+      </div>
+      <div class="verdict2">
+        <b>비교</b> — 내 signature ${c1.convergence}/${c1.complementarite}/${c1.divergence},
+        제안 ${c2.convergence}/${c2.complementarite}/${c2.divergence}.
+        ${mine.cfg?(same?'배치 유형은 <b>일치</b>합니다.':`배치 유형이 다릅니다 — 나 <b>${mine.cfg}</b> / 제안 <b>${G.configuration}</b>. 어느 줄에서 갈렸는지 보세요.`):'배치 유형을 아직 고르지 않았습니다.'}
+      </div></div>`;
+  };
 }
 function wc(t){return (t.trim().match(/[\p{L}\p{N}'’-]+/gu)||[]).length}
 
@@ -1235,6 +1693,8 @@ function renderPlan(){
 
 /* ============ FREQ VIEW ============ */
 function renderFreq(){
+  {const xs=window.SUJETS.filter(x=>S.level==='ALL'||x.level===S.level);
+   $('#freqOff').innerHTML=officielBloc(S.level==='ALL'?'ALL':S.level,{off:xs.filter(x=>x.origine==='officiel').length,ent:xs.filter(x=>x.origine!=='officiel').length});}
   $('#srcList').innerHTML=window.SIG_SOURCES.map(s=>
     `<div class="res"><span class="t">${s.kind==='temoignage'?'후기':s.kind==='prepa'?'대비':'공식'}</span>
       <a href="${esc(s.url)}" target="_blank">${esc(s.nom)}</a></div>`).join('');
@@ -1382,16 +1842,17 @@ const PO = {
 let PO_CTX={id:'',lvl:'B2',sub:'',sujet:null};
 function poKey(){return PO_CTX}
 function poDossier(){return window.DOSSIERS[skey(PO_CTX.id,PO_CTX.sub)]||null}
-function poSpec(){ /* 레벨별 공식 시간 */
+function poSpec(){ /* 레벨별 공식 시간 — 출처 : grilles d'évaluation PO (France Éducation international) :
+     C1 exposé 8 à 10 min · entretien 15 à 20 min · préparation 1 h ; B2 monologue suivi 5 à 7 min · exercice en interaction 10 à 13 min · préparation 30 min */
   const{lvl}=poKey();
-  return lvl==='C1'?{prep:60,min:8,max:10,debat:'15~20분',docs:'문서 2개(dossier)'}
-                   :{prep:30,min:5,max:7,debat:'10~13분',docs:'문서 1개'};
+  return lvl==='C1'?{prep:60,min:8,max:10,debat:'15~20분',docs:'plusieurs documents écrits'}
+                   :{prep:30,min:5,max:7,debat:'10~13분',docs:'un court document déclencheur'};
 }
 function renderPo(step){
   PO.phase=step||PO.phase||'idle';
   const k=poKey(),d=poDossier(),sp=poSpec(),w=$('#poBody');
   if(!w)return;
-  if(!d){w.innerHTML='<div class="card empty">이 소주제의 자료집이 아직 없습니다. 자료집이 있는 소주제를 선택하세요.</div>';return}
+  if(!d&&!(PO_CTX.sujet&&PO_CTX.sujet.support)){w.innerHTML='<div class="card empty">이 소주제의 자료집이 아직 없습니다. 자료집이 있는 소주제를 선택하세요.</div>';return}
   const steps=['준비','발표','전사','토론','기록'];
   const idx={idle:0,prep:0,rec:1,done:2}[PO.phase]||0;
   const bar=`<div class="postep">${steps.map((s,i)=>`<i class="${i<=idx?'on':''}">${i+1}</i><span>${s}</span>${i<4?'<span style="opacity:.4">›</span>':''}`).join('')}</div>`;
@@ -1401,11 +1862,13 @@ function renderPo(step){
     w.innerHTML=bar+`<div class="card">
       <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
         <span class="b navy" style="font-size:10.5px;font-weight:800;border-radius:5px;padding:2px 7px">${esc(k.lvl)} · Production orale</span>
+        ${origBadge(S_)}
         <b style="flex:1">${esc(k.sub)}</b>
         ${PO.pool>1?'<button class="btn g sm" id="poReroll">다른 문항</button>':''}
         <button class="btn g sm" id="poBack">돌아가기</button></div>
       ${S_&&S_.support?`<div class="box" style="margin-top:14px;white-space:pre-wrap;line-height:1.8">${esc(S_.support)}</div>`:''}
       <div class="pb" style="margin-top:14px;white-space:pre-wrap"><b>Consigne</b><br>${esc(S_?S_.consigne:d.problematique)}</div>
+      ${srcLine(S_)}
       <p style="font-size:13.5px;color:var(--muted);margin:14px 0 0">
         준비 <b>${sp.prep}분</b> · 발표 <b>${sp.min}~${sp.max}분</b> · 토론 ${sp.debat}<br>
         발표 중에는 화면이 아무 말도 하지 않습니다. 끝나면 전사와 말하기 지표를 보여줍니다.</p>
@@ -1418,7 +1881,7 @@ function renderPo(step){
     if($('#poReroll'))$('#poReroll').onclick=()=>{const i=window.EXAMS[k.lvl].epreuves.findIndex(x=>x.id==='po');startSim(i,false,true)};
     $('#poPrep').onclick=()=>{PO.prep=sp.prep*60;renderPo('prep')};
     $('#poSkip').onclick=()=>renderPo('rec');
-    $('#poCopyDoc').onclick=()=>{const e=$('#poDoc');
+    if($('#poCopyDoc'))$('#poCopyDoc').onclick=()=>{const e=$('#poDoc');if(!d){e.innerHTML=e.innerHTML?'':'<div class="card" style="color:var(--muted)">이 문항은 공식 시험지 자료만으로 준비합니다 — 자료집 없음.</div>';return}
       e.innerHTML=e.innerHTML?'':`<div class="card"><b style="font-size:13.5px">POUR</b>
         <ul style="margin:8px 0 14px;padding-left:19px;line-height:1.8">${d.pour.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
         <b style="font-size:13.5px">CONTRE</b>
@@ -1571,8 +2034,9 @@ function poStopRec(){
 }
 /* ---- 시험관 프롬프트 생성 (자료집 주입) ---- */
 function poCopyPrompt(){
-  const k=poKey(),d=poDossier(),sp=poSpec();
-  if(!d)return;
+  const k=poKey(),d0=poDossier(),sp=poSpec();
+  if(!d0&&!(PO_CTX.sujet&&PO_CTX.sujet.support))return;
+  const d=d0||{problematique:(PO_CTX.sujet&&PO_CTX.sujet.consigne)||k.sub,contexte:[],pour:['(자료집 없음 — 아래 학생이 읽은 자료에서만 논거를 끌어낸다)'],contre:['(자료집 없음 — 아래 학생이 읽은 자료에서만 논거를 끌어낸다)'],fr_kr:{fr:''},lexique:[]};
   const C1=k.lvl==='C1';
   const p=
 `너는 ${C1?'« Madame Rossi », DALF C1':'« Monsieur Legrand », DELF B2'} 구술 시험관이다.
@@ -1624,8 +2088,16 @@ arguments_ignores 가 비어 있지 않으면 그것을 첫 질문으로 삼는�
 « Merci, l'épreuve est terminée. » 후 한국어로 « 피드백을 받으시겠어요? » 라고 묻는다.
 
 [STEP 4 · 채점과 교정]
-${C1?`DALF C1 grille (각 /5, 총 25점): 문제 제기와 구성 / 논점 방어와 반응 / 어휘의 폭과 정확성 / 형태통사(subjonctif·고급 구문) / 발음과 유창성`
-    :`DELF B2 grille (총 25점): 주제 파악과 관점 제시 /4 · 논증과 반론 대응 /4 · 어휘 /4 · 형태통사 /5 · 발음과 유창성 /3 · 사회언어적 적절성 /5`}
+${C1?`DALF C1 · Grille d'évaluation de la production orale (France Éducation international, 총 25점, 각 기준 0 / 1 / 3 / 5) :
+  · Réalisation de la tâche : exposé (8 à 10 minutes) /5
+  · Réalisation de la tâche : entretien (15 à 20 minutes) /5
+  · Lexique /5 · Morphosyntaxe /5 · Maîtrise du système phonologique /5 (세 기준은 두 부분 전체에 대해)
+  각 기준의 점수 단계: 0 = non répondu / production insuffisante · 1 = en dessous du niveau ciblé · 3 = C1 · 5 = C1+`
+    :`DELF B2 · Grille d'évaluation de la production orale (France Éducation international, 총 25점, 각 기준 0 / 1 / 3 / 5) :
+  · Réalisation de la tâche : monologue suivi (5 à 7 minutes) /5
+  · Réalisation de la tâche : exercice en interaction (10 à 13 minutes) /5
+  · Lexique /5 · Morphosyntaxe /5 · Maîtrise du système phonologique /5 (세 기준은 두 부분 전체에 대해)
+  각 기준의 점수 단계: 0 = non répondu / production insuffisante · 1 = en dessous du niveau ciblé · 3 = B2 · 5 = B2+`}
 그다음 순서대로:
   A. 학생이 제시한 핵심 주장
   B. 시험관이 발견한 논리적 빈틈 — 각 질문이 무엇을 확인하려던 것이었는지 함께
@@ -1699,9 +2171,9 @@ function renderTech(){
   </div>`;
 }
 
-function render(v){({dash:renderDash,explore:renderThemes,vocab:()=>{renderVocabSel();renderVocab()},sim:renderSim,plan:renderPlan,freq:renderFreq,tech:renderTech}[v]||(()=>{}))()}
+function render(v){({dash:renderDash,explore:renderThemes,vocab:()=>{renderVocabSel();renderVocab()},sim:renderSim,plan:renderPlan,freq:renderFreq,tech:renderTech,pat:renderPat}[v]||(()=>{}))()}
 function renderAll(){$$('.lvl button').forEach(b=>b.classList.toggle('on',b.dataset.lvl===S.level));
-  renderDash();renderThemes();renderVocabSel();renderVocab();renderSim();renderPlan();renderFreq();renderTech()}
+  renderDash();renderThemes();renderVocabSel();renderVocab();renderSim();renderPlan();renderFreq();renderTech();renderPat()}
 /* ============ 접속 → 프로필 → 시작 ============ */
 (function(){
   const C=window.CONFIG||{};const AUTH_URL=(C.authUrl||'/api/auth');

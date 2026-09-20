@@ -5,7 +5,7 @@ window.SUJETS.push(
 
 /* ===================== DELF B2 — PRODUCTION ÉCRITE ===================== */
 {id:"b2m-pe-1", level:"B2", epreuve:"pe", theme:"b2-medias", sub:"les jeunes et les réseaux sociaux",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Faut-il interdire les réseaux sociaux aux moins de quinze ans ? Vous exposez votre point de vue dans une tribune destinée au journal de votre ville, en tenant compte des arguments de vos adversaires. (250 mots minimum)"},
 
 {id:"b2m-pe-2", level:"B2", epreuve:"pe", theme:"b2-medias", sub:"la journée sans portable",
@@ -13,7 +13,7 @@ window.SUJETS.push(
  consigne:"Le collège de votre quartier envisage de confisquer les téléphones portables à l'entrée pendant toute la journée. Vous écrivez au chef d'établissement pour donner votre position argumentée et proposer des aménagements concrets. (250 mots minimum)"},
 
 {id:"b2m-pe-3", level:"B2", epreuve:"pe", theme:"b2-medias", sub:"les fausses informations",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"« Contre les fausses informations, mieux vaut éduquer que censurer. » Vous discutez cette affirmation dans un article destiné au blog de votre école de langue, en illustrant votre propos d'exemples précis. (250 mots minimum)"},
 
 {id:"b2m-pe-4", level:"B2", epreuve:"pe", theme:"b2-medias", sub:"la protection des données personnelles",
@@ -21,11 +21,11 @@ window.SUJETS.push(
  consigne:"Le site d'une association dont vous êtes membre vient de subir une fuite de données. Vous écrivez au conseil d'administration pour exprimer votre inquiétude et proposer des mesures précises. (250 mots minimum)"},
 
 {id:"b2m-pe-5", level:"B2", epreuve:"pe", theme:"b2-medias", sub:"vivre sans Internet",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"Votre mairie prévoit de fermer son dernier guichet d'accueil physique et de dématérialiser toutes les démarches. Vous rédigez une tribune pour approuver ou contester ce projet, de manière argumentée. (250 mots minimum)"},
 
 {id:"b2m-pe-6", level:"B2", epreuve:"pe", theme:"b2-medias", sub:"les textos",
- type:"Essai argumenté", mots:250, duree:60,
+ type:"Rédaction argumentée", mots:250, duree:60,
  consigne:"« Les textos abîment la langue française. » Cette affirmation revient régulièrement. Vous donnez votre point de vue dans un article destiné à un magazine sur la langue, en argumentant et en donnant des exemples. (250 mots minimum)"},
 
 {id:"b2m-pe-7", level:"B2", epreuve:"pe", theme:"b2-medias", sub:"les radios amateurs",
@@ -65,24 +65,24 @@ window.SUJETS.push(
 
 /* ===================== DALF C1 — PRODUCTION ÉCRITE ===================== */
 {id:"c1m-pe-1", level:"C1", epreuve:"pe", theme:"c1-medias", sub:"la domination d'Internet",
- type:"Essai argumenté", mots:250, duree:150,
+ type:"Essai seul · 심화 연습", mots:250, duree:150,
  consigne:"« Confier l'espace public à des entreprises privées n'était pas un choix, mais un renoncement. » Vous discuterez cette affirmation dans un essai argumenté et structuré. (250 mots minimum)"},
 
 {id:"c1m-pe-2", level:"C1", epreuve:"pe", theme:"c1-medias", sub:"les fausses informations",
- type:"Essai argumenté", mots:250, duree:150,
+ type:"Essai seul · 심화 연습", mots:250, duree:150,
  consigne:"Une société démocratique peut-elle organiser la lutte contre la désinformation sans instituer une autorité chargée de dire le vrai ? Vous répondrez dans un essai argumenté et nuancé. (250 mots minimum)"},
 
 {id:"c1m-pe-3", level:"C1", epreuve:"pe", theme:"c1-medias", sub:"la surcharge informationnelle",
- type:"Synthèse de documents + essai", mots:490, duree:150,
+ type:"Synthèse + essai", mots:490, duree:150,
  consigne:"1) Faites la synthèse des deux documents ci-dessous (200 à 240 mots). Vous ne devez pas donner votre opinion dans cette partie et vous ne devez pas reprendre les phrases des documents.\n2) Rédigez ensuite un essai argumenté (250 mots minimum) : l'abondance d'information a-t-elle rendu les citoyens mieux informés ?",
  support:"DOCUMENT 1 — Nous sommes passés en une génération d'une économie de la rareté informationnelle à une économie de l'abondance. Le problème n'est plus de trouver, mais de trier. Or le tri, autrefois assuré par des rédactions dont les choix étaient visibles et discutables, a été confié à des systèmes automatiques optimisés pour l'engagement. Un article partagé n'est pas un article important ; il est un article qui a fait réagir. La hiérarchie de l'information, qui était un acte éditorial assumé, est devenue une opération invisible dont personne n'est comptable.\n\nDOCUMENT 2 — Les enquêtes internationales convergent : la part des personnes qui déclarent éviter volontairement l'actualité progresse partout, et davantage encore chez les moins de trente-cinq ans. Les motifs invoqués ne sont ni l'indifférence ni l'ignorance, mais la fatigue et le sentiment d'impuissance. Un flux ininterrompu de crises sur lesquelles on n'a aucune prise finit par produire un retrait. Ce désengagement inquiète d'autant plus qu'il touche en priorité ceux qui disposent du moins de ressources pour s'informer autrement."},
 
 {id:"c1m-pe-4", level:"C1", epreuve:"pe", theme:"c1-medias", sub:"l'éducation aux médias",
- type:"Essai argumenté", mots:250, duree:150,
+ type:"Essai seul · 심화 연습", mots:250, duree:150,
  consigne:"L'éducation aux médias peut-elle former le jugement, ou risque-t-elle d'enseigner une méfiance généralisée ? Vous développerez une réflexion argumentée et structurée. (250 mots minimum)"},
 
 {id:"c1m-pe-5", level:"C1", epreuve:"pe", theme:"c1-medias", sub:"les théories du complot",
- type:"Essai argumenté", mots:250, duree:150,
+ type:"Essai seul · 심화 연습", mots:250, duree:150,
  consigne:"« On ne combat pas une croyance avec des faits. » Vous discuterez cette formule à propos des théories du complot, dans un essai argumenté. (250 mots minimum)"},
 
 /* ===================== DALF C1 — PRODUCTION ORALE ===================== */

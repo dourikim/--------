@@ -41,7 +41,7 @@ Object.assign(window.DOSSIERS, {
   {type:"article",titre:"Maire-Info — Déserts médicaux : le gouvernement desserre la vis sur la téléconsultation",url:"https://www.maire-info.com/deserts-medicaux-le-gouvernement-desserre-un-peu-la-vis-sur-la-teleconsultation-article2-30415"},
   {type:"officiel",titre:"Ameli — la téléconsultation (conditions et remboursement)",url:"https://www.ameli.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « téléconsultation déserts médicaux débat »",url:"https://www.youtube.com/results?search_query=t%C3%A9l%C3%A9consultation+d%C3%A9serts+m%C3%A9dicaux+d%C3%A9bat"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : le fait d'actualité (assouplissement des règles en 2025) → problématique.",
   "I. Ce que la télémédecine résout : délais, distance, suivi des chroniques.",
   "II. Ce qu'elle ne résout pas : examen clinique, fracture numérique, pénurie de médecins.",
@@ -122,7 +122,7 @@ Object.assign(window.DOSSIERS, {
   {type:"référence",titre:"Anses — compléments alimentaires et régimes amaigrissants",url:"https://www.anses.fr/"},
   {type:"référence",titre:"Manger Bouger (Santé publique France) — repères alimentaires",url:"https://www.mangerbouger.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « régime détox mythe ou réalité »",url:"https://www.youtube.com/results?search_query=r%C3%A9gime+d%C3%A9tox+mythe+ou+r%C3%A9alit%C3%A9"}],
- plan:{type:"Essai argumenté (통념 반박형)",steps:[
+ plan:{type:"Rédaction argumentée (통념 반박형)",steps:[
   "Introduction : le succès commercial de la détox → problématique.",
   "I. Ce qui explique le succès : simplicité, promesse rapide, réseaux sociaux.",
   "II. Ce que dit la science : absence de preuves, risques réels.",
@@ -164,7 +164,7 @@ Object.assign(window.DOSSIERS, {
   {type:"officiel",titre:"info.gouv.fr — Pas d'écran avant trois ans",url:"https://www.info.gouv.fr/actualite/pas-decran-avant-trois-ans"},
   {type:"officiel",titre:"solidarites.gouv.fr — Écrans : des risques pour la santé des enfants",url:"https://solidarites.gouv.fr/enfants-et-ecrans-des-risques-sanitaires-reels-un-accompagnement-necessaire"},
   {type:"vidéo",titre:"YouTube 검색어: « enfants et écrans rapport débat France »",url:"https://www.youtube.com/results?search_query=enfants+et+%C3%A9crans+rapport+d%C3%A9bat+France"}],
- plan:{type:"Essai argumenté (찬반형)",steps:[
+ plan:{type:"Rédaction argumentée (찬반형)",steps:[
   "Introduction : les recommandations du rapport de 2024 → problématique.",
   "I. Les arguments en faveur d'un encadrement strict (santé, sommeil, attention).",
   "II. Les limites d'une interdiction : contenu, inégalités, contournement.",
@@ -206,7 +206,7 @@ Object.assign(window.DOSSIERS, {
   {type:"référence",titre:"Vidal — Prise en charge de Wegovy et Mounjaro, sous conditions",url:"https://www.vidal.fr/actualites/37850-obesite-prise-en-charge-de-wegovy-et-mounjaro-a-partir-du-15-juin-2026-sous-conditions.html"},
   {type:"officiel",titre:"Manger Bouger — repères et Nutri-Score",url:"https://www.mangerbouger.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « obésité France débat santé publique »",url:"https://www.youtube.com/results?search_query=ob%C3%A9sit%C3%A9+France+d%C3%A9bat+sant%C3%A9+publique"}],
- plan:{type:"Essai argumenté (책임 소재형)",steps:[
+ plan:{type:"Rédaction argumentée (책임 소재형)",steps:[
   "Introduction : le remboursement encadré des traitements en 2026 → problématique.",
   "I. La thèse de la responsabilité individuelle et ses limites.",
   "II. Le poids de l'environnement alimentaire et des inégalités.",
@@ -247,7 +247,7 @@ Object.assign(window.DOSSIERS, {
   {type:"référence",titre:"Inserm — recherche en santé numérique",url:"https://www.inserm.fr/"},
   {type:"référence",titre:"Haute Autorité de Santé — évaluation des dispositifs médicaux numériques",url:"https://www.has-sante.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « jeu vidéo thérapeutique rééducation France »",url:"https://www.youtube.com/results?search_query=jeu+vid%C3%A9o+th%C3%A9rapeutique+r%C3%A9%C3%A9ducation"}],
- plan:{type:"Essai argumenté (역설형)",steps:[
+ plan:{type:"Rédaction argumentée (역설형)",steps:[
   "Introduction : le paradoxe écran nuisible / écran soignant.",
   "I. Les usages thérapeutiques documentés.",
   "II. Les limites : preuves, coût, publics fragiles.",
@@ -286,7 +286,7 @@ Object.assign(window.DOSSIERS, {
   {type:"référence",titre:"Santé publique France — sommeil et santé",url:"https://www.santepubliquefrance.fr/"},
   {type:"référence",titre:"Inserm — dossier sommeil",url:"https://www.inserm.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « manque de sommeil France santé publique »",url:"https://www.youtube.com/results?search_query=manque+de+sommeil+France+sant%C3%A9+publique"}],
- plan:{type:"Essai argumenté (개인 vs 사회형)",steps:[
+ plan:{type:"Rédaction argumentée (개인 vs 사회형)",steps:[
   "Introduction : la baisse de la durée de sommeil → problématique.",
   "I. Les causes individuelles et les habitudes.",
   "II. Les causes collectives : horaires, travail, écrans.",
@@ -326,7 +326,7 @@ Object.assign(window.DOSSIERS, {
   {type:"référence",titre:"Inserm — vieillissement",url:"https://www.inserm.fr/"},
   {type:"référence",titre:"Insee — espérance de vie et espérance de vie en bonne santé",url:"https://www.insee.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « vieillissement longévité débat France Culture »",url:"https://www.youtube.com/results?search_query=vieillissement+long%C3%A9vit%C3%A9+d%C3%A9bat+France+Culture"}],
- plan:{type:"Essai argumenté (가치 판단형)",steps:[
+ plan:{type:"Rédaction argumentée (가치 판단형)",steps:[
   "Introduction : l'essor du marché anti-âge → problématique.",
   "I. Ce que la lutte contre le vieillissement apporte réellement.",
   "II. Ses dérives : marketing, jeunisme, inégalités.",
@@ -409,7 +409,7 @@ Object.assign(window.DOSSIERS, {
   {type:"association",titre:"AIDES / Remaides — Le Défi de janvier",url:"https://www.aides.org/actualite/lactu-remaides-defi-janvier-dry-2025"},
   {type:"référence",titre:"Santé publique France — alcool",url:"https://www.santepubliquefrance.fr/"},
   {type:"vidéo",titre:"YouTube 검색어: « Dry January France débat lobby »",url:"https://www.youtube.com/results?search_query=Dry+January+France+d%C3%A9bat+lobby"}],
- plan:{type:"Essai argumenté (공공정책 평가형)",steps:[
+ plan:{type:"Rédaction argumentée (공공정책 평가형)",steps:[
   "Introduction : la controverse sur le soutien de l'État → problématique.",
   "I. L'utilité sanitaire de la campagne.",
   "II. Ses limites et les résistances économiques et culturelles.",
