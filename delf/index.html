@@ -210,6 +210,7 @@ p.vs{margin:0 0 16px;color:var(--muted);font-size:13.5px}
 .vtab .vf{font-weight:700;width:14%}
 .vtab .vr{color:var(--brick);font-size:12px;width:30%}
 .vtab .ve{font-style:italic;color:var(--muted)}
+.vtab .ve .amo{font-weight:700;color:var(--ink);background:linear-gradient(transparent 62%,#fdf3c7 62%)}
 .vtab .vk{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:4px}
 .grille{width:100%;border-collapse:collapse;font-size:13.5px}
 .grille th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
@@ -1616,16 +1617,18 @@ function renderPat(){
   const ok=p=>(pF.pos==='*'||p.pos===pF.pos)&&(pF.config==='*'||p.config===pF.config)&&(pF.registre==='*'||p.registre===pF.registre);
   const sel=P.filter(ok);
   $('#patCnt').textContent=`${sel.length} / ${P.length}`;
-  const split=p=>{const head=p.fr.replace(/…\s*$/,'').split('…')[0].trim();
-    const ex=p.ex||'';return ex.startsWith(head)?[head,ex.slice(head.length)]:['',ex]};
-  const card=p=>{const[a,r]=split(p);
+  const markAmo=(ex,fr)=>{const fr_=fr.split('…').map(f=>f.trim().replace(/^[,;:.\s]+|[,;:.\s]+$/g,'')).filter(f=>f.length>1);
+    let out='',pos=0,hit=0;for(const f of fr_){const i=ex.indexOf(f,pos);if(i<0)continue;
+      out+=esc(ex.slice(pos,i))+`<span class="amo">${esc(f)}</span>`;pos=i+f.length;hit++}
+    return hit?out+esc(ex.slice(pos)):esc(ex)};
+  const card=p=>{
     return `<article class="pc">
       <div class="pc-top">
         <span class="ptag ${p.config==='tous'?'':'c'+p.config}">${PCFG[p.config]}</span>
         <span class="ptag">${p.registre}</span>
         <span class="psuj">${esc(p.sujet||'')}</span>
       </div>
-      <p class="pc-ex">${a?`<span class="amo">${esc(a)}</span><span class="rest">${esc(r)}</span>`:esc(p.ex||p.fr)}</p>
+      <p class="pc-ex">${p.ex?markAmo(p.ex,p.fr):esc(p.fr)}</p>
       <p class="pc-ko">${esc(p.ko)}</p>
       ${p.note?`<p class="pc-note">${esc(p.note)}</p>`:''}
     </article>`};
@@ -1637,7 +1640,7 @@ function renderPat(){
       <div class="card" style="padding:0;overflow-x:auto"><table class="vtab">
         <thead><tr><th>Verbe</th><th>Rection · 지배</th><th>Exemple · 쓰는 자리</th></tr></thead>
         <tbody>${V.map(v=>`<tr><td class="vf">${esc(v.fr)}</td><td class="vr">${esc(v.rection)}</td>
-          <td class="ve">${esc(v.ex)}<span class="vk">${esc(v.ko)}</span></td></tr>`).join('')}</tbody>
+          <td class="ve">${v.pat?markAmo(v.ex,v.pat):esc(v.ex)}<span class="vk">${esc(v.ko)}</span></td></tr>`).join('')}</tbody>
       </table></div></div>`;
 }
 
