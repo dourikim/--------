@@ -354,7 +354,7 @@ window.PATTERNS = [
   "fr": "Un texte subordonne le jugement à …, quand l’autre dissocie les deux termes : …",
   "ko": "한쪽은 기준을 하나로 묶고 다른 쪽은 분리할 때 씁니다.",
   "note": "subordonner qqch à qqch ; dissocier qqch de qqch. « quand » a ici une valeur d’opposition et se construit avec l’indicatif.",
-  "ex": "Un texte subordonne le jugement à …, quand l’autre dissocie les deux termes : la qualité des produits y est appréciée indépendamment de leur mode de production, la seule composition finale étant retenue comme critère.",
+  "ex": "Un texte subordonne le jugement à l’origine des aliments, quand l’autre dissocie les deux termes : la qualité des produits y est appréciée indépendamment de leur mode de production, la seule composition finale étant retenue comme critère.",
   "sujet": "l'agriculture biologique"
  },
  {
@@ -404,7 +404,7 @@ window.PATTERNS = [
   "fr": "Au critère de …, le second substitue celui de …",
   "ko": "기준의 교체를 압축해 보일 때 씁니다.",
   "note": "substituer A à B : ce que l’on introduit est complément direct, ce que l’on remplace suit à. L’inverse est la faute la plus fréquente.",
-  "ex": "Au critère de …, le second substitue celui de l’accessibilité : la valeur d’un parc urbain s’y mesure moins à son étendue qu’à la distance qui en sépare les habitants des quartiers les plus denses.",
+  "ex": "Au critère de la superficie, le second substitue celui de l’accessibilité : la valeur d’un parc urbain s’y mesure moins à son étendue qu’à la distance qui en sépare les habitants des quartiers les plus denses.",
   "sujet": "les espaces verts"
  },
  {
@@ -699,145 +699,145 @@ window.VERBES_RELATION = [
  {
   "fr": "récuser",
   "rection": "récuser qqch / qqn (complément direct)",
-  "ex": "Le second récuse ce critère unique : …",
+  "ex": "Le second récuse ce critère unique : la réussite d’une ligne de tramway ne se mesure pas seulement au nombre de voitures retirées de la circulation, mais aussi aux quartiers qu’elle relie enfin au centre-ville.",
   "ko": "앞의 기준 자체를 기각할 때. «틀렸다»가 아니라 «그 잣대가 아니다»입니다."
  },
  {
   "fr": "concéder",
   "rection": "concéder qqch à qqn ; concéder que + indicatif",
-  "ex": "Cette analyse concède le fait à ses adversaires, mais …",
+  "ex": "Cette analyse concède le fait à ses adversaires, mais elle en conteste la portée : si le télétravail réduit bien les trajets quotidiens, il ne suffit pas à diminuer l’empreinte carbone globale des salariés.",
   "ko": "상대의 논점을 부분적으로 인정하고 곧 반박으로 넘어갈 때."
  },
  {
   "fr": "nuancer",
   "rection": "nuancer qqch (complément direct ; agent introduit par par)",
-  "ex": "Le constat initial est nuancé par …",
+  "ex": "Le constat initial est nuancé par les enquêtes de terrain, qui montrent que la baisse de la lecture chez les adolescents concerne surtout les livres imprimés et beaucoup moins les textes lus sur écran.",
   "ko": "합의를 부정하지 않고 조건을 달 때. 반박보다 약한 수정입니다."
  },
  {
   "fr": "prolonger",
   "rection": "prolonger qqch (par qqch) ; se prolonger dans qqch",
-  "ex": "Le second texte prolonge cette analyse par …",
+  "ex": "Le second texte prolonge cette analyse par l’exemple des déserts médicaux, où la fermeture d’un cabinet suffit à éloigner durablement toute une commune rurale de l’accès aux soins.",
   "ko": "한 글이 다른 글의 논의를 같은 방향으로 이어받을 때. B형에서 특히 유용합니다."
  },
  {
   "fr": "déplacer",
   "rection": "déplacer qqch vers / sur qqch",
-  "ex": "L’argument déplace la question vers …",
+  "ex": "L’argument déplace la question vers la responsabilité des plateformes : il ne s’agit plus de savoir si les jeunes passent trop de temps en ligne, mais qui conçoit les applications pour les y retenir.",
   "ko": "상대와 같은 문제를 다루지 않고 쟁점을 옮길 때. C형의 핵심 동사입니다."
  },
  {
   "fr": "relativiser",
   "rection": "relativiser qqch (complément direct)",
-  "ex": "Ces chiffres relativisent l’ampleur du phénomène : …",
+  "ex": "Ces chiffres relativisent l’ampleur du phénomène : moins d’un salarié sur dix a réellement quitté son emploi pour changer de vie, même si beaucoup déclarent y avoir sérieusement pensé.",
   "ko": "사실은 인정하되 그 중요도를 낮출 때."
  },
  {
   "fr": "imputer",
   "rection": "imputer qqch à qqch / à qqn",
-  "ex": "Le phénomène est imputé à …",
+  "ex": "Le phénomène est imputé à la hausse des loyers dans les grandes villes plutôt qu’à un simple désir de nature, ce qui explique que les départs vers les villes moyennes concernent surtout les jeunes familles.",
   "ko": "원인을 어디로 돌리는지 밝힐 때. 전치사 à를 빠뜨리는 실수가 잦습니다."
  },
  {
   "fr": "subordonner",
   "rection": "subordonner qqch à qqch",
-  "ex": "Le jugement est subordonné à …",
+  "ex": "Le jugement est subordonné à la durée de l’expérience : une semaine de quatre jours ne peut être évaluée qu’après plusieurs années, lorsque la fatigue et l’organisation des équipes se sont stabilisées.",
   "ko": "하나를 다른 하나의 조건 아래 둘 때. 위계 관계를 드러냅니다."
  },
  {
   "fr": "dissocier",
   "rection": "dissocier qqch de qqch",
-  "ex": "Le texte dissocie la cause de …",
+  "ex": "Le texte dissocie la cause de l’échec scolaire de ses symptômes visibles : l’absentéisme y apparaît moins comme l’origine des difficultés que comme la conséquence d’un décrochage déjà ancien.",
   "ko": "묶여 있던 두 요소를 분리해서 봐야 한다고 할 때. de를 씁니다."
  },
  {
   "fr": "recouper",
   "rection": "recouper qqch ; se recouper (réciproque, sujet pluriel)",
-  "ex": "Les deux constats se recoupent sur …",
+  "ex": "Les deux constats se recoupent sur un point essentiel : le gaspillage alimentaire se produit d’abord dans les foyers, bien avant les restaurants et les commerces.",
   "ko": "두 자료가 사실 차원에서 겹칠 때. 서로를 «증명»한다는 뜻은 아닙니다."
  },
  {
   "fr": "corroborer",
   "rection": "corroborer qqch (complément direct)",
-  "ex": "Ces données corroborent l’hypothèse de …",
+  "ex": "Ces données corroborent l’hypothèse de l’urbaniste, selon laquelle les pistes cyclables continues attirent davantage de nouveaux cyclistes que les campagnes de sensibilisation.",
   "ko": "한 글의 주장을 다른 글의 자료가 실제로 뒷받침할 때. recouper보다 강합니다."
  },
  {
   "fr": "tempérer",
   "rection": "tempérer qqch (par qqch)",
-  "ex": "Cet optimisme est tempéré par …",
+  "ex": "Cet optimisme est tempéré par le coût des équipements, que de nombreuses écoles rurales ne peuvent pas assumer sans une aide durable de l’État ou des collectivités.",
   "ko": "지나친 주장을 누그러뜨릴 때. nuancer보다 문어적입니다."
  },
  {
   "fr": "objecter",
   "rection": "objecter qqch à qqn / à qqch ; objecter que + indicatif",
-  "ex": "À cette lecture il est objecté que …",
+  "ex": "À cette lecture il est objecté que la gratuité des transports publics profite surtout aux usagers déjà convaincus et attire peu les automobilistes qu’elle prétend faire changer d’habitude.",
   "ko": "구체적인 반론을 제시할 때. que 뒤에는 직설법입니다."
  },
  {
   "fr": "admettre",
   "rection": "admettre qqch ; admettre que + indicatif (subjonctif après négation)",
-  "ex": "Les deux textes admettent que …",
+  "ex": "Les deux textes admettent que l’intelligence artificielle transformera de nombreux métiers, même s’ils divergent sur le nombre d’emplois qu’elle risque de faire disparaître.",
   "ko": "두 글의 공통 인정 사항을 말할 때. 부정문에서만 접속법이 됩니다."
  },
  {
   "fr": "restreindre",
   "rection": "restreindre qqch à qqch",
-  "ex": "L’accord se restreint à …",
+  "ex": "L’accord se restreint à la nécessité de protéger les commerces de centre-ville ; sur les moyens d’y parvenir, taxer les grandes surfaces ou réduire les loyers, les deux auteurs s’opposent nettement.",
   "ko": "합의나 주장의 적용 범위를 좁힐 때."
  },
  {
   "fr": "élargir",
   "rection": "élargir qqch à qqch",
-  "ex": "Le second élargit le problème à …",
+  "ex": "Le second élargit le problème à l’ensemble des services publics : après les bureaux de poste, ce sont les écoles et les gares qui disparaissent peu à peu des petites communes.",
   "ko": "논의를 더 넓은 대상이나 층위로 확장할 때. restreindre의 반대입니다."
  },
  {
   "fr": "renvoyer",
   "rection": "renvoyer qqch à qqch ; renvoyer à qqch",
-  "ex": "La difficulté est renvoyée à …",
+  "ex": "La difficulté est renvoyée à la formation des enseignants, jugée insuffisante pour intégrer les outils numériques dans les cours sans sacrifier les apprentissages fondamentaux.",
   "ko": "원인이나 책임을 다른 차원으로 돌릴 때. imputer보다 중립적입니다."
  },
  {
   "fr": "opposer",
   "rection": "opposer qqch à qqch ; s’opposer à qqch",
-  "ex": "À cet argument est opposée l’idée que …",
+  "ex": "À cet argument est opposée l’idée que le sport de haut niveau n’inspire pas nécessairement la pratique amateur, comme le montre la faible hausse des inscriptions dans les clubs après les Jeux.",
   "ko": "두 논점을 정면으로 맞세울 때. s’opposer는 반드시 à를 요구합니다."
  },
  {
   "fr": "rapprocher",
   "rection": "rapprocher qqch de qqch ; se rapprocher de qqch",
-  "ex": "On peut rapprocher ce constat de …",
+  "ex": "On peut rapprocher ce constat de celui du second document, qui observe la même lassitude chez les jeunes diplômés face aux horaires rigides des grandes entreprises.",
   "ko": "두 논점을 나란히 놓아 비교할 때. 전치사는 de이며 à가 아닙니다."
  },
  {
   "fr": "distinguer",
   "rection": "distinguer qqch de qqch ; distinguer entre A et B",
-  "ex": "Le texte distingue l’effet immédiat de …",
+  "ex": "Le texte distingue l’effet immédiat de l’interdiction des téléphones au collège, un calme retrouvé pendant les pauses, de ses effets à long terme sur la concentration, encore mal connus.",
   "ko": "혼동되기 쉬운 두 개념을 갈라놓을 때."
  },
  {
   "fr": "conditionner",
   "rection": "conditionner qqch à qqch (mettre sous condition) ; être conditionné par qqch (être déterminé)",
-  "ex": "Toute amélioration est conditionnée à …",
+  "ex": "Toute amélioration est conditionnée à l’engagement des habitants eux-mêmes : sans leur participation, les jardins partagés ouverts par la municipalité restent souvent à l’abandon.",
   "ko": "결과를 조건에 걸 때. à와 par의 뜻이 서로 다르니 주의해야 합니다."
  },
  {
   "fr": "entériner",
   "rection": "entériner qqch (complément direct)",
-  "ex": "Le second entérine ce diagnostic tout en …",
+  "ex": "Le second entérine ce diagnostic tout en refusant la solution proposée : il reconnaît la pénurie de logements étudiants, mais juge inefficace le simple encadrement des loyers.",
   "ko": "이미 내려진 판단을 그대로 받아들여 확정할 때. 격식 있는 어휘입니다."
  },
  {
   "fr": "infléchir",
   "rection": "infléchir qqch (vers qqch)",
-  "ex": "Cette donnée infléchit la conclusion vers …",
+  "ex": "Cette donnée infléchit la conclusion vers plus de prudence, puisque les bienfaits de la méditation observés en entreprise disparaissent souvent au bout de quelques mois.",
   "ko": "결론을 뒤집지는 않고 방향만 살짝 바꿀 때."
  },
  {
   "fr": "contester",
   "rection": "contester qqch (à qqn) ; contester que + subjonctif",
-  "ex": "Il est contesté que la mesure produise …",
+  "ex": "Il est contesté que la mesure produise les économies annoncées, car la fermeture des petites maternités allonge les trajets et augmente le coût des transports d’urgence.",
   "ko": "주장의 타당성을 부정할 때. que 절은 접속법이라는 점이 récuser와 다른 함정입니다."
  }
 ];
