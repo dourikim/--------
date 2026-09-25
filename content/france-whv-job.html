@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- ══ 내 방문 집계 제외 ══ 이 블록은 반드시 아래 gtag 스크립트보다 먼저 있어야 합니다. -->
+<script>
+(function () {
+  var KEY = 'noga', ID = 'G-K5BW3YMBH6';
+  var on = false;
+  try {
+    var q = new URLSearchParams(location.search).get('noga');
+    if (q === '1') localStorage.setItem(KEY, '1');
+    else if (q === '0') localStorage.removeItem(KEY);
+    on = localStorage.getItem(KEY) === '1';
+  } catch (e) { return; }
+  if (!on) return;
+  window['ga-disable-' + ID] = true;
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = '집계 제외 중';
+    b.title = '이 기기는 방문자 수에 포함되지 않습니다. 해제하려면 주소 뒤에 ?noga=0 을 붙여 여세요.';
+    b.style.cssText = 'position:fixed;left:20px;bottom:14px;z-index:99999;border:0;border-radius:999px;'
+      + 'padding:7px 12px;cursor:pointer;background:rgba(46,14,12,.82);color:#fff;'
+      + 'font:600 11px/1 Pretendard,sans-serif;letter-spacing:.02em;';
+    b.onclick = function () { b.remove(); };
+    document.body.appendChild(b);
+  });
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K5BW3YMBH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-K5BW3YMBH6");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>프랑스 워홀 취업 준비와 자발적 지원서(Candidature spontanée) | 김두우리</title>
+  <meta name="description" content="공고 없는 자리에 먼저 지원서를 보내는 프랑스의 Candidature spontanée. 외국인이었던 제가 실제로 효과를 본 방법입니다."/>
+  <link rel="canonical" href="https://www.dourikim.com/content/france-whv-job"/>
+  <meta property="og:type"         content="article"/>
+  <meta property="og:url"          content="https://www.dourikim.com/content/france-whv-job"/>
+  <meta property="og:site_name"    content="Do! 우리! 프랑스어"/>
+  <meta property="og:title"        content="프랑스 워홀 취업 준비, 졸업 전부터 시작됩니다"/>
+  <meta property="og:description"  content="공고 없는 자리에 먼저 지원서를 보내는 프랑스의 Candidature spontanée. 외국인이었던 제가 실제로 효과를 본 방법입니다."/>
+  <meta property="og:image"        content="https://www.dourikim.com/img/blog/france-whv-job-cover.jpg"/>
+  <meta property="article:published_time" content="2026-06-22"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "프랑스 워홀 취업 준비, 졸업 전부터 시작됩니다", "description": "공고 없는 자리에 먼저 지원서를 보내는 프랑스의 Candidature spontanée. 외국인이었던 제가 실제로 효과를 본 방법입니다.", "image": ["https://www.dourikim.com/img/blog/france-whv-job-cover.jpg"], "datePublished": "2026-06-22", "dateModified": "2026-06-22", "author": {"@type": "Person", "name": "김두우리", "url": "https://www.dourikim.com/portfolio"}, "publisher": {"@type": "Person", "name": "김두우리"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.dourikim.com/content/france-whv-job"}, "inLanguage": "ko"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "홈", "item": "https://www.dourikim.com/"}, {"@type": "ListItem", "position": 2, "name": "학습 콘텐츠", "item": "https://www.dourikim.com/content"}, {"@type": "ListItem", "position": 3, "name": "프랑스 워홀 취업 준비, 졸업 전부터 시작됩니다", "item": "https://www.dourikim.com/content/france-whv-job"}]}</script>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    /* ══════════════════════════════════════════════════════
+       읽을거리 글 페이지
+       본문 폭을 700px 로 묶습니다. 한 줄이 길면 눈이 다음 줄을 놓칩니다.
+       ══════════════════════════════════════════════════════ */
+    .bp { max-width: 700px; margin: 0 auto; padding: 0 20px 40px; }
+    .bp-back { display: inline-block; font-size: 0.78rem; font-weight: 600;
+               color: var(--muted); text-decoration: none; margin-top: 8px; }
+    .bp-back:hover { color: var(--brick); }
+    .bp-chip { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--brick);
+               background: #FBEEEA; border-radius: 100px; padding: 5px 12px; margin: 18px 0 12px; }
+    .bp-h1 { font-family: var(--font-heading); font-size: clamp(1.4rem, 5.4vw, 1.78rem);
+             font-weight: 700; line-height: 1.45; letter-spacing: -0.025em;
+             color: var(--dark); word-break: keep-all; }
+    .bp-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+               font-size: 0.76rem; color: #B09A96; margin-top: 13px;
+               padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .bp-meta span + span { position: relative; padding-left: 15px; }
+    .bp-meta span + span::before { content: ''; position: absolute; left: 0; top: 50%;
+                                   width: 5px; height: 1px; background: #D8CBC8; }
+
+    /* 표지. 본문 폭(660px)의 70% 자리에 놓습니다 */
+    .bp-cover-fig { margin-top: 22px; }
+    .bp-cover-fig img { display: block; width: 100%; max-width: 462px; height: auto;
+                        margin: 0 auto; border-radius: var(--radius);
+                        border: 1px solid var(--border); }
+
+    .bp-body { font-size: 0.93rem; line-height: 2.05; color: #3A2320; word-break: keep-all; }
+    .bp-body p { margin-top: 19px; }
+    .bp-body h2 { font-family: var(--font-heading); font-size: clamp(1.06rem, 4.2vw, 1.2rem);
+                  font-weight: 700; line-height: 1.5; color: var(--dark);
+                  margin: 38px 0 0; padding-left: 12px; border-left: 3px solid var(--brick); }
+    .bp-body strong { font-weight: 700; color: var(--dark); }
+
+    /* 글쓴이가 네이버에서 빨간색으로, 또는 크게 키워 강조했던 문장입니다.
+       그 자리를 사이트에서도 그대로 살립니다. 벽돌빛 + 한 호수 크게. */
+    .bp-body .bp-hl { color: var(--brick); font-weight: 700; font-size: 1.07em;
+                      letter-spacing: -0.01em; }
+    .bp-ex .bp-hl  { font-size: 1.05em; }
+    .bp-body a { color: var(--brick); font-weight: 600; text-underline-offset: 3px; }
+
+    .bp-lead { margin-top: 22px; padding: 18px 20px; background: var(--surface);
+               border-radius: var(--radius); text-align: center;
+               font-size: 0.87rem; line-height: 2; color: var(--muted); }
+
+    /* ── 먼저 읽는 요약 ────────────────────────────────
+       사이트에 들어온 사람은 이 글을 읽을지 3초 안에 정합니다.
+       검색 엔진과 AI 답변도 글 첫머리의 짧은 답을 그대로 집어 갑니다.
+       그래서 본문이 시작되기 전에 요점을 먼저 놓습니다. */
+    .bp-sum { margin-top: 24px; padding: 20px 22px; background: var(--white);
+              border: 1px solid var(--border); border-left: 3px solid var(--brick);
+              border-radius: 0 var(--radius) var(--radius) 0; }
+    .bp-sum-k { font-size: 0.72rem; font-weight: 700; letter-spacing: .06em;
+                color: var(--brick); margin-bottom: 10px; }
+    .bp-sum p { margin: 0 0 12px; font-size: 0.9rem; line-height: 1.95; color: var(--dark); }
+    .bp-sum ul { margin: 0; padding: 0; list-style: none; }
+    .bp-sum li { position: relative; padding-left: 15px; margin-top: 7px;
+                 font-size: 0.86rem; line-height: 1.85; color: var(--muted);
+                 word-break: keep-all; }
+    .bp-sum li::before { content: ''; position: absolute; left: 0; top: 0.8em;
+                         width: 4px; height: 4px; border-radius: 50%;
+                         background: var(--brick); opacity: .55; }
+
+    .bp-fig { margin-top: 22px; }
+    /* 본문 그림. 네이버에서처럼 글 폭을 다 채우지 않습니다.
+       가로 440px, 세로 560px 을 넘지 않게 두고 가운데로 놓습니다.
+       원본보다 크게 늘리지도 않습니다. */
+    .bp-fig img { display: block; margin: 0 auto;
+                  max-width: 440px; max-height: 560px; width: auto; height: auto;
+                  border-radius: var(--radius); border: 1px solid var(--border); }
+    @media (max-width: 520px) {
+      .bp-fig img { max-width: 100%; max-height: 430px; }
+    }
+    .bp-fig figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                         margin-top: 8px; text-align: center; word-break: keep-all; }
+
+    /* 프랑스어 예문 */
+    .bp-ex { margin-top: 20px; padding: 15px 18px; background: #fff9f8;
+             border-left: 3px solid var(--brick); border-radius: 0 8px 8px 0; }
+    .bp-ex p { margin: 0; font-size: 0.875rem; line-height: 1.95; }
+    .bp-ex p + p { margin-top: 9px; }
+    .bp-fr { color: var(--brick); font-weight: 700; font-style: italic; }
+    .bp-ko { color: var(--muted); }
+
+    /* 목록 */
+    .bp-list { margin-top: 18px; padding: 0; list-style: none; }
+    .bp-list li { position: relative; padding-left: 15px; margin-top: 9px;
+                  font-size: 0.9rem; line-height: 1.95; word-break: keep-all; }
+    .bp-list li::before { content: ''; position: absolute; left: 0; top: 0.82em;
+                          width: 4px; height: 4px; border-radius: 50%;
+                          background: var(--brick); opacity: 0.5; }
+
+    /* ── 영상 ──────────────────────────────────────────
+       그림 파일을 바깥에서 받아오지 않습니다. 표지를 우리가 직접 그립니다.
+       그래서 인터넷이 없어도, 미리보기 파일로 열어도 표지가 항상 보입니다.
+       누르면 그 자리에서 재생합니다. 파일로 직접 연 경우에만 새 창으로 엽니다. */
+    .bp-video { margin-top: 22px; position: relative; aspect-ratio: 16 / 9;
+                border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+                background: linear-gradient(140deg, #3A120F 0%, #6E2318 52%, #A03A28 100%);
+                cursor: pointer; }
+    .bp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .bp-video-btn { position: absolute; inset: 0; display: flex; flex-direction: column;
+                    align-items: center; justify-content: center; gap: 13px;
+                    border: 0; background: transparent; cursor: pointer; padding: 22px 26px; }
+    .bp-video-btn span { width: 66px; height: 47px; border-radius: 13px; background: rgba(194,74,53,.96);
+                         color: #fff; display: flex; align-items: center; justify-content: center;
+                         font-size: 1.2rem; box-shadow: 0 6px 20px rgba(0,0,0,.28); flex-shrink: 0; }
+    .bp-video-btn b { font-size: 0.82rem; font-weight: 600; line-height: 1.6; color: #FAF7F6;
+                      text-align: center; word-break: keep-all; max-width: 30ch; }
+    .bp-video-btn i { font-style: normal; font-size: 0.7rem; color: rgba(250,247,246,.62); }
+    .bp-video.playing .bp-video-btn { display: none; }
+
+    /* ── 인스타 릴스와 틱톡 ─────────────────────────────
+       lesson.html 과 같은 방식입니다. 주소 뒤에 /embed 를 붙인 iframe 하나면
+       됩니다. 스크립트가 필요 없어서 파일로 열어도 그 자리에서 나옵니다. */
+    .bp-embed { margin-top: 22px; display: flex; flex-direction: column; align-items: center; }
+    .bp-embed iframe { width: 100%; max-width: 400px; height: 640px; border: 0; display: block;
+                       border-radius: var(--radius); background: var(--surface);
+                       border: 1px solid var(--border); }
+    .bp-embed.tt iframe { max-width: 340px; height: 600px; }
+    .bp-embed figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                           margin-top: 8px; text-align: center; word-break: keep-all; }
+    .bp-embed a.src { font-size: 0.74rem; color: var(--brick); font-weight: 600;
+                      margin-top: 6px; text-decoration: none; }
+    .bp-embed a.src:hover { text-decoration: underline; }
+
+
+    /* 바깥 자료 인용 카드 */
+    .bp-cite { display: block; margin-top: 20px; text-decoration: none; color: inherit;
+               border: 1px solid var(--border); border-radius: var(--radius);
+               background: var(--white); padding: 14px 16px; }
+    .bp-cite:hover { border-color: rgba(194,74,53,.4); background: #fffdfd; }
+    .bp-cite b { display: block; font-size: 0.86rem; line-height: 1.5; color: var(--dark); }
+    .bp-cite span { display: block; font-size: 0.74rem; color: #B09A96; margin-top: 5px; }
+
+    /* ── 글 끝 ─────────────────────────────────────── */
+    .bp-auth { margin-top: 40px; display: flex; gap: 15px; align-items: flex-start;
+               padding: 18px 20px; border: 1px solid var(--border);
+               border-radius: var(--radius); background: var(--surface); }
+    .bp-auth-av { width: 46px; height: 46px; border-radius: 50%; background: var(--brick);
+                  color: #fff; flex-shrink: 0; display: flex; align-items: center;
+                  justify-content: center; font-weight: 800; font-size: 0.78rem; }
+    .bp-auth-b { min-width: 0; }
+    .bp-auth p { font-size: 0.8rem; line-height: 1.8; color: var(--muted); word-break: keep-all; }
+    .bp-auth b { color: var(--dark); }
+    /* 이력 보기는 소개 문장 바로 옆에 붙는 작은 알약입니다 */
+    .bp-auth-cta { display: inline-block; margin-left: 7px; padding: 5px 13px;
+                   border-radius: 100px; background: var(--brick); color: #fff;
+                   font-size: 0.74rem; font-weight: 700; text-decoration: none;
+                   white-space: nowrap; vertical-align: baseline; }
+    .bp-auth-cta:hover { background: var(--brick-h); }
+
+    /* 다른 칼럼 세 편. 표지를 크게 보여줍니다 */
+    .bp-more { margin-top: 36px; }
+    .bp-more-k { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 11px; }
+    .bp-more-g { display: grid; gap: 12px; }
+    .bp-more-2 { grid-template-columns: repeat(2, 1fr); }
+    .bp-more-3 { grid-template-columns: repeat(3, 1fr); }
+    .bp-more-g a { text-decoration: none; color: inherit; }
+    .bp-more-g img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
+                     border-radius: var(--radius); border: 1px solid var(--border); }
+    .bp-more-g a:hover img { border-color: rgba(194,74,53,.45); }
+    @media (max-width: 560px) {
+      .bp-more-g { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .bp-more-3 a:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu"  id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <article class="bp">
+    <a class="bp-back" href="/content">&#8592; 학습 콘텐츠</a>
+    <p class="bp-chip">🥖 프랑스 생활</p>
+    <h1 class="bp-h1">프랑스 워홀 취업 준비,<br>졸업 전부터 시작됩니다</h1>
+    <div class="bp-meta"><span>2026년 6월 22일</span><span>읽는 데 8분</span><span>김두우리</span></div>
+
+    <div class="bp-body">
+          <p class="bp-lead">한국에선 상상하기 힘든, 공고 없는 자리에 지원서 보내기.<br>효과 있냐구요?<br>외국인이었던 제가 제대로 효과 봤습니다!</p>
+      <figure class="bp-cover-fig"><img src="../img/blog/france-whv-job-cover.jpg" alt="프랑스 워홀 취업 준비, 졸업 전부터 시작됩니다" width="1080" height="1080"></figure>
+          <p>프랑스에는 <strong><span class="bp-fr">candidature spontanée</span></strong>, 우리말로 자발적 지원서라는 문화가 있습니다. 채용 공고가 없는 회사에 먼저 지원서를 보내는 방식이에요. 프랑스 워홀이 끝나갈 때 쓸 수 있는 가장 현실적인 카드이기도 합니다.</p>
+          <div class="bp-sum">
+            <p class="bp-sum-k">먼저 읽는 요약</p>
+            <p>프랑스에는 채용 공고가 없는 회사에 먼저 지원서를 보내는 <strong><span class="bp-fr">candidature spontanée</span> (자발적 지원서)</strong> 문화가 있습니다. 프랑스 워홀이 끝나갈 때 쓸 수 있는 가장 현실적인 방법이에요.</p>
+            <ul><li>자발적 지원서가 무엇인지</li><li>프랑스에서 왜 이게 자연스러운지</li><li>한국인이라는 점을 어떻게 강점으로 쓰는지</li><li>제가 실제로 먼저 연락해서 얻어낸 결과들</li><li>오늘 바로 연습해볼 수 있는 것</li></ul>
+          </div>
+          <p>소셜 미디어에서 이제 프랑스에서 일자리 구하는 과정을 블로그 형식으로 담거나, 면접에 대한 구체적인 질문을 자주 접할 수 있어요. 대학교에서 학위 수료 후 곧바로 귀국하지 않거나, 프랑스 워홀(워킹 홀리데이) 혹은 어학 연수로 와 단기로 있다가 취업까지 고려하시는 분들이 점점 더 많아지는 추이인 것 같아요.</p>
+          <p>매해 2,000건의 프랑스 워홀 비자가 선착순으로 발급되고 있어요. 하지만 이제 막 프랑스어가 트이고, 문화적으로 더 경험을 쌓고 싶은데, 기간은 끝나 한국으로 돌아가야 하는 시기가 오죠. 그때 많은 사람들이 <span class="bp-hl">"이어서 제대로 된 일을 찾아볼까?" 고민합니다.</span></p>
+          <p><span class="bp-hl">만약 이 경우라면 이 글을 집중해서 봐주세요!</span> <span class="bp-hl">어쩌면 프랑스이기 때문에 존재하는 <span class="bp-fr">candidature spontanée</span>에 대해 알려드릴게요!</span> 불어를 알지 못해도 영어와 유사하여 가늠은 하셨을 거예요. "자발적인 지원서? 근데 지원서는 다 자발적이지 않나요?"</p>
+          <h2>1. Candidature spontanée, 자발적 지원서란</h2>
+          <p><strong>자발적 지원서</strong>는 기업이 공식적인 채용 공고를 내지 않은 상황에서 구직자가 주도적으로 특정 기업에 지원하는 독특한 구직 방식입니다.</p>
+          <p>이는 단순히 디폴트 이력서를 보내기보다는, 원하는 기업의 가치와 문화에 대한 깊은 이해를 바탕으로 자신의 열정과 적합성을 증명하는 적극적인 방법입니다. <span class="bp-hl">즉, 현재 특정 상황에 직면한 기업 내에서 왜 내가 이 포지션에 적합하며, 어떠한 직무를 통해 기업에 어떤 식으로 기여할 수 있다를 설득할 수 있어야 합니다.</span></p>
+          <figure class="bp-fig">
+            <img src="../img/blog/france-whv-job-1.jpg" alt="데카트론 채용 페이지의 자발적 지원 안내" loading="lazy" width="1200" height="565" style="max-width:440px">
+            <figcaption>채용 전용 페이지에 '자발적 지원'을 적극 홍보하며 권장하는 프랑스의 대표 스포츠 브랜드 데카트론</figcaption>
+          </figure>
+          <p>구글 내 검색을 하거나 링크드인에서는 "자발적 지원서 성공하기", "공략 방법" 등 체계적으로 안내하고 있어요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/france-whv-job-2.jpg" alt="링크드인에서 검색되는 자발적 지원서 관련 글" loading="lazy" width="1200" height="500" style="max-width:440px">
+            <figcaption>링크드인에도 자발적 지원서 이야기가 꾸준히 올라옵니다</figcaption>
+          </figure>
+          <h2>2. 프랑스에서 자발적 지원서가 자연스러운 이유</h2>
+          <p>프랑스에서 자발적 지원서가 더 선호되는 현상은 복합적인 사회 문화적 요인에서 비롯됩니다. 중앙집권적이고 관료제적인 교육 및 노동 시장 시스템은 <strong>개인의 공식적이고 직접적인 접근을 장려</strong>합니다. 채용 중인 일자리가 없더라도, 구직자들은 본인만의 창의적인 방식으로 적극적으로 기회의 문을 두드릴 수 있어요.</p>
+          <p><span class="bp-hl">또한, 프랑스인들의 강한 개인주의와 능력 중심의 문화는 자발적 지원서를 통해 자신의 열정과 잠재력을 직접 증명하려는 성향을 반영합니다.</span></p>
+          <p>한국에 있는 저희도 똑같아요. 링크드인에서 "커넥션 수락 요청"이 와도, 누구이며, 왜 소통하고 싶은지 간단한 몇 문장이라도 연결고리를 만들려고 한 노력이 보이면, 관대해지기 마련입니다.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/france-whv-job-3.jpg" alt="링크드인 프로필 화면" loading="lazy" width="1020" height="548" style="max-width:440px">
+            <figcaption>학업, 직장 생활의 도시와 나라가 바뀌었어도 꾸준히 활동했던 링크드인</figcaption>
+          </figure>
+          <div class="bp-ex"><p>한국인이라는 정체성도 무기가 될 수 있어요.</p></div>
+          <p>프랑스 워홀이나 어학연수로 프랑스에 머무르는 한국인이라면 한 가지 더 기억해두면 좋은 게 있어요. <span class="bp-hl">프랑스인과는 다른 한국인만의 강점을 부각하고, 한국인으로서 회사에 어떻게 기여할 수 있는지를 표현</span>하는 것이 중요하다는 점이에요.</p>
+          <p>또한 링크드인과 같은 대표적인 글로벌 플랫폼에서 주기적인 이력 업데이트, 본인의 생각, 프로젝트 여정을 적극적으로 공유하세요!</p>
+          <h2>3. 먼저 연락해서 실제로 얻어낸 것들</h2>
+          <p>제가 먼저 요청드려 얻어낸 결과들을 알려드릴게요.</p>
+          <ul class="bp-list"><li>한국에서 고등학교 때 재미있게 본 다큐의 음악이 마음에 들어 소장하고 싶은 마음이 들었어요. 인터넷으로 찾은 담당 피디님께 메일을 보냈고, 피디님은 음악을 씨디로 구워서 집으로 보내주셨었어요.</li><li>프랑스 통신사의 음원 서비스 팀장분에게 인턴 자리를 위해 메일을 보냅니다. 이 팀장님은 인사팀으로 메일을 전달했습니다. 결론은 시간적으로 맞지 않아 정확히 <span class="bp-hl">일 년 후에 필요한 모든 채용 절차를 거쳐 입사</span>했습니다.</li><li>프랑스에서 "디지털화로 인한 영화 유통사와 상영관에 끼치는 영향"이라는 주제로 논문을 발표했습니다. 저는 전문가의 의견이 필요했고, 평소에 즐겨보던 영화들을 유통하는 Wild Bunch에 문의를 해보았고, 몇 번의 티키타카 끝에 전화 인터뷰를 얻어냈어요.</li><li>글로벌 커리어의 경력을 위해 브라질에 가서도 저는 프랑스식의 방법으로 끊임없이 링크드인으로 저를 노출시키며 어필했습니다.</li></ul>
+          <figure class="bp-fig">
+            <img src="../img/blog/france-whv-job-4.jpg" alt="링크드인 맞춤 메시지 화면" loading="lazy" width="1200" height="969" style="max-width:440px">
+            <figcaption>나의 프로필을 관심있게 볼 사람들에게 맞춤화 메세지로 어필</figcaption>
+          </figure>
+          <p>저의 예시들 보셨죠? 화려한 이력이 없었을 때도, 지극히 개인적인 부탁이어도, 진심이 있었기에 메세지가 통했습니다. 프랑스 워홀이라고 도전해보지 않을 이유도 없고, 이 지원서를 받는다고 홀대할 대표님도 없습니다.</p>
+          <h2>4. 프랑스 워홀 중에 오늘부터 해볼 것</h2>
+          <p>소셜 미디어, 비즈니스 플랫폼이 없던 시절, 저는 각 개인의 이메일 주소를 알아내려고 엄청난 서치를 했습니다. 어떻게 보면 스토커처럼 집요하게 <strong>기업의 주소 구성 패턴</strong>을 알아냈습니다.</p>
+          <p>지금은 얼굴이 알려진 사람이 아니더라도 본인의 이름으로 소통하는 시대잖아요. <span class="bp-hl">클릭 한 번이면 이메일 주소를 모르더라도, 자신을 어필할 수 있습니다!</span></p>
+          <p>프랑스 워홀 중에도 연습할 겸, 아주 사소한 것으로라도 테스트를 해보세요. 예를 들어, 평소에 좋아하던 커피샵의 바리스타, 가게의 이벤트 기획, 옆집 이웃에게 강아지 산책 제안 등, 전화 한 통, 방문, 메세지 다양한 수단으로 본인의 열정과 동기를 전달해보세요!</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/france-whv-job-5.jpg" alt="한국 기업 채용 페이지의 인재풀 등록 메뉴" loading="lazy" width="1200" height="578" style="max-width:440px">
+            <figcaption>한국 기업에서도 조금씩 보이는 '인재풀 등록' 메뉴</figcaption>
+          </figure>
+          <p><span class="bp-hl">프랑스 워홀이나 유학을 졸업 이후의 취업까지 염두에 두고 계신다면, 공고가 뜨기를 기다리기보다 먼저 두드려보는 것.</span> <span class="bp-hl">그게 어쩌면 가장 프랑스스러운 시작일지도 몰라요!</span></p>
+          <figure class="bp-fig">
+            <img src="../img/blog/france-whv-job-6.jpg" alt="프랑스어 코치 김두우리 소개" loading="lazy" width="1200" height="363" style="max-width:440px">
+            <figcaption>16년차 프랑스어 FLE 선생님, 김두우리</figcaption>
+          </figure>
+    </div>
+
+    <div class="bp-auth">
+      <div class="bp-auth-av">두우리</div>
+      <div class="bp-auth-b">
+        <p><b>김두우리</b>, 16년차 프랑스어 FLE 전문 코치<br>
+          한국 학생들이 어디서 막히는지 아는 사람이 씁니다. 1:1 맞춤 수업과 한불 통번역을 합니다.<a
+            href="/portfolio" class="bp-auth-cta" data-cta="post_whv_lesson">이력 보기</a></p>
+      </div>
+    </div>
+
+    <div class="bp-more">
+      <p class="bp-more-k">관련 칼럼</p>
+      <div class="bp-more-g bp-more-3">
+          <a href="/content/french-tutoring" aria-label="프랑스어 과외 16년, 학생들이 직접 말해준 재수강 이유 5가지"><img src="../img/blog/french-tutoring-cover.jpg" alt="프랑스어 과외 16년, 학생들이 직접 말해준 재수강 이유 5가지" loading="lazy"></a>
+          <a href="/content/french-immersion" aria-label="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지"><img src="../img/blog/french-immersion-cover.jpg" alt="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지" loading="lazy"></a>
+          <a href="/content/si-bel-homme" aria-label="프랑스어 시벨롬, 알고 보니 이런 문제가 있었다"><img src="../img/blog/si-bel-homme-cover.jpg" alt="프랑스어 시벨롬, 알고 보니 이런 문제가 있었다" loading="lazy"></a>
+      </div>
+    </div>
+  </article>
+
+</div>
+</div>
+
+<footer class="site-footer" id="site-footer"></footer>
+<div class="kakao-float" id="kakao-float"></div>
+
+<script src="../js/components.js"></script>
+<script>
+  initComponents();
+
+  /* ── 영상 ──────────────────────────────────────────────
+     표지는 우리가 그린 것이라 인터넷이 없어도 항상 보입니다.
+     누르면 그 자리에서 재생합니다.
+     파일을 브라우저로 직접 열면(file://) 유튜브가 재생을 거부하므로 새 탭으로 엽니다. */
+  var BP_LOCAL = (location.protocol === 'file:');
+
+  document.addEventListener('click', function (e) {
+    var box = e.target.closest ? e.target.closest('.bp-video') : null;
+    if (!box || box.classList.contains('playing')) return;
+    var id = box.getAttribute('data-yt');
+    if (!id) return;
+    if (BP_LOCAL) { window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener'); return; }
+    box.classList.add('playing');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+    f.title = '영상';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.allowFullscreen = true;
+    box.appendChild(f);
+  });
+
+  /* 파일로 직접 연 경우, 재생이 새 탭에서 열린다는 것을 표지에 적어 둡니다 */
+  if (BP_LOCAL) {
+    Array.prototype.forEach.call(document.querySelectorAll('.bp-video-btn i'), function (i) {
+      i.textContent = '눌러서 재생 (새 탭에서 열립니다)';
+    });
+  }
+
+  /* 릴스와 틱톡은 iframe 하나로 그 자리에서 나옵니다.
+     스크립트도, 대신 보여 줄 표지도 필요 없습니다. */
+</script>
+</body>
+</html>

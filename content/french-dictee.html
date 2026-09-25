@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- ══ 내 방문 집계 제외 ══ 이 블록은 반드시 아래 gtag 스크립트보다 먼저 있어야 합니다. -->
+<script>
+(function () {
+  var KEY = 'noga', ID = 'G-K5BW3YMBH6';
+  var on = false;
+  try {
+    var q = new URLSearchParams(location.search).get('noga');
+    if (q === '1') localStorage.setItem(KEY, '1');
+    else if (q === '0') localStorage.removeItem(KEY);
+    on = localStorage.getItem(KEY) === '1';
+  } catch (e) { return; }
+  if (!on) return;
+  window['ga-disable-' + ID] = true;
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = '집계 제외 중';
+    b.title = '이 기기는 방문자 수에 포함되지 않습니다. 해제하려면 주소 뒤에 ?noga=0 을 붙여 여세요.';
+    b.style.cssText = 'position:fixed;left:20px;bottom:14px;z-index:99999;border:0;border-radius:999px;'
+      + 'padding:7px 12px;cursor:pointer;background:rgba(46,14,12,.82);color:#fff;'
+      + 'font:600 11px/1 Pretendard,sans-serif;letter-spacing:.02em;';
+    b.onclick = function () { b.remove(); };
+    document.body.appendChild(b);
+  });
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K5BW3YMBH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-K5BW3YMBH6");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>프랑스어 받아쓰기(딕떼) 연습법과 추천 사이트 | 김두우리</title>
+  <meta name="description" content="프랑스 초등학교 정규 과목인 딕떼. 같은 소리가 여러 철자로 쓰이는 프랑스어에서 왜 필수인지, TV5와 Dictaly로 연습하는 법까지."/>
+  <link rel="canonical" href="https://www.dourikim.com/content/french-dictee"/>
+  <meta property="og:type"         content="article"/>
+  <meta property="og:url"          content="https://www.dourikim.com/content/french-dictee"/>
+  <meta property="og:site_name"    content="Do! 우리! 프랑스어"/>
+  <meta property="og:title"        content="프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유"/>
+  <meta property="og:description"  content="프랑스 초등학교 정규 과목인 딕떼. 같은 소리가 여러 철자로 쓰이는 프랑스어에서 왜 필수인지, TV5와 Dictaly로 연습하는 법까지."/>
+  <meta property="og:image"        content="https://www.dourikim.com/img/blog/french-dictee-cover.jpg"/>
+  <meta property="article:published_time" content="2026-07-02"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유", "description": "프랑스 초등학교 정규 과목인 딕떼. 같은 소리가 여러 철자로 쓰이는 프랑스어에서 왜 필수인지, TV5와 Dictaly로 연습하는 법까지.", "image": ["https://www.dourikim.com/img/blog/french-dictee-cover.jpg"], "datePublished": "2026-07-02", "dateModified": "2026-07-02", "author": {"@type": "Person", "name": "김두우리", "url": "https://www.dourikim.com/portfolio"}, "publisher": {"@type": "Person", "name": "김두우리"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.dourikim.com/content/french-dictee"}, "inLanguage": "ko"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "홈", "item": "https://www.dourikim.com/"}, {"@type": "ListItem", "position": 2, "name": "학습 콘텐츠", "item": "https://www.dourikim.com/content"}, {"@type": "ListItem", "position": 3, "name": "프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유", "item": "https://www.dourikim.com/content/french-dictee"}]}</script>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    /* ══════════════════════════════════════════════════════
+       읽을거리 글 페이지
+       본문 폭을 700px 로 묶습니다. 한 줄이 길면 눈이 다음 줄을 놓칩니다.
+       ══════════════════════════════════════════════════════ */
+    .bp { max-width: 700px; margin: 0 auto; padding: 0 20px 40px; }
+    .bp-back { display: inline-block; font-size: 0.78rem; font-weight: 600;
+               color: var(--muted); text-decoration: none; margin-top: 8px; }
+    .bp-back:hover { color: var(--brick); }
+    .bp-chip { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--brick);
+               background: #FBEEEA; border-radius: 100px; padding: 5px 12px; margin: 18px 0 12px; }
+    .bp-h1 { font-family: var(--font-heading); font-size: clamp(1.4rem, 5.4vw, 1.78rem);
+             font-weight: 700; line-height: 1.45; letter-spacing: -0.025em;
+             color: var(--dark); word-break: keep-all; }
+    .bp-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+               font-size: 0.76rem; color: #B09A96; margin-top: 13px;
+               padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .bp-meta span + span { position: relative; padding-left: 15px; }
+    .bp-meta span + span::before { content: ''; position: absolute; left: 0; top: 50%;
+                                   width: 5px; height: 1px; background: #D8CBC8; }
+
+    /* 표지. 본문 폭(660px)의 70% 자리에 놓습니다 */
+    .bp-cover-fig { margin-top: 22px; }
+    .bp-cover-fig img { display: block; width: 100%; max-width: 462px; height: auto;
+                        margin: 0 auto; border-radius: var(--radius);
+                        border: 1px solid var(--border); }
+
+    .bp-body { font-size: 0.93rem; line-height: 2.05; color: #3A2320; word-break: keep-all; }
+    .bp-body p { margin-top: 19px; }
+    .bp-body h2 { font-family: var(--font-heading); font-size: clamp(1.06rem, 4.2vw, 1.2rem);
+                  font-weight: 700; line-height: 1.5; color: var(--dark);
+                  margin: 38px 0 0; padding-left: 12px; border-left: 3px solid var(--brick); }
+    .bp-body strong { font-weight: 700; color: var(--dark); }
+
+    /* 글쓴이가 네이버에서 빨간색으로, 또는 크게 키워 강조했던 문장입니다.
+       그 자리를 사이트에서도 그대로 살립니다. 벽돌빛 + 한 호수 크게. */
+    .bp-body .bp-hl { color: var(--brick); font-weight: 700; font-size: 1.07em;
+                      letter-spacing: -0.01em; }
+    .bp-ex .bp-hl  { font-size: 1.05em; }
+    .bp-body a { color: var(--brick); font-weight: 600; text-underline-offset: 3px; }
+
+    .bp-lead { margin-top: 22px; padding: 18px 20px; background: var(--surface);
+               border-radius: var(--radius); text-align: center;
+               font-size: 0.87rem; line-height: 2; color: var(--muted); }
+
+    /* ── 먼저 읽는 요약 ────────────────────────────────
+       사이트에 들어온 사람은 이 글을 읽을지 3초 안에 정합니다.
+       검색 엔진과 AI 답변도 글 첫머리의 짧은 답을 그대로 집어 갑니다.
+       그래서 본문이 시작되기 전에 요점을 먼저 놓습니다. */
+    .bp-sum { margin-top: 24px; padding: 20px 22px; background: var(--white);
+              border: 1px solid var(--border); border-left: 3px solid var(--brick);
+              border-radius: 0 var(--radius) var(--radius) 0; }
+    .bp-sum-k { font-size: 0.72rem; font-weight: 700; letter-spacing: .06em;
+                color: var(--brick); margin-bottom: 10px; }
+    .bp-sum p { margin: 0 0 12px; font-size: 0.9rem; line-height: 1.95; color: var(--dark); }
+    .bp-sum ul { margin: 0; padding: 0; list-style: none; }
+    .bp-sum li { position: relative; padding-left: 15px; margin-top: 7px;
+                 font-size: 0.86rem; line-height: 1.85; color: var(--muted);
+                 word-break: keep-all; }
+    .bp-sum li::before { content: ''; position: absolute; left: 0; top: 0.8em;
+                         width: 4px; height: 4px; border-radius: 50%;
+                         background: var(--brick); opacity: .55; }
+
+    .bp-fig { margin-top: 22px; }
+    /* 본문 그림. 네이버에서처럼 글 폭을 다 채우지 않습니다.
+       가로 440px, 세로 560px 을 넘지 않게 두고 가운데로 놓습니다.
+       원본보다 크게 늘리지도 않습니다. */
+    .bp-fig img { display: block; margin: 0 auto;
+                  max-width: 440px; max-height: 560px; width: auto; height: auto;
+                  border-radius: var(--radius); border: 1px solid var(--border); }
+    @media (max-width: 520px) {
+      .bp-fig img { max-width: 100%; max-height: 430px; }
+    }
+    .bp-fig figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                         margin-top: 8px; text-align: center; word-break: keep-all; }
+
+    /* 프랑스어 예문 */
+    .bp-ex { margin-top: 20px; padding: 15px 18px; background: #fff9f8;
+             border-left: 3px solid var(--brick); border-radius: 0 8px 8px 0; }
+    .bp-ex p { margin: 0; font-size: 0.875rem; line-height: 1.95; }
+    .bp-ex p + p { margin-top: 9px; }
+    .bp-fr { color: var(--brick); font-weight: 700; font-style: italic; }
+    .bp-ko { color: var(--muted); }
+
+    /* 목록 */
+    .bp-list { margin-top: 18px; padding: 0; list-style: none; }
+    .bp-list li { position: relative; padding-left: 15px; margin-top: 9px;
+                  font-size: 0.9rem; line-height: 1.95; word-break: keep-all; }
+    .bp-list li::before { content: ''; position: absolute; left: 0; top: 0.82em;
+                          width: 4px; height: 4px; border-radius: 50%;
+                          background: var(--brick); opacity: 0.5; }
+
+    /* ── 영상 ──────────────────────────────────────────
+       그림 파일을 바깥에서 받아오지 않습니다. 표지를 우리가 직접 그립니다.
+       그래서 인터넷이 없어도, 미리보기 파일로 열어도 표지가 항상 보입니다.
+       누르면 그 자리에서 재생합니다. 파일로 직접 연 경우에만 새 창으로 엽니다. */
+    .bp-video { margin-top: 22px; position: relative; aspect-ratio: 16 / 9;
+                border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+                background: linear-gradient(140deg, #3A120F 0%, #6E2318 52%, #A03A28 100%);
+                cursor: pointer; }
+    .bp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .bp-video-btn { position: absolute; inset: 0; display: flex; flex-direction: column;
+                    align-items: center; justify-content: center; gap: 13px;
+                    border: 0; background: transparent; cursor: pointer; padding: 22px 26px; }
+    .bp-video-btn span { width: 66px; height: 47px; border-radius: 13px; background: rgba(194,74,53,.96);
+                         color: #fff; display: flex; align-items: center; justify-content: center;
+                         font-size: 1.2rem; box-shadow: 0 6px 20px rgba(0,0,0,.28); flex-shrink: 0; }
+    .bp-video-btn b { font-size: 0.82rem; font-weight: 600; line-height: 1.6; color: #FAF7F6;
+                      text-align: center; word-break: keep-all; max-width: 30ch; }
+    .bp-video-btn i { font-style: normal; font-size: 0.7rem; color: rgba(250,247,246,.62); }
+    .bp-video.playing .bp-video-btn { display: none; }
+
+    /* ── 인스타 릴스와 틱톡 ─────────────────────────────
+       lesson.html 과 같은 방식입니다. 주소 뒤에 /embed 를 붙인 iframe 하나면
+       됩니다. 스크립트가 필요 없어서 파일로 열어도 그 자리에서 나옵니다. */
+    .bp-embed { margin-top: 22px; display: flex; flex-direction: column; align-items: center; }
+    .bp-embed iframe { width: 100%; max-width: 400px; height: 640px; border: 0; display: block;
+                       border-radius: var(--radius); background: var(--surface);
+                       border: 1px solid var(--border); }
+    .bp-embed.tt iframe { max-width: 340px; height: 600px; }
+    .bp-embed figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                           margin-top: 8px; text-align: center; word-break: keep-all; }
+    .bp-embed a.src { font-size: 0.74rem; color: var(--brick); font-weight: 600;
+                      margin-top: 6px; text-decoration: none; }
+    .bp-embed a.src:hover { text-decoration: underline; }
+
+
+    /* 바깥 자료 인용 카드 */
+    .bp-cite { display: block; margin-top: 20px; text-decoration: none; color: inherit;
+               border: 1px solid var(--border); border-radius: var(--radius);
+               background: var(--white); padding: 14px 16px; }
+    .bp-cite:hover { border-color: rgba(194,74,53,.4); background: #fffdfd; }
+    .bp-cite b { display: block; font-size: 0.86rem; line-height: 1.5; color: var(--dark); }
+    .bp-cite span { display: block; font-size: 0.74rem; color: #B09A96; margin-top: 5px; }
+
+    /* ── 글 끝 ─────────────────────────────────────── */
+    .bp-auth { margin-top: 40px; display: flex; gap: 15px; align-items: flex-start;
+               padding: 18px 20px; border: 1px solid var(--border);
+               border-radius: var(--radius); background: var(--surface); }
+    .bp-auth-av { width: 46px; height: 46px; border-radius: 50%; background: var(--brick);
+                  color: #fff; flex-shrink: 0; display: flex; align-items: center;
+                  justify-content: center; font-weight: 800; font-size: 0.78rem; }
+    .bp-auth-b { min-width: 0; }
+    .bp-auth p { font-size: 0.8rem; line-height: 1.8; color: var(--muted); word-break: keep-all; }
+    .bp-auth b { color: var(--dark); }
+    /* 이력 보기는 소개 문장 바로 옆에 붙는 작은 알약입니다 */
+    .bp-auth-cta { display: inline-block; margin-left: 7px; padding: 5px 13px;
+                   border-radius: 100px; background: var(--brick); color: #fff;
+                   font-size: 0.74rem; font-weight: 700; text-decoration: none;
+                   white-space: nowrap; vertical-align: baseline; }
+    .bp-auth-cta:hover { background: var(--brick-h); }
+
+    /* 다른 칼럼 세 편. 표지를 크게 보여줍니다 */
+    .bp-more { margin-top: 36px; }
+    .bp-more-k { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 11px; }
+    .bp-more-g { display: grid; gap: 12px; }
+    .bp-more-2 { grid-template-columns: repeat(2, 1fr); }
+    .bp-more-3 { grid-template-columns: repeat(3, 1fr); }
+    .bp-more-g a { text-decoration: none; color: inherit; }
+    .bp-more-g img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
+                     border-radius: var(--radius); border: 1px solid var(--border); }
+    .bp-more-g a:hover img { border-color: rgba(194,74,53,.45); }
+    @media (max-width: 560px) {
+      .bp-more-g { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .bp-more-3 a:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu"  id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <article class="bp">
+    <a class="bp-back" href="/content">&#8592; 학습 콘텐츠</a>
+    <p class="bp-chip">🛠️ 나만의 노하우</p>
+    <h1 class="bp-h1">프랑스어 받아쓰기,<br>아이들보다 어른이 더 많이 틀리는 이유</h1>
+    <div class="bp-meta"><span>2026년 7월 2일</span><span>읽는 데 8분</span><span>김두우리</span></div>
+
+    <div class="bp-body">
+          <p class="bp-lead">매일 조금씩 이것만 꾸준히 하면<br>프포자 (프랑스어 포기자) 늪에<br>절대 빠지지 않아요!</p>
+      <figure class="bp-cover-fig"><img src="../img/blog/french-dictee-cover.jpg" alt="프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유" width="1080" height="1080"></figure>
+          <div class="bp-sum">
+            <p class="bp-sum-k">먼저 읽는 요약</p>
+            <p>프랑스어 받아쓰기, <strong><span class="bp-fr">dictée</span><span class="bp-ko"> [딕떼]</span></strong>는 프랑스 초등학교부터 배우는 정규 훈련입니다. 같은 소리가 여러 철자로 쓰이는 언어라서, 귀로만 들어서는 쓸 수가 없거든요.</p>
+            <ul><li>딕떼가 무엇이고 왜 프랑스어에 필요한지</li><li>어른이 아이보다 더 많이 틀리는 이유</li><li>연습할 수 있는 곳, TV5와 Dictaly</li><li>말하기는 AI 도구로 양을 쌓는 법</li></ul>
+          </div>
+          <p>프랑스어 받아쓰기, <strong>딕떼(dictée)</strong>는 프랑스 초등학교부터 배우는 정규 훈련입니다. 같은 소리가 여러 철자로 쓰이는 프랑스어에서는 귀로만 들어서는 쓸 수가 없기 때문이에요. 어디서 연습할 수 있는지, 그리고 말하기까지 어떻게 이어지는지 정리했습니다.</p>
+          <p>지난 이해편에서는 프랑스어를 배울 때 빠지기 쉬운 두 가지 함정을 짚었어요. 첫 번째, 들리는 대로 읽으려는 습관. 두 번째, 쓰기보다 말하기를 먼저 하려는 접근.</p>
+          <p>이해편에서 말했듯, 프랑스어는 눈으로 읽는 언어와 귀로 듣는 언어가 다르게 작동해요. 같은 문장도 쓰인 것과 발음되는 것이 다른 경우가 많아서, 쓰기 감각이 먼저 잡혀 있어야 말하기도 따라와요.</p>
+          <h2>프랑스어 받아쓰기, 딕떼란 무엇일까</h2>
+          <p>Dictée [딕떼]는 프랑스 학교에서 초등학교부터 정규 과목으로 배우는 훈련이에요. 선생님이 문장을 읽으면 학생들이 받아 적고, 철자와 문법을 채점 받아요. 영어권 학생들에겐 낯선 개념이지만, 프랑스어에서는 지금도 핵심 학습법이에요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-dictee-1.jpg" alt="프랑스어 받아쓰기가 필요한 이유를 설명한 그림" loading="lazy" width="229" height="380" style="max-width:229px">
+            <figcaption>프랑스어 받아쓰기가 왜 필요한지 설명드릴게요</figcaption>
+          </figure>
+          <h2>왜 프랑스어에서 특히 중요할까</h2>
+          <p>프랑스어는 같은 소리가 여러 철자로 써져요.</p>
+          <div class="bp-ex"><p><span class="bp-ko">예시 1</span><br>/o/ 소리 하나만 봐도 <span class="bp-fr">o, au, eau, ô</span> 네 가지가 돼요.<br><span class="bp-fr">beau</span> <span class="bp-ko">아름다운</span>, <span class="bp-fr">au</span> <span class="bp-ko">~에</span>, <span class="bp-fr">eau</span> <span class="bp-ko">물</span> 이 모두 같은 소리예요.</p></div>
+          <div class="bp-ex"><p><span class="bp-ko">예시 2</span><br><span class="bp-fr">C'est vrai.</span> <span class="bp-ko">이건 사실이야, 이 말이 맞아</span><br>비교적 쉬운 문장인데도 입문자라면 순간적으로 어떤 철자인지 헷갈릴 수가 있습니다.<br><span class="bp-fr">ses / ces / s'est / sait</span> + <span class="bp-fr">vrai</span> 처럼 다양하게 쓰여질 수 있음</p></div>
+          <p><span class="bp-hl">귀로만 들어서는 어떻게 써야 하는지 알 수 없어요.</span> 그래서 프랑스어 받아쓰기, dictée [딕떼]가 단어 암기와 철자 감각을 동시에 잡아줘요.</p>
+          <p>프랑스 어른들도 어려워하냐고요? 당연히 그래요. 프랑스에는 받아쓰기 퀴즈 프로그램이 TV에 나올 정도예요. 우리나라의 "우리말 겨루기"처럼요.</p>
+          <figure class="bp-embed tt">
+            <iframe src="https://www.tiktok.com/embed/v2/7646889082504744214" title="C à vous, 교육부 장관이 받아쓰기에서 철자를 틀린 장면" scrolling="no" allowfullscreen loading="lazy" allow="encrypted-media;"></iframe>
+            <figcaption>C à vous, 교육부 장관이 받아쓰기에서 철자를 틀린 장면</figcaption>
+            <a class="src" href="https://www.tiktok.com/@c_a_vous/video/7646889082504744214" target="_blank" rel="noopener">틱톡에서 보기 &#8599;</a>
+          </figure>
+          <p>교육부 장관 에두아르 제프레이는 프랑스 수능인 바칼로레아를 앞두고, 학생들의 기초학력 강화를 명목으로 철자 오류에 대해 엄격한 기준을 적용하겠다고 강조했습니다.</p>
+          <p>문제는 6월에 방송된 방송에서 "환영"을 뜻하는 프랑스어 accueil 과 "딜레마"를 뜻하는 dilemme 의 철자를 쓰는 테스트를 진행했는데, 화이트보드를 지웠다 쓰며 딜레마 단어의 철자도 틀리게 적어 크게 논란이 되기도 했어요.</p>
+          <h2>어디서 연습할까, TV5와 Dictaly</h2>
+          <p>프랑스에는 초등학교부터 일반 사람들이 보는 학습 자료, 사이트들이 굉장히 많답니다.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-dictee-2.jpg" alt="TV5 La Dictée d Archibald 사이트 화면" loading="lazy" width="1000" height="832" style="max-width:440px">
+            <figcaption>많은 FLE(Français Langue Étrangère) 교사들이 추천해주는 TV5 사이트에서 프랑스어 받아쓰기 연습하기</figcaption>
+          </figure>
+          <p>전통적인 레퍼런스는 바로 TV5의 <strong>La Dictée d'Archibald</strong> 입니다. A1부터 C1까지 난이도별로 콘텐츠가 잘 구성되어 있고, 자신의 수준과 관심사에 맞는 딕떼를 쉽게 찾을 수 있습니다. 무엇보다 단순히 정답만 보여주는 것이 아니라 오류를 설명해 주기 때문에 듣기와 철자, 문법을 함께 연습하기에 좋은 사이트입니다.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-dictee-3.jpg" alt="Dictaly 프랑스어 받아쓰기 사이트 화면" loading="lazy" width="1000" height="838" style="max-width:440px">
+            <figcaption>프랑스 국민들도 즐겨하는 프랑스어 받아쓰기 전문 사이트 Dictaly</figcaption>
+          </figure>
+          <p>중급으로 넘어가거나 손 놓았던 프랑스어를 손볼 때는 <strong>Dictaly</strong> 입니다. 원래 프랑스인들의 맞춤법과 철자 실력 향상을 위해 만들어진 사이트이지만, FLE 학습자를 위한 콘텐츠도 함께 제공하고 있습니다. 여기에는 철자 오류를 찾는 Dictées à corriger 처럼 다양한 유형의 딕떼를 제공하고, 문법과 활용 연습까지 함께 할 수 있어 반복 학습하기 좋습니다.</p>
+          <h2>머릿속으로만 문장을 만들면 생기는 일</h2>
+          <p>한국인들의 아쉬운 프랑스어 공부 방법, 마지막 세 번째입니다. <strong>머릿속, 입 안에서만 문장을 만들기.</strong> 사실 이 세 번째 함정은 첫 번째, 두 번째와 직접 연결돼 있어요.</p>
+          <p class="bp-lead">소리를 못 잡으면 → 쓸 수가 없고<br>쓸 수 없으면 → 말하기도 막혀요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-dictee-4.jpg" alt="언어 공부는 한 가지 방법만으로는 안 된다는 것을 보여주는 그림" loading="lazy" width="500" height="500" style="max-width:440px">
+            <figcaption>이처럼 프랑스어뿐만 아니라 대부분의 언어 공부는 하나의 방법으로만 터득하면 안 돼요</figcaption>
+          </figure>
+          <p>한국 학생들이 프랑스어 말하기를 특히 어려워하는 이유가 있어요. 영어와 달리 드라마, 유튜브, OTT에서 프랑스 콘텐츠를 접하기 쉽지 않거든요. <span class="bp-hl">즉 프랑스어 쉐도잉 소재 자체가 부족해요!</span></p>
+          <h2>말하기는 AI 도구로 양을 쌓기</h2>
+          <p>그래서 지금 당장 쓸 수 있는 방법 두 가지를 소개할게요.</p>
+          <p><strong>ChatGPT 롤플레이.</strong> ChatGPT에게 이렇게 입력해보세요.</p>
+          <div class="bp-ex"><p><span class="bp-fr">Tu es un serveur dans un café parisien. Je suis un client. Parle-moi uniquement en français, niveau débutant. Corrige mes erreurs à la fin de chaque échange.</span></p></div>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-dictee-5.jpg" alt="AI 롤플레이로 언어를 연습하는 방법 설명 화면" loading="lazy" width="557" height="362" style="max-width:440px">
+            <figcaption>Source: 웨얼스지니 영상 (영어 기반의 설명이지만, 충분히 프랑스어로도 활용 가능)</figcaption>
+          </figure>
+          <p><span class="bp-hl">주제를 정하고 → AI 시연을 보고 → 역할극으로 연습하고 → 피드백을 받는 흐름이에요.</span> 음성 모드(Voice Mode)까지 쓰면 듣기와 말하기를 동시에 훈련할 수 있어요. "niveau intermédiaire"로 바꾸면 수준을 높일 수도 있고요.</p>
+          <p><strong>언어 전문 앱.</strong> 두 가지를 추천합니다.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-dictee-6.jpg" alt="Langua 앱 화면" loading="lazy" width="323" height="656" style="max-width:323px">
+            <figcaption>여유있게 프랑스의 문화 정보도 얻고 싶으시다면 Langua 앱 추천</figcaption>
+          </figure>
+          <p><strong>Langua 앱</strong>은 문화 콘텐츠 기반이에요. 배운 표현을 AI 튜터와 맥락 있는 대화로 연습합니다.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-dictee-7.jpg" alt="Speak 앱 화면" loading="lazy" width="327" height="661" style="max-width:327px">
+          </figure>
+          <p><strong>Speak 앱</strong>은 카페 주문, 비즈니스 미팅 등 상황별 시뮬레이션을 제공합니다. <span class="bp-hl">앱 환경 언어를 영어로 설정해야 프랑스어 코스가 열려요.</span> 짧은 시간 안에 교정된 스피킹을 반복하는 구조라 <span class="bp-hl">입 근육이 빠르게 기억해요!</span></p>
+          <p>또한 제가 프랑스어 학생들에게 강조하는 것은, AI와의 즉흥적인 대화로 틀리더라도 즉흥적으로 말해보는 연습을 해보라는 거예요.</p>
+          <p>프랑스어를 배우면서 막히는 자리는 보통 비슷해요.</p>
+          <ul class="bp-list"><li>소리와 글자가 다르다는 걸 인식하기 → 이해편</li><li>프랑스어 받아쓰기로 쓰기 감각 잡기 → 실전편 ①</li><li>말하기는 AI 툴로 부담 없이 양을 쌓기 → 실전편 ②</li></ul>
+          <p>이 세 가지의 프랑스어 공부 방법만 제대로 훈련하면, 효과적으로, 무엇보다도 지치지 않고, 즐기면서 프랑스어를 공부하실 수 있을 거예요.</p>
+          <p>특히 이 중에서, 프랑스어 받아쓰기는 시험을 위한 훈련이 아니에요. 소리와 문자 사이의 연결을 몸이 기억하게 만드는 과정이에요. 오늘 딱 한 문장부터 시작해봐요.</p>
+    </div>
+
+    <div class="bp-auth">
+      <div class="bp-auth-av">두우리</div>
+      <div class="bp-auth-b">
+        <p><b>김두우리</b>, 16년차 프랑스어 FLE 전문 코치<br>
+          한국 학생들이 어디서 막히는지 아는 사람이 씁니다. 1:1 맞춤 수업과 한불 통번역을 합니다.<a
+            href="/portfolio" class="bp-auth-cta" data-cta="post_dictee_lesson">이력 보기</a></p>
+      </div>
+    </div>
+
+    <div class="bp-more">
+      <p class="bp-more-k">관련 칼럼</p>
+      <div class="bp-more-g bp-more-3">
+          <a href="/content/french-study-habits" aria-label="한국 학생들의 잘못된 프랑스어 공부법 (이해편)"><img src="../img/blog/french-study-habits-cover.jpg" alt="한국 학생들의 잘못된 프랑스어 공부법 (이해편)" loading="lazy"></a>
+          <a href="/content/french-immersion" aria-label="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지"><img src="../img/blog/french-immersion-cover.jpg" alt="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지" loading="lazy"></a>
+          <a href="/content/si-bel-homme" aria-label="프랑스어 시벨롬, 알고 보니 이런 문제가 있었다"><img src="../img/blog/si-bel-homme-cover.jpg" alt="프랑스어 시벨롬, 알고 보니 이런 문제가 있었다" loading="lazy"></a>
+      </div>
+    </div>
+  </article>
+
+</div>
+</div>
+
+<footer class="site-footer" id="site-footer"></footer>
+<div class="kakao-float" id="kakao-float"></div>
+
+<script src="../js/components.js"></script>
+<script>
+  initComponents();
+
+  /* ── 영상 ──────────────────────────────────────────────
+     표지는 우리가 그린 것이라 인터넷이 없어도 항상 보입니다.
+     누르면 그 자리에서 재생합니다.
+     파일을 브라우저로 직접 열면(file://) 유튜브가 재생을 거부하므로 새 탭으로 엽니다. */
+  var BP_LOCAL = (location.protocol === 'file:');
+
+  document.addEventListener('click', function (e) {
+    var box = e.target.closest ? e.target.closest('.bp-video') : null;
+    if (!box || box.classList.contains('playing')) return;
+    var id = box.getAttribute('data-yt');
+    if (!id) return;
+    if (BP_LOCAL) { window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener'); return; }
+    box.classList.add('playing');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+    f.title = '영상';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.allowFullscreen = true;
+    box.appendChild(f);
+  });
+
+  /* 파일로 직접 연 경우, 재생이 새 탭에서 열린다는 것을 표지에 적어 둡니다 */
+  if (BP_LOCAL) {
+    Array.prototype.forEach.call(document.querySelectorAll('.bp-video-btn i'), function (i) {
+      i.textContent = '눌러서 재생 (새 탭에서 열립니다)';
+    });
+  }
+
+  /* 릴스와 틱톡은 iframe 하나로 그 자리에서 나옵니다.
+     스크립트도, 대신 보여 줄 표지도 필요 없습니다. */
+</script>
+</body>
+</html>

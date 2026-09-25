@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- ══ 내 방문 집계 제외 ══ 이 블록은 반드시 아래 gtag 스크립트보다 먼저 있어야 합니다. -->
+<script>
+(function () {
+  var KEY = 'noga', ID = 'G-K5BW3YMBH6';
+  var on = false;
+  try {
+    var q = new URLSearchParams(location.search).get('noga');
+    if (q === '1') localStorage.setItem(KEY, '1');
+    else if (q === '0') localStorage.removeItem(KEY);
+    on = localStorage.getItem(KEY) === '1';
+  } catch (e) { return; }
+  if (!on) return;
+  window['ga-disable-' + ID] = true;
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = '집계 제외 중';
+    b.title = '이 기기는 방문자 수에 포함되지 않습니다. 해제하려면 주소 뒤에 ?noga=0 을 붙여 여세요.';
+    b.style.cssText = 'position:fixed;left:20px;bottom:14px;z-index:99999;border:0;border-radius:999px;'
+      + 'padding:7px 12px;cursor:pointer;background:rgba(46,14,12,.82);color:#fff;'
+      + 'font:600 11px/1 Pretendard,sans-serif;letter-spacing:.02em;';
+    b.onclick = function () { b.remove(); };
+    document.body.appendChild(b);
+  });
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K5BW3YMBH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-K5BW3YMBH6");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>프랑스어 덕질하기, 오래가는 사람들의 공부법 8가지 | 김두우리</title>
+  <meta name="description" content="교재도 유튜브 채널도 인강도 추천하지 않습니다. 25년째 프랑스어를 공부한 코치가 본, 오래 가는 사람들의 습관 여덟 가지."/>
+  <link rel="canonical" href="https://www.dourikim.com/content/french-immersion"/>
+  <meta property="og:type"         content="article"/>
+  <meta property="og:url"          content="https://www.dourikim.com/content/french-immersion"/>
+  <meta property="og:site_name"    content="Do! 우리! 프랑스어"/>
+  <meta property="og:title"        content="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지"/>
+  <meta property="og:description"  content="교재도 유튜브 채널도 인강도 추천하지 않습니다. 25년째 프랑스어를 공부한 코치가 본, 오래 가는 사람들의 습관 여덟 가지."/>
+  <meta property="og:image"        content="https://www.dourikim.com/img/blog/french-immersion-cover.jpg"/>
+  <meta property="article:published_time" content="2026-07-04"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지", "description": "교재도 유튜브 채널도 인강도 추천하지 않습니다. 25년째 프랑스어를 공부한 코치가 본, 오래 가는 사람들의 습관 여덟 가지.", "image": ["https://www.dourikim.com/img/blog/french-immersion-cover.jpg"], "datePublished": "2026-07-04", "dateModified": "2026-07-04", "author": {"@type": "Person", "name": "김두우리", "url": "https://www.dourikim.com/portfolio"}, "publisher": {"@type": "Person", "name": "김두우리"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.dourikim.com/content/french-immersion"}, "inLanguage": "ko"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "홈", "item": "https://www.dourikim.com/"}, {"@type": "ListItem", "position": 2, "name": "학습 콘텐츠", "item": "https://www.dourikim.com/content"}, {"@type": "ListItem", "position": 3, "name": "프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지", "item": "https://www.dourikim.com/content/french-immersion"}]}</script>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    /* ══════════════════════════════════════════════════════
+       읽을거리 글 페이지
+       본문 폭을 700px 로 묶습니다. 한 줄이 길면 눈이 다음 줄을 놓칩니다.
+       ══════════════════════════════════════════════════════ */
+    .bp { max-width: 700px; margin: 0 auto; padding: 0 20px 40px; }
+    .bp-back { display: inline-block; font-size: 0.78rem; font-weight: 600;
+               color: var(--muted); text-decoration: none; margin-top: 8px; }
+    .bp-back:hover { color: var(--brick); }
+    .bp-chip { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--brick);
+               background: #FBEEEA; border-radius: 100px; padding: 5px 12px; margin: 18px 0 12px; }
+    .bp-h1 { font-family: var(--font-heading); font-size: clamp(1.4rem, 5.4vw, 1.78rem);
+             font-weight: 700; line-height: 1.45; letter-spacing: -0.025em;
+             color: var(--dark); word-break: keep-all; }
+    .bp-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+               font-size: 0.76rem; color: #B09A96; margin-top: 13px;
+               padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .bp-meta span + span { position: relative; padding-left: 15px; }
+    .bp-meta span + span::before { content: ''; position: absolute; left: 0; top: 50%;
+                                   width: 5px; height: 1px; background: #D8CBC8; }
+
+    /* 표지. 본문 폭(660px)의 70% 자리에 놓습니다 */
+    .bp-cover-fig { margin-top: 22px; }
+    .bp-cover-fig img { display: block; width: 100%; max-width: 462px; height: auto;
+                        margin: 0 auto; border-radius: var(--radius);
+                        border: 1px solid var(--border); }
+
+    .bp-body { font-size: 0.93rem; line-height: 2.05; color: #3A2320; word-break: keep-all; }
+    .bp-body p { margin-top: 19px; }
+    .bp-body h2 { font-family: var(--font-heading); font-size: clamp(1.06rem, 4.2vw, 1.2rem);
+                  font-weight: 700; line-height: 1.5; color: var(--dark);
+                  margin: 38px 0 0; padding-left: 12px; border-left: 3px solid var(--brick); }
+    .bp-body strong { font-weight: 700; color: var(--dark); }
+
+    /* 글쓴이가 네이버에서 빨간색으로, 또는 크게 키워 강조했던 문장입니다.
+       그 자리를 사이트에서도 그대로 살립니다. 벽돌빛 + 한 호수 크게. */
+    .bp-body .bp-hl { color: var(--brick); font-weight: 700; font-size: 1.07em;
+                      letter-spacing: -0.01em; }
+    .bp-ex .bp-hl  { font-size: 1.05em; }
+    .bp-body a { color: var(--brick); font-weight: 600; text-underline-offset: 3px; }
+
+    .bp-lead { margin-top: 22px; padding: 18px 20px; background: var(--surface);
+               border-radius: var(--radius); text-align: center;
+               font-size: 0.87rem; line-height: 2; color: var(--muted); }
+
+    /* ── 먼저 읽는 요약 ────────────────────────────────
+       사이트에 들어온 사람은 이 글을 읽을지 3초 안에 정합니다.
+       검색 엔진과 AI 답변도 글 첫머리의 짧은 답을 그대로 집어 갑니다.
+       그래서 본문이 시작되기 전에 요점을 먼저 놓습니다. */
+    .bp-sum { margin-top: 24px; padding: 20px 22px; background: var(--white);
+              border: 1px solid var(--border); border-left: 3px solid var(--brick);
+              border-radius: 0 var(--radius) var(--radius) 0; }
+    .bp-sum-k { font-size: 0.72rem; font-weight: 700; letter-spacing: .06em;
+                color: var(--brick); margin-bottom: 10px; }
+    .bp-sum p { margin: 0 0 12px; font-size: 0.9rem; line-height: 1.95; color: var(--dark); }
+    .bp-sum ul { margin: 0; padding: 0; list-style: none; }
+    .bp-sum li { position: relative; padding-left: 15px; margin-top: 7px;
+                 font-size: 0.86rem; line-height: 1.85; color: var(--muted);
+                 word-break: keep-all; }
+    .bp-sum li::before { content: ''; position: absolute; left: 0; top: 0.8em;
+                         width: 4px; height: 4px; border-radius: 50%;
+                         background: var(--brick); opacity: .55; }
+
+    .bp-fig { margin-top: 22px; }
+    /* 본문 그림. 네이버에서처럼 글 폭을 다 채우지 않습니다.
+       가로 440px, 세로 560px 을 넘지 않게 두고 가운데로 놓습니다.
+       원본보다 크게 늘리지도 않습니다. */
+    .bp-fig img { display: block; margin: 0 auto;
+                  max-width: 440px; max-height: 560px; width: auto; height: auto;
+                  border-radius: var(--radius); border: 1px solid var(--border); }
+    @media (max-width: 520px) {
+      .bp-fig img { max-width: 100%; max-height: 430px; }
+    }
+    .bp-fig figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                         margin-top: 8px; text-align: center; word-break: keep-all; }
+
+    /* 프랑스어 예문 */
+    .bp-ex { margin-top: 20px; padding: 15px 18px; background: #fff9f8;
+             border-left: 3px solid var(--brick); border-radius: 0 8px 8px 0; }
+    .bp-ex p { margin: 0; font-size: 0.875rem; line-height: 1.95; }
+    .bp-ex p + p { margin-top: 9px; }
+    .bp-fr { color: var(--brick); font-weight: 700; font-style: italic; }
+    .bp-ko { color: var(--muted); }
+
+    /* 목록 */
+    .bp-list { margin-top: 18px; padding: 0; list-style: none; }
+    .bp-list li { position: relative; padding-left: 15px; margin-top: 9px;
+                  font-size: 0.9rem; line-height: 1.95; word-break: keep-all; }
+    .bp-list li::before { content: ''; position: absolute; left: 0; top: 0.82em;
+                          width: 4px; height: 4px; border-radius: 50%;
+                          background: var(--brick); opacity: 0.5; }
+
+    /* ── 영상 ──────────────────────────────────────────
+       그림 파일을 바깥에서 받아오지 않습니다. 표지를 우리가 직접 그립니다.
+       그래서 인터넷이 없어도, 미리보기 파일로 열어도 표지가 항상 보입니다.
+       누르면 그 자리에서 재생합니다. 파일로 직접 연 경우에만 새 창으로 엽니다. */
+    .bp-video { margin-top: 22px; position: relative; aspect-ratio: 16 / 9;
+                border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+                background: linear-gradient(140deg, #3A120F 0%, #6E2318 52%, #A03A28 100%);
+                cursor: pointer; }
+    .bp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .bp-video-btn { position: absolute; inset: 0; display: flex; flex-direction: column;
+                    align-items: center; justify-content: center; gap: 13px;
+                    border: 0; background: transparent; cursor: pointer; padding: 22px 26px; }
+    .bp-video-btn span { width: 66px; height: 47px; border-radius: 13px; background: rgba(194,74,53,.96);
+                         color: #fff; display: flex; align-items: center; justify-content: center;
+                         font-size: 1.2rem; box-shadow: 0 6px 20px rgba(0,0,0,.28); flex-shrink: 0; }
+    .bp-video-btn b { font-size: 0.82rem; font-weight: 600; line-height: 1.6; color: #FAF7F6;
+                      text-align: center; word-break: keep-all; max-width: 30ch; }
+    .bp-video-btn i { font-style: normal; font-size: 0.7rem; color: rgba(250,247,246,.62); }
+    .bp-video.playing .bp-video-btn { display: none; }
+
+    /* ── 인스타 릴스와 틱톡 ─────────────────────────────
+       lesson.html 과 같은 방식입니다. 주소 뒤에 /embed 를 붙인 iframe 하나면
+       됩니다. 스크립트가 필요 없어서 파일로 열어도 그 자리에서 나옵니다. */
+    .bp-embed { margin-top: 22px; display: flex; flex-direction: column; align-items: center; }
+    .bp-embed iframe { width: 100%; max-width: 400px; height: 640px; border: 0; display: block;
+                       border-radius: var(--radius); background: var(--surface);
+                       border: 1px solid var(--border); }
+    .bp-embed.tt iframe { max-width: 340px; height: 600px; }
+    .bp-embed figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                           margin-top: 8px; text-align: center; word-break: keep-all; }
+    .bp-embed a.src { font-size: 0.74rem; color: var(--brick); font-weight: 600;
+                      margin-top: 6px; text-decoration: none; }
+    .bp-embed a.src:hover { text-decoration: underline; }
+
+
+    /* 바깥 자료 인용 카드 */
+    .bp-cite { display: block; margin-top: 20px; text-decoration: none; color: inherit;
+               border: 1px solid var(--border); border-radius: var(--radius);
+               background: var(--white); padding: 14px 16px; }
+    .bp-cite:hover { border-color: rgba(194,74,53,.4); background: #fffdfd; }
+    .bp-cite b { display: block; font-size: 0.86rem; line-height: 1.5; color: var(--dark); }
+    .bp-cite span { display: block; font-size: 0.74rem; color: #B09A96; margin-top: 5px; }
+
+    /* ── 글 끝 ─────────────────────────────────────── */
+    .bp-auth { margin-top: 40px; display: flex; gap: 15px; align-items: flex-start;
+               padding: 18px 20px; border: 1px solid var(--border);
+               border-radius: var(--radius); background: var(--surface); }
+    .bp-auth-av { width: 46px; height: 46px; border-radius: 50%; background: var(--brick);
+                  color: #fff; flex-shrink: 0; display: flex; align-items: center;
+                  justify-content: center; font-weight: 800; font-size: 0.78rem; }
+    .bp-auth-b { min-width: 0; }
+    .bp-auth p { font-size: 0.8rem; line-height: 1.8; color: var(--muted); word-break: keep-all; }
+    .bp-auth b { color: var(--dark); }
+    /* 이력 보기는 소개 문장 바로 옆에 붙는 작은 알약입니다 */
+    .bp-auth-cta { display: inline-block; margin-left: 7px; padding: 5px 13px;
+                   border-radius: 100px; background: var(--brick); color: #fff;
+                   font-size: 0.74rem; font-weight: 700; text-decoration: none;
+                   white-space: nowrap; vertical-align: baseline; }
+    .bp-auth-cta:hover { background: var(--brick-h); }
+
+    /* 다른 칼럼 세 편. 표지를 크게 보여줍니다 */
+    .bp-more { margin-top: 36px; }
+    .bp-more-k { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 11px; }
+    .bp-more-g { display: grid; gap: 12px; }
+    .bp-more-2 { grid-template-columns: repeat(2, 1fr); }
+    .bp-more-3 { grid-template-columns: repeat(3, 1fr); }
+    .bp-more-g a { text-decoration: none; color: inherit; }
+    .bp-more-g img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
+                     border-radius: var(--radius); border: 1px solid var(--border); }
+    .bp-more-g a:hover img { border-color: rgba(194,74,53,.45); }
+    @media (max-width: 560px) {
+      .bp-more-g { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .bp-more-3 a:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu"  id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <article class="bp">
+    <a class="bp-back" href="/content">&#8592; 학습 콘텐츠</a>
+    <p class="bp-chip">🧠 공부법</p>
+    <h1 class="bp-h1">프랑스어 덕질하기,<br>오래가는 사람들의 프랑스어 공부법 8가지</h1>
+    <div class="bp-meta"><span>2026년 7월 4일</span><span>읽는 데 9분</span><span>김두우리</span></div>
+
+    <div class="bp-body">
+          <p class="bp-lead">프랑스어 교재도, 유튜브 채널도, 인강도 추천하지 않습니다.<br>누구나 프랑스어 덕질 가능합니다.<br>왜냐하면 정말 사소한 거거든요!</p>
+      <figure class="bp-cover-fig"><img src="../img/blog/french-immersion-cover.jpg" alt="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지" width="1080" height="1080"></figure>
+          <div class="bp-sum">
+            <p class="bp-sum-k">먼저 읽는 요약</p>
+            <p>프랑스어를 오래 하는 사람들은 교재를 더 많이 사지 않습니다. <strong>좋아하는 것 쪽으로 프랑스어를 끌어오는 습관</strong>을 갖고 있어요. 이 글에서는 그 습관 여덟 가지를 정리합니다.</p>
+            <ul><li>꺼내 보는 공부 (Retrieval Practice)</li><li>컨디션에 맞춰 양을 조절하기</li><li>좋아하는 콘텐츠로 반복량 쌓기 (Comprehensible Input)</li><li>아는 뉴스를 프랑스어로 먼저 보기</li><li>안 들려도 계속 보며 문화 코드 익히기</li><li>나에게 맞는 학습 경로 고르기</li><li>자료를 고르는 눈 기르기</li><li>내가 잘 기억하는 방식 활용하기</li></ul>
+          </div>
+          <p>안녕하세요, 프랑스어를 거의 25년째 공부하며 4개 국어를 하는 프랑스어 전문가 김두우리입니다. 저 역시 오랫동안 언어를 공부하고 가르치면서, <strong>오래 프랑스어를 공부하는 사람들의 습관</strong>에 공통점이 있다는 걸 느꼈어요. 이번 글의 키워드는 <span class="bp-hl">프랑스어 덕질</span>입니다.</p>
+          <h2>1. 눈으로만 공부하면 왜 안 남을까</h2>
+          <p>교재를 읽습니다. 문제를 풉니다. 답을 맞혀봅니다. 그리고 끝. 생각보다 많은 분들이 여기에서 공부가 끝납니다.</p>
+          <p>그런데 교육학에서는 <strong>정보를 다시 꺼내는 과정(Retrieval Practice)</strong>이 기억을 훨씬 오래 유지한다고 이야기합니다. 그래서 한 번이라도 직접 정리하고, 말해보고, 요약해 보세요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-immersion-1.jpg" alt="프랑스어 복합과거 문법을 손으로 정리한 피슈 노트" loading="lazy" width="736" height="1005" style="max-width:440px">
+            <figcaption>프랑스의 기본적인 학습 습관: &lt;span class="bp-fr"&gt;fiche&lt;/span&gt; 만들기</figcaption>
+          </figure>
+          <p>그 순간부터 <strong>읽은 내용</strong>이 아니라 <strong>내 지식</strong>이 되기 시작합니다.</p>
+          <h2>2. 매일 같은 양을 하려다 지치는 이유</h2>
+          <p>매일 같은 양의 에너지를 갖고 있는 사람은 없습니다. 오늘은 30퍼센트, 내일은 90퍼센트, 모레는 60퍼센트. 이게 정상이에요. 그런데 많은 사람들이 매일 100퍼센트를 요구하고, 그러다 결국 지칩니다.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-immersion-2.jpg" alt="매일 같은 양이 아니라 컨디션에 따라 달라지는 꾸준함을 물컵으로 비유한 그림" loading="lazy" width="451" height="377" style="max-width:440px">
+            <figcaption>매일 꾸준히 해야 한다는 프랑스어 공부, 컨디션을 먼저 확인하세요</figcaption>
+          </figure>
+          <p>언어교육에도 학습자의 스트레스가 높아질수록 습득 효율이 떨어진다는 <strong>Affective Filter(정서적 필터)</strong> 개념이 있습니다. 컨디션이 안 좋은 날은 억지로 2시간 앉아있는 것보다 20분 쉬는 게 더 도움이 될 수도 있어요.</p>
+          <p><span class="bp-hl">반대로 오늘 머리가 정말 잘 돌아간다면 그날은 욕심내도 좋습니다!</span> 자신만의 바이오리듬을 며칠만 관찰해 보세요. 학교가 끝난 뒤인지, 퇴근 후인지, 아침인지. 생각보다 <strong>본인만의 황금 시간</strong>이 있습니다.</p>
+          <h2>3. 프랑스어 덕질하기</h2>
+          <p>사실 오늘 글에서 가장 추천하는 방법입니다. 요즘 한국어를 정말 잘하는 외국인들을 보면 공통점이 하나 있어요. K드라마 덕후, 웹툰 덕후, 아이돌 덕후, 배우 덕후. 즉, <strong>오타쿠</strong>입니다.</p>
+          <p>좋아하는 사람의 인터뷰를 보고, 댓글을 읽고, SNS를 보고, 자막을 보면서 <span class="bp-hl">같은 표현을 몇십 번, 몇백 번 반복합니다.</span> 이게 왜 효과적일까요? 교육학에서는 <strong>이해 가능한 입력(Comprehensible Input)</strong>이 많을수록 습득이 빨라진다고 설명합니다. 이미 내용을 알고 있으니 언어 자체에 집중할 수 있게 되는 것이죠.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-immersion-3.jpg" alt="도파민을 올려주는 콘텐츠 이야기" loading="lazy" width="296" height="417" style="max-width:296px">
+            <figcaption>도파민 올려주는 이야기는 몇 시간씩 들을 수 있죠?</figcaption>
+          </figure>
+          <p>저 역시 브라질에서 포르투갈어를 배울 때 <strong>그 나라의 연예인 가십 뉴스</strong>를 엄청 봤는데요. 나라와 언어는 달라도 도파민이 높은 건 똑같더라고요.</p>
+          <h2>4. 프랑스어 듣기, 아는 뉴스부터 보세요</h2>
+          <p>실력을 늘리겠다며 처음부터 <span class="bp-fr">Le Monde</span>를 펼치는 분들이 많습니다. 프랑스 사람들도 매일 르몽드를 읽지는 않아요. 오히려 저는 <strong>KBS World French</strong>처럼 한국 뉴스를 프랑스어로 소개하는 자료를 추천합니다.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-immersion-4.jpg" alt="한국 뉴스를 프랑스어로 전하는 KBS World French 웹사이트 화면" loading="lazy" width="962" height="828" style="max-width:440px">
+            <figcaption>KBS 월드 라디오 프랑스어 방송, 국내외 주요 시사 이슈를 프랑스어로 제공</figcaption>
+          </figure>
+          <p><span class="bp-hl">이미 알고 있는 사건</span>이기 때문에 내용을 이해하려고 애쓰기보다 <span class="bp-hl">"아, 이걸 프랑스어로 이렇게 표현하는구나."</span> 를 관찰하게 됩니다. 테마별 어휘도 훨씬 오래 기억돼요. 저도 브라질 사람들에게 프랑스어를 가르치는 자료를 굉장히 많이 참고했습니다. 역으로 공부하면 생각보다 훨씬 재미있습니다.</p>
+          <h2>5. 프랑스 영화가 안 들릴 때 얻는 것</h2>
+          <p>영화, 드라마, 인터뷰, 예능. 처음에는 거의 안 들립니다. 당연한 것입니다. 여기서 얻을 수 있는 것은 <strong>문화적 코드 인사이트</strong>예요. 특정 상황에서 번역된 자막을 보면서 이런 질문이 생깁니다.</p>
+          <ul class="bp-list"><li>왜 저기서 웃지?</li><li>왜 저렇게 반응하지?</li><li>왜 저 표현을 쓸까?</li></ul>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-immersion-5.jpg" alt="문화 차이를 나타내는 그림" loading="lazy" width="521" height="512" style="max-width:440px">
+            <figcaption>실제 프랑스 사람들과 회화가 힘든 부분이 문화적 차이에서 많이 옵니다</figcaption>
+          </figure>
+          <p>이 프랑스어 덕질의 관찰들이 회화의 감각을 키워줍니다. <strong>문법보다 문화가 먼저 이해되는 순간이 있습니다.</strong></p>
+          <h2>6. 프랑스어 배우는 방법, 어디가 맞을까</h2>
+          <p>프랑스어를 배울 수 있는 방법은 정말 많습니다.</p>
+          <ul class="bp-list"><li>프랑스 대사관 어학원</li><li>알리앙스 프랑세즈</li><li>사설 학원</li><li>인강</li><li>1:1 과외</li><li>온라인 플랫폼</li><li>소규모 회화 스터디</li></ul>
+          <p>중요한 건 정답은 없다는 것입니다. 저 역시 학생마다 추천하는 방법이 모두 달라요. 직접 경험해 보고 자신에게 맞는 조합을 찾는 것이 가장 좋습니다. 상황에 따라 하이브리드 방법도 충분히 가능합니다.</p>
+          <h2>7. 프랑스어 공부 자료, 고르는 눈이 실력입니다</h2>
+          <p>가장 많이 듣는 질문입니다. "뭐가 제일 좋아요?" 물론 레퍼런스를 참고하는 것은 좋습니다. <span class="bp-hl">하지만 지금은 자료가 너무 많은 시대입니다.</span> <span class="bp-hl">오히려 좋은 자료를 찾는 능력이 공부 능력이 되었습니다.</span></p>
+          <figure class="bp-embed">
+            <iframe src="https://www.instagram.com/reel/DXZab31CqVX/embed" title="독학으로 시작할 때 자료를 고르는 법, 직접 만든 릴스" scrolling="no" allowtransparency="true" allowfullscreen loading="lazy"></iframe>
+            <figcaption>독학으로 시작할 때 자료를 고르는 법, 직접 만든 릴스</figcaption>
+            <a class="src" href="https://www.instagram.com/reel/DXZab31CqVX/" target="_blank" rel="noopener">인스타그램에서 보기 &#8599;</a>
+          </figure>
+          <p>정말 중요한 프랑스어 덕질은, 누군가의 추천보다 <strong>내가 꾸준히 볼 수 있는 자료를 찾는 것</strong>입니다.</p>
+          <h2>8. 내가 잘 기억하는 방식 활용하기</h2>
+          <p>본인이 학교를 다니면서 필기하고, 수업의 핵심 정보를 어떻게 기억했는지 한번 생각해 보세요.</p>
+          <ul class="bp-list"><li>형광펜으로 밑줄 긋기</li><li>요약해서 혼잣말로 정리하기</li><li>수업 때만 초집중해서 기억하기</li></ul>
+          <div class="bp-ex"><p><span class="bp-hl">언어 공부도 마찬가지예요.</span></p><p><span class="bp-hl">청각, 시각, 기억력, 요약 능력 등 본인의 잠재력을 잘 끌어내는 방법으로 공부해 보세요!</span></p></div>
+          <p><span class="bp-hl">다만 프랑스어는 철자와 발음의 차이가 큰 언어이기 때문에</span> 읽기만 하지 말고 쓰기, 듣기, 말하기를 균형 있게 가져가야 하는 거, 잊으면 안 되겠죠?</p>
+          <p>오늘 소개한 프랑스어 덕질 방법은 사실 특별한 비법이 아니에요.</p>
+          <div class="bp-ex"><p><span class="bp-hl">언어는 단거리 달리기가 아니라 마라톤입니다.</span></p><p>오늘 하루 억지로 두 시간을 앉아 있기보다, 좋아하는 배우 인터뷰 하나를 끝까지 보는 것이 더 큰 공부가 될 수도 있습니다.</p></div>
+          <figure class="bp-fig">
+            <img src="../img/blog/french-immersion-6.jpg" alt="파리 재팬 엑스포 현장" loading="lazy" width="1024" height="800" style="max-width:440px">
+            <figcaption>프랑스 파리에서 열린 재팬 엑스포(Japan Expo) 현장 (출처: 게임플)</figcaption>
+          </figure>
+          <p>교재를 많이 보는 것보다 프랑스어 덕질을 오래 할 수 있는 환경을 만들어보는 것도 적극적으로 추천드립니다!</p>
+    </div>
+
+    <div class="bp-auth">
+      <div class="bp-auth-av">두우리</div>
+      <div class="bp-auth-b">
+        <p><b>김두우리</b>, 16년차 프랑스어 FLE 전문 코치<br>
+          한국 학생들이 어디서 막히는지 아는 사람이 씁니다. 1:1 맞춤 수업과 한불 통번역을 합니다.<a
+            href="/portfolio" class="bp-auth-cta" data-cta="post_immersion_lesson">이력 보기</a></p>
+      </div>
+    </div>
+
+    <div class="bp-more">
+      <p class="bp-more-k">관련 칼럼</p>
+      <div class="bp-more-g bp-more-3">
+          <a href="/content/french-study-habits" aria-label="한국 학생들의 잘못된 프랑스어 공부법, 이 습관만 바꿔보세요"><img src="../img/blog/french-study-habits-cover.jpg" alt="한국 학생들의 잘못된 프랑스어 공부법, 이 습관만 바꿔보세요" loading="lazy"></a>
+          <a href="/content/french-dictee" aria-label="프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유"><img src="../img/blog/french-dictee-cover.jpg" alt="프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유" loading="lazy"></a>
+          <a href="/content/french-tutoring" aria-label="프랑스어 과외 16년, 학생들이 직접 말해준 재수강 이유 5가지"><img src="../img/blog/french-tutoring-cover.jpg" alt="프랑스어 과외 16년, 학생들이 직접 말해준 재수강 이유 5가지" loading="lazy"></a>
+      </div>
+    </div>
+  </article>
+
+</div>
+</div>
+
+<footer class="site-footer" id="site-footer"></footer>
+<div class="kakao-float" id="kakao-float"></div>
+
+<script src="../js/components.js"></script>
+<script>
+  initComponents();
+
+  /* ── 영상 ──────────────────────────────────────────────
+     표지는 우리가 그린 것이라 인터넷이 없어도 항상 보입니다.
+     누르면 그 자리에서 재생합니다.
+     파일을 브라우저로 직접 열면(file://) 유튜브가 재생을 거부하므로 새 탭으로 엽니다. */
+  var BP_LOCAL = (location.protocol === 'file:');
+
+  document.addEventListener('click', function (e) {
+    var box = e.target.closest ? e.target.closest('.bp-video') : null;
+    if (!box || box.classList.contains('playing')) return;
+    var id = box.getAttribute('data-yt');
+    if (!id) return;
+    if (BP_LOCAL) { window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener'); return; }
+    box.classList.add('playing');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+    f.title = '영상';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.allowFullscreen = true;
+    box.appendChild(f);
+  });
+
+  /* 파일로 직접 연 경우, 재생이 새 탭에서 열린다는 것을 표지에 적어 둡니다 */
+  if (BP_LOCAL) {
+    Array.prototype.forEach.call(document.querySelectorAll('.bp-video-btn i'), function (i) {
+      i.textContent = '눌러서 재생 (새 탭에서 열립니다)';
+    });
+  }
+
+  /* 릴스와 틱톡은 iframe 하나로 그 자리에서 나옵니다.
+     스크립트도, 대신 보여 줄 표지도 필요 없습니다. */
+</script>
+</body>
+</html>

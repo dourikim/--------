@@ -27,7 +27,37 @@
   </url>
   <url>
     <loc>https://www.dourikim.com/content</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.dourikim.com/content/si-bel-homme</loc>
+    <lastmod>2026-06-25</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.dourikim.com/content/french-study-habits</loc>
+    <lastmod>2026-06-17</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.dourikim.com/content/french-dictee</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.dourikim.com/content/french-tutoring</loc>
+    <lastmod>2026-06-19</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.dourikim.com/content/france-whv-job</loc>
+    <lastmod>2026-06-22</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.dourikim.com/content/french-immersion</loc>
+    <lastmod>2026-07-04</lastmod>
     <priority>0.7</priority>
   </url>
 </urlset>

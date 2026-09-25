@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- ══ 내 방문 집계 제외 ══ 이 블록은 반드시 아래 gtag 스크립트보다 먼저 있어야 합니다. -->
+<script>
+(function () {
+  var KEY = 'noga', ID = 'G-K5BW3YMBH6';
+  var on = false;
+  try {
+    var q = new URLSearchParams(location.search).get('noga');
+    if (q === '1') localStorage.setItem(KEY, '1');
+    else if (q === '0') localStorage.removeItem(KEY);
+    on = localStorage.getItem(KEY) === '1';
+  } catch (e) { return; }
+  if (!on) return;
+  window['ga-disable-' + ID] = true;
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = '집계 제외 중';
+    b.title = '이 기기는 방문자 수에 포함되지 않습니다. 해제하려면 주소 뒤에 ?noga=0 을 붙여 여세요.';
+    b.style.cssText = 'position:fixed;left:20px;bottom:14px;z-index:99999;border:0;border-radius:999px;'
+      + 'padding:7px 12px;cursor:pointer;background:rgba(46,14,12,.82);color:#fff;'
+      + 'font:600 11px/1 Pretendard,sans-serif;letter-spacing:.02em;';
+    b.onclick = function () { b.remove(); };
+    document.body.appendChild(b);
+  });
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K5BW3YMBH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-K5BW3YMBH6");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>프랑스어 시벨롬(si bel homme) 뜻과 진짜 문제 | 김두우리</title>
+  <meta name="description" content="한국에서 유행하는 프랑스어 시벨롬. 소리, 표기법, 문법 세 가지로 뜯어보면 프랑스인들이 갸우뚱하는 이유가 보입니다."/>
+  <link rel="canonical" href="https://www.dourikim.com/content/si-bel-homme"/>
+  <meta property="og:type"         content="article"/>
+  <meta property="og:url"          content="https://www.dourikim.com/content/si-bel-homme"/>
+  <meta property="og:site_name"    content="Do! 우리! 프랑스어"/>
+  <meta property="og:title"        content="프랑스어 시벨롬, 알고 보니 이런 문제가 있었다"/>
+  <meta property="og:description"  content="한국에서 유행하는 프랑스어 시벨롬. 소리, 표기법, 문법 세 가지로 뜯어보면 프랑스인들이 갸우뚱하는 이유가 보입니다."/>
+  <meta property="og:image"        content="https://www.dourikim.com/img/blog/si-bel-homme-cover.jpg"/>
+  <meta property="article:published_time" content="2026-06-25"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "프랑스어 시벨롬, 알고 보니 이런 문제가 있었다", "description": "한국에서 유행하는 프랑스어 시벨롬. 소리, 표기법, 문법 세 가지로 뜯어보면 프랑스인들이 갸우뚱하는 이유가 보입니다.", "image": ["https://www.dourikim.com/img/blog/si-bel-homme-cover.jpg"], "datePublished": "2026-06-25", "dateModified": "2026-06-25", "author": {"@type": "Person", "name": "김두우리", "url": "https://www.dourikim.com/portfolio"}, "publisher": {"@type": "Person", "name": "김두우리"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.dourikim.com/content/si-bel-homme"}, "inLanguage": "ko"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "홈", "item": "https://www.dourikim.com/"}, {"@type": "ListItem", "position": 2, "name": "학습 콘텐츠", "item": "https://www.dourikim.com/content"}, {"@type": "ListItem", "position": 3, "name": "프랑스어 시벨롬, 알고 보니 이런 문제가 있었다", "item": "https://www.dourikim.com/content/si-bel-homme"}]}</script>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    /* ══════════════════════════════════════════════════════
+       읽을거리 글 페이지
+       본문 폭을 700px 로 묶습니다. 한 줄이 길면 눈이 다음 줄을 놓칩니다.
+       ══════════════════════════════════════════════════════ */
+    .bp { max-width: 700px; margin: 0 auto; padding: 0 20px 40px; }
+    .bp-back { display: inline-block; font-size: 0.78rem; font-weight: 600;
+               color: var(--muted); text-decoration: none; margin-top: 8px; }
+    .bp-back:hover { color: var(--brick); }
+    .bp-chip { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--brick);
+               background: #FBEEEA; border-radius: 100px; padding: 5px 12px; margin: 18px 0 12px; }
+    .bp-h1 { font-family: var(--font-heading); font-size: clamp(1.4rem, 5.4vw, 1.78rem);
+             font-weight: 700; line-height: 1.45; letter-spacing: -0.025em;
+             color: var(--dark); word-break: keep-all; }
+    .bp-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+               font-size: 0.76rem; color: #B09A96; margin-top: 13px;
+               padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .bp-meta span + span { position: relative; padding-left: 15px; }
+    .bp-meta span + span::before { content: ''; position: absolute; left: 0; top: 50%;
+                                   width: 5px; height: 1px; background: #D8CBC8; }
+
+    /* 표지. 본문 폭(660px)의 70% 자리에 놓습니다 */
+    .bp-cover-fig { margin-top: 22px; }
+    .bp-cover-fig img { display: block; width: 100%; max-width: 462px; height: auto;
+                        margin: 0 auto; border-radius: var(--radius);
+                        border: 1px solid var(--border); }
+
+    .bp-body { font-size: 0.93rem; line-height: 2.05; color: #3A2320; word-break: keep-all; }
+    .bp-body p { margin-top: 19px; }
+    .bp-body h2 { font-family: var(--font-heading); font-size: clamp(1.06rem, 4.2vw, 1.2rem);
+                  font-weight: 700; line-height: 1.5; color: var(--dark);
+                  margin: 38px 0 0; padding-left: 12px; border-left: 3px solid var(--brick); }
+    .bp-body strong { font-weight: 700; color: var(--dark); }
+
+    /* 글쓴이가 네이버에서 빨간색으로, 또는 크게 키워 강조했던 문장입니다.
+       그 자리를 사이트에서도 그대로 살립니다. 벽돌빛 + 한 호수 크게. */
+    .bp-body .bp-hl { color: var(--brick); font-weight: 700; font-size: 1.07em;
+                      letter-spacing: -0.01em; }
+    .bp-ex .bp-hl  { font-size: 1.05em; }
+    .bp-body a { color: var(--brick); font-weight: 600; text-underline-offset: 3px; }
+
+    .bp-lead { margin-top: 22px; padding: 18px 20px; background: var(--surface);
+               border-radius: var(--radius); text-align: center;
+               font-size: 0.87rem; line-height: 2; color: var(--muted); }
+
+    /* ── 먼저 읽는 요약 ────────────────────────────────
+       사이트에 들어온 사람은 이 글을 읽을지 3초 안에 정합니다.
+       검색 엔진과 AI 답변도 글 첫머리의 짧은 답을 그대로 집어 갑니다.
+       그래서 본문이 시작되기 전에 요점을 먼저 놓습니다. */
+    .bp-sum { margin-top: 24px; padding: 20px 22px; background: var(--white);
+              border: 1px solid var(--border); border-left: 3px solid var(--brick);
+              border-radius: 0 var(--radius) var(--radius) 0; }
+    .bp-sum-k { font-size: 0.72rem; font-weight: 700; letter-spacing: .06em;
+                color: var(--brick); margin-bottom: 10px; }
+    .bp-sum p { margin: 0 0 12px; font-size: 0.9rem; line-height: 1.95; color: var(--dark); }
+    .bp-sum ul { margin: 0; padding: 0; list-style: none; }
+    .bp-sum li { position: relative; padding-left: 15px; margin-top: 7px;
+                 font-size: 0.86rem; line-height: 1.85; color: var(--muted);
+                 word-break: keep-all; }
+    .bp-sum li::before { content: ''; position: absolute; left: 0; top: 0.8em;
+                         width: 4px; height: 4px; border-radius: 50%;
+                         background: var(--brick); opacity: .55; }
+
+    .bp-fig { margin-top: 22px; }
+    /* 본문 그림. 네이버에서처럼 글 폭을 다 채우지 않습니다.
+       가로 440px, 세로 560px 을 넘지 않게 두고 가운데로 놓습니다.
+       원본보다 크게 늘리지도 않습니다. */
+    .bp-fig img { display: block; margin: 0 auto;
+                  max-width: 440px; max-height: 560px; width: auto; height: auto;
+                  border-radius: var(--radius); border: 1px solid var(--border); }
+    @media (max-width: 520px) {
+      .bp-fig img { max-width: 100%; max-height: 430px; }
+    }
+    .bp-fig figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                         margin-top: 8px; text-align: center; word-break: keep-all; }
+
+    /* 프랑스어 예문 */
+    .bp-ex { margin-top: 20px; padding: 15px 18px; background: #fff9f8;
+             border-left: 3px solid var(--brick); border-radius: 0 8px 8px 0; }
+    .bp-ex p { margin: 0; font-size: 0.875rem; line-height: 1.95; }
+    .bp-ex p + p { margin-top: 9px; }
+    .bp-fr { color: var(--brick); font-weight: 700; font-style: italic; }
+    .bp-ko { color: var(--muted); }
+
+    /* 목록 */
+    .bp-list { margin-top: 18px; padding: 0; list-style: none; }
+    .bp-list li { position: relative; padding-left: 15px; margin-top: 9px;
+                  font-size: 0.9rem; line-height: 1.95; word-break: keep-all; }
+    .bp-list li::before { content: ''; position: absolute; left: 0; top: 0.82em;
+                          width: 4px; height: 4px; border-radius: 50%;
+                          background: var(--brick); opacity: 0.5; }
+
+    /* ── 영상 ──────────────────────────────────────────
+       그림 파일을 바깥에서 받아오지 않습니다. 표지를 우리가 직접 그립니다.
+       그래서 인터넷이 없어도, 미리보기 파일로 열어도 표지가 항상 보입니다.
+       누르면 그 자리에서 재생합니다. 파일로 직접 연 경우에만 새 창으로 엽니다. */
+    .bp-video { margin-top: 22px; position: relative; aspect-ratio: 16 / 9;
+                border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+                background: linear-gradient(140deg, #3A120F 0%, #6E2318 52%, #A03A28 100%);
+                cursor: pointer; }
+    .bp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .bp-video-btn { position: absolute; inset: 0; display: flex; flex-direction: column;
+                    align-items: center; justify-content: center; gap: 13px;
+                    border: 0; background: transparent; cursor: pointer; padding: 22px 26px; }
+    .bp-video-btn span { width: 66px; height: 47px; border-radius: 13px; background: rgba(194,74,53,.96);
+                         color: #fff; display: flex; align-items: center; justify-content: center;
+                         font-size: 1.2rem; box-shadow: 0 6px 20px rgba(0,0,0,.28); flex-shrink: 0; }
+    .bp-video-btn b { font-size: 0.82rem; font-weight: 600; line-height: 1.6; color: #FAF7F6;
+                      text-align: center; word-break: keep-all; max-width: 30ch; }
+    .bp-video-btn i { font-style: normal; font-size: 0.7rem; color: rgba(250,247,246,.62); }
+    .bp-video.playing .bp-video-btn { display: none; }
+
+    /* ── 인스타 릴스와 틱톡 ─────────────────────────────
+       lesson.html 과 같은 방식입니다. 주소 뒤에 /embed 를 붙인 iframe 하나면
+       됩니다. 스크립트가 필요 없어서 파일로 열어도 그 자리에서 나옵니다. */
+    .bp-embed { margin-top: 22px; display: flex; flex-direction: column; align-items: center; }
+    .bp-embed iframe { width: 100%; max-width: 400px; height: 640px; border: 0; display: block;
+                       border-radius: var(--radius); background: var(--surface);
+                       border: 1px solid var(--border); }
+    .bp-embed.tt iframe { max-width: 340px; height: 600px; }
+    .bp-embed figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                           margin-top: 8px; text-align: center; word-break: keep-all; }
+    .bp-embed a.src { font-size: 0.74rem; color: var(--brick); font-weight: 600;
+                      margin-top: 6px; text-decoration: none; }
+    .bp-embed a.src:hover { text-decoration: underline; }
+
+
+    /* 바깥 자료 인용 카드 */
+    .bp-cite { display: block; margin-top: 20px; text-decoration: none; color: inherit;
+               border: 1px solid var(--border); border-radius: var(--radius);
+               background: var(--white); padding: 14px 16px; }
+    .bp-cite:hover { border-color: rgba(194,74,53,.4); background: #fffdfd; }
+    .bp-cite b { display: block; font-size: 0.86rem; line-height: 1.5; color: var(--dark); }
+    .bp-cite span { display: block; font-size: 0.74rem; color: #B09A96; margin-top: 5px; }
+
+    /* ── 글 끝 ─────────────────────────────────────── */
+    .bp-auth { margin-top: 40px; display: flex; gap: 15px; align-items: flex-start;
+               padding: 18px 20px; border: 1px solid var(--border);
+               border-radius: var(--radius); background: var(--surface); }
+    .bp-auth-av { width: 46px; height: 46px; border-radius: 50%; background: var(--brick);
+                  color: #fff; flex-shrink: 0; display: flex; align-items: center;
+                  justify-content: center; font-weight: 800; font-size: 0.78rem; }
+    .bp-auth-b { min-width: 0; }
+    .bp-auth p { font-size: 0.8rem; line-height: 1.8; color: var(--muted); word-break: keep-all; }
+    .bp-auth b { color: var(--dark); }
+    /* 이력 보기는 소개 문장 바로 옆에 붙는 작은 알약입니다 */
+    .bp-auth-cta { display: inline-block; margin-left: 7px; padding: 5px 13px;
+                   border-radius: 100px; background: var(--brick); color: #fff;
+                   font-size: 0.74rem; font-weight: 700; text-decoration: none;
+                   white-space: nowrap; vertical-align: baseline; }
+    .bp-auth-cta:hover { background: var(--brick-h); }
+
+    /* 다른 칼럼 세 편. 표지를 크게 보여줍니다 */
+    .bp-more { margin-top: 36px; }
+    .bp-more-k { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 11px; }
+    .bp-more-g { display: grid; gap: 12px; }
+    .bp-more-2 { grid-template-columns: repeat(2, 1fr); }
+    .bp-more-3 { grid-template-columns: repeat(3, 1fr); }
+    .bp-more-g a { text-decoration: none; color: inherit; }
+    .bp-more-g img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
+                     border-radius: var(--radius); border: 1px solid var(--border); }
+    .bp-more-g a:hover img { border-color: rgba(194,74,53,.45); }
+    @media (max-width: 560px) {
+      .bp-more-g { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .bp-more-3 a:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu"  id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <article class="bp">
+    <a class="bp-back" href="/content">&#8592; 학습 콘텐츠</a>
+    <p class="bp-chip">🇫🇷 프랑스 문화</p>
+    <h1 class="bp-h1">프랑스어 시벨롬,<br>알고 보니 이런 문제가 있었다</h1>
+    <div class="bp-meta"><span>2026년 6월 25일</span><span>읽는 데 6분</span><span>김두우리</span></div>
+
+    <div class="bp-body">
+          <p class="bp-lead">한국인들이 유독 좋아하는 프랑스어 시벨롬.<br>프랑스인들이 진짜 쓰는지 알고 싶으신 거죠?</p>
+      <figure class="bp-cover-fig"><img src="../img/blog/si-bel-homme-cover.jpg" alt="프랑스어 시벨롬, 알고 보니 이런 문제가 있었다" width="1080" height="1080"></figure>
+          <p>프랑스어 시벨롬은 <strong>si bel homme</strong>, 잘생긴 남자라는 뜻입니다. 틀린 말은 아니지만 프랑스에서 그대로 쓰면 어색하게 들려요. 소리, 표기법, 문법 세 가지를 뜯어보면 그 이유가 보입니다.</p>
+          <div class="bp-sum">
+            <p class="bp-sum-k">먼저 읽는 요약</p>
+            <p>프랑스어 시벨롬은 <span class="bp-fr">si bel homme</span>, 잘생긴 남자라는 뜻입니다. <strong>틀린 말은 아니지만 프랑스에서 그대로 쓰면 어색하게 들려요.</strong> 소리, 표기법, 문법 세 가지로 뜯어보면 그 이유가 보입니다.</p>
+            <ul><li>si, bel, homme 세 단어를 나눠 보기</li><li>beau 가 bel 로 바뀌는 이유 (연음)</li><li>한글 표기가 지워 버리는 정보</li><li>프랑스에서 실제로 쓰는 말과 안 쓰는 말</li></ul>
+          </div>
+          <p>프랑스어 시벨롬, SNS에서 한 번씩 보이는 단어예요. "Si bel homme"를 한글로 읽으면 시벨롬이에요. 발음이 한국어 비속어처럼 들린다며 관련 콘텐츠들이 정말 많은데요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/si-bel-homme-1.jpg" alt="정일영 교수의 시벨롬 설명 영상 화면" loading="lazy" width="606" height="342" style="max-width:440px">
+            <figcaption>정일영 교수님의 시벨롬 설명 영상</figcaption>
+          </figure>
+          <p>최근에도 아이돌 코르티스 멤버들에게 이 표현을 시켜보는 쇼츠 영상이 화제였어요.</p>
+          <div class="bp-ex"><p><span class="bp-fr">C'est qui, ce bel homme à cheval ?</span><br><span class="bp-ko">[세끼, 스벨롬 아슈발]</span><br><span class="bp-ko">직역: 이 말 타고 있는 꽃미남은 누구야?</span></p></div>
+          <p>다들 듣자마자 당황하면서 "이거 욕 아니에요?" 를 외쳤죠 ㅋㅋㅋㅋㅋ</p>
+          <div class="bp-video" data-yt="yS5bqkM3MTc">
+            <button class="bp-video-btn" type="button" aria-label="영상 재생">
+              <span>&#9654;</span>
+              <b>코르티스 멤버들이 프랑스어 시벨롬을 발음하는 영상</b>
+              <i>눌러서 재생</i>
+            </button>
+          </div>
+          <p>그런데 단순히 "발음이 웃기다"보다 더 큰 문제가 있어요. <span class="bp-hl">실제로 프랑스에서 이 말을 그대로 쓰면 어색하게 들린다는 거예요.</span></p>
+          <p class="bp-lead">끝까지 읽으시면,<br>프랑스어 시벨롬 하나로 프랑스어 발음 규칙 전체가<br>어떻게 작동하는지 감이 잡히실 거예요.</p>
+          <p>그럼 프랑스에서 잘생긴 남자가 지나가면 실제로 "Si bel homme! [시벨롬!]"이라고 외칠까요? 정작 프랑스인들은 좀 갸우뚱할 거예요. 틀린 말은 아니에요. 근데 자연스러운 말도 아니거든요.</p>
+          <p>오늘은 이 단어를 소리, 표기법, 문법 규칙 세 가지로 뜯어볼게요. 비슷한 결의 다른 예시들도 같이 살펴봐요.</p>
+          <h2>시벨롬은 무슨 뜻일까, 단어 뜯어보기</h2>
+          <p>Si bel homme [씨 벨롬므]는 세 단어가 붙은 말이에요.</p>
+          <ul class="bp-list"><li><span class="bp-fr">si</span> 굉장히, 정말 (부사)</li><li><span class="bp-fr">bel</span> 잘생긴 (형용사, beau의 변형)</li><li><span class="bp-fr">homme</span> 남자 (명사)</li></ul>
+          <p>si는 "매우"라는 뜻의 très와 결이 달라요. très는 중립적인 강조인 반면, si는 감탄이 섞인 강조예요.</p>
+          <div class="bp-ex"><p><span class="bp-fr">Il est très beau.</span> <span class="bp-ko">그는 매우 잘생겼다</span><br><span class="bp-ko">중립적인 사실 전달</span></p><p><span class="bp-fr">Il est si beau !</span> <span class="bp-ko">그는 진짜 잘생겼다</span><br><span class="bp-ko">개인적인 감탄</span></p></div>
+          <h2>왜 beau가 아니라 bel일까</h2>
+          <p>진짜 핵심은 여기예요. beau는 원래 명사 앞에 오는 형용사예요. 근데 모음이나 무음 h로 시작하는 남성 명사를 만나면 형태가 bel로 바뀌어요.</p>
+          <div class="bp-ex"><p><span class="bp-fr">un beau garçon</span> <span class="bp-ko">잘생긴 소년</span><br><span class="bp-ko">자음으로 시작, beau 그대로</span></p><p><span class="bp-fr">un bel homme</span> <span class="bp-ko">잘생긴 남자</span><br><span class="bp-ko">homme가 무음 h로 시작, bel로 변신</span></p></div>
+          <p>이걸 <strong>liaison(연음)</strong>이라고 불러요. [보 옴므]가 아니라 [벨 롬므]로 이어지는 이유예요.</p>
+          <p><span class="bp-hl">"시벨롬"은 사실 프랑스어 발음 원리를 압축적으로 보여주는 단어예요.</span> 근데 한국에서는 의미보다 "재밌는 발음" 자체로 먼저 퍼지며 일종의 고유 명사처럼 된 거예요.</p>
+          <p>같은 연음 현상이 사실 우리에게 익숙한 단어에도 숨어 있어요. mon ami (모나미) 도 한국에서는 꽤 익숙한 표현이죠. mon [몽]과 ami [아미]가 연음되면서 [모나미]로 들려요. <span class="bp-hl">근데 한글 표기 "모나미"만 보면 이게 원래 두 단어였다는 게 전혀 안 보인다는 거죠!</span></p>
+          <p>표기에서 악센트나 띄어쓰기 정보가 생략된 채로 굳어지면, 음성이 실제로 어떻게 만들어지는 소리인지가 사라지는 거예요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/si-bel-homme-2.jpg" alt="한국에서 쓰이는 프랑스어 표기에서 악센트가 생략된 예시" loading="lazy" width="579" height="631" style="max-width:440px">
+            <figcaption>실제 한국에서의 표기법을 보면 악센트가 생략된 경우가 많음</figcaption>
+          </figure>
+          <p>프랑스어 시벨롬도 마찬가지예요. [씨벨롬]이라는 소리 자체만 한글로 떼어놓고 보면, beau가 bel로 바뀌는 연음 규칙이 안 보이죠.</p>
+          <p>이런 "악센트와 연음 표기가 빠지면 발음이 통째로 달라지는" 사례, 예전에 프랑스어 키보드를 설치하면서 직접 비교해서 릴스로 만든 적이 있어요.</p>
+          <figure class="bp-embed">
+            <iframe src="https://www.instagram.com/p/DZXpnyiqbOe/embed" title="프랑스어 악센트 표기를 꼭 해야 하는 이유, 직접 만든 릴스" scrolling="no" allowtransparency="true" allowfullscreen loading="lazy"></iframe>
+            <figcaption>프랑스어 악센트 표기를 꼭 해야 하는 이유, 직접 만든 릴스</figcaption>
+            <a class="src" href="https://www.instagram.com/p/DZXpnyiqbOe/" target="_blank" rel="noopener">인스타그램에서 보기 &#8599;</a>
+          </figure>
+          <ul class="bp-list"><li>café에서 accent aigu(é)가 빠지면 [카프]가 돼요.</li><li>crêpe에서 accent circonflexe(ê)가 빠지면 [크르프]가 돼요.</li><li>comme des garçons도 ç의 cédille이 빠지면 [갸르꽁]으로 끝소리가 통째로 바뀌어버려요.</li></ul>
+          <p>프랑스어 시벨롬과 같은 원리예요. 표기 하나, 연음 규칙 하나가 빠지면 소리 자체가 달라지는데, 한글 표기만 보고는 그 차이가 전혀 안 보이는 거죠.</p>
+          <h2>프랑스에서 실제로 쓸 수 있는 말일까</h2>
+          <p>si bel homme이 어색한 진짜 이유는 문법 구조에 있어요. "C'est + 명사" 구조에서는 si를 잘 안 씁니다.</p>
+          <div class="bp-ex"><p><span class="bp-fr">C'est un bel homme</span> ✅</p><p><span class="bp-fr">C'est un très bel homme</span> ✅</p><p><span class="bp-fr">C'est un si bel homme</span> ❌</p></div>
+          <p>대신 감탄할 땐 이렇게 말해요.</p>
+          <div class="bp-ex"><p><span class="bp-fr">Il est si beau ! / Il est tellement beau !</span></p><p><span class="bp-fr">Quel bel homme !</span></p></div>
+          <figure class="bp-fig">
+            <img src="../img/blog/si-bel-homme-3.jpg" alt="파리에 있는 코르티스 멤버 사진" loading="lazy" width="201" height="251" style="max-width:201px">
+            <figcaption>그럼 이제 잘생긴 사람이 지나가도 어떻게 말할 수 있는지 아시겠죠? (예시: 파리에서의 코르티스)</figcaption>
+          </figure>
+          <p>즉 si bel homme 자체가 통째로 틀린 건 아니에요. <span class="bp-hl">다만 한국에서 쓰는 방식, 누군가를 보고 그 자리에서 던지는 감탄사로는 잘 안 맞아요.</span></p>
+          <p>이렇게 프랑스어 시벨롬으로 인한 발음 문제, 알고 보니 연음, 악센트, 문법 규칙 세 가지가 겹쳐서 생긴 일이었어요. café나 crêpe처럼 악센트 하나로 발음이 바뀌는 단어들과 같은 결로 보면, "왜 이렇게 발음되지?"가 좀 더 선명하게 보여요.</p>
+          <p>프랑스어 시벨롬의 미스테리가 좀 풀리셨나요? 이제 새로운 프랑스어 단어를 보거나, 한국에서 흔히 쓰이는 프랑스어 단어를 새로운 눈으로 보실 수 있을 거예요. :)</p>
+    </div>
+
+    <div class="bp-auth">
+      <div class="bp-auth-av">두우리</div>
+      <div class="bp-auth-b">
+        <p><b>김두우리</b>, 16년차 프랑스어 FLE 전문 코치<br>
+          한국 학생들이 어디서 막히는지 아는 사람이 씁니다. 1:1 맞춤 수업과 한불 통번역을 합니다.<a
+            href="/portfolio" class="bp-auth-cta" data-cta="post_siberom_lesson">이력 보기</a></p>
+      </div>
+    </div>
+
+    <div class="bp-more">
+      <p class="bp-more-k">관련 칼럼</p>
+      <div class="bp-more-g bp-more-3">
+          <a href="/content/french-dictee" aria-label="프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유"><img src="../img/blog/french-dictee-cover.jpg" alt="프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유" loading="lazy"></a>
+          <a href="/content/french-immersion" aria-label="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지"><img src="../img/blog/french-immersion-cover.jpg" alt="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지" loading="lazy"></a>
+          <a href="/content/french-study-habits" aria-label="한국 학생들의 잘못된 프랑스어 공부법, 이 습관만 바꿔보세요"><img src="../img/blog/french-study-habits-cover.jpg" alt="한국 학생들의 잘못된 프랑스어 공부법, 이 습관만 바꿔보세요" loading="lazy"></a>
+      </div>
+    </div>
+  </article>
+
+</div>
+</div>
+
+<footer class="site-footer" id="site-footer"></footer>
+<div class="kakao-float" id="kakao-float"></div>
+
+<script src="../js/components.js"></script>
+<script>
+  initComponents();
+
+  /* ── 영상 ──────────────────────────────────────────────
+     표지는 우리가 그린 것이라 인터넷이 없어도 항상 보입니다.
+     누르면 그 자리에서 재생합니다.
+     파일을 브라우저로 직접 열면(file://) 유튜브가 재생을 거부하므로 새 탭으로 엽니다. */
+  var BP_LOCAL = (location.protocol === 'file:');
+
+  document.addEventListener('click', function (e) {
+    var box = e.target.closest ? e.target.closest('.bp-video') : null;
+    if (!box || box.classList.contains('playing')) return;
+    var id = box.getAttribute('data-yt');
+    if (!id) return;
+    if (BP_LOCAL) { window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener'); return; }
+    box.classList.add('playing');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
+    f.title = '영상';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.referrerPolicy = 'strict-origin-when-cross-origin';
+    f.allowFullscreen = true;
+    box.appendChild(f);
+  });
+
+  /* 파일로 직접 연 경우, 재생이 새 탭에서 열린다는 것을 표지에 적어 둡니다 */
+  if (BP_LOCAL) {
+    Array.prototype.forEach.call(document.querySelectorAll('.bp-video-btn i'), function (i) {
+      i.textContent = '눌러서 재생 (새 탭에서 열립니다)';
+    });
+  }
+
+  /* 릴스와 틱톡은 iframe 하나로 그 자리에서 나옵니다.
+     스크립트도, 대신 보여 줄 표지도 필요 없습니다. */
+</script>
+</body>
+</html>

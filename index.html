@@ -67,6 +67,15 @@
   <meta name="twitter:card"        content="summary_large_image"/>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
+    /* ── 긴 제목이 들어가는 슬라이드 ──────────────────
+       칼럼 슬라이드 제목은 다른 슬라이드보다 깁니다.
+       글자를 조금 줄이고, 낱말 중간에서 줄이 끊기지 않게 합니다. */
+    .slide-title.st-long {
+      font-size: clamp(1.32rem, 4.4vw, 2.25rem);
+      line-height: 1.3;
+      word-break: keep-all;
+    }
+
     /* ── 후기 캐러셀 전용 스타일 ────────────────────── */
     .reviews-carousel {
       position: relative;
@@ -1007,15 +1016,16 @@
         </div>
       </div>
 
+      <!-- 3. 칼럼과 표현 (다크) -->
       <div class="carousel-slide slide-dark">
         <div class="slide-media">
-          <img src="img/index_content_caroussel.png" alt="무료 프랑스어 컨텐츠" loading="lazy">
+          <img src="img/index_content_caroussel.png" alt="프랑스어 칼럼 표지 세 장" loading="lazy">
         </div>
         <div class="slide-content">
-          <span class="slide-chip">📒 무료 프랑스어 컨텐츠</span>
-          <h2 class="slide-title">매일 하나씩,<br>불어 에센셜</h2>
-          <p class="slide-desc">스레드와 인스타에서 매일 올라오는<br>프랑스어 표현과 문화 이야기.</p>
-          <a href="/content" class="slide-cta" data-cta="home_slide_content">컨텐츠 보러가기</a>
+          <span class="slide-chip">📖 프랑스어 칼럼</span>
+          <h2 class="slide-title st-long">외국어로서의 프랑스어가&nbsp;아닌,<br>생각하게 하는 프랑스어</h2>
+          <p class="slide-desc">감각적인 프랑스어 표현과<br>저만의 프랑스어 공부 여정을 담아봅니다.</p>
+          <a href="/content" class="slide-cta" data-cta="home_slide_content">칼럼 읽으러 가기</a>
         </div>
       </div>
 

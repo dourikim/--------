@@ -27,15 +27,35 @@ const KAKAO_URL = 'https://open.kakao.com/o/s7eqNH9g';   /* 카카오 오픈채�
    내 컴퓨터에서 파일로 열어볼 때(file://)는 그 주소가 없으므로
    lesson.html 로 되돌려서 로컬 미리보기가 그대로 되게 합니다. */
 const IS_FILE = location.protocol === 'file:';
+
+/* 사이트 뿌리가 어디인지, 이 파일이 놓인 자리로 알아냅니다.
+   글 페이지는 /content/ 안에 있어서 '../' 가 앞에 붙어야 합니다. */
+const SITE_ROOT = (function () {
+  const me = document.querySelector('script[src*="components.js"]');
+  const s  = me ? me.getAttribute('src') : 'js/components.js';
+  return s.replace(/js\/components\.js.*$/, '');
+})();
+
 function siteHref(h) {
-  if (!IS_FILE || !h || h.charAt(0) !== '/') return h;
-  if (h === '/') return 'index.html';
-  const m = h.match(/^\/([A-Za-z0-9_-]+)(#.*)?$/);
-  return m ? m[1] + '.html' + (m[2] || '') : h;
+  if (!h || h.charAt(0) !== '/') return h;
+
+  /* 미리보기 파일은 자기만의 지도를 들고 옵니다 (preview.py 가 넣어 줍니다).
+     지도에 없는 주소는 실제 사이트로 보냅니다. */
+  const PV = window.__PREVIEW_MAP__;
+  if (PV) return PV[h.replace(/\/$/, '')] || ('https://www.dourikim.com' + h);
+
+  if (!IS_FILE) return h;
+  if (h === '/') return SITE_ROOT + 'index.html';
+
+  /* /lesson 뿐 아니라 /content/french-immersion 처럼 두 칸짜리 주소도 받습니다.
+     예전에는 한 칸짜리만 받아서, 글 주소가 그대로 남아 D:\content\... 를 찾았습니다. */
+  const m = h.match(/^\/([A-Za-z0-9_\-\/]+?)\/?(#.*|\?.*)?$/);
+  return m ? SITE_ROOT + m[1] + '.html' + (m[2] || '') : h;
 }
+
 /* 페이지 본문에 직접 적힌 /주소 링크도 같이 되돌립니다 */
 function fixLocalLinks() {
-  if (!IS_FILE) return;
+  if (!IS_FILE && !window.__PREVIEW_MAP__) return;
   document.querySelectorAll('a[href^="/"]').forEach(function (a) {
     a.setAttribute('href', siteHref(a.getAttribute('href')));
   });
@@ -246,7 +266,11 @@ function loadEditMode() {
   if (document.getElementById('edit-mode-script')) return;
   const s = document.createElement('script');
   s.id  = 'edit-mode-script';
-  s.src = 'js/edit-mode.js';
+  /* 글 페이지는 /content/ 안에 있어서 'js/...' 로는 못 찾습니다.
+     이 파일(components.js)이 있는 자리를 기준으로 잡습니다. */
+  const me = document.querySelector('script[src*="components.js"]');
+  const dir = me ? me.getAttribute('src').replace(/components\.js.*$/, '') : 'js/';
+  s.src = dir + 'edit-mode.js';
   document.body.appendChild(s);
 }
 

@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <!-- ══ 내 방문 집계 제외 ══
-       이 기기에서 한 번만 https://www.dourikim.com/?noga=1 을 열면
-       그 브라우저에는 표시가 저장되고, 이후 이 사이트의 모든 페이지에서
-       구글 애널리틱스가 아예 켜지지 않습니다.
-       휴대폰을 LTE로 써도, 공유기 IP가 바뀌어도 그대로 유지됩니다.
-       해제할 때는 주소 뒤에 ?noga=0 을 붙여서 여세요.
-       이 블록은 반드시 아래 gtag 스크립트보다 먼저 있어야 합니다. -->
+<!-- ══ 내 방문 집계 제외 ══ 이 블록은 반드시 아래 gtag 스크립트보다 먼저 있어야 합니다. -->
 <script>
 (function () {
   var KEY = 'noga', ID = 'G-K5BW3YMBH6';
@@ -20,31 +14,23 @@
   } catch (e) { return; }
   if (!on) return;
   window['ga-disable-' + ID] = true;
-  /* 켜져 있다는 것을 눈으로 확인할 수 있게 왼쪽 아래에 작은 표시를 답니다.
-     오른쪽 아래는 카카오 버튼 자리라 피합니다. 누르면 그 탭에서만 사라집니다. */
   document.addEventListener('DOMContentLoaded', function () {
     var b = document.createElement('button');
     b.type = 'button';
     b.textContent = '집계 제외 중';
     b.title = '이 기기는 방문자 수에 포함되지 않습니다. 해제하려면 주소 뒤에 ?noga=0 을 붙여 여세요.';
-    /* 수정 모드 버튼(#em-wrap)도 왼쪽 아래에 뜨는데, 그건 로컬에서만 로드됩니다.
-       로컬일 때만 그 위로 올려서 겹치지 않게 합니다. */
     var local = location.protocol === 'file:'
       || /^(localhost|127\.|\[::1\])/.test(location.hostname);
-    var bottom = local ? '72px' : '14px';
-    b.style.cssText = 'position:fixed;left:20px;bottom:' + bottom + ';z-index:99999;'
+    b.style.cssText = 'position:fixed;left:20px;bottom:' + (local ? '72px' : '14px') + ';z-index:99999;'
       + 'border:0;border-radius:999px;padding:7px 12px;cursor:pointer;'
-      + 'background:rgba(46,14,12,.82);color:#fff;font:600 11px/1 sans-serif;'
-      + 'font-family:Pretendard,sans-serif;letter-spacing:.02em;';
+      + 'background:rgba(46,14,12,.82);color:#fff;font:600 11px/1 Pretendard,sans-serif;letter-spacing:.02em;';
     b.onclick = function () { b.remove(); };
     document.body.appendChild(b);
   });
 })();
 </script>
-  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-K5BW3YMBH6"></script>
 <script>
-  /* 최초 렌더에서는 스크롤하지 않습니다 */
   let isFirstRender = true;
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -53,158 +39,219 @@
 </script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>매일 하나씩 프랑스어 표현 | 무료 학습 콘텐츠 49개</title>
-  <meta name="description" content="매일 하나씩 쌓이는 프랑스어 표현 모음. 입문부터 중급까지, 프랑스 문화와 발음까지 태그로 골라 보세요."/>
+  <title>프랑스어 공부 방법 | 칼럼과 표현 모음 | 김두우리</title>
+  <meta name="description" content="프랑스어 공부하다 막히는 자리를 짚는 칼럼과, 교재에 안 나오는 표현 모음. 발음부터 문법, 프랑스 문화까지 16년차 코치가 직접 씁니다."/>
   <link rel="canonical" href="https://www.dourikim.com/content"/>
   <meta property="og:type"         content="website"/>
   <meta property="og:url"          content="https://www.dourikim.com/content"/>
   <meta property="og:site_name"    content="Do! 우리! 프랑스어"/>
-  <meta property="og:title"        content="매일 하나씩 프랑스어 표현 | 무료 학습 콘텐츠"/>
-  <meta property="og:description"  content="입문부터 중급까지, 프랑스 문화와 발음까지 태그로 골라 보는 무료 표현 모음."/>
+  <meta property="og:title"        content="프랑스어 공부 방법 | 칼럼과 표현 모음"/>
+  <meta property="og:description"  content="프랑스어 공부하다 막히는 자리를 짚는 칼럼과, 교재에 안 나오는 표현 모음."/>
   <meta property="og:image"        content="https://www.dourikim.com/img/og-douri.jpg"/>
   <meta property="og:image:width"  content="1200"/>
   <meta property="og:image:height" content="630"/>
   <meta name="twitter:card"        content="summary_large_image"/>
+
+  <!-- ══ 색인용 구조화 데이터 ══
+       이 페이지가 '프랑스어 공부 방법'을 다루는 칼럼 묶음이라고 구글에 알립니다.
+       '프랑스어 독학'은 인강 페이지(course.html)가 가져갑니다. 한 낱말을 두 페이지가
+       나눠 가지면 구글이 어느 쪽을 올릴지 헷갈립니다.
+       글 목록은 여기에 적지 않습니다. 글은 계속 늘어나고, 각 글 페이지가 이미
+       자기 Article 을 갖고 있으며 sitemap.xml 에도 들어갑니다.
+       그래서 칼럼을 추가할 때 이 블록은 손대지 않아도 됩니다. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": "https://www.dourikim.com/content",
+    "name": "프랑스어 공부 방법",
+    "description": "프랑스어 공부하다 막히는 자리를 짚는 칼럼과, 교재에 안 나오는 표현 모음.",
+    "about": ["프랑스어 공부 방법", "프랑스어 공부하기"],
+    "inLanguage": "ko",
+    "isPartOf": { "@type": "WebSite", "name": "Do! 우리! 프랑스어", "url": "https://www.dourikim.com/" },
+    "author": { "@type": "Person", "name": "김두우리", "url": "https://www.dourikim.com/portfolio" }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "홈", "item": "https://www.dourikim.com/" },
+      { "@type": "ListItem", "position": 2, "name": "학습 콘텐츠", "item": "https://www.dourikim.com/content" }
+    ]
+  }
+  </script>
+
   <link rel="stylesheet" href="css/style.css"/>
   <style>
-    /* 카드 이모티콘 제거 후 레이아웃 */
+    /* ══════════════════════════════════════════════════════════
+       학습 콘텐츠 페이지
+
+       구조를 탭에서 '위아래 두 칸'으로 바꿉니다.
+       탭은 한쪽을 늘 숨기기 때문에, 처음 온 사람은 이 페이지에
+       무엇이 있는지 절반만 봅니다. 칼럼과 스레드 블록은 성격이
+       아예 다르므로, 각각이 무엇인지 적어 두고 나란히 보여줍니다.
+       ══════════════════════════════════════════════════════════ */
+
+    /* ── 칸 머리 ───────────────────────────────── */
+    .ct-sec { padding: 46px 0 8px; }
+    .ct-sec-alt { background: var(--surface); border-top: 1px solid var(--border);
+                  margin-top: 40px; padding-bottom: 18px; }
+    .sec-head { max-width: 1008px; margin: 0 auto; padding: 0 24px 4px; }
+    .sec-title {
+      font-family: var(--font-heading); font-size: 1.32rem; font-weight: 700;
+      color: var(--dark); letter-spacing: -0.02em;
+    }
+    .sec-desc { font-size: 0.83rem; line-height: 1.85; color: var(--muted);
+                margin-top: 9px; max-width: 640px; word-break: keep-all; }
+    .sec-desc b { color: var(--dark); font-weight: 700; }
+
+    /* ── 칼럼 : 맨 위 한 편은 크게 ─────────────── */
+    .posts-list { max-width: 1008px; margin: 0 auto; padding: 18px 24px 0; display: grid; gap: 12px; }
+
+    .feat-card {
+      display: grid; grid-template-columns: 236px 1fr; gap: 22px; align-items: start;
+      text-decoration: none; color: inherit; background: var(--white);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 18px; transition: border-color .15s, background .15s;
+    }
+    .feat-card:hover { border-color: rgba(194,74,53,.4); background: #fffdfd; }
+    .feat-thumb { aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden;
+                  background: linear-gradient(135deg, #F6EAE7, #EFE0DC);
+                  display: flex; align-items: center; justify-content: center; font-size: 2rem; }
+    .feat-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .feat-body { display: flex; flex-direction: column; padding: 6px 4px 6px 0; }
+    .feat-new { align-self: flex-start; font-size: 0.66rem; font-weight: 700;
+                color: var(--white); background: var(--brick);
+                border-radius: 100px; padding: 3px 10px; margin-bottom: 11px; }
+    .feat-title { font-family: var(--font-heading); font-size: 1.24rem; font-weight: 700;
+                  line-height: 1.5; color: var(--dark); word-break: keep-all;
+                  letter-spacing: -0.02em; }
+    .feat-preview { font-size: 0.84rem; color: var(--muted); line-height: 1.85;
+                    margin-top: 11px; word-break: keep-all; }
+    .feat-meta { margin-top: 18px; display: flex; gap: 9px;
+                 align-items: center; flex-wrap: wrap; font-size: 0.73rem; color: #B09A96; }
+    @media (max-width: 680px) {
+      .feat-card { grid-template-columns: 1fr; gap: 14px; padding: 14px; }
+      .feat-thumb { aspect-ratio: 16 / 9; }
+      .feat-title { font-size: 1.06rem; }
+    }
+
+    .post-card {
+      display: grid; grid-template-columns: 104px 1fr; gap: 16px;
+      text-decoration: none; color: inherit; background: var(--white);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 15px 17px; transition: border-color .15s, background .15s;
+    }
+    .post-card:hover { border-color: rgba(194,74,53,.4); background: #fffdfd; }
+    .post-thumb {
+      aspect-ratio: 1 / 1; border-radius: 8px; overflow: hidden;
+      background: linear-gradient(135deg, #F6EAE7, #EFE0DC);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; flex-shrink: 0;
+    }
+    .post-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .post-title { font-family: var(--font-heading); font-size: 1rem; font-weight: 700;
+                  line-height: 1.5; color: var(--dark); word-break: keep-all; }
+    .post-preview { font-size: 0.79rem; color: var(--muted); line-height: 1.7; margin-top: 7px;
+                    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+                    overflow: hidden; word-break: keep-all; }
+    .post-meta { display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
+                 margin-top: 10px; font-size: 0.72rem; color: #B09A96; }
+    .post-topic { font-size: 0.66rem; font-weight: 700; border-radius: 100px;
+                  padding: 3px 9px; background: #FBEEEA; color: var(--brick); }
+    .post-src { font-size: 0.66rem; font-weight: 700; border-radius: 100px; padding: 3px 9px; }
+    .post-src.naver { background: #EAF6EC; color: #1F7A34; }
+    @media (max-width: 560px) {
+      .post-card { grid-template-columns: 76px 1fr; gap: 12px; padding: 13px 14px; }
+      .post-title { font-size: 0.92rem; }
+    }
+
+    /* ── 스레드 블록 카드 ──────────────────────── */
     .content-card { align-items: stretch; }
     .card-emoji   { display: none; }
-    /* 카드 제목 (강조) */
-    .card-title {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1.5;
-      margin-bottom: 6px;
-      word-break: keep-all;
-    }
-    /* 5줄 본문 미리보기 */
-    .card-preview {
-      font-size: 0.82rem;
-      color: var(--muted);
-      line-height: 1.65;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      margin-bottom: 8px;
-      word-break: keep-all;
-      white-space: pre-line;
-    }
+    .card-title { font-size: 0.92rem; font-weight: 700; color: var(--dark);
+                  line-height: 1.5; margin-bottom: 6px; word-break: keep-all; }
+    .card-preview { font-size: 0.82rem; color: var(--muted); line-height: 1.65;
+                    display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;
+                    overflow: hidden; margin-bottom: 8px; word-break: keep-all; white-space: pre-line; }
+    .content-card.pg-off { display: none; }
 
-    /* ── 페이지네이션 ───────────────────────────── */
-    .pagination-bar {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
-      padding: 8px 0 36px;
-      flex-wrap: wrap;
-    }
-    .pg-btn {
-      min-width: 36px;
-      height: 36px;
-      padding: 0 10px;
-      border: 1.5px solid var(--border);
-      border-radius: 8px;
-      background: var(--white);
-      color: var(--muted);
-      font-size: 0.82rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: all 0.15s;
-    }
-    .pg-btn:hover:not(:disabled) {
-      border-color: var(--brick);
-      color: var(--brick);
-      background: #FFF4F2;
-    }
-    .pg-btn.pg-active {
-      background: var(--brick);
-      border-color: var(--brick);
-      color: var(--white);
-      font-weight: 700;
-    }
-    .pg-btn:disabled {
-      opacity: 0.35;
-      cursor: default;
-    }
-    .pg-btn.pg-arrow {
-      font-size: 0.78rem;
-      color: var(--dark);
-    }
-    .pg-ellipsis {
-      color: var(--muted);
-      font-size: 0.85rem;
-      padding: 0 4px;
-      line-height: 36px;
-    }
+    /* ── 페이지네이션 ──────────────────────────── */
+    .pagination-bar { display: flex; align-items: center; justify-content: center;
+                      gap: 4px; padding: 8px 0 12px; flex-wrap: wrap; }
+    .pg-btn { min-width: 36px; height: 36px; padding: 0 10px; border: 1.5px solid var(--border);
+              border-radius: 8px; background: var(--white); color: var(--muted);
+              font-size: 0.82rem; font-weight: 500; cursor: pointer; transition: all 0.15s; }
+    .pg-btn:hover:not(:disabled) { border-color: var(--brick); color: var(--brick); background: #FFF4F2; }
+    .pg-btn.pg-active { background: var(--brick); border-color: var(--brick);
+                        color: var(--white); font-weight: 700; }
+    .pg-btn:disabled { opacity: 0.35; cursor: default; }
+    .pg-btn.pg-arrow { font-size: 0.78rem; color: var(--dark); }
+    .pg-ellipsis { color: var(--muted); font-size: 0.85rem; padding: 0 4px; line-height: 36px; }
 
-    /* ══ 글 팝업 ═══════════════════════════════════════════
-       스레드로 나가지 않고 이 자리에서 읽습니다.
-       다른 페이지 팝업(수업 학습지, 릴스)과 같은 방식입니다.
-       z-index 를 가장 높게 두어 상단 메뉴와 카테고리 줄을 덮습니다. */
-    .th-bg {
-      display: none; position: fixed; inset: 0; z-index: 12000;
-      background: rgba(46,14,12,.72);
-      align-items: center; justify-content: center;
-      padding: 62px 78px;            /* 닫기 단추와 화살표가 놓일 자리 */
-    }
+    /* ── 맨 아래 안내 ──────────────────────────── */
+    .ct-end { max-width: 700px; margin: 0 auto; padding: 34px 24px 56px; text-align: center; }
+    .ct-end p { font-size: 0.86rem; line-height: 1.9; color: var(--muted); word-break: keep-all; }
+    .ct-end .cta-btn { width: auto; display: inline-block; margin-top: 16px; padding: 12px 24px; }
+
+    /* ══ 스레드 글 팝업 ══════════════════════════ */
+    .th-bg { display: none; position: fixed; inset: 0; z-index: 12000;
+             background: rgba(46,14,12,.72); align-items: center; justify-content: center;
+             padding: 46px 78px; }
     .th-bg.open { display: flex; }
-
-    .th-box {
-      position: relative;
-      width: 100%; max-width: 560px;
-      height: min(660px, 100%);
-    }
-    /* 스레드 글을 그대로 보여줍니다 */
-    .th-frame {
-      width: 100%; height: 100%; border: 0; display: block;
-      border-radius: 14px; background: var(--white);
-      box-shadow: 0 24px 70px rgba(46,14,12,.3);
-    }
-
-    .th-close {
-      position: absolute; top: -46px; right: 0; z-index: 3;
-      width: 38px; height: 38px; border-radius: 50%; border: 0;
-      background: rgba(255,255,255,.92); color: var(--dark);
-      font-size: 16px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .th-close:hover { background: var(--brick); color: #fff; }
-
-    /* 좌우 이동. 웹은 글 양옆, 모바일은 글 아래쪽 */
-    .th-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      width: 44px; height: 44px; border-radius: 50%; border: 0;
-      background: rgba(255,255,255,.92); color: var(--dark);
-      font-size: 20px; line-height: 1; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 12px rgba(46,14,12,.18);
-    }
+    .th-box { position: relative; width: 100%; max-width: 940px; height: min(660px, 100%);
+              box-shadow: 0 24px 70px rgba(46,14,12,.3); border-radius: 14px;
+              display: grid; grid-template-columns: minmax(0, 1fr) 300px; }
+    .th-read { padding: 26px 28px 20px; display: flex; flex-direction: column;
+               overflow-y: auto; min-width: 0; background: var(--white);
+               border-radius: 14px 0 0 14px; }
+    .th-read .card-chips { display: flex; gap: 6px; margin-bottom: 10px; }
+    .th-title { font-family: var(--font-heading); font-size: 1.08rem; font-weight: 700;
+                line-height: 1.6; color: var(--dark); word-break: keep-all; padding-right: 34px; }
+    .th-text { font-size: 0.86rem; line-height: 1.95; color: #3A2320; margin-top: 14px;
+               white-space: pre-wrap; word-break: keep-all; }
+    .th-foot { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--border);
+               display: flex; align-items: center; justify-content: space-between;
+               gap: 10px; flex-wrap: wrap; }
+    .th-origin { font-size: 0.75rem; color: var(--muted); text-decoration: none; white-space: nowrap; }
+    .th-origin b { color: var(--brick); font-weight: 700; }
+    .th-origin:hover b { text-decoration: underline; }
+    .th-count { font-size: 0.74rem; color: #B09A96; font-weight: 600; white-space: nowrap; }
+    .th-embed { background: var(--surface); border-left: 1px solid var(--border);
+                padding: 13px; min-width: 0; border-radius: 0 14px 14px 0; }
+    .th-frame { width: 100%; height: 100%; border: 0; display: block;
+                border-radius: 10px; background: var(--white); }
+    .th-close { position: absolute; top: 12px; right: 12px; z-index: 3;
+                width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border);
+                background: rgba(255,255,255,.96); color: var(--muted); font-size: 14px;
+                cursor: pointer; display: flex; align-items: center; justify-content: center;
+                box-shadow: 0 2px 10px rgba(46,14,12,.12); }
+    .th-close:hover { background: var(--brick); border-color: var(--brick); color: #fff; }
+    .th-arrow { position: absolute; top: 50%; transform: translateY(-50%);
+                width: 44px; height: 44px; border-radius: 50%; border: 0;
+                background: rgba(255,255,255,.92); color: var(--dark); font-size: 20px;
+                line-height: 1; cursor: pointer; display: flex; align-items: center;
+                justify-content: center; box-shadow: 0 2px 12px rgba(46,14,12,.18); }
     .th-arrow:hover { background: var(--brick); color: #fff; }
     .th-arrow[disabled] { opacity: .35; cursor: default; }
     .th-prev { left: -58px; }
     .th-next { right: -58px; }
-
-    .th-count {
-      position: absolute; left: 50%; transform: translateX(-50%); bottom: -40px;
-      font-size: 0.78rem; color: #fff; font-weight: 600;
-      background: rgba(46,14,12,.55); border-radius: 100px; padding: 6px 14px;
-      white-space: nowrap;
+    @media (max-width: 900px) {
+      .th-box { grid-template-columns: 1fr; grid-template-rows: auto minmax(300px, 1fr); }
+      .th-read { max-height: 42vh; border-radius: 14px 14px 0 0; }
+      .th-embed { border-left: 0; border-top: 1px solid var(--border); border-radius: 0 0 14px 14px; }
     }
-
     @media (max-width: 760px) {
-      .th-bg { padding: 58px 14px 78px; }
+      .th-bg { padding: 20px 14px 78px; }
       .th-box { height: 100%; }
-      .th-close { top: -44px; right: 0; }
       .th-arrow { top: auto; bottom: -60px; transform: none; }
-      .th-prev { left: 0; }
-      .th-next { right: 0; }
-      .th-count { bottom: -48px; }
+      .th-prev { left: 30%; }
+      .th-next { right: 30%; }
     }
 
+    [hidden] { display: none !important; }
   </style>
 </head>
 <body>
@@ -216,46 +263,86 @@
 <div class="page-body">
 <div class="content-wrap">
 
+  <!-- ══ 이 페이지의 의도 ══ -->
   <div class="page-hero ph-light">
-    <p class="page-hero-chip">📒 무료 프랑스어 컨텐츠</p>
-    <h1 class="page-hero-title">불어 에센셜<br>매일 하나씩</h1>
-    <p class="page-hero-desc"><a href="https://www.threads.net/@douri.french" target="_blank" rel="noopener" style="color:var(--brick); font-weight:700;">스레드 @douri.french</a>에서 매일 올라오는 프랑스어 표현 모음.</p>
+    <p class="page-hero-chip">📒 프랑스어로 생각하기</p>
+    <h1 class="page-hero-title">시야를 넓히고,<br>프랑스어 감각 키우기</h1>
+    <p class="page-hero-desc">
+      '스레드'로는 쉽게 읽을 수 있는 프랑스어 표현을,<br>
+      '칼럼'으로는 프랑스어를 바라보는 제 생각을 공유합니다.
+    </p>
   </div>
 
-  <!-- 태그 필터 -->
-  <div class="tag-filter-bar" id="tag-filter">
-    <button class="tag-chip active" data-tag="all">전체</button>
-    <button class="tag-chip" data-tag="완전입문자">🌱 완전 입문자</button>
-    <button class="tag-chip" data-tag="초보자">📖 초보자</button>
-    <button class="tag-chip" data-tag="중급자">🔥 중급자</button>
-    <button class="tag-chip" data-tag="프랑스문화">🇫🇷 프랑스 문화</button>
-    <button class="tag-chip" data-tag="프랑스유머">😄 프랑스 유머</button>
-    <button class="tag-chip" data-tag="학습툴">🛠️ 학습 툴/방법</button>
-    <button class="tag-chip" data-tag="발음">🎙️ 불어 발음</button>
+  <!-- ══ 칼럼 ══ -->
+  <section class="ct-sec" id="sec-column">
+    <div class="sec-head">
+      <h2 class="sec-title">칼럼</h2>
+      <p class="sec-desc">
+        프랑스어를 공부하다 막히는 자리, 그리고 한국, 프랑스, 브라질에서 프랑스어로 살며 겪은
+        <b>공부 방법과 견해</b>를 기록합니다.
+      </p>
+    </div>
+
+    <!-- 주제 칩은 칼럼이 더 쌓이면 다시 넣습니다 -->
+
+    <div class="posts-list" id="posts-list"></div>
+    <div class="pagination-bar" id="col-pagination"></div>
+  </section>
+
+  <!-- ══ 스레드 블록 ══ -->
+  <section class="ct-sec ct-sec-alt" id="sec-thread">
+    <div class="sec-head">
+      <h2 class="sec-title">스레드 블록</h2>
+      <p class="sec-desc">
+        하루에 하나씩, 이동하면서 <b>짧은 시간에 후루룩</b> 익힐 수 있는 유용한 표현들입니다.
+      </p>
+    </div>
+
+    <div class="tag-filter-bar" id="tag-filter">
+      <button class="tag-chip active" data-tag="all">전체</button>
+      <button class="tag-chip" data-tag="완전입문자">🌱 완전 입문자</button>
+      <button class="tag-chip" data-tag="초보자">📖 초보자</button>
+      <button class="tag-chip" data-tag="중급자">🔥 중급자</button>
+      <button class="tag-chip" data-tag="프랑스문화">🇫🇷 프랑스 문화</button>
+      <button class="tag-chip" data-tag="프랑스유머">😄 프랑스 유머</button>
+      <button class="tag-chip" data-tag="학습툴">🛠️ 학습 툴/방법</button>
+      <button class="tag-chip" data-tag="발음">🎙️ 불어 발음</button>
+    </div>
+
+    <div class="cards-list" id="cards-list"></div>
+    <div class="pagination-bar" id="pagination-bar"></div>
+    <p id="cards-count" style="text-align:center; padding:0 0 26px; font-size:0.82rem; color:var(--muted);"></p>
+  </section>
+
+  <div class="ct-end">
+    <p>여기 있는 글은 전부 수업에서 실제로 나온 질문에서 시작했습니다.<br>
+       내 경우에는 무엇이 문제인지 같이 찾아보고 싶으시면요.</p>
+    <a href="/lesson" class="cta-btn cta-brick" data-cta="content_lesson">1:1 수업 살펴보기</a>
   </div>
-
-  <!-- 카드 목록 (JS로 자동 생성) -->
-  <div class="cards-list" id="cards-list"></div>
-
-  <!-- 페이지네이션 -->
-  <div class="pagination-bar" id="pagination-bar"></div>
-
-  <!-- 총 개수 표시 -->
-  <p id="cards-count" style="text-align:center; padding:4px 0 24px; font-size:0.82rem; color:var(--muted);"></p>
 
 </div>
 <footer class="site-footer" id="site-footer"></footer>
 </div>
 
-<!-- 글 팝업 -->
-<div class="th-bg" id="th-bg" role="dialog" aria-modal="true" aria-label="스레드 글">
+<!-- 스레드 글 팝업 -->
+<div class="th-bg" id="th-bg" role="dialog" aria-modal="true" aria-label="표현 자세히 보기">
   <div class="th-box">
     <button class="th-close" type="button" onclick="thClose()" aria-label="닫기">&#10005;</button>
-    <iframe class="th-frame" id="th-frame" src="" title="스레드 글" loading="lazy"
-            allowtransparency="true" allow="clipboard-write"></iframe>
-    <button class="th-arrow th-prev" type="button" onclick="thMove(-1)" aria-label="이전 글">&#8249;</button>
-    <button class="th-arrow th-next" type="button" onclick="thMove(1)" aria-label="다음 글">&#8250;</button>
-    <span class="th-count" id="th-count"></span>
+    <div class="th-read">
+      <div class="card-chips" id="th-chips"></div>
+      <p class="th-title" id="th-title"></p>
+      <div class="th-text" id="th-text"></div>
+      <div class="th-foot">
+        <a class="th-origin" id="th-origin" href="#" target="_blank" rel="noopener">출처, <b>스레드 @douri.french</b> &#8599;</a>
+        <span class="th-count" id="th-count"></span>
+      </div>
+    </div>
+    <div class="th-embed">
+      <iframe class="th-frame" id="th-frame" src="" title="스레드 글" loading="lazy"
+              allowtransparency="true" allow="clipboard-write"></iframe>
+    </div>
+    <button class="th-arrow th-prev" type="button" onclick="thMove(-1)" aria-label="이전 표현">&#8249;</button>
+    <button class="th-arrow th-next" type="button" onclick="thMove(1)" aria-label="다음 표현">&#8250;</button>
   </div>
 </div>
 
@@ -268,22 +355,97 @@
   const PAGE_SIZE = 6;
   let currentData = [];
   let currentPage = 1;
+  let allCards    = [];
 
-  /* 스레드 글 주소 뒤에 /embed 를 붙이면 그 글 하나만 그대로 불러옵니다 */
-  function embedSrc(href) {
-    return href.replace(/\/+$/, '') + '/embed';
+  CONTENT_DATA.forEach(function (it, i) { it._i = i; });
+
+  function embedSrc(href) { return href.replace(/\/+$/, '') + '/embed'; }
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
-  /* ── 카드 한 장 HTML ───────────────────────────── */
+  /* ══ 칼럼 ════════════════════════════════════════════════
+     맨 위 한 편은 크게 놓습니다. 새 글을 먼저 보게 하려는 것입니다. */
+  function feature(p) {
+    const outside = p.type === 'naver';
+    const emo = (TOPIC_LABELS[p.topic] || '📄').split(' ')[0];
+    const thumb = p.cover ? `<img src="${p.cover}" alt="${esc(p.title)}">` : emo;
+    const attr = outside ? ' target="_blank" rel="noopener"' : '';
+    return `
+      <a href="${siteHref(p.href)}"${attr} class="feat-card" data-topic="${p.topic}" data-cta="content_post_feature">
+        <div class="feat-thumb">${thumb}</div>
+        <div class="feat-body">
+          <span class="feat-new">가장 최근 칼럼</span>
+          <div class="feat-title">${p.title}</div>
+          <div class="feat-preview">${p.preview}</div>
+          <div class="feat-meta">
+            <span class="post-topic">${TOPIC_LABELS[p.topic] || ''}</span>
+            ${outside ? '<span class="post-src naver">네이버 블로그</span>' : ''}
+            <span>${p.date}</span><span>읽는 데 ${p.mins}분</span>
+          </div>
+        </div>
+      </a>`;
+  }
+
+  function postHTML(p) {
+    const outside = p.type === 'naver';
+    const emo = (TOPIC_LABELS[p.topic] || '📄').split(' ')[0];
+    const thumb = p.cover ? `<img src="${p.cover}" alt="${esc(p.title)}" loading="lazy">` : emo;
+    const attr = outside ? ' target="_blank" rel="noopener"' : '';
+    const tail = outside ? '새 탭에서 열림' : `읽는 데 ${p.mins}분`;
+    return `
+      <a href="${siteHref(p.href)}"${attr} class="post-card" data-topic="${p.topic}" data-cta="content_post">
+        <div class="post-thumb">${thumb}</div>
+        <div>
+          <div class="post-title">${p.title}</div>
+          <div class="post-preview">${p.preview}</div>
+          <div class="post-meta">
+            <span class="post-topic">${TOPIC_LABELS[p.topic] || ''}</span>
+            ${outside ? '<span class="post-src naver">네이버 블로그</span>' : ''}
+            <span>${p.date}</span><span>${tail}</span>
+          </div>
+        </div>
+      </a>`;
+  }
+
+  /* 칼럼은 한 번에 3편씩 봅니다. 맨 앞 한 편만 큰 카드입니다. */
+  const COL_SIZE = 3;
+
+  function renderPosts(page) {
+    const start = (page - 1) * COL_SIZE;
+    const slice = POST_DATA.slice(start, start + COL_SIZE);
+    document.getElementById('posts-list').innerHTML =
+      slice.map((p, i) => (start + i === 0 ? feature(p) : postHTML(p))).join('');
+    renderColPagination(page, Math.max(1, Math.ceil(POST_DATA.length / COL_SIZE)));
+    if (page !== 1) {
+      const h = document.querySelector('#sec-column .sec-head');
+      if (h) window.scrollTo({ top: h.getBoundingClientRect().top + window.scrollY - 80,
+                               behavior: 'smooth' });
+    }
+  }
+  window.renderPosts = renderPosts;
+
+  function renderColPagination(page, totalPages) {
+    const bar = document.getElementById('col-pagination');
+    if (totalPages <= 1) { bar.innerHTML = ''; return; }
+    let b = '';
+    b += `<button class="pg-btn pg-arrow" ${page === 1 ? 'disabled' : ''} onclick="renderPosts(${page - 1})">&#8249;</button>`;
+    for (let i = 1; i <= totalPages; i++) {
+      b += `<button class="pg-btn ${i === page ? 'pg-active' : ''}" onclick="renderPosts(${i})">${i}</button>`;
+    }
+    b += `<button class="pg-btn pg-arrow" ${page === totalPages ? 'disabled' : ''} onclick="renderPosts(${page + 1})">&#8250;</button>`;
+    bar.innerHTML = b;
+  }
+
+  /* ══ 스레드 블록 ═════════════════════════════════════════ */
   function cardHTML(item, idx) {
     const levelTag   = item.tags.find(t => LEVEL_TAGS.includes(t));
     const levelLabel = levelTag ? TAG_LABELS[levelTag] : '';
     const topicTag   = item.tags.find(t => !LEVEL_TAGS.includes(t));
     const topicLabel = topicTag ? TAG_LABELS[topicTag] : '';
-    const dataTags   = item.tags.join(',');
     return `
-      <a href="${item.href}" target="_blank" rel="noopener"
-         class="content-card" data-tags="${dataTags}" data-idx="${idx}">
+      <a href="${siteHref('/content')}?post=${idx}" class="content-card"
+         data-tags="${item.tags.join(',')}" data-idx="${idx}" data-cta="content_expression">
         <div class="card-body">
           <div class="card-chips">
             ${levelLabel ? `<span class="card-chip chip-level">${levelLabel}</span>` : ''}
@@ -291,67 +453,62 @@
           </div>
           <div class="card-title">${item.title}</div>
           ${item.preview ? `<div class="card-preview">${item.preview}</div>` : ''}
-          <div class="card-source">📲 스레드에서 보기, ${item.date}</div>
+          <div class="card-source">표현 보기, ${item.date}</div>
         </div>
       </a>`;
   }
 
-  /* ── 페이지 렌더 ───────────────────────────────── */
+  /* 49개를 전부 문서에 넣고 화면에서만 감춥니다. 검색 엔진이 다 읽습니다. */
+  function renderAll() {
+    document.getElementById('cards-list').innerHTML =
+      CONTENT_DATA.map((it, i) => cardHTML(it, i)).join('');
+    allCards = Array.prototype.slice.call(
+      document.getElementById('cards-list').querySelectorAll('.content-card'));
+  }
+
   function renderPage(page) {
     currentPage = page;
     const total      = currentData.length;
-    const totalPages = Math.ceil(total / PAGE_SIZE);
+    const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
     const start      = (page - 1) * PAGE_SIZE;
-    const slice      = currentData.slice(start, start + PAGE_SIZE);
-
-    document.getElementById('cards-list').innerHTML = slice.map((it, i) => cardHTML(it, start + i)).join('');
-    document.getElementById('cards-count').textContent = `총 ${total}개의 컨텐츠`;
-
+    const show = {};
+    currentData.slice(start, start + PAGE_SIZE).forEach(function (it) { show[it._i] = 1; });
+    allCards.forEach(function (c) { c.classList.toggle('pg-off', !show[c.dataset.idx]); });
+    document.getElementById('cards-count').textContent = `총 ${total}개의 표현`;
     renderPagination(page, totalPages);
-
-    /* 목록 첫 줄부터 보이게 합니다. 최초 로드에서는 히어로부터 보이도록 건너뜁니다.
-       태그 바가 sticky 라서 그 자체를 기준으로 삼으면 화면이 안 움직입니다. */
     if (!isFirstRender) {
       scrollToPanelTop(document.getElementById('tag-filter'),
                        document.getElementById('cards-list'));
     }
     isFirstRender = false;
   }
+  window.renderPage = renderPage;
 
-  /* ── 페이지네이션 바 ────────────────────────────── */
   function renderPagination(page, totalPages) {
     const bar = document.getElementById('pagination-bar');
     if (totalPages <= 1) { bar.innerHTML = ''; return; }
-
     const WINDOW = 2;
     let btns = '';
-
     btns += `<button class="pg-btn pg-arrow" ${page === 1 ? 'disabled' : ''} onclick="renderPage(1)">First</button>`;
-    btns += `<button class="pg-btn pg-arrow" ${page === 1 ? 'disabled' : ''} onclick="renderPage(${page - 1})">‹</button>`;
-
+    btns += `<button class="pg-btn pg-arrow" ${page === 1 ? 'disabled' : ''} onclick="renderPage(${page - 1})">&#8249;</button>`;
     let lastPrinted = 0;
     for (let i = 1; i <= totalPages; i++) {
       const inWindow = i >= page - WINDOW && i <= page + WINDOW;
       const isEdge   = i === 1 || i === totalPages;
       if (isEdge || inWindow) {
-        if (lastPrinted && i - lastPrinted > 1) {
-          btns += `<span class="pg-ellipsis">…</span>`;
-        }
+        if (lastPrinted && i - lastPrinted > 1) btns += `<span class="pg-ellipsis">&#8230;</span>`;
         btns += `<button class="pg-btn ${i === page ? 'pg-active' : ''}" onclick="renderPage(${i})">${i}</button>`;
         lastPrinted = i;
       }
     }
-
-    btns += `<button class="pg-btn pg-arrow" ${page === totalPages ? 'disabled' : ''} onclick="renderPage(${page + 1})">›</button>`;
+    btns += `<button class="pg-btn pg-arrow" ${page === totalPages ? 'disabled' : ''} onclick="renderPage(${page + 1})">&#8250;</button>`;
     btns += `<button class="pg-btn pg-arrow" ${page === totalPages ? 'disabled' : ''} onclick="renderPage(${totalPages})">Last</button>`;
-
     bar.innerHTML = btns;
   }
 
-  /* ── 태그 필터 ─────────────────────────────────── */
   function applyFilter(tag) {
     currentData = tag === 'all'
-      ? CONTENT_DATA
+      ? CONTENT_DATA.slice()
       : CONTENT_DATA.filter(item => item.tags.includes(tag));
     renderPage(1);
   }
@@ -367,42 +524,50 @@
     });
   }
 
-  /* ══ 글 팝업 ═══════════════════════════════════════
-     스레드로 나가지 않고 이 자리에서 읽고, 좌우로 넘깁니다.
-     넘기는 범위는 지금 선택한 태그로 걸러진 목록 전체입니다.
-     (화면에 보이는 6개가 아니라 그 태그의 전체 글) */
+  /* ══ 표현 팝업 ═══════════════════════════════════════════ */
   let _thIdx = -1;
 
   function thOpen(idx) {
-    const item = currentData[idx];
+    const item = CONTENT_DATA[idx];
     if (!item) return;
     _thIdx = idx;
-    const bg = document.getElementById('th-bg');
-    document.getElementById('th-frame').src = embedSrc(item.href);
-    document.getElementById('th-count').textContent = (idx + 1) + ' / ' + currentData.length;
-    document.querySelector('.th-prev').disabled = idx === 0;
-    document.querySelector('.th-next').disabled = idx === currentData.length - 1;
-    bg.classList.add('open');
+    const levelTag = item.tags.find(t => LEVEL_TAGS.includes(t));
+    const topicTag = item.tags.find(t => !LEVEL_TAGS.includes(t));
+    let chips = '';
+    if (levelTag) chips += `<span class="card-chip chip-level">${TAG_LABELS[levelTag]}</span>`;
+    if (topicTag) chips += `<span class="card-chip chip-topic">${TAG_LABELS[topicTag]}</span>`;
+    document.getElementById('th-chips').innerHTML  = chips;
+    document.getElementById('th-title').textContent = item.title;
+    document.getElementById('th-text').textContent  = item.preview || '';
+    document.getElementById('th-origin').href       = item.href;
+    document.getElementById('th-frame').src         = embedSrc(item.href);
+    let pos = currentData.findIndex(x => x._i === idx);
+    if (pos < 0) { currentData = CONTENT_DATA.slice(); pos = idx; }
+    document.getElementById('th-count').textContent = (pos + 1) + ' / ' + currentData.length;
+    document.querySelector('.th-prev').disabled = pos === 0;
+    document.querySelector('.th-next').disabled = pos === currentData.length - 1;
+    document.getElementById('th-bg').classList.add('open');
     document.body.style.overflow = 'hidden';
+    try { history.replaceState(null, '', location.pathname + '?post=' + idx); } catch (e) {}
   }
 
   function thMove(step) {
-    const next = _thIdx + step;
-    if (next < 0 || next >= currentData.length) return;
-    thOpen(next);
+    const pos = currentData.findIndex(x => x._i === _thIdx);
+    const next = pos + step;
+    if (pos < 0 || next < 0 || next >= currentData.length) return;
+    thOpen(currentData[next]._i);
   }
 
   function thClose() {
     document.getElementById('th-bg').classList.remove('open');
-    document.getElementById('th-frame').src = '';   /* 닫으면 불러오기도 멈춥니다 */
+    document.getElementById('th-frame').src = '';
     document.body.style.overflow = '';
     _thIdx = -1;
+    try { history.replaceState(null, '', location.pathname); } catch (e) {}
   }
   window.thMove = thMove;
   window.thClose = thClose;
 
-  /* 카드를 누르면 스레드로 나가지 않고 팝업으로 엽니다.
-     새 탭으로 열기(가운데 클릭, Ctrl 클릭)는 그대로 둡니다. */
   document.getElementById('cards-list').addEventListener('click', function (e) {
     const a = e.target.closest('.content-card');
     if (!a) return;
@@ -410,7 +575,6 @@
     e.preventDefault();
     thOpen(parseInt(a.dataset.idx, 10));
   });
-
   document.getElementById('th-bg').addEventListener('click', function (e) {
     if (e.target === this) thClose();
   });
@@ -420,15 +584,21 @@
     if (e.key === 'ArrowLeft')  thMove(-1);
     if (e.key === 'ArrowRight') thMove(1);
   });
-  /* 태그를 바꾸면 목록이 달라지므로 팝업은 닫습니다 */
   document.getElementById('tag-filter').addEventListener('click', function () {
     if (_thIdx >= 0) thClose();
   });
 
-  /* ── 초기화 ────────────────────────────────────── */
+  /* ── 초기화 ────────────────────────────────── */
   initComponents();
+  renderPosts(1);
+  renderAll();
   applyFilter('all');
   initDynamicTagFilter();
+
+  (function () {
+    var n = parseInt(new URLSearchParams(location.search).get('post'), 10);
+    if (!isNaN(n) && CONTENT_DATA[n]) thOpen(n);
+  })();
 </script>
 </body>
 </html>
