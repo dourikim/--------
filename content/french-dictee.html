@@ -143,24 +143,12 @@
                           background: var(--brick); opacity: 0.5; }
 
     /* ── 영상 ──────────────────────────────────────────
-       그림 파일을 바깥에서 받아오지 않습니다. 표지를 우리가 직접 그립니다.
-       그래서 인터넷이 없어도, 미리보기 파일로 열어도 표지가 항상 보입니다.
-       누르면 그 자리에서 재생합니다. 파일로 직접 연 경우에만 새 창으로 엽니다. */
-    .bp-video { margin-top: 22px; position: relative; aspect-ratio: 16 / 9;
-                border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
-                background: linear-gradient(140deg, #3A120F 0%, #6E2318 52%, #A03A28 100%);
-                cursor: pointer; }
-    .bp-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    .bp-video-btn { position: absolute; inset: 0; display: flex; flex-direction: column;
-                    align-items: center; justify-content: center; gap: 13px;
-                    border: 0; background: transparent; cursor: pointer; padding: 22px 26px; }
-    .bp-video-btn span { width: 66px; height: 47px; border-radius: 13px; background: rgba(194,74,53,.96);
-                         color: #fff; display: flex; align-items: center; justify-content: center;
-                         font-size: 1.2rem; box-shadow: 0 6px 20px rgba(0,0,0,.28); flex-shrink: 0; }
-    .bp-video-btn b { font-size: 0.82rem; font-weight: 600; line-height: 1.6; color: #FAF7F6;
-                      text-align: center; word-break: keep-all; max-width: 30ch; }
-    .bp-video-btn i { font-style: normal; font-size: 0.7rem; color: rgba(250,247,246,.62); }
-    .bp-video.playing .bp-video-btn { display: none; }
+       유튜브도 iframe 을 그대로 심습니다. 16 대 9 상자만 잡아 줍니다. */
+    .bp-video { margin-top: 22px; }
+    .bp-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0;
+                       border-radius: var(--radius); background: #1B0B0A; }
+    .bp-video figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                           margin-top: 8px; text-align: center; word-break: keep-all; }
 
     /* ── 인스타 릴스와 틱톡 ─────────────────────────────
        lesson.html 과 같은 방식입니다. 주소 뒤에 /embed 를 붙인 iframe 하나면
@@ -338,37 +326,8 @@
 <script>
   initComponents();
 
-  /* ── 영상 ──────────────────────────────────────────────
-     표지는 우리가 그린 것이라 인터넷이 없어도 항상 보입니다.
-     누르면 그 자리에서 재생합니다.
-     파일을 브라우저로 직접 열면(file://) 유튜브가 재생을 거부하므로 새 탭으로 엽니다. */
-  var BP_LOCAL = (location.protocol === 'file:');
-
-  document.addEventListener('click', function (e) {
-    var box = e.target.closest ? e.target.closest('.bp-video') : null;
-    if (!box || box.classList.contains('playing')) return;
-    var id = box.getAttribute('data-yt');
-    if (!id) return;
-    if (BP_LOCAL) { window.open('https://www.youtube.com/watch?v=' + id, '_blank', 'noopener'); return; }
-    box.classList.add('playing');
-    var f = document.createElement('iframe');
-    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&playsinline=1';
-    f.title = '영상';
-    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-    f.referrerPolicy = 'strict-origin-when-cross-origin';
-    f.allowFullscreen = true;
-    box.appendChild(f);
-  });
-
-  /* 파일로 직접 연 경우, 재생이 새 탭에서 열린다는 것을 표지에 적어 둡니다 */
-  if (BP_LOCAL) {
-    Array.prototype.forEach.call(document.querySelectorAll('.bp-video-btn i'), function (i) {
-      i.textContent = '눌러서 재생 (새 탭에서 열립니다)';
-    });
-  }
-
-  /* 릴스와 틱톡은 iframe 하나로 그 자리에서 나옵니다.
-     스크립트도, 대신 보여 줄 표지도 필요 없습니다. */
+  /* 영상, 릴스, 틱톡은 전부 iframe 을 그대로 심습니다.
+     재생에 자바스크립트가 필요하지 않습니다. */
 </script>
 </body>
 </html>
