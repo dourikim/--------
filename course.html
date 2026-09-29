@@ -695,6 +695,7 @@
       display: inline-block; padding: 12px 20px; cursor: pointer; white-space: nowrap;
       font-family: var(--font-body); font-size: 1.03rem; font-weight: 700;
       color: #fff; background: var(--brick); border: 0; border-radius: 100px;
+      text-decoration: none;   /* 버튼에서 링크로 바뀌어 밑줄이 생기지 않도록 */
       transition: background .16s, transform .16s;
     }
     .pkg-wait:hover { background: #A33B28; transform: translateY(-2px); }
@@ -1296,7 +1297,7 @@
             <td class="col-a">5개월 무제한 시청</td>
             <td class="col-b">평생 무제한 시청</td>
             <td class="col-c" rowspan="4">
-              <button type="button" class="pkg-wait js-open-challenge" data-cta="course_waitlist">대기 신청하기</button>
+              <a class="pkg-wait" data-cta="course_waitlist" href="https://docurise.io/douri-kim/d/document-6cefy76z" target="_blank" rel="noopener">대기 신청하기</a>
               <span class="pkg-wait-note">얼리버드 혜택을<br>놓치지 마세요!</span>
             </td>
           </tr>
@@ -1437,26 +1438,6 @@
   </div>
 </div>
 
-<!-- ── 챌린지 대기 신청 팝업 ─────────────────── -->
-<div class="am-bg" id="challenge-bg" onclick="if(event.target===this)closeChallenge()">
-  <div class="am-sheet" role="dialog" aria-modal="true" aria-labelledby="cw-title">
-    <div class="am-head">
-      <div>
-        <p class="am-chip">챌린지 프로그램</p>
-        <p class="am-title" id="cw-title">대기 신청하기</p>
-        <p class="am-sub">얼리버드 혜택을 놓치지 마세요. 오픈하면 가장 먼저 알려드립니다.</p>
-      </div>
-      <button class="am-close" onclick="closeChallenge()" aria-label="닫기">&#10005;</button>
-    </div>
-    <div class="am-body">
-      <iframe id="cw-form" class="am-frame" src="" title="챌린지 대기 신청" loading="lazy"></iframe>
-      <p class="am-fallback">폼이 안 보이시나요?
-        <a href="https://tally.so/r/rjWPoo" target="_blank" rel="noopener">새 창에서 열기</a>
-      </p>
-    </div>
-  </div>
-</div>
-
 <footer class="site-footer" id="site-footer"></footer>
 </div>
 
@@ -1576,35 +1557,6 @@
   });
 })();
 
-/* 챌린지 대기 신청 팝업 */
-(function () {
-  var FORM = 'https://tally.so/embed/rjWPoo?alignLeft=1&hideTitle=1&transparentBackground=1';
-  var bg = document.getElementById('challenge-bg');
-  var fr = document.getElementById('cw-form');
-  var loaded = false;
-
-  window.openChallenge = function (push) {
-    if (!loaded) { loaded = true; fr.src = FORM; }
-    bg.classList.add('open');
-    document.body.style.overflow = 'hidden';
-    if (push !== false && location.hash !== '#challenge' && history.pushState) history.pushState(null,'','#challenge');
-  };
-  window.closeChallenge = function () {
-    bg.classList.remove('open');
-    document.body.style.overflow = '';
-    if (location.hash === '#challenge' && history.pushState) history.pushState(null,'',location.pathname+location.search);
-  };
-  document.querySelectorAll('.js-open-challenge, a[href="#challenge"]').forEach(function (el) {
-    el.addEventListener('click', function (e) { e.preventDefault(); openChallenge(); });
-  });
-  if (location.hash === '#challenge') openChallenge(false);
-  window.addEventListener('popstate', function () {
-    if (location.hash === '#challenge') openChallenge(false); else closeChallenge();
-  });
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && bg.classList.contains('open')) closeChallenge();
-  });
-})();
 </script>
 </body>
 </html>
