@@ -392,6 +392,16 @@ const LEVEL_TAGS = ['완전입문자', '초보자', '중급자'];
 const POST_DATA = [
   {
     type: 'post',
+    title: "DALF C1까지 땄는데 말이 안 나오는 이유, 시험이 측정하지 않는 3가지",
+    preview: "DELF와 DALF는 2023년에 듣기와 읽기를 전부 객관식으로 바꿨습니다. 사라진 건 난이도가 아니라 생산 능력을 재던 자리였습니다.",
+    href: "/content/dalf-c1",
+    cover: "img/blog/dalf-c1-cover.jpg",
+    topic: "시험",
+    mins: 9,
+    date: "2026년 10월 1일"
+  },
+  {
+    type: 'post',
     title: "프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지",
     preview: "교재도 유튜브 채널도 인강도 추천하지 않습니다. 25년째 프랑스어를 공부한 코치가 본, 오래 가는 사람들의 습관 여덟 가지.",
     href: "/content/french-immersion",
@@ -458,5 +468,6 @@ const TOPIC_LABELS = {
   '공부법': '🧠 공부법',
   '노하우': '🛠️ 나만의 노하우',
   '수업':   '🎓 수업 이야기',
-  '생활':   '🥖 프랑스 생활'
+  '생활':   '🥖 프랑스 생활',
+  '시험':   '📝 시험 이야기'
 };

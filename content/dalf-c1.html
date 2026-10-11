@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<!-- ══ 내 방문 집계 제외 ══ 이 블록은 반드시 아래 gtag 스크립트보다 먼저 있어야 합니다. -->
+<script>
+(function () {
+  var KEY = 'noga', ID = 'G-K5BW3YMBH6';
+  var on = false;
+  try {
+    var q = new URLSearchParams(location.search).get('noga');
+    if (q === '1') localStorage.setItem(KEY, '1');
+    else if (q === '0') localStorage.removeItem(KEY);
+    on = localStorage.getItem(KEY) === '1';
+  } catch (e) { return; }
+  if (!on) return;
+  window['ga-disable-' + ID] = true;
+  document.addEventListener('DOMContentLoaded', function () {
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = '집계 제외 중';
+    b.title = '이 기기는 방문자 수에 포함되지 않습니다. 해제하려면 주소 뒤에 ?noga=0 을 붙여 여세요.';
+    b.style.cssText = 'position:fixed;left:20px;bottom:14px;z-index:99999;border:0;border-radius:999px;'
+      + 'padding:7px 12px;cursor:pointer;background:rgba(46,14,12,.82);color:#fff;'
+      + 'font:600 11px/1 Pretendard,sans-serif;letter-spacing:.02em;';
+    b.onclick = function () { b.remove(); };
+    document.body.appendChild(b);
+  });
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K5BW3YMBH6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-K5BW3YMBH6");
+</script>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DALF C1 따고도 말이 안 나오는 이유 | 김두우리</title>
+  <meta name="description" content="DELF와 DALF는 2023년에 듣기와 읽기를 전부 객관식으로 바꿨습니다. 사라진 건 난이도가 아니라 생산 능력을 재던 자리였습니다."/>
+  <link rel="canonical" href="https://www.dourikim.com/content/dalf-c1"/>
+  <meta property="og:type"         content="article"/>
+  <meta property="og:url"          content="https://www.dourikim.com/content/dalf-c1"/>
+  <meta property="og:site_name"    content="Do! 우리! 프랑스어"/>
+  <meta property="og:title"        content="DALF C1까지 땄는데 말이 안 나오는 이유, 시험이 측정하지 않는 3가지"/>
+  <meta property="og:description"  content="DELF와 DALF는 2023년에 듣기와 읽기를 전부 객관식으로 바꿨습니다. 사라진 건 난이도가 아니라 생산 능력을 재던 자리였습니다."/>
+  <meta property="og:image"        content="https://www.dourikim.com/img/blog/dalf-c1-cover.jpg"/>
+  <meta property="article:published_time" content="2026-10-01"/>
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "DALF C1까지 땄는데 말이 안 나오는 이유, 시험이 측정하지 않는 3가지", "description": "DELF와 DALF는 2023년에 듣기와 읽기를 전부 객관식으로 바꿨습니다. 사라진 건 난이도가 아니라 생산 능력을 재던 자리였습니다.", "image": ["https://www.dourikim.com/img/blog/dalf-c1-cover.jpg"], "datePublished": "2026-10-01", "dateModified": "2026-10-01", "author": {"@type": "Person", "name": "김두우리", "url": "https://www.dourikim.com/portfolio"}, "publisher": {"@type": "Person", "name": "김두우리"}, "mainEntityOfPage": {"@type": "WebPage", "@id": "https://www.dourikim.com/content/dalf-c1"}, "inLanguage": "ko"}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "홈", "item": "https://www.dourikim.com/"}, {"@type": "ListItem", "position": 2, "name": "학습 콘텐츠", "item": "https://www.dourikim.com/content"}, {"@type": "ListItem", "position": 3, "name": "DALF C1까지 땄는데 말이 안 나오는 이유, 시험이 측정하지 않는 3가지", "item": "https://www.dourikim.com/content/dalf-c1"}]}</script>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    /* ══════════════════════════════════════════════════════
+       읽을거리 글 페이지
+       본문 폭을 700px 로 묶습니다. 한 줄이 길면 눈이 다음 줄을 놓칩니다.
+       ══════════════════════════════════════════════════════ */
+    .bp { max-width: 700px; margin: 0 auto; padding: 0 20px 40px; }
+    .bp-back { display: inline-block; font-size: 0.78rem; font-weight: 600;
+               color: var(--muted); text-decoration: none; margin-top: 8px; }
+    .bp-back:hover { color: var(--brick); }
+    .bp-chip { display: inline-block; font-size: 0.7rem; font-weight: 700; color: var(--brick);
+               background: #FBEEEA; border-radius: 100px; padding: 5px 12px; margin: 18px 0 12px; }
+    .bp-h1 { font-family: var(--font-heading); font-size: clamp(1.4rem, 5.4vw, 1.78rem);
+             font-weight: 700; line-height: 1.45; letter-spacing: -0.025em;
+             color: var(--dark); word-break: keep-all; }
+    .bp-meta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+               font-size: 0.76rem; color: #B09A96; margin-top: 13px;
+               padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+    .bp-meta span + span { position: relative; padding-left: 15px; }
+    .bp-meta span + span::before { content: ''; position: absolute; left: 0; top: 50%;
+                                   width: 5px; height: 1px; background: #D8CBC8; }
+
+    /* 표지. 본문 폭(660px)의 70% 자리에 놓습니다 */
+    .bp-cover-fig { margin-top: 22px; }
+    .bp-cover-fig img { display: block; width: 100%; max-width: 462px; height: auto;
+                        margin: 0 auto; border-radius: var(--radius);
+                        border: 1px solid var(--border); }
+
+    .bp-body { font-size: 0.93rem; line-height: 2.05; color: #3A2320; word-break: keep-all; }
+    .bp-body p { margin-top: 19px; }
+    .bp-body h2 { font-family: var(--font-heading); font-size: clamp(1.06rem, 4.2vw, 1.2rem);
+                  font-weight: 700; line-height: 1.5; color: var(--dark);
+                  margin: 38px 0 0; padding-left: 12px; border-left: 3px solid var(--brick); }
+    .bp-body strong { font-weight: 700; color: var(--dark); }
+
+    /* 글쓴이가 네이버에서 빨간색으로, 또는 크게 키워 강조했던 문장입니다.
+       그 자리를 사이트에서도 그대로 살립니다. 벽돌빛 + 한 호수 크게. */
+    .bp-body .bp-hl { color: var(--brick); font-weight: 700; font-size: 1.07em;
+                      letter-spacing: -0.01em; }
+    .bp-ex .bp-hl  { font-size: 1.05em; }
+    .bp-body a { color: var(--brick); font-weight: 600; text-underline-offset: 3px; }
+
+    .bp-lead { margin-top: 22px; padding: 18px 20px; background: var(--surface);
+               border-radius: var(--radius); text-align: center;
+               font-size: 0.87rem; line-height: 2; color: var(--muted); }
+
+    /* ── 먼저 읽는 요약 ────────────────────────────────
+       사이트에 들어온 사람은 이 글을 읽을지 3초 안에 정합니다.
+       검색 엔진과 AI 답변도 글 첫머리의 짧은 답을 그대로 집어 갑니다.
+       그래서 본문이 시작되기 전에 요점을 먼저 놓습니다. */
+    .bp-sum { margin-top: 24px; padding: 20px 22px; background: var(--white);
+              border: 1px solid var(--border); border-left: 3px solid var(--brick);
+              border-radius: 0 var(--radius) var(--radius) 0; }
+    .bp-sum-k { font-size: 0.72rem; font-weight: 700; letter-spacing: .06em;
+                color: var(--brick); margin-bottom: 10px; }
+    .bp-sum p { margin: 0 0 12px; font-size: 0.9rem; line-height: 1.95; color: var(--dark); }
+    .bp-sum ul { margin: 0; padding: 0; list-style: none; }
+    .bp-sum li { position: relative; padding-left: 15px; margin-top: 7px;
+                 font-size: 0.86rem; line-height: 1.85; color: var(--muted);
+                 word-break: keep-all; }
+    .bp-sum li::before { content: ''; position: absolute; left: 0; top: 0.8em;
+                         width: 4px; height: 4px; border-radius: 50%;
+                         background: var(--brick); opacity: .55; }
+
+    .bp-fig { margin-top: 22px; }
+    /* 본문 그림. 네이버에서처럼 글 폭을 다 채우지 않습니다.
+       가로 440px, 세로 560px 을 넘지 않게 두고 가운데로 놓습니다.
+       원본보다 크게 늘리지도 않습니다. */
+    .bp-fig img { display: block; margin: 0 auto;
+                  max-width: 440px; max-height: 560px; width: auto; height: auto;
+                  border-radius: var(--radius); border: 1px solid var(--border); }
+    @media (max-width: 520px) {
+      .bp-fig img { max-width: 100%; max-height: 430px; }
+    }
+    .bp-fig figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                         margin-top: 8px; text-align: center; word-break: keep-all; }
+
+    /* 프랑스어 예문 */
+    .bp-ex { margin-top: 20px; padding: 15px 18px; background: #fff9f8;
+             border-left: 3px solid var(--brick); border-radius: 0 8px 8px 0; }
+    .bp-ex p { margin: 0; font-size: 0.875rem; line-height: 1.95; }
+    .bp-ex p + p { margin-top: 9px; }
+    .bp-fr { color: var(--brick); font-weight: 700; font-style: italic; }
+    .bp-ko { color: var(--muted); }
+
+    /* 목록 */
+    .bp-list { margin-top: 18px; padding: 0; list-style: none; }
+    .bp-list li { position: relative; padding-left: 15px; margin-top: 9px;
+                  font-size: 0.9rem; line-height: 1.95; word-break: keep-all; }
+    .bp-list li::before { content: ''; position: absolute; left: 0; top: 0.82em;
+                          width: 4px; height: 4px; border-radius: 50%;
+                          background: var(--brick); opacity: 0.5; }
+
+    /* ── 영상 ──────────────────────────────────────────
+       유튜브도 iframe 을 그대로 심습니다. 16 대 9 상자만 잡아 줍니다. */
+    .bp-video { margin-top: 22px; }
+    .bp-video iframe { display: block; width: 100%; aspect-ratio: 16 / 9; border: 0;
+                       border-radius: var(--radius); background: #1B0B0A; }
+    .bp-video figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                           margin-top: 8px; text-align: center; word-break: keep-all; }
+
+    /* ── 인스타 릴스와 틱톡 ─────────────────────────────
+       lesson.html 과 같은 방식입니다. 주소 뒤에 /embed 를 붙인 iframe 하나면
+       됩니다. 스크립트가 필요 없어서 파일로 열어도 그 자리에서 나옵니다. */
+    .bp-embed { margin-top: 22px; display: flex; flex-direction: column; align-items: center; }
+    .bp-embed iframe { width: 100%; max-width: 400px; height: 640px; border: 0; display: block;
+                       border-radius: var(--radius); background: var(--surface);
+                       border: 1px solid var(--border); }
+    .bp-embed.tt iframe { max-width: 340px; height: 600px; }
+    .bp-embed figcaption { font-size: 0.74rem; color: #B09A96; line-height: 1.7;
+                           margin-top: 8px; text-align: center; word-break: keep-all; }
+    .bp-embed a.src { font-size: 0.74rem; color: var(--brick); font-weight: 600;
+                      margin-top: 6px; text-decoration: none; }
+    .bp-embed a.src:hover { text-decoration: underline; }
+
+
+    /* 바깥 자료 인용 카드 */
+    .bp-cite { display: block; margin-top: 20px; text-decoration: none; color: inherit;
+               border: 1px solid var(--border); border-radius: var(--radius);
+               background: var(--white); padding: 14px 16px; }
+    .bp-cite:hover { border-color: rgba(194,74,53,.4); background: #fffdfd; }
+    .bp-cite b { display: block; font-size: 0.86rem; line-height: 1.5; color: var(--dark); }
+    .bp-cite span { display: block; font-size: 0.74rem; color: #B09A96; margin-top: 5px; }
+
+    /* ── 글 끝 ─────────────────────────────────────── */
+    .bp-auth { margin-top: 40px; display: flex; gap: 15px; align-items: flex-start;
+               padding: 18px 20px; border: 1px solid var(--border);
+               border-radius: var(--radius); background: var(--surface); }
+    .bp-auth-av { width: 46px; height: 46px; border-radius: 50%; background: var(--brick);
+                  color: #fff; flex-shrink: 0; display: flex; align-items: center;
+                  justify-content: center; font-weight: 800; font-size: 0.78rem; }
+    .bp-auth-b { min-width: 0; }
+    .bp-auth p { font-size: 0.8rem; line-height: 1.8; color: var(--muted); word-break: keep-all; }
+    .bp-auth b { color: var(--dark); }
+    /* 이력 보기는 소개 문장 바로 옆에 붙는 작은 알약입니다 */
+    .bp-auth-cta { display: inline-block; margin-left: 7px; padding: 5px 13px;
+                   border-radius: 100px; background: var(--brick); color: #fff;
+                   font-size: 0.74rem; font-weight: 700; text-decoration: none;
+                   white-space: nowrap; vertical-align: baseline; }
+    .bp-auth-cta:hover { background: var(--brick-h); }
+
+    /* 다른 칼럼 세 편. 표지를 크게 보여줍니다 */
+    .bp-more { margin-top: 36px; }
+    .bp-more-k { font-size: 0.78rem; font-weight: 700; color: var(--muted); margin-bottom: 11px; }
+    .bp-more-g { display: grid; gap: 12px; }
+    .bp-more-2 { grid-template-columns: repeat(2, 1fr); }
+    .bp-more-3 { grid-template-columns: repeat(3, 1fr); }
+    .bp-more-g a { text-decoration: none; color: inherit; }
+    .bp-more-g img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block;
+                     border-radius: var(--radius); border: 1px solid var(--border); }
+    .bp-more-g a:hover img { border-color: rgba(194,74,53,.45); }
+    @media (max-width: 560px) {
+      .bp-more-g { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .bp-more-3 a:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="site-header"></header>
+<div class="menu-overlay" id="menu-overlay" onclick="closeMenu()"></div>
+<aside class="side-menu"  id="side-menu"></aside>
+
+<div class="page-body">
+<div class="content-wrap">
+
+  <article class="bp">
+    <a class="bp-back" href="/content">&#8592; 학습 콘텐츠</a>
+    <p class="bp-chip">📝 시험 이야기</p>
+    <h1 class="bp-h1">DALF C1까지 땄는데 말이 안 나오는 이유,<br>시험이 측정하지 않는 3가지</h1>
+    <div class="bp-meta"><span>2026년 10월 1일</span><span>읽는 데 9분</span><span>김두우리</span></div>
+
+    <div class="bp-body">
+          <p class="bp-lead">이미 DELF B2, DALF C1 자격증이 있으신 분들로부터<br>프랑스어 수업 문의를 종종 받습니다.<br>그분들의 공통적인 고충은 "아직도 말하는 게 힘들다"</p>
+      <figure class="bp-cover-fig"><img src="../img/blog/dalf-c1-cover.jpg" alt="DALF C1까지 땄는데 말이 안 나오는 이유, 시험이 측정하지 않는 3가지" width="1080" height="1080"></figure>
+          <div class="bp-sum">
+            <p class="bp-sum-k">먼저 읽는 요약</p>
+            <p>DELF와 DALF는 2020년부터 듣기와 읽기의 주관식을 없앴고 2023년에 전환이 끝났습니다. <strong>시험이 쉬워진 게 아니라, 생산 능력을 재던 자리가 사라진 것</strong>입니다. 고르는 훈련으로도 합격증은 나오지만, 그 훈련에 생산이 없으면 거리는 그대로 남습니다.</p>
+            <ul><li>2026년부터 체류와 국적에 요구되는 프랑스어 수준이 올라간 것</li><li>DELF, DALF 개편으로 실제로 사라진 문항</li><li>프랑스 원어민의 받아쓰기 오류가 34년간 1.8배 늘어난 것</li><li>프랑스 정부가 2027년 시험부터 내놓은 답</li><li>시험이 측정하지 않는 세 가지</li></ul>
+          </div>
+          <p>이 글을 읽으시면서 "이거 나인데?" 하시는 분들이 꽤 계실 거예요. 요즘 DALF C1이나 B2를 준비하시는 분이 부쩍 늘었는데, 이유가 있습니다. 2026년 1월부터 프랑스가 체류와 국적에 요구하는 프랑스어 수준을 한 단계씩 올렸거든요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/dalf-c1-1.jpg" alt="프랑스 법무부 Justice.fr 의 프랑스 국적 취득 어학 요건 안내 화면" loading="lazy" width="1035" height="310" style="max-width:440px">
+            <figcaption>프랑스 법무부 Justice.fr, 2026년 1월 1일 갱신. 프랑스 국적을 얻으려면 구술과 작문 모두 B2 이상이어야 한다는 조항입니다</figcaption>
+          </figure>
+          <p>캐나다와 퀘벡은 아예 <strong>프랑스어 교육(<span class="bp-fr">francisation</span>)을 국가가 직접 확대</strong>하면서, 프랑스어 능력이 영주권 경로를 여는 조건이 됐고요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/dalf-c1-2.jpg" alt="퀘벡주 정부 숙련노동자 선발 프로그램의 프랑스어 요건 안내 화면" loading="lazy" width="915" height="260" style="max-width:440px">
+            <figcaption>퀘벡주 정부 quebec.ca, 숙련노동자 선발(PSTQ) 요건, 2026.6.25. 주신청자 구술 7, 작문 5 이상 (퀘벡은 CECRL이 아닌 1~12단계 자체 척도)</figcaption>
+          </figure>
+          <p>그러니까 지금은 프랑스어 자격증이 자기만족이 아니라 <strong>체류와 이민의 관문이 된 시기</strong>입니다.</p>
+          <h2>DALF C1 시험도 그만큼 어려워졌을까요</h2>
+          <p>저도 유년기 시절에 이 시험을 쳤었습니다. 지금은 코치로서 학생들과 시험을 함께 준비하고 있고요. 그러면서, 또 소셜 미디어에 올라오는 시험 결과 피드백을 보면서 점점 의문이 생기기 시작했어요. <span class="bp-hl">실제로 시험 난이도가 낮아졌나?</span></p>
+          <p>DELF나 DALF가 쉬워졌다고 공식적으로 말한 기관은 없습니다. 다만 아래 문서들은 분명히 변화가 있었다는 걸 보여줘요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/dalf-c1-3.jpg" alt="프랑스 교육국제협력원이 발표한 DELF DALF 시험 개편 안내 문서" loading="lazy" width="1200" height="1697" style="max-width:440px">
+            <figcaption>프랑스 교육국제협력원, DELF, DALF 시험 개편 안내, 2019년 10월 30일. 열린 답변 문항을 없애고 객관식을 늘렸다는 개편 결과. 2021년 50%, 2023년 100% 전환 일정</figcaption>
+          </figure>
+          <p>DELF와 DALF를 만드는 기관이 직접 낸 개편 문서입니다. 듣기와 읽기에서 직접 써서 답하던 문항이 전부 빠지고 객관식만 남았어요.</p>
+          <p>언어 시험은 크게 두 가지를 봅니다.</p>
+          <ul class="bp-list"><li><strong>이해 능력</strong> 듣고 읽고 알아듣는 것</li><li><strong>생산 능력</strong> 내가 직접 말하고 쓰는 것</li></ul>
+          <p>이 개편으로 사라진 쪽은 <strong>생산 능력을 재던 지점</strong>이에요. 사유도 같은 줄에 적혀 있습니다. 채점이 어려워서, 그리고 장차 전산화를 대비해서. <strong>난이도를 낮추려는 게 아닙니다.</strong> 지문 개수는 오히려 늘었어요. DELF B1 읽기는 35분에서 45분이 됐고요.</p>
+          <div class="bp-ex"><p><span class="bp-hl">시험이 쉬워진 게 아니라,</span></p><p><span class="bp-hl">생산 능력을 재는 비중이 줄었습니다.</span></p></div>
+          <p>2020년 3월 시험부터 단계적으로 적용돼서 2023년에 100% 전환이 끝났습니다. 지금 DALF C1을 보시면 무조건 새 형식이에요. TCF도 같은 흐름이에요. 필수 3영역이 전부 객관식이고, 작문과 말하기는 선택입니다.</p>
+          <h2>왜 하필 프랑스어에서 더 문제일까</h2>
+          <p>프랑스어는 문법의 상당 부분이 소리로 드러나지 않는 언어예요. 그래서 문자로만 공부하면 그 구분이 눈에만 남습니다. 귀와 입까지 넘어오지 않아요.</p>
+          <p>고르는 훈련만으로도 합격증은 나옵니다. 다만 그 훈련에 <strong>생산이 없으면</strong> 그 거리는 줄지 않고 그대로 남아요.</p>
+          <h2>이건 외국인 학습자만의 문제가 아닙니다</h2>
+          <figure class="bp-fig">
+            <img src="../img/blog/dalf-c1-4.jpg" alt="PISA 2025 에서 프랑스 학생 읽기 점수가 역대 최저라는 레제코 보도 화면" loading="lazy" width="490" height="614" style="max-width:440px">
+            <figcaption>프랑스 대표 경제지 레제코와, 통계 데이터 분석 매체 데이터고라의 발표</figcaption>
+          </figure>
+          <p>올해 9월 PISA 2025에서 프랑스 15세 학생의 읽기 점수는 456점, 역대 최저였습니다. 2022년 474점에서 18점이 떨어졌어요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/dalf-c1-5.jpg" alt="프랑스 교육부 장관 에두아르 제프레의 TF1 인터뷰 화면" loading="lazy" width="1200" height="679" style="max-width:440px">
+            <figcaption>"교육 전반이 보편적인 파열점에 있다"라고 발언한 프랑스 교육부 장관</figcaption>
+          </figure>
+          <p>프랑스 교육부 장관은 결과를 두고 <span class="bp-fr">« C'est préoccupant »</span>(우려스럽다)라고 표현했습니다. 그리고 이건 시험 점수만의 문제가 아니에요.</p>
+          <figure class="bp-fig">
+            <img src="../img/blog/dalf-c1-6.jpg" alt="프랑스 교육부 통계평가국 DEPP 의 받아쓰기 오류 추이 정보보고서" loading="lazy" width="807" height="687" style="max-width:440px">
+            <figcaption>프랑스 교육부 통계평가국(DEPP), 정보보고서(&lt;span class="bp-fr"&gt;Note d'Information&lt;/span&gt;), 2022년 12월</figcaption>
+          </figure>
+          <p>DEPP는 프랑스 교육부 산하 통계기관입니다. 학력 평가와 교육 통계를 담당하며, 정기 간행물인 정보보고서로 결과를 발표합니다. 프랑스 교육부가 똑같은 받아쓰기 지문을 1987년부터 네 번 냈습니다.</p>
+          <ul class="bp-list"><li>평균 오류 10.7개 → 19.4개 (34년간 약 1.8배)</li><li>25개 이상 틀린 학생 6.9% → 27.5% (약 4배)</li></ul>
+          <p><strong>원어민도 똑같이 틀립니다.</strong> <strong>받아쓰기는 생산 능력을 재는 가장 단순한 도구예요.</strong> 그게 내려앉고 있다는 뜻이죠.</p>
+          <h2>그래서 프랑스 정부가 한 일</h2>
+          <figure class="bp-fig">
+            <img src="../img/blog/dalf-c1-7.jpg" alt="프랑스어 실수를 조심하라는 문구가 보이는 프랑스 매체 영상 화면" loading="lazy" width="346" height="614" style="max-width:346px">
+            <figcaption>"프랑스어 실수를 조심하라" 화면 문구 보이시죠?</figcaption>
+          </figure>
+          <figure class="bp-fig">
+            <img src="../img/blog/dalf-c1-8.jpg" alt="바칼로레아와 브르베의 새 채점 규칙을 담은 프랑스 교육부 관보" loading="lazy" width="840" height="745" style="max-width:440px">
+            <figcaption>프랑스 교육부의 2026년 9월 관보. 대학입학 시험 바칼로레아, 중학교 졸업 시험 브르베의 새 채점 규칙</figcaption>
+          </figure>
+          <p>2027년 시험부터는 브르베도, 바칼로레아도, 직업계 자격증도 국어 과목에서만 언어를 보지 않습니다. 전 과목에서 봅니다. 언어가 미흡하면 그 답안은 평균점을 받을 수 없어요.</p>
+          <p>여기서 같은 문서의 맨 윗줄을 같이 보셔야 합니다. 객관식을 줄이고 더 쓰게 하라고 적혀 있어요. 받아쓰기 오류가 두 배 가까이 늘어난 나라가 꺼낸 답이 이겁니다. <strong>이해를 더 시키는 게 아니라, 생산을 더 시키는 것.</strong> <strong>우리가 치는 DELF, DALF, TCF 시험은 반대로 갔는데도요.</strong></p>
+          <h2>프랑스 사람들은 어떻게 배울까</h2>
+          <p><span class="bp-hl">아주 놀랍게도 제가 학생분들에게 강조하는 받아쓰기(<span class="bp-fr">dictée</span>)입니다.</span> <span class="bp-hl">프랑스어를 배우는 외국인이기 때문에 중요성을 알려드린 게 아니었어요.</span></p>
+          <p>2024년에 개정된 프랑스 초등 교육과정을 보면 「매일, 모든 학생이」라는 항목 아래 "배운 내용과 연결된 받아쓰기를 한다"가 들어가 있어요. <strong>프랑스어는 귀로 들은 것과 손으로 쓰는 것 사이에 계속 틈이 생기는 언어라서 그렇습니다.</strong></p>
+          <p>프랑스 아이들은 초등학교 때부터 6년, 10년을 합니다. 어른들에게도 받아쓰기는 <strong>하나의 언어 놀이</strong>로 자리 잡았고요. <span class="bp-hl">저희는 한국에서 관습적으로 그 과정을 건너뛰고, 문법책과 객관식 문제집으로 푸는 경우도 많죠.</span></p>
+          <h2>시험이 측정하지 않는 세 가지</h2>
+          <ul class="bp-list"><li><strong>준비 시간 없이 나오는 말</strong> 시험은 1시간 준비 후 발표예요</li><li><strong>소리로 구분하는 문법</strong> 고르는 문제에는 소리가 없습니다</li><li><strong>상황에 맞는 말투(레지스터)</strong> 답안지는 한 가지 톤뿐이죠</li></ul>
+          <p>DALF C1이든 B2든, 목표를 위해 자격증을 손에 넣는 건 쉬운 일이 아닙니다. 그 과정을 끝까지 통과하신 것만으로 충분히 대단한 일이에요. <strong>저는 프랑스어 공부가 여기서부터 시작이라고 생각합니다.</strong></p>
+          <p>문제 유형을 맞히려고 읽는 게 아니라 궁금해서 읽는 때, 채점표에 맞추려고 쓰는 게 아니라 <span class="bp-hl">하고 싶은 말을 프랑스어 감각으로 구사하는 시기가 온 거예요.</span></p>
+          <h2>방향은 알겠는데 혼자 어떻게 할까</h2>
+          <p><span class="bp-hl">올바른 입문부터, 프랑스어로 생각하기를 의도한 인강을 만들었습니다.</span> CLE International의 <span class="bp-fr">Grammaire Progressive du Français</span> 교재를 제 방식으로 다시 읽어, A1부터 C1까지 40여 챕터를 다룹니다. 문법책을 차례대로 짚어 주는 강의는 아니에요. 다른 점이 세 가지 있습니다.</p>
+          <ul class="bp-list"><li>첫째, <strong>레지스터를 같이 다룹니다.</strong> 같은 내용을 일상에서 어떻게 말하고, 친한 친구와의 대화에서는 어떻게 말하고, 시험 답안과 보고서에서는 어떻게 쓰는지 나눠서 익힙니다. <strong>DALF C1 이후에 벽에 부딪히는 지점이 대부분 여기예요.</strong></li><li>둘째, <strong>시제를 표가 아니라 소리로 가르칩니다.</strong> 프랑스어에서 안 들리는 문법을 들리게 만드는 게 먼저입니다.</li><li>셋째, 프랑스 사람이 모국어를 배우는 순서를 따라갑니다. <strong>받아쓰기, 소리 먼저, 구조 이해.</strong> 프랑스 교육과정이 실제로 하는 순서예요.</li></ul>
+          <p>저는 프랑스에서 고등과정과 대학을 마치고, 현지에서 일까지 10년을 보냈습니다. <strong>프랑스 사람들이 실제로 공부하는 방식을 외국어로서의 프랑스어(FLE) 학습에 그대로 적용한 강의</strong>예요.</p>
+    </div>
+
+    <div class="bp-auth">
+      <div class="bp-auth-av">두우리</div>
+      <div class="bp-auth-b">
+        <p><b>김두우리</b>, 16년차 프랑스어 FLE 전문 코치<br>
+          한국 학생들이 어디서 막히는지 아는 사람이 씁니다. 1:1 맞춤 수업과 한불 통번역을 합니다.<a
+            href="/portfolio" class="bp-auth-cta" data-cta="post_dalf_course">이력 보기</a></p>
+      </div>
+    </div>
+
+    <div class="bp-more">
+      <p class="bp-more-k">관련 칼럼</p>
+      <div class="bp-more-g bp-more-3">
+          <a href="/content/french-dictee" aria-label="프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유"><img src="../img/blog/french-dictee-cover.jpg" alt="프랑스어 받아쓰기, 아이들보다 어른이 더 많이 틀리는 이유" loading="lazy"></a>
+          <a href="/content/french-study-habits" aria-label="한국 학생들의 잘못된 프랑스어 공부법, 이 습관만 바꿔보세요"><img src="../img/blog/french-study-habits-cover.jpg" alt="한국 학생들의 잘못된 프랑스어 공부법, 이 습관만 바꿔보세요" loading="lazy"></a>
+          <a href="/content/french-immersion" aria-label="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지"><img src="../img/blog/french-immersion-cover.jpg" alt="프랑스어 덕질하기, 오래가는 사람들의 프랑스어 공부법 8가지" loading="lazy"></a>
+      </div>
+    </div>
+  </article>
+
+</div>
+</div>
+
+<footer class="site-footer" id="site-footer"></footer>
+<div class="kakao-float" id="kakao-float"></div>
+
+<script src="../js/components.js"></script>
+<script>
+  initComponents();
+
+  /* 영상, 릴스, 틱톡은 전부 iframe 을 그대로 심습니다.
+     재생에 자바스크립트가 필요하지 않습니다. */
+</script>
+</body>
+</html>
