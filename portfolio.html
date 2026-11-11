@@ -136,6 +136,11 @@
     .pf-card.kpop-card .pf-clients { clear: both; }
   }
 
+  /* 본문이 짧은 카드는 영상을 조금 좁혀 글과 높이를 맞춥니다 */
+  @media (min-width: 769px) {
+    .pf-card.pf-h.pf-video-side .pf-card-body > .pf-thumb { width: 33%; }
+  }
+
   /* 비디오 embed */
   .pf-embed {
     position: relative;
@@ -484,6 +489,10 @@
   .pf-duo figure { margin: 0; }
   .pf-duo .pf-embed { aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: #000; }
   .pf-duo .pf-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+  .pf-duo > figure > img {
+    display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+    border-radius: 8px; border: 1px solid var(--border);
+  }
   .pf-duo figcaption {
     margin-top: 6px; font-size: 0.72rem; font-weight: 700; color: var(--dark); word-break: keep-all;
   }
@@ -943,15 +952,15 @@
         <dl class="pf-skill-grid">
           <div>
             <dt>통역</dt>
-            <dd>순차 통역<br>기업 VIP 행사<br>아티스트 투어 동행</dd>
+            <dd>순차 통역<br>기업 VIP 행사<br>아티스트 투어 동행<br>영화제 GV, 기자간담회</dd>
           </div>
           <div>
             <dt>번역</dt>
-            <dd>영화 시나리오, 자막<br>다큐 인터뷰<br>PPM 문서</dd>
+            <dd>영화 시나리오, 자막<br>SRT, 자수 제한, 싱크<br>다큐 인터뷰, 방송 프리뷰<br>PPM 문서, 프레스킷</dd>
           </div>
           <div>
-            <dt>현장</dt>
-            <dd>영화제, 공연<br>웹사이트, STT<br>행사 코디네이션</dd>
+            <dt>검수, 현장</dt>
+            <dd>자막 감수, 용어집 구축<br>STT 스크립트 검수<br>웹사이트, 영화제, 공연<br>행사 코디네이션</dd>
           </div>
         </dl>
         <p class="pf-skills-foot">작업 언어 &nbsp;한국어, 프랑스어, 영어, 포르투갈어</p>
@@ -1050,20 +1059,38 @@
           </div>
         </article>
       </div>
-                  <div class="pf-sec">
+      <div class="pf-sec">
         <span class="pf-sec-rule"></span>
-        <p class="pf-sec-kr">자격 및 수료</p>
-      </div>      <div class="pf-card pf-compact">
+        <p class="pf-sec-kr">한불 영상, 문화 콘텐츠 번역</p>
+      </div>
+      <div class="pf-card">
         <div class="pf-card-body">
-          <p class="pf-year">2025~<small>영상번역 교육</small></p>
-          <p class="pf-title">영어 영상번역 입문 과정 수료 (2025), 실전 과정 중 (2026)</p>
-          <p class="pf-place">더라인 영상번역 아카데미 | 온라인</p>
+          <p class="pf-year">2011~<small>파리, 프리랜서</small></p>
+          <p class="pf-title">프로덕션 하우스, 아티스트, 문화 기관 대상 번역</p>
           <ul class="pf-list">
-            <li>넷플릭스, 왓챠, 웨이브, 디즈니플러스 등 OTT 플랫폼 기준 영어→한국어 영상번역 실무</li>
-            <li>화면 싱크, 두 줄 제한, 구어체 표현으로 실전 피드백 중심 트레이닝</li>
+            <li><b>영상</b>: 프로덕션 하우스 영상 콘텐츠의 자막, 시나리오 및 대본, 다큐멘터리 인터뷰, 촬영 전 준비 문서(PPM)</li>
+            <li><b>텍스트</b>: 아티스트 인터뷰와 프레스킷, 문화 행사 리뷰 및 비평, 웹사이트</li>
+            <li><b>자막 제작</b>: 직접 기획한 클래스101 강의 「3개월 만에 프랑스어 사고방식 만들기」 전 회차의 한국어 자막을 SRT로 제작해 영상에 삽입</li>
+            <li><b>작업 도구</b>: CapCut, Vrew로 싱크 조정과 자수 제한, 줄 나눔 적용</li>
+            <li><b>작업 방향</b>: 한국어 ↔ 프랑스어 양방향, 영어 → 한국어</li>
           </ul>
+          <div class="pf-duo">
+            <figure>
+              <div class="pf-embed">
+                <iframe src="https://player.vimeo.com/video/141748296?title=0&amp;byline=0&amp;portrait=0&amp;dnt=1&amp;playsinline=1"
+                        title="한불 영상, 문화 콘텐츠 번역 작업 영상" loading="lazy"
+                        allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+              </div>
+              <figcaption>프로덕션 하우스 영상 콘텐츠 번역</figcaption>
+            </figure>
+            <figure>
+              <img src="img/통번역, 로컬화/class101_subtitle.jpg"
+                   alt="클래스101 프랑스어 강의 화면에 삽입된 한국어 자막" loading="lazy">
+              <figcaption>클래스101 강의 영상에 삽입한 한국어 자막</figcaption>
+            </figure>
+          </div>
           <div class="pf-highlight">
-            프랑스어만의 언어유희나 한국어의 직역으로는 뉘앙스가 살아나지 않는 숏폼들을 번역합니다.
+            개인적으로 프랑스어만의 언어유희나 구어체의 뉘앙스를 살려야 하는 숏폼을 번역해 인스타그램에 공유하고 있습니다.
           </div>
           <p class="pf-iglabel">프랑스의 말장난</p>
           <div class="pf-igwrap">
@@ -1071,6 +1098,7 @@
             <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYAClIPqBsg/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
             <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DclrdcqqbZa/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
             <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DbDjfgmqYld/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
+            <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DeMefugq3OQ/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
           </div>
             <button class="pf-igarrow prev" type="button" aria-label="이전 릴스">&#8249;</button>
             <button class="pf-igarrow next" type="button" aria-label="다음 릴스">&#8250;</button>
@@ -1080,15 +1108,44 @@
           <div class="pf-igrow">
             <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaxpZKdK3OP/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
             <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DYUKK0rqtEK/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
+            <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DfEwu2IK7rw/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
+            <div class="ig"><blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DdRS319KDr_/?utm_source=ig_embed" data-instgrm-version="14" style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%;"></blockquote></div>
           </div>
             <button class="pf-igarrow prev" type="button" aria-label="이전 릴스">&#8249;</button>
             <button class="pf-igarrow next" type="button" aria-label="다음 릴스">&#8250;</button>
           </div>
           <div class="pf-clients">
+            <span class="pf-client">르노삼성</span>
+            <span class="pf-client">BNP 파리바</span>
+            <span class="pf-client">자라섬 국제재즈페스티벌</span>
+            <span class="pf-client">나윤선</span>
+            <span class="pf-client">The French Connection</span>
+            <span class="pf-client">Elephant at Work</span>
+            <span class="pf-client">Production Portugal</span>
+            <span class="pf-client">클래스101</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="pf-sec">
+        <span class="pf-sec-rule"></span>
+        <p class="pf-sec-kr">자격 및 수료</p>
+      </div>
+      <div class="pf-card pf-compact">
+        <div class="pf-card-body">
+          <p class="pf-year">2025~<small>영상번역 교육</small></p>
+          <p class="pf-title">영어 영상번역 입문 과정 수료 (2025), 실전 과정 수강 중 (2026)</p>
+          <p class="pf-place">더라인 영상번역 아카데미 | 온라인</p>
+          <ul class="pf-list">
+            <li>넷플릭스, 왓챠, 웨이브, 디즈니플러스 등 OTT 플랫폼 기준 영어→한국어 영상번역 실무</li>
+            <li>화면 싱크, 두 줄 제한, 구어체 표현으로 실전 피드백 중심 트레이닝</li>
+          </ul>
+          <div class="pf-clients">
             <span class="pf-client">더라인 영상번역 아카데미</span>
           </div>
         </div>
       </div>
+
 
 
     </div><!-- /pf-wrap interp ko -->

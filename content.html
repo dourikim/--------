@@ -168,15 +168,94 @@
       .post-title { font-size: 0.92rem; }
     }
 
-    /* ── 스레드 블록 카드 ──────────────────────── */
-    .content-card { align-items: stretch; }
-    .card-emoji   { display: none; }
-    .card-title { font-size: 0.92rem; font-weight: 700; color: var(--dark);
-                  line-height: 1.5; margin-bottom: 6px; word-break: keep-all; }
-    .card-preview { font-size: 0.82rem; color: var(--muted); line-height: 1.65;
-                    display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;
-                    overflow: hidden; margin-bottom: 8px; word-break: keep-all; white-space: pre-line; }
-    .content-card.pg-off { display: none; }
+    /* ── 탭 : 카테고리 수대로 폭을 나눕니다 ──────── */
+    #tabs-bar {
+      justify-content: center; gap: 10px;
+      padding: 10px max(24px, calc((100% - 460px) / 2));
+    }
+    #tabs-bar .tab-btn {
+      flex: 1; text-align: center; word-break: keep-all; line-height: 1.3;
+    }
+    #tabs-bar .tab-btn.active {
+      background: var(--brick); border-color: var(--brick);
+      color: var(--white); font-weight: 700;
+    }
+    #tabs-bar .tab-btn.active:hover {
+      background: var(--brick-h); border-color: var(--brick-h); color: var(--white);
+    }
+    /* 탭 안쪽 여백은 0으로 두고, 안에 든 블록이 각자의 폭을 그대로 씁니다 */
+    .tab-panel { padding: 24px 0 0; }
+    @media (min-width: 900px) { .tab-panel { padding-left: 0; padding-right: 0; } }
+
+    /* ── 카테고리 머리말 (통번역 페이지와 같은 틀) ── */
+    .ct-lede { max-width: 1008px; margin: 0 auto 30px; padding: 0 24px; }
+    .ct-lede-rule { display: block; width: 26px; height: 2px; background: var(--brick); margin-bottom: 16px; }
+    .ct-lede-h {
+      font-family: var(--font-heading);
+      font-size: clamp(1.22rem, 4.6vw, 1.68rem);
+      font-weight: 700; line-height: 1.52; letter-spacing: -0.025em;
+      color: var(--dark); margin: 0; word-break: keep-all;
+    }
+    .ct-lede-h em { font-style: normal; color: var(--brick); }
+    .ct-lede-body {
+      border-left: 3px solid var(--brick); background: #fff9f8;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 16px 18px; margin-top: 18px;
+    }
+    .ct-lede-body p { font-size: 0.855rem; color: var(--muted); line-height: 1.95; word-break: keep-all; margin: 0; }
+    .ct-lede-body strong { color: var(--dark); font-weight: 700; }
+    .ct-lede-btn { color: var(--brick); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+    @media (min-width: 900px) {
+      .ct-lede { margin-bottom: 38px; }
+      .ct-lede-body { padding: 20px 24px; }
+      .ct-lede-body p { font-size: 0.88rem; }
+    }
+
+    /* ── 태그 필터 : 잘리지 않게 줄바꿈, 본문과 같은 폭 ── */
+    #sec-thread .tag-filter-bar {
+      position: static; max-width: 1008px; margin: 0 auto;
+      padding: 0 24px 20px; border-bottom: 0;
+      flex-wrap: wrap; overflow: visible; background: none;
+    }
+
+    /* ── 스레드 블록 표 ────────────────────────── */
+    .th-table-wrap { max-width: 1008px; margin: 0 auto; width: calc(100% - 48px);
+                     border: 1px solid var(--border); border-radius: 12px;
+                     overflow: hidden; background: var(--white); }
+    table.th-table { width: 100%; border-collapse: collapse; }
+    table.th-table thead th {
+      background: var(--surface); font-size: 0.74rem; font-weight: 700; color: var(--muted);
+      letter-spacing: .04em; text-align: left; padding: 11px 14px;
+      border-bottom: 1px solid var(--border); white-space: nowrap;
+    }
+    table.th-table td { padding: 13px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    table.th-table tbody tr:last-child td { border-bottom: 0; }
+    table.th-table tbody tr { transition: background .13s; }
+    table.th-table tbody tr:hover { background: #FDF8F7; }
+    table.th-table tbody tr.pg-off { display: none; }
+
+    .c-no   { width: 52px; font-size: 0.78rem; color: #B49C98; text-align: right;
+              padding-right: 16px !important; font-variant-numeric: tabular-nums; }
+    .c-date { width: 98px; font-size: 0.76rem; color: var(--muted);
+              white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .c-tags { width: 188px; }
+    .c-link { width: 76px; text-align: right; white-space: nowrap; }
+
+    .t-title { font-size: 0.87rem; font-weight: 600; color: var(--dark);
+               line-height: 1.5; word-break: keep-all; margin: 0 0 3px; }
+    .t-sub   { font-size: 0.78rem; color: var(--muted); line-height: 1.55;
+               word-break: keep-all; margin: 0;
+               display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+
+    .t-go { display: inline-block; padding: 5px 11px; border: 1.5px solid var(--border);
+            border-radius: 7px; font-size: 0.74rem; font-weight: 700; color: var(--muted);
+            text-decoration: none; transition: all .15s; }
+    .t-go:hover { border-color: var(--brick); color: var(--brick); background: #FFF4F2; }
+
+    @media (max-width: 680px) {
+      .c-tags, .c-date { display: none; }
+      .c-no { width: 38px; padding-right: 10px !important; }
+    }
 
     /* ── 페이지네이션 ──────────────────────────── */
     .pagination-bar { display: flex; align-items: center; justify-content: center;
@@ -273,14 +352,22 @@
     </p>
   </div>
 
-  <!-- ══ 칼럼 ══ -->
+  <!-- 탭 바 -->
+  <div class="tabs-bar" id="tabs-bar">
+    <button class="tab-btn active" data-tab="column">칼럼</button>
+    <button class="tab-btn"        data-tab="thread">스레드 에센셜</button>
+  </div>
+
+  <!-- ══ 칼럼 탭 ══ -->
+  <div class="tab-panel active" data-tab="column">
   <section class="ct-sec" id="sec-column">
-    <div class="sec-head">
-      <h2 class="sec-title">칼럼</h2>
-      <p class="sec-desc">
-        프랑스어를 공부하다 막히는 자리, 그리고 한국, 프랑스, 브라질에서 프랑스어로 살며 겪은
-        <b>공부 방법과 견해</b>를 기록합니다.
-      </p>
+    <div class="ct-lede">
+      <span class="ct-lede-rule"></span>
+      <h2 class="ct-lede-h">공부하다 막히는 자리에서,<br><em>제가 먼저 겪은 것</em>을 씁니다.</h2>
+      <div class="ct-lede-body">
+        <p>프랑스어를 공부하다 막히는 자리, 그리고 한국, 프랑스, 브라질에서 프랑스어로 살며 겪은
+           <strong>공부 방법과 견해</strong>를 기록합니다.</p>
+      </div>
     </div>
 
     <!-- 주제 칩은 칼럼이 더 쌓이면 다시 넣습니다 -->
@@ -288,14 +375,19 @@
     <div class="posts-list" id="posts-list"></div>
     <div class="pagination-bar" id="col-pagination"></div>
   </section>
+  </div><!-- /칼럼 탭 -->
 
-  <!-- ══ 스레드 블록 ══ -->
-  <section class="ct-sec ct-sec-alt" id="sec-thread">
-    <div class="sec-head">
-      <h2 class="sec-title">스레드 블록</h2>
-      <p class="sec-desc">
-        하루에 하나씩, 이동하면서 <b>짧은 시간에 후루룩</b> 익힐 수 있는 유용한 표현들입니다.
-      </p>
+  <!-- ══ 스레드 에센셜 탭 ══ -->
+  <div class="tab-panel" data-tab="thread">
+  <section class="ct-sec" id="sec-thread">
+    <div class="ct-lede">
+      <span class="ct-lede-rule"></span>
+      <h2 class="ct-lede-h">하루에 하나씩,<br><em>짧은 시간에 후루룩</em> 익히는 표현.</h2>
+      <div class="ct-lede-body">
+        <p><a href="https://www.threads.net/@douri.french" class="ct-lede-btn" target="_blank" rel="noopener">스레드</a>에 업데이트 되고 있는 모든 컨텐츠를 언제든지 쉽게 확인하세요!
+           ‘태그’ 기능을 활용하여 원하는 컨텐츠만 골라보세요.
+           놓쳤던 표현이나 다시 보고 싶은 내용도 간편하게 확인하세요! ☺️</p>
+      </div>
     </div>
 
     <div class="tag-filter-bar" id="tag-filter">
@@ -307,12 +399,27 @@
       <button class="tag-chip" data-tag="프랑스유머">😄 프랑스 유머</button>
       <button class="tag-chip" data-tag="학습툴">🛠️ 학습 툴/방법</button>
       <button class="tag-chip" data-tag="발음">🎙️ 불어 발음</button>
+      <button class="tag-chip" data-tag="튜터링">🧑‍🏫 불어 튜터링</button>
     </div>
 
-    <div class="cards-list" id="cards-list"></div>
+    <div class="th-table-wrap">
+      <table class="th-table">
+        <thead>
+          <tr>
+            <th class="c-no">번호</th>
+            <th class="c-date">날짜</th>
+            <th>주제</th>
+            <th class="c-tags">태그</th>
+            <th class="c-link"></th>
+          </tr>
+        </thead>
+        <tbody id="cards-list"></tbody>
+      </table>
+    </div>
     <div class="pagination-bar" id="pagination-bar"></div>
     <p id="cards-count" style="text-align:center; padding:0 0 26px; font-size:0.82rem; color:var(--muted);"></p>
   </section>
+  </div><!-- /스레드 탭 -->
 
   <div class="ct-end">
     <p>여기 있는 글은 전부 수업에서 실제로 나온 질문에서 시작했습니다.<br>
@@ -352,7 +459,7 @@
 <script src="js/main.js"></script>
 <script src="data/content-data.js"></script>
 <script>
-  const PAGE_SIZE = 6;
+  const PAGE_SIZE = 10;
   let currentData = [];
   let currentPage = 1;
   let allCards    = [];
@@ -438,32 +545,55 @@
   }
 
   /* ══ 스레드 블록 ═════════════════════════════════════════ */
+  /* 노션 표와 같은 모양으로 한 줄씩 그립니다 */
   function cardHTML(item, idx) {
     const levelTag   = item.tags.find(t => LEVEL_TAGS.includes(t));
     const levelLabel = levelTag ? TAG_LABELS[levelTag] : '';
     const topicTag   = item.tags.find(t => !LEVEL_TAGS.includes(t));
     const topicLabel = topicTag ? TAG_LABELS[topicTag] : '';
+    /* '2026년 3월 1일' → '2026.03.01' */
+    const m = String(item.date || '').match(/(\d{4})\D+(\d{1,2})\D+(\d{1,2})/);
+    const d = m ? m[1] + '.' + ('0' + m[2]).slice(-2) + '.' + ('0' + m[3]).slice(-2) : (item.date || '');
+    /* 미리보기 첫 줄을 제목 밑에 한 줄로 둡니다.
+       제목이 이미 그 문장을 품고 있으면 같은 말이 두 번 나오므로 비웁니다. */
+    function squeeze(s) { return String(s).replace(/\s+/g, ' ').trim(); }
+    const lines = String(item.preview || '').split('\n').map(s => s.trim()).filter(Boolean);
+    let title = item.title;
+    let sub   = lines[0] || '';
+
+    /* 제목이 '[오늘의 불어 - 초급]'처럼 난이도 딱지뿐이면
+       표에서 무슨 글인지 알 수 없으므로, 본문 첫 줄을 제목 자리로 올립니다. */
+    if (/^\[\s*[^\]]*?-\s*(초급|중급|고급|초\/중급)\s*\]\s*$/.test(title) && lines.length) {
+      title = lines[0];
+      sub   = lines[1] || '';
+    }
+    /* 제목이 이미 그 문장을 품고 있으면 같은 말이 두 번 나오므로 비웁니다. */
+    if (sub && squeeze(title).indexOf(squeeze(sub)) !== -1) sub = '';
     return `
-      <a href="${siteHref('/content')}?post=${idx}" class="content-card"
-         data-tags="${item.tags.join(',')}" data-idx="${idx}" data-cta="content_expression">
-        <div class="card-body">
-          <div class="card-chips">
-            ${levelLabel ? `<span class="card-chip chip-level">${levelLabel}</span>` : ''}
-            ${topicLabel ? `<span class="card-chip chip-topic">${topicLabel}</span>`  : ''}
-          </div>
-          <div class="card-title">${item.title}</div>
-          ${item.preview ? `<div class="card-preview">${item.preview}</div>` : ''}
-          <div class="card-source">표현 보기, ${item.date}</div>
-        </div>
-      </a>`;
+      <tr class="th-row" data-tags="${item.tags.join(',')}" data-idx="${idx}">
+        <td class="c-no"></td>
+        <td class="c-date">${d}</td>
+        <td>
+          <p class="t-title">${title}</p>
+          ${sub ? `<p class="t-sub">${sub}</p>` : ''}
+        </td>
+        <td class="c-tags">
+          ${levelLabel ? `<span class="card-chip chip-level">${levelLabel}</span>` : ''}
+          ${topicLabel ? `<span class="card-chip chip-topic">${topicLabel}</span>`  : ''}
+        </td>
+        <td class="c-link">
+          <a class="t-go" href="${item.href}" target="_blank" rel="noopener"
+             data-cta="content_expression">보기 &#8599;</a>
+        </td>
+      </tr>`;
   }
 
-  /* 49개를 전부 문서에 넣고 화면에서만 감춥니다. 검색 엔진이 다 읽습니다. */
+  /* 전체를 문서에 다 넣고 화면에서만 감춥니다. 검색 엔진이 다 읽습니다. */
   function renderAll() {
     document.getElementById('cards-list').innerHTML =
       CONTENT_DATA.map((it, i) => cardHTML(it, i)).join('');
     allCards = Array.prototype.slice.call(
-      document.getElementById('cards-list').querySelectorAll('.content-card'));
+      document.getElementById('cards-list').querySelectorAll('.th-row'));
   }
 
   function renderPage(page) {
@@ -474,6 +604,11 @@
     const show = {};
     currentData.slice(start, start + PAGE_SIZE).forEach(function (it) { show[it._i] = 1; });
     allCards.forEach(function (c) { c.classList.toggle('pg-off', !show[c.dataset.idx]); });
+    /* 번호는 걸러낸 목록 기준으로 1번부터 이어서 매깁니다 */
+    currentData.forEach(function (it, i) {
+      const row = allCards[it._i];
+      if (row) { const n = row.querySelector('.c-no'); if (n) n.textContent = i + 1; }
+    });
     document.getElementById('cards-count').textContent = `총 ${total}개의 표현`;
     renderPagination(page, totalPages);
     if (!isFirstRender) {
@@ -568,13 +703,8 @@
   window.thMove = thMove;
   window.thClose = thClose;
 
-  document.getElementById('cards-list').addEventListener('click', function (e) {
-    const a = e.target.closest('.content-card');
-    if (!a) return;
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button === 1) return;
-    e.preventDefault();
-    thOpen(parseInt(a.dataset.idx, 10));
-  });
+  /* 표에서는 '보기' 버튼이 스레드로 바로 가기 때문에 팝업은 쓰지 않습니다.
+     (?post=N 으로 들어온 예전 링크는 아래 초기화에서 그대로 열립니다) */
   document.getElementById('th-bg').addEventListener('click', function (e) {
     if (e.target === this) thClose();
   });
@@ -590,6 +720,7 @@
 
   /* ── 초기화 ────────────────────────────────── */
   initComponents();
+  initTabs('#tabs-bar');
   renderPosts(1);
   renderAll();
   applyFilter('all');
@@ -599,6 +730,7 @@
     var n = parseInt(new URLSearchParams(location.search).get('post'), 10);
     if (!isNaN(n) && CONTENT_DATA[n]) thOpen(n);
   })();
+
 </script>
 </body>
 </html>
