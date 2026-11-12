@@ -1,7 +1,7 @@
 /**
  * ================================================================
- *  EDIT-MODE.JS — 인페이지 수정 모드 v4
- *  ✏️ 텍스트 수정 · 포맷 툴바(하단 고정) · 블록 드래그 순서 변경
+ *  EDIT-MODE.JS : 인페이지 수정 모드 v4
+ *  ✏️ 텍스트 수정 , 포맷 툴바(하단 고정) , 블록 드래그 순서 변경
  * ================================================================
  */
 (function () {
@@ -33,10 +33,22 @@
     '.reel-item p',
     '.review-text', '.review-name',
     '.checklist-item',
+
+    /* ── 후기 페이지(reviews) 전용 ─────────────────────────── */
+    '.rv-fact-v', '.rv-fact-l',        // 상단 숫자 스트립
+    '.rv-note p',                       // 숫자 아래 설명 문단
+    '.rv-theme-t', '.rv-theme-d',       // 테마 제목 / 설명
+    '.rv-name', '.rv-role', '.rv-tag',  // 학생 이름 / 직업 / 배지
+    '.rv-lead',                         // 핵심 문장 (이미지 없는 카드)
+    '.ph-q',                            // 이미지 자리 안내 문구
+    '.ba-lb', '.ba-tx',                 // 수업 전 → 지금
+    '.rv-body p',                       // 후기 전문 문단
+    '.rv-sum-t', '.rv-sum-q', '.rv-sum-w', '.rv-sum-f',   // 카테고리별 요약
+    '.rv-cta-t', '.rv-cta-d',
   ].join(', ');
 
   /* ── 드래그 가능한 블록 요소 ─────────────────────────────── */
-  const DRAG_SEL = '.section-block, .reel-item, .review-card-full';
+  const DRAG_SEL = '.section-block, .reel-item, .review-card-full, .rv-card';
 
   let isOn       = false;
   let savedEdits = {};
@@ -88,7 +100,7 @@
         box-shadow: 0 2px 14px rgba(194,74,53,0.18); border-radius: 4px;
       }
 
-      /* ══ 포맷 툴바 — 하단 중앙 고정 ══ */
+      /* ══ 포맷 툴바 : 하단 중앙 고정 ══ */
       #em-toolbar {
         position: fixed;
         bottom: 20px;
@@ -155,10 +167,10 @@
         max-width: 90px;
         flex-shrink: 0;
       }
-      /* option은 OS가 렌더링 — 배경만 지정 */
+      /* option은 OS가 렌더링 : 배경만 지정 */
       #em-fontfamily option { background: #2E0E0C; }
 
-      /* 굵기 select — 글꼴 select와 동일 스타일 */
+      /* 굵기 select : 글꼴 select와 동일 스타일 */
       #em-fontweight {
         -webkit-appearance: none;
         appearance: none;
@@ -351,7 +363,7 @@
     tb.setAttribute('role', 'toolbar');
 
     tb.innerHTML = `
-      <!-- ① 글꼴 — Pretendard(본문) + Gowun Batang(제목) -->
+      <!-- ① 글꼴 : Pretendard(본문) + Gowun Batang(제목) -->
       <select id="em-fontfamily" title="글꼴">
         <option value="Pretendard,sans-serif">Pretendard</option>
         <option value="'Gowun Batang',Georgia,serif">고운바탕</option>
@@ -359,7 +371,7 @@
         <option value="Georgia,serif">Georgia</option>
       </select>
 
-      <!-- ② 굵기 — 400 Regular / 700 Bold -->
+      <!-- ② 굵기 : 400 Regular / 700 Bold -->
       <select id="em-fontweight" title="굵기">
         <option value="400">400 일반</option>
         <option value="700">700 굵게</option>
@@ -409,7 +421,7 @@
 
       <span class="em-sep"></span>
 
-      <!-- ⑧ 위·아래 첨자 / 서식 제거 -->
+      <!-- ⑧ 위,아래 첨자 / 서식 제거 -->
       <button data-cmd="superscript" title="위 첨자" style="font-size:0.72rem">A<sup>1</sup></button>
       <button data-cmd="subscript"   title="아래 첨자" style="font-size:0.72rem">A<sub>1</sub></button>
       <span class="em-sep"></span>
@@ -478,7 +490,7 @@
         applyAlignment(aln.dataset.align);
         return;
       }
-      // ⑦ 여백 프리셋 — 포커스된 블록 요소의 padding 변경
+      // ⑦ 여백 프리셋 : 포커스된 블록 요소의 padding 변경
       const sp = e.target.closest('button.em-sp[data-sp]');
       if (sp) {
         e.preventDefault();
@@ -503,7 +515,7 @@
     triggerSave();
   }
 
-  /* ── 8px 여백 프리셋 — 포커스된 섹션 블록에 padding 적용 ── */
+  /* ── 8px 여백 프리셋 : 포커스된 섹션 블록에 padding 적용 ── */
   function applySpacing(px) {
     // 현재 포커스된 editable 요소의 가장 가까운 드래그 가능 부모 찾기
     const focused = document.querySelector('body.em-on [data-eid]:focus');
