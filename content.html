@@ -3997,9 +3997,44 @@
   applyFilter('all');
   initDynamicTagFilter();
 
+  /* 예전에 공유된 /content?post=숫자 링크를 받는 자리입니다.
+     그 숫자는 '목록의 몇 번째 글'이라는 뜻이라서, 글이 늘면 가리키는 글이 달라집니다.
+     아래 목록은 그 링크들이 만들어지던 시점의 순서를 스레드 글 고유 ID로 그대로 굳혀둔 것입니다.
+     앞으로 글이 몇 개가 늘든 옛 링크는 늘 같은 글을 엽니다. 이 목록은 지우거나 순서를 바꾸지 마세요. */
+  var LEGACY_POST_ORDER = [
+    'DVTtqZND5cb', 'DVLobMdj3Wj', 'DU0W_Taj_n5', 'DUytI2kE0rE',
+    'DUqKvnzD9Wt', 'DUk9bMgj68i', 'DUX3BQtj6Rf', 'DUSjQYjjy_R',
+    'DUQA7piD0pS', 'DUAQ2PAD19x', 'DTuvuSIj9d6', 'DTpTqOPDzVK',
+    'DTiDbZYj0xN', 'DTfQav2Dyi3', 'DTb3Ap6j8-G', 'DTZ5INlDwcC',
+    'DTT7J8jEj3A', 'DTRgvQfD6cd', 'DTPwaNyD3gG', 'DTFqh0Lj0Jw',
+    'DS06X83E_-9', 'DSmJQJCj8Kt', 'DShhsGPDxLN', 'DSgwziDD-oR',
+    'DSbEBVQEnVj', 'DSWwhdZj9e9', 'DSSWo7zjxyR', 'DSFJMU5j5F-',
+    'DSAkLOVE5ba', 'DR9iHjCjwJr', 'DR1_hEcj9kx', 'DRyLzZbj-bU',
+    'DRwaQbrj3ds', 'DRuM7PhjwMC', 'DRrZ5OCj46P', 'DRj_S2Zj0pX',
+    'DRhXYS6D26Z', 'DRgbmsVD0WB', 'DRbS0jaj4QU', 'DRZIfmFD2um',
+    'DRRW-AFj6ti', 'DRMXzZfD0ad', 'DRHeJ9uD2Ly', 'DRABx_fDyv7',
+    'DQ8LXhyjz4J', 'DQ34xtlDuK0', 'DQzPKKKD19Q', 'DQtFZicD8Yv',
+    'DQovO1Jj89k'
+  ];
+
   (function () {
-    var n = parseInt(new URLSearchParams(location.search).get('post'), 10);
-    if (!isNaN(n) && CONTENT_DATA[n]) thOpen(n);
+    var raw = new URLSearchParams(location.search).get('post');
+    if (!raw) return;
+
+    var want = '';
+    var n = parseInt(raw, 10);
+    if (!isNaN(n)) {
+      want = LEGACY_POST_ORDER[n] || '';          /* 옛 번호 링크 */
+    } else if (/^[A-Za-z0-9_-]{6,}$/.test(raw)) {
+      want = raw;                                  /* ?post=스레드ID 형태도 받습니다 */
+    }
+    if (!want) return;
+
+    var i = CONTENT_DATA.findIndex(function (x) {
+      return String(x.href).indexOf('/post/' + want) !== -1;
+    });
+    /* 못 찾으면 아무것도 열지 않습니다. 엉뚱한 글을 여는 것보다 낫습니다. */
+    if (i >= 0) thOpen(i);
   })();
 
 </script>
